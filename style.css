@@ -164,3 +164,69 @@ header {
     color: #000;
     margin: 0 10px;
 }
+/* Estilos específicos para la página de bienvenida */
+.landing-page {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    margin: 0;
+}
+
+.landing-container {
+    text-align: center;
+    animation: fadeIn 1.5s ease;
+}
+
+.landing-logo {
+    font-size: 2.5rem;
+    font-weight: 200;
+    letter-spacing: 8px;
+    margin-bottom: 50px;
+    color: #000;
+}
+
+.language-picker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.lang-option a {
+    text-decoration: none;
+    color: #666;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    transition: color 0.3s ease;
+}
+
+.lang-option a:hover {
+    color: #000;
+    font-weight: bold;
+}
+
+.separator {
+    width: 1px;
+    height: 20px;
+    background-color: #eee;
+}
+
+.landing-contact {
+    display: inline-block;
+    margin-top: 80px;
+    text-decoration: none;
+    color: #999;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+/* Animación suave al entrar */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
