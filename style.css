@@ -617,3 +617,28 @@ body, html {
     text-transform: uppercase;
     letter-spacing: 2px;
 }
+/* FUERZA LA UNIFORMIDAD EN LA GALERÍA DE PROYECTOS */
+.project-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas */
+    gap: 20px;
+    padding-bottom: 100px;
+}
+
+.project-gallery img {
+    width: 100% !important;
+    height: 500px !important; /* Altura fija para todas */
+    object-fit: cover !important; /* Recorte inteligente para no deformar */
+    display: block;
+    border-radius: 4px;
+}
+
+/* Ajuste para móviles: que se vea una sola foto a la vez */
+@media (max-width: 768px) {
+    .project-gallery {
+        grid-template-columns: 1fr;
+    }
+    .project-gallery img {
+        height: 300px !important;
+    }
+}
