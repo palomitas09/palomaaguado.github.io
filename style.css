@@ -382,3 +382,25 @@ body, html {
     letter-spacing: 1px;
     text-transform: uppercase;
 }
+.contact-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form {
+    display: block;
+    margin-bottom: 50px; /* Crea espacio real debajo del botón */
+}
+
+.social-links {
+    position: relative; /* Muy importante */
+    z-index: 999;       /* Los pone por encima de todo */
+    display: block;     /* Asegura que ocupen su propio espacio */
+    padding: 20px 0;    /* Espacio extra para que sea fácil clicar */
+}
+
+.social-links a {
+    position: relative;
+    z-index: 1000;      /* El enlace es lo que más "manda" */
+    pointer-events: auto !important; /* Fuerza a que el ratón lo reconozca */
+}
