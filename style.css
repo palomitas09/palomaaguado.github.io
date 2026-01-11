@@ -540,3 +540,28 @@ body, html {
     opacity: 0.8;
     transition: 0.3s ease;
 }
+.tarjeta-proyecto {
+    margin-bottom: 30px;
+}
+
+.tarjeta-proyecto img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.tarjeta-proyecto:hover img {
+    transform: scale(1.02); /* Un pequeño zoom al pasar el ratón */
+}
+
+.proyecto-info h3 {
+    font-family: sans-serif;
+    font-weight: 400;
+    margin: 15px 0 5px 0;
+}
+
+.proyecto-info p {
+    color: #888;
+    font-size: 0.9rem;
+}
