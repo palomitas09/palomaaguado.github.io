@@ -694,3 +694,25 @@ body, html {
         height: 300px; /* Un poco más bajas en pantallas pequeñas */
     }
 }
+/* Contenedor de la galería: 4 columnas iguales */
+.project-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Esto las pone una al lado de la otra */
+    gap: 20px;
+    padding-bottom: 100px;
+}
+
+/* Fuerza a todas las imágenes a ser idénticas */
+.project-gallery img {
+    width: 100% !important;   /* Ocupa todo el ancho de su columna */
+    height: 450px !important;  /* Obliga a todas a tener este alto */
+    object-fit: cover !important; /* RECORTE MÁGICO: Llena el espacio sin deformarse */
+    display: block !important;
+}
+
+/* Para que en el móvil se vea una debajo de otra y no se vean diminutas */
+@media (max-width: 768px) {
+    .project-gallery {
+        grid-template-columns: 1fr;
+    }
+}
