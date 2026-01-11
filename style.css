@@ -565,3 +565,55 @@ body, html {
     color: #888;
     font-size: 0.9rem;
 }
+/* Contenedor principal de la tarjeta */
+.project-card {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 4px; /* Opcional: bordes ligeramente redondeados */
+}
+
+.project-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+/* El cuadro negro transparente que aparece encima */
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0; /* Invisible por defecto */
+    transition: .5s ease;
+    background-color: rgba(0, 0, 0, 0.7); /* Color negro con transparencia */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Mostrar el overlay al pasar el ratón */
+.project-card:hover .overlay {
+    opacity: 1;
+}
+
+/* Zoom suave en la imagen al pasar el ratón */
+.project-card:hover img {
+    transform: scale(1.1);
+}
+
+/* Estilo del texto dentro del overlay */
+.text {
+    color: white;
+    font-family: sans-serif;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
