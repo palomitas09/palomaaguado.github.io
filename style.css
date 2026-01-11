@@ -404,3 +404,65 @@ body, html {
     z-index: 1000;      /* El enlace es lo que más "manda" */
     pointer-events: auto !important; /* Fuerza a que el ratón lo reconozca */
 }
+/* Contenedor principal para centrar el contenido */
+.project-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px 80px 20px;
+}
+
+/* La imagen de arriba: que respire y sea impactante */
+.project-hero img {
+    width: 100%;
+    height: auto;
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+/* Encabezado: Título y meta-datos */
+.project-header {
+    margin-bottom: 80px;
+}
+
+.project-header h1 {
+    font-size: 3.5rem;
+    font-weight: 200;
+    margin-bottom: 10px;
+}
+
+.project-meta {
+    margin-bottom: 40px;
+    color: #888;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+/* Layout del texto de desarrollo */
+.project-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* El texto ocupa más espacio que la lista de herramientas */
+    gap: 60px;
+    line-height: 1.8;
+}
+
+/* Galería inferior: 2 columnas */
+.project-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.project-gallery img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+    .project-content, .project-gallery {
+        grid-template-columns: 1fr;
+    }
+    .project-header h1 { font-size: 2.5rem; }
+}
