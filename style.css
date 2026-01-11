@@ -529,3 +529,14 @@ body, html {
 .project-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .project-gallery img { width: 100%; height: auto; }
 @media (max-width: 768px) { .project-gallery { grid-template-columns: 1fr; } }
+/* Quita el subrayado de todos los enlaces de proyectos */
+.tarjeta-proyecto a {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+/* Efecto elegante al pasar el ratón */
+.tarjeta-proyecto:hover img {
+    opacity: 0.8;
+    transition: 0.3s ease;
+}
