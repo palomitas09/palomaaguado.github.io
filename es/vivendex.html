@@ -5,91 +5,129 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vivendex — Paloma Aguado</title>
     <link rel="stylesheet" href="/palomaaguado.github.io/styles.css">
+    <style>
+        /* Estilos específicos para que el carrusel funcione visualmente bien */
+        .media-principal {
+            width: 100%;
+            height: 500px;
+            background: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 8px;
+            transition: opacity 0.3s ease;
+        }
+        .media-principal img, .media-principal video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .miniaturas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .miniaturas img, .miniaturas video {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            cursor: pointer;
+            border-radius: 4px;
+            opacity: 0.7;
+            transition: 0.3s;
+        }
+        .miniaturas img:hover, .miniaturas video:hover {
+            opacity: 1;
+        }
+    </style>
 </head>
-<body>
+<body style="margin:0; padding:0; background-color: white; font-family: sans-serif;">
 
-<header style="background-color: #0088bc; padding: 40px; text-align: center; color: white; font-family: sans-serif;">
-    <div class="logo" style="margin-bottom: 20px;">
-        <a href="/palomaaguado.github.io/es/index.html" style="text-decoration: none; color: white; font-weight: bold; letter-spacing: 2px;">PALOMA AGUADO</a>
-    </div>
-    <nav style="margin-bottom: 30px;">
-        <a href="/palomaaguado.github.io/es/contacto.html" style="text-decoration: none; color: white; border: 1px solid white; padding: 5px 15px; border-radius: 20px;">Contacto</a>
+    <header style="background-color: #0088bc; color: white; padding: 60px 5%; text-align: center;">
+        <div class="logo" style="margin-bottom: 30px;">
+            <a href="/palomaaguado.github.io/es/index.html" style="text-decoration: none; color: white; font-weight: bold; letter-spacing: 2px;">PALOMA AGUADO</a>
+        </div>
+        <h1 style="font-size: 2.5rem; text-transform: uppercase; margin-bottom: 15px;">Marketing inmobiliario</h1>
+        <p style="max-width: 700px; margin: 0 auto; opacity: 0.9; line-height: 1.6;">
+            Creación de contenido visual, publicidad en redes sociales y optimización de campañas para Vivendex.
+        </p>
+    </header>
+
+    <nav style="padding: 20px 5%;">
+        <a href="/palomaaguado.github.io/es/index.html" style="text-decoration: none; color: #888;">← Volver a Proyectos</a>
     </nav>
-    <div class="hero-texto">
-        <h1 style="font-size: 2.5rem; text-transform: uppercase;">Marketing inmobiliario</h1>
-        <p>Creación de contenido visual y campañas digitales para Vivendex.</p>
-    </div>
-</header>
 
-<main style="max-width: 1100px; margin: 0 auto; padding: 40px 20px;">
-    
-    <div class="proyecto-flex" style="display: flex; gap: 40px; margin-bottom: 60px; flex-wrap: wrap;">
-        <div id="media-principal" style="flex: 2; min-width: 300px; background: #f4f4f4; border-radius: 8px; overflow: hidden; height: 500px;">
-            <img src="/palomaaguado.github.io/es/proyectos/news.jpg" alt="Vivienda" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-
-        <div class="texto" style="flex: 1; min-width: 250px; font-family: sans-serif; line-height: 1.6;">
-            <h2 style="color: #0088bc;">Estrategia Visual</h2>
-            <p>Optimización de campañas y contenido para redes sociales.</p>
-            <ul style="padding-left: 20px; color: #555;">
-                <li>📸 Fotografía inmobiliaria</li>
-                <li>🎥 Vídeo para redes sociales</li>
-                <li>📢 Facebook & Instagram Ads</li>
-                <li>📊 Optimización de leads</li>
-            </ul>
-        </div>
-    </div>
-
-    <section class="miniaturas" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
-        <img src="/palomaaguado.github.io/es/proyectos/feed%20Vivendex.jpg" onclick="cambiarMedia(this)" style="width:100%; height:150px; object-fit:cover; cursor:pointer;">
-        <img src="/palomaaguado.github.io/es/proyectos/retail.jpg" onclick="cambiarMedia(this)" style="width:100%; height:150px; object-fit:cover; cursor:pointer;">
-        <img src="/palomaaguado.github.io/es/proyectos/santa%20caterina.jpg" onclick="cambiarMedia(this)" style="width:100%; height:150px; object-fit:cover; cursor:pointer;">
-        <img src="/palomaaguado.github.io/es/proyectos/vendido.jpg" onclick="cambiarMedia(this)" style="width:100%; height:150px; object-fit:cover; cursor:pointer;">
+    <main style="max-width: 1000px; margin: 0 auto; padding: 20px;">
         
-        <div class="video-thumb" onclick="cambiarMedia(this.querySelector('video'))" style="cursor:pointer; background:#000;">
-            <video muted style="width:100%; height:150px; object-fit:cover; opacity:0.8;">
+        <div class="media-principal" id="media-principal">
+            <img src="/palomaaguado.github.io/es/proyectos/news.jpg" alt="Vivienda">
+        </div>
+
+        <section class="miniaturas">
+            <img src="/palomaaguado.github.io/es/proyectos/news.jpg" onclick="cambiarMedia(this)">
+            <img src="/palomaaguado.github.io/es/proyectos/feed%20Vivendex.jpg" onclick="cambiarMedia(this)">
+            <img src="/palomaaguado.github.io/es/proyectos/retail.jpg" onclick="cambiarMedia(this)">
+            <img src="/palomaaguado.github.io/es/proyectos/santa%20caterina.jpg" onclick="cambiarMedia(this)">
+            <img src="/palomaaguado.github.io/es/proyectos/vendido.jpg" onclick="cambiarMedia(this)">
+            
+            <video muted onclick="cambiarMedia(this)">
                 <source src="/palomaaguado.github.io/es/proyectos/43.mp4" type="video/mp4">
             </video>
-        </div>
-    </section>
-</main>
+        </section>
 
-<section class="contacto" style="text-align: center; padding: 60px; background: #f9f9f9; font-family: sans-serif;">
-    <h2>¿Hablamos?</h2>
-    <p>Disponible para equipos inmobiliarios y agencias.</p>
-    <a href="mailto:paloaglo@gmail.com" style="display: inline-block; padding: 12px 30px; background: #0088bc; color: white; text-decoration: none; border-radius: 5px; margin-top: 20px;">Contactar</a>
-</section>
+        <section style="margin-top: 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+            <div>
+                <h2 style="color: #0088bc;">Estrategia de contenido</h2>
+                <p style="color: #444; line-height: 1.8;">
+                    No se trata solo de vender casas, sino de contar historias. En Vivendex potenciamos el lado humano del sector real estate.
+                </p>
+            </div>
+            <div style="background: #f9f9f9; padding: 30px; border-radius: 8px;">
+                <ul style="list-style: none; padding: 0; color: #555;">
+                    <li style="margin-bottom: 10px;">📸 Fotografía de interiores</li>
+                    <li style="margin-bottom: 10px;">🎥 Reels y TikToks inmobiliarios</li>
+                    <li style="margin-bottom: 10px;">📢 Gestión de Ads</li>
+                </ul>
+            </div>
+        </section>
+    </main>
 
-<script>
-function cambiarMedia(elemento) {
-    const contenedor = document.getElementById("media-principal");
-    contenedor.innerHTML = "";
+    <footer style="text-align: center; padding: 80px 0; color: #ccc; font-size: 0.8rem;">
+        <p>&copy; 2025 Paloma Aguado</p>
+    </footer>
 
-    if (elemento.tagName === "IMG") {
-        const img = document.createElement("img");
-        img.src = elemento.src;
-        img.style.width = "100%";
-        img.style.height = "100%";
-        img.style.objectFit = "cover";
-        contenedor.appendChild(img);
-    } else if (elemento.tagName === "VIDEO") {
-        const video = document.createElement("video");
-        video.src = elemento.querySelector("source").src;
-        video.autoplay = true;
-        video.loop = true;
-        video.muted = true;
-        video.controls = false;
-        video.style.width = "100%";
-        video.style.height = "100%";
-        video.style.objectFit = "cover";
-        contenedor.appendChild(video);
+    <script>
+    function cambiarMedia(elemento) {
+        const contenedor = document.getElementById("media-principal");
+        
+        // Efecto visual de cambio
+        contenedor.style.opacity = 0;
+
+        setTimeout(() => {
+            contenedor.innerHTML = ""; // Limpiamos lo que hay
+
+            if (elemento.tagName === "IMG") {
+                const nuevaImg = document.createElement("img");
+                nuevaImg.src = elemento.src;
+                contenedor.appendChild(nuevaImg);
+            } 
+            else if (elemento.tagName === "VIDEO") {
+                const nuevoVideo = document.createElement("video");
+                // Buscamos la fuente del vídeo original
+                nuevoVideo.src = elemento.querySelector("source").src;
+                nuevoVideo.autoplay = true;
+                nuevoVideo.loop = true;
+                nuevoVideo.muted = true;
+                nuevoVideo.playsInline = true;
+                contenedor.appendChild(nuevoVideo);
+            }
+
+            contenedor.style.opacity = 1;
+        }, 300);
     }
-}
-</script>
-
-<footer style="text-align: center; padding: 40px; font-family: sans-serif; font-size: 0.8rem; color: #ccc;">
-    <p>&copy; 2025 Paloma Aguado</p>
-</footer>
+    </script>
 
 </body>
 </html>
