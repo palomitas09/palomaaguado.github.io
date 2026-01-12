@@ -758,3 +758,15 @@ body, html {
 @media (max-width: 768px) {
     .gallery-full { grid-template-columns: 1fr; }
 }
+.tiktok-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(325px, 1fr)); /* TikTok recomienda mínimo 325px */
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.tiktok-item {
+    display: flex;
+    justify-content: center;
+    background: transparent;
+}
