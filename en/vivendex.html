@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivendex — Paloma Aguado</title>
+    <link rel="stylesheet" href="/palomaaguado.github.io/styles.css?v=2.0">
+    <style>
+        /* Estilos necesarios para el carrusel interactivo */
+        .media-principal {
+            width: 100%;
+            height: 550px;
+            background: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 8px;
+            transition: opacity 0.3s ease;
+            margin-top: 20px;
+        }
+        .media-principal img, .media-principal video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .miniaturas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+            margin-bottom: 50px;
+        }
+        .miniaturas img, .miniaturas .video-thumb {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            cursor: pointer;
+            border-radius: 4px;
+            opacity: 0.6;
+            transition: 0.3s;
+            background: #000;
+        }
+        .miniaturas img:hover, .miniaturas .video-thumb:hover {
+            opacity: 1;
+        }
+        .video-thumb video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none; 
+        }
+
+        /* --- TIKTOK SECTION --- */
+        .tiktok-section {
+            margin-top: 80px;
+            margin-bottom: 80px;
+        }
+        .tiktok-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .tiktok-title {
+            color: #0088bc;
+            font-size: 1.8rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body style="margin:0; padding:0; background-color: white; font-family: sans-serif;">
+
+    <header style="background-color: #0088bc; color: white; padding: 60px 5%; text-align: center;">
+        <div class="logo" style="margin-bottom: 30px;">
+            <a href="/palomaaguado.github.io/en/index.html" style="text-decoration: none; color: white; font-weight: bold; letter-spacing: 2px;">VIVENDEX</a>
+        </div>
+        <h1 style="font-size: 2.5rem; text-transform: uppercase; margin-bottom: 15px;">Real Estate Marketing</h1>
+        <p style="max-width: 700px; margin: 0 auto; opacity: 0.9; line-height: 1.6;">
+            Visual content creation and digital campaigns.
+        </p>
+    </header>
+
+    <nav style="padding: 20px 5%;">
+        <a href="/palomaaguado.github.io/en/index.html" style="text-decoration: none; color: #888; font-size: 0.9rem;">← Back to Projects</a>
+    </nav>
+
+    <main style="max-width: 1000px; margin: 0 auto; padding: 0 20px;">
+        
+        <div class="media-principal" id="media-principal">
+            <img src="/palomaaguado.github.io/es/proyectos/news.jpg" alt="Real Estate">
+        </div>
+
+        <section class="miniaturas">
+            <img src="/palomaaguado.github.io/es/proyectos/news.jpg" onclick="cambiarMedia(this)">
+            <img src="/palomaaguado.github.io/es/proyectos/feed%20Vivendex.jpg" onclick="cambiarMedia(this)">
+            <img src="/palomaaguado.github.io/es/proyectos/retail.jpg" onclick="cambiarMedia(this)">
+            <img src="/palomaaguado.github.io/es/proyectos/santa%20caterina.jpg" onclick="cambiarMedia(this)">
+            <img src="/palomaaguado.github.io/es/proyectos/vendido.jpg" onclick="cambiarMedia(this)">
+            
+            <div class="video-thumb" onclick="cambiarVideo('/palomaaguado.github.io/es/proyectos/43.mp4')">
+                <video muted>
+                    <source src="/palomaaguado.github.io/es/proyectos/43.mp4" type="video/mp4">
+                </video>
+            </div>
+        </section>
+
+        <section style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px;">
+            <div>
+                <h2 style="color: #0088bc;">Creative Direction & Visual Strategy</h2>
+                <p style="color: #444; line-height: 1.8;">
+                    Development of a consistent visual narrative focused on the brand's human approach. I was responsible for strategic planning and audiovisual content execution, ensuring a unified brand identity through the creation of dossiers, catalogs, and corporate templates.
+                </p>
+            </div>
+            <div style="background: #f9f9f9; padding: 25px; border-radius: 8px;">
+                <p><strong>Impact & Management:</strong></p>
+                <ul style="color: #666; font-size: 0.9rem; line-height: 1.6;">
+                    <li><strong>Social Media & Ads:</strong> Campaign management via Meta Business.</li>
+                    <li><strong>Automation:</strong> User interaction and lead nurturing with ManyChat.</li>
+                    <li><strong>Email Marketing:</strong> Newsletter design and blog content creation.</li>
+                    <li><strong>Production:</strong> Specialized multimedia content for Real Estate.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="tiktok-section">
+            <h2 class="tiktok-title">TikTok & Reels</h2>
+            <div class="tiktok-grid">
+                <div class="tiktok-item">
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@vivendex/video/7385555001860508961" data-video-id="7385555001860508961">
+                        <section></section>
+                    </blockquote>
+                </div>
+                <div class="tiktok-item">
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@vivendex/video/7384440948404522272" data-video-id="7384440948404522272">
+                        <section></section>
+                    </blockquote>
+                </div>
+                <div class="tiktok-item">
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@vivendex/video/7388460925130460449" data-video-id="7388460925130460449">
+                        <section></section>
+                    </blockquote>
+                </div>
+                <div class="tiktok-item">
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@vivendex/video/7412349704241024289" data-video-id="7412349704241024289">
+                        <section></section>
+                    </blockquote>
+                </div>
+                <div class="tiktok-item">
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@vivendex/video/7426079698876206368" data-video-id="7426079698876206368">
+                        <section></section>
+                    </blockquote>
+                </div>
+                <div class="tiktok-item">
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@vivendex/video/7429682503197248800" data-video-id="7429682503197248800">
+                        <section></section>
+                    </blockquote>
+                </div>
+            </div>
+            <script async src="https://www.tiktok.com/embed.js"></script>
+        </section>
+
+    </main>
+
+    <footer style="text-align: center; padding: 60px 0; color: #ccc; font-size: 0.8rem;">
+        <p>&copy; 2025 Paloma Aguado</p>
+    </footer>
+
+    <script>
+        const contenedor = document.getElementById("media-principal");
+
+        function cambiarMedia(elemento) {
+            contenedor.style.opacity = 0;
+            setTimeout(() => {
+                contenedor.innerHTML = `<img src="${elemento.src}" alt="Vivendex">`;
+                contenedor.style.opacity = 1;
+            }, 300);
+        }
+
+        function cambiarVideo(srcVideo) {
+            contenedor.style.opacity = 0;
+            setTimeout(() => {
+                contenedor.innerHTML = `
+                    <video autoplay loop muted playsinline>
+                        <source src="${srcVideo}" type="video/mp4">
+                    </video>`;
+                contenedor.style.opacity = 1;
+            }, 300);
+        }
+    </script>
+</body>
+</html>
