@@ -1,148 +1,95 @@
 <!DOCTYPE html>
 <html lang="es">
-
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vivendex — Paloma Aguado</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/palomaaguado.github.io/styles.css">
 </head>
 <body>
 
-<section class="proyecto">
-    <header>
-        <div class="logo">
-            <a href="/palomaaguado.github.io/es/index.html" style="text-decoration: none; color: white; font-weight: bold;">PALOMA AGUADO</a>
+<header style="background-color: #0088bc; padding: 40px; text-align: center; color: white; font-family: sans-serif;">
+    <div class="logo" style="margin-bottom: 20px;">
+        <a href="/palomaaguado.github.io/es/index.html" style="text-decoration: none; color: white; font-weight: bold; letter-spacing: 2px;">PALOMA AGUADO</a>
+    </div>
+    <nav style="margin-bottom: 30px;">
+        <a href="/palomaaguado.github.io/es/contacto.html" style="text-decoration: none; color: white; border: 1px solid white; padding: 5px 15px; border-radius: 20px;">Contacto</a>
+    </nav>
+    <div class="hero-texto">
+        <h1 style="font-size: 2.5rem; text-transform: uppercase;">Marketing inmobiliario</h1>
+        <p>Creación de contenido visual y campañas digitales para Vivendex.</p>
+    </div>
+</header>
+
+<main style="max-width: 1100px; margin: 0 auto; padding: 40px 20px;">
+    
+    <div class="proyecto-flex" style="display: flex; gap: 40px; margin-bottom: 60px; flex-wrap: wrap;">
+        <div id="media-principal" style="flex: 2; min-width: 300px; background: #f4f4f4; border-radius: 8px; overflow: hidden; height: 500px;">
+            <img src="/palomaaguado.github.io/es/proyectos/news.jpg" alt="Vivienda" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
-        <nav>
-            <a href="/palomaaguado.github.io/es/contacto.html" style="text-decoration: none; color: white;">Contacto</a>
-        </nav>
-		 <div class="hero-texto">
-      <h1>Marketing inmobiliario</h1>
-      <p>
-        Creación de contenido visual y campañas digitales
-        para venta y alquiler de inmuebles.
-      </p>
-    </div>
-    </header>
-	
-	<section class="proyecto">
-	
-	
-	 <!-- PARTE SUPERIOR -->
-  <div class="contenido">
 
-    <!-- MEDIA PRINCIPAL -->
-    <div class="media-principal" id="media-principal">
-      <img src="/palomaaguado.github.io/es/proyectos/news.jpg" alt="Vivienda">
+        <div class="texto" style="flex: 1; min-width: 250px; font-family: sans-serif; line-height: 1.6;">
+            <h2 style="color: #0088bc;">Estrategia Visual</h2>
+            <p>Optimización de campañas y contenido para redes sociales.</p>
+            <ul style="padding-left: 20px; color: #555;">
+                <li>📸 Fotografía inmobiliaria</li>
+                <li>🎥 Vídeo para redes sociales</li>
+                <li>📢 Facebook & Instagram Ads</li>
+                <li>📊 Optimización de leads</li>
+            </ul>
+        </div>
     </div>
 
-    <!-- TEXTO -->
-    <div class="texto">
-      <h2>Marketing inmobiliario</h2>
-      <p>
-        Creación de contenido visual, publicidad en redes sociales
-        y optimización de campañas de venta y alquiler de inmuebles
-      </p>
-      <ul>
-          <li>📸 Fotografía inmobiliaria</li>
-          <li>🎥 Vídeo para redes sociales</li>
-          <li>📢 Facebook & Instagram Ads</li>
-          <li>📊 Optimización de leads</li>
-        </ul>
-      </div>
+    <section class="miniaturas" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
+        <img src="/palomaaguado.github.io/es/proyectos/feed%20Vivendex.jpg" onclick="cambiarMedia(this)" style="width:100%; height:150px; object-fit:cover; cursor:pointer;">
+        <img src="/palomaaguado.github.io/es/proyectos/retail.jpg" onclick="cambiarMedia(this)" style="width:100%; height:150px; object-fit:cover; cursor:pointer;">
+        <img src="/palomaaguado.github.io/es/proyectos/santa%20caterina.jpg" onclick="cambiarMedia(this)" style="width:100%; height:150px; object-fit:cover; cursor:pointer;">
+        <img src="/palomaaguado.github.io/es/proyectos/vendido.jpg" onclick="cambiarMedia(this)" style="width:100%; height:150px; object-fit:cover; cursor:pointer;">
+        
+        <div class="video-thumb" onclick="cambiarMedia(this.querySelector('video'))" style="cursor:pointer; background:#000;">
+            <video muted style="width:100%; height:150px; object-fit:cover; opacity:0.8;">
+                <source src="/palomaaguado.github.io/es/proyectos/43.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
+</main>
 
-  </div>
-
-<!-- GALERÍA -->
-  <section class="miniaturas">
-    <img src="/palomaaguado.github.io/es/proyectos/feed Vivendex.jpg" onclick="cambiarMedia(this)">>
-    <img src="/palomaaguado.github.io/es/proyectos/retail.jpg" onclick="cambiarMedia(this)">>
-    <img src="/palomaaguado.github.io/es/proyectos/santa caterina.jpg" onclick="cambiarMedia(this)">>
-    <img src="/palomaaguado.github.io/es/proyectos/vendido.jpg" onclick="cambiarMedia(this)">>
-	
- 
-<div class="video-thumb" onclick="cambiarMedia(this.querySelector('video'))">
-  <video muted poster="img/vivendex-preview.jpg">
-    <source src="../proyectos/43.mp4" type="video/mp4">
-  </video>
-</div>
-	
-  </div>
-
-</section>
-
-<script src="script.js"></script>
-	
-	
-
-  <!-- CONTACTO -->
-  <section class="contacto">
+<section class="contacto" style="text-align: center; padding: 60px; background: #f9f9f9; font-family: sans-serif;">
     <h2>¿Hablamos?</h2>
     <p>Disponible para equipos inmobiliarios y agencias.</p>
-    <a href="mailto:paloaglo@gmail.com" class="btn">Contactar</a>
-  </section>
-  
-  <script>
+    <a href="mailto:paloaglo@gmail.com" style="display: inline-block; padding: 12px 30px; background: #0088bc; color: white; text-decoration: none; border-radius: 5px; margin-top: 20px;">Contactar</a>
+</section>
+
+<script>
 function cambiarMedia(elemento) {
-  const contenedor = document.getElementById("media-principal");
-
-  contenedor.style.opacity = 0;
-  contenedor.style.transform = "scale(0.97)";
-
-  setTimeout(() => {
+    const contenedor = document.getElementById("media-principal");
     contenedor.innerHTML = "";
 
     if (elemento.tagName === "IMG") {
-      const img = document.createElement("img");
-      img.src = elemento.src;
-      contenedor.appendChild(img);
+        const img = document.createElement("img");
+        img.src = elemento.src;
+        img.style.width = "100%";
+        img.style.height = "100%";
+        img.style.objectFit = "cover";
+        contenedor.appendChild(img);
+    } else if (elemento.tagName === "VIDEO") {
+        const video = document.createElement("video");
+        video.src = elemento.querySelector("source").src;
+        video.autoplay = true;
+        video.loop = true;
+        video.muted = true;
+        video.controls = false;
+        video.style.width = "100%";
+        video.style.height = "100%";
+        video.style.objectFit = "cover";
+        contenedor.appendChild(video);
     }
-
-    if (elemento.tagName === "VIDEO") {
-      const video = document.createElement("video");
-      video.src = elemento.querySelector("source").src;
-      video.autoplay = true;
-      video.loop = true;
-      video.muted = true;
-      video.playsInline = true;
-      contenedor.appendChild(video);
-    }
-
-    contenedor.style.opacity = 1;
-    contenedor.style.transform = "scale(1)";
-  }, 200);
 }
 </script>
 
-  
-<!-- CONTACTO 
-    <section class="project-hero-blue">
-        <h1>VIVENDEX</h1>
-        <p>Desarrollo de contenido visual y audiovisual para redes sociales, una inmobiliaria con un enfoque humano, donde la comunicación no se centra solo en inmuebles, sino también en las personas.</p>
-    </section>
-
-    <main class="gallery-full">
-        <img src="/palomaaguado.github.io/es/proyectos/vivendex-testimonio.jpg" alt="Experiencias Vivendex">
-        
-        <video autoplay muted loop playsinline>
-            <source src="/palomaaguado.github.io/es/proyectos/vivendex-equipo.mp4" type="video/mp4">
-        </video>
-
-        <img src="/palomaaguado.github.io/es/proyectos/vivendex-casa.jpg" alt="Propiedad Vivendex">
-        
-        <img src="/palomaaguado.github.io/es/proyectos/vivendex-04.jpg" alt="Social Media">
-        <img src="/palomaaguado.github.io/es/proyectos/vivendex-05.jpg" alt="Branding">
-        <video autoplay muted loop playsinline>
-            <source src="/palomaaguado.github.io/es/proyectos/vivendex-promo.mp4" type="video/mp4">
-        </video>
-    </main>
--->
-    <footer >
-        <p>&copy; 2025 Paloma Aguado</p>
-    </footer>
+<footer style="text-align: center; padding: 40px; font-family: sans-serif; font-size: 0.8rem; color: #ccc;">
+    <p>&copy; 2025 Paloma Aguado</p>
+</footer>
 
 </body>
 </html>
-
