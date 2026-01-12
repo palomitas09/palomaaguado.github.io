@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vivendex — Paloma Aguado</title>
-    <link rel="stylesheet" href="/palomaaguado.github.io/styles.css">
+    <link rel="stylesheet" href="/palomaaguado.github.io/styles.css?v=2.0">
     <style>
-        /* Estilos específicos para que el carrusel funcione visualmente bien */
+        /* Estilos necesarios para el carrusel interactivo */
         .media-principal {
             width: 100%;
-            height: 500px;
+            height: 550px;
             background: #f4f4f4;
             display: flex;
             align-items: center;
@@ -17,6 +17,7 @@
             overflow: hidden;
             border-radius: 8px;
             transition: opacity 0.3s ease;
+            margin-top: 20px;
         }
         .media-principal img, .media-principal video {
             width: 100%;
@@ -28,18 +29,26 @@
             grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: 15px;
             margin-top: 20px;
+            margin-bottom: 50px;
         }
-        .miniaturas img, .miniaturas video {
+        .miniaturas img, .miniaturas .video-thumb {
             width: 100%;
             height: 100px;
             object-fit: cover;
             cursor: pointer;
             border-radius: 4px;
-            opacity: 0.7;
+            opacity: 0.6;
             transition: 0.3s;
+            background: #000;
         }
-        .miniaturas img:hover, .miniaturas video:hover {
+        .miniaturas img:hover, .miniaturas .video-thumb:hover {
             opacity: 1;
+        }
+        .video-thumb video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none; /* Evita que el vídeo interfiera con el clic del div */
         }
     </style>
 </head>
@@ -51,15 +60,15 @@
         </div>
         <h1 style="font-size: 2.5rem; text-transform: uppercase; margin-bottom: 15px;">Marketing inmobiliario</h1>
         <p style="max-width: 700px; margin: 0 auto; opacity: 0.9; line-height: 1.6;">
-            Creación de contenido visual, publicidad en redes sociales y optimización de campañas para Vivendex.
+            Creación de contenido visual y campañas para Vivendex.
         </p>
     </header>
 
     <nav style="padding: 20px 5%;">
-        <a href="/palomaaguado.github.io/es/index.html" style="text-decoration: none; color: #888;">← Volver a Proyectos</a>
+        <a href="/palomaaguado.github.io/es/index.html" style="text-decoration: none; color: #888; font-size: 0.9rem;">← Volver a Proyectos</a>
     </nav>
 
-    <main style="max-width: 1000px; margin: 0 auto; padding: 20px;">
+    <main style="max-width: 1000px; margin: 0 auto; padding: 0 20px;">
         
         <div class="media-principal" id="media-principal">
             <img src="/palomaaguado.github.io/es/proyectos/news.jpg" alt="Vivienda">
@@ -72,62 +81,56 @@
             <img src="/palomaaguado.github.io/es/proyectos/santa%20caterina.jpg" onclick="cambiarMedia(this)">
             <img src="/palomaaguado.github.io/es/proyectos/vendido.jpg" onclick="cambiarMedia(this)">
             
-            <video muted onclick="cambiarMedia(this)">
-                <source src="/palomaaguado.github.io/es/proyectos/43.mp4" type="video/mp4">
-            </video>
+            <div class="video-thumb" onclick="cambiarVideo('/palomaaguado.github.io/es/proyectos/43.mp4')">
+                <video muted>
+                    <source src="/palomaaguado.github.io/es/proyectos/43.mp4" type="video/mp4">
+                </video>
+            </div>
         </section>
 
-        <section style="margin-top: 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+        <section style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 80px;">
             <div>
-                <h2 style="color: #0088bc;">Estrategia de contenido</h2>
+                <h2 style="color: #0088bc;">Dirección Creativa</h2>
                 <p style="color: #444; line-height: 1.8;">
-                    No se trata solo de vender casas, sino de contar historias. En Vivendex potenciamos el lado humano del sector real estate.
+                    Desarrollo de una narrativa visual coherente para el sector inmobiliario, enfocada en la calidad y el lado humano de la marca.
                 </p>
             </div>
-            <div style="background: #f9f9f9; padding: 30px; border-radius: 8px;">
-                <ul style="list-style: none; padding: 0; color: #555;">
-                    <li style="margin-bottom: 10px;">📸 Fotografía de interiores</li>
-                    <li style="margin-bottom: 10px;">🎥 Reels y TikToks inmobiliarios</li>
-                    <li style="margin-bottom: 10px;">📢 Gestión de Ads</li>
+            <div style="background: #f9f9f9; padding: 25px; border-radius: 8px;">
+                <p><strong>Servicios:</strong></p>
+                <ul style="color: #666; font-size: 0.9rem;">
+                    <li>Fotografía Inmobiliaria</li>
+                    <li>Vídeo Marketing</li>
+                    <li>Social Media Strategy</li>
                 </ul>
             </div>
         </section>
     </main>
 
-    <footer style="text-align: center; padding: 80px 0; color: #ccc; font-size: 0.8rem;">
+    <footer style="text-align: center; padding: 60px 0; color: #ccc; font-size: 0.8rem;">
         <p>&copy; 2025 Paloma Aguado</p>
     </footer>
 
     <script>
-    function cambiarMedia(elemento) {
         const contenedor = document.getElementById("media-principal");
-        
-        // Efecto visual de cambio
-        contenedor.style.opacity = 0;
 
-        setTimeout(() => {
-            contenedor.innerHTML = ""; // Limpiamos lo que hay
+        function cambiarMedia(elemento) {
+            contenedor.style.opacity = 0;
+            setTimeout(() => {
+                contenedor.innerHTML = `<img src="${elemento.src}" alt="Vivendex">`;
+                contenedor.style.opacity = 1;
+            }, 300);
+        }
 
-            if (elemento.tagName === "IMG") {
-                const nuevaImg = document.createElement("img");
-                nuevaImg.src = elemento.src;
-                contenedor.appendChild(nuevaImg);
-            } 
-            else if (elemento.tagName === "VIDEO") {
-                const nuevoVideo = document.createElement("video");
-                // Buscamos la fuente del vídeo original
-                nuevoVideo.src = elemento.querySelector("source").src;
-                nuevoVideo.autoplay = true;
-                nuevoVideo.loop = true;
-                nuevoVideo.muted = true;
-                nuevoVideo.playsInline = true;
-                contenedor.appendChild(nuevoVideo);
-            }
-
-            contenedor.style.opacity = 1;
-        }, 300);
-    }
+        function cambiarVideo(srcVideo) {
+            contenedor.style.opacity = 0;
+            setTimeout(() => {
+                contenedor.innerHTML = `
+                    <video autoplay loop muted playsinline>
+                        <source src="${srcVideo}" type="video/mp4">
+                    </video>`;
+                contenedor.style.opacity = 1;
+            }, 300);
+        }
     </script>
-
 </body>
 </html>
