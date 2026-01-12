@@ -1,22 +1,123 @@
 <!DOCTYPE html>
 <html lang="es">
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vivendex — Paloma Aguado</title>
-    <link rel="stylesheet" href="/palomaaguado.github.io/styles.css?v=1.5">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body style="margin:0; padding:0; background-color: white;">
+<body>
 
-    <header style="display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; font-family: sans-serif; position: absolute; width: 90%; z-index: 10;">
+<section class="proyecto">
+    <header>
         <div class="logo">
             <a href="/palomaaguado.github.io/es/index.html" style="text-decoration: none; color: white; font-weight: bold;">PALOMA AGUADO</a>
         </div>
         <nav>
             <a href="/palomaaguado.github.io/es/contacto.html" style="text-decoration: none; color: white;">Contacto</a>
         </nav>
+		 <div class="hero-texto">
+      <h1>Marketing inmobiliario que convierte</h1>
+      <p>
+        Creación de contenido visual y campañas digitales
+        para venta y alquiler de viviendas.
+      </p>
+    </div>
     </header>
+	
+	<section class="proyecto">
+	
+	
+	 <!-- PARTE SUPERIOR -->
+  <div class="contenido">
 
+    <!-- MEDIA PRINCIPAL -->
+    <div class="media-principal" id="media-principal">
+      <img src="../proyectos/news.jpg" alt="Vivienda">
+    </div>
+
+    <!-- TEXTO -->
+    <div class="texto">
+      <h2>Marketing inmobiliario</h2>
+      <p>
+        Creación de contenido visual, anuncios en redes sociales
+        y optimización de campañas para venta y alquiler de viviendas.
+      </p>
+      <ul>
+          <li>📸 Fotografía inmobiliaria</li>
+          <li>🎥 Vídeo para redes sociales</li>
+          <li>📢 Facebook & Instagram Ads</li>
+          <li>📊 Optimización de leads</li>
+        </ul>
+      </div>
+
+  </div>
+
+<!-- GALERÍA -->
+  <section class="miniaturas">
+    <img src="../proyectos/feed Vivendex.jpg" onclick="cambiarMedia(this)">>
+    <img src="../proyectos/retail.jpg" onclick="cambiarMedia(this)">>
+    <img src="../proyectos/santa caterina.jpg" onclick="cambiarMedia(this)">>
+    <img src="../proyectos/vendido.jpg" onclick="cambiarMedia(this)">>
+	
+ 
+<div class="video-thumb" onclick="cambiarMedia(this.querySelector('video'))">
+  <video muted poster="img/vivendex-preview.jpg">
+    <source src="../proyectos/43.mp4" type="video/mp4">
+  </video>
+</div>
+	
+  </div>
+
+</section>
+
+<script src="script.js"></script>
+	
+	
+
+  <!-- CONTACTO -->
+  <section class="contacto">
+    <h2>¿Hablamos?</h2>
+    <p>Disponible para equipos inmobiliarios y agencias.</p>
+    <a href="mailto:email@email.com" class="btn">Contactar</a>
+  </section>
+  
+  <script>
+function cambiarMedia(elemento) {
+  const contenedor = document.getElementById("media-principal");
+
+  contenedor.style.opacity = 0;
+  contenedor.style.transform = "scale(0.97)";
+
+  setTimeout(() => {
+    contenedor.innerHTML = "";
+
+    if (elemento.tagName === "IMG") {
+      const img = document.createElement("img");
+      img.src = elemento.src;
+      contenedor.appendChild(img);
+    }
+
+    if (elemento.tagName === "VIDEO") {
+      const video = document.createElement("video");
+      video.src = elemento.querySelector("source").src;
+      video.autoplay = true;
+      video.loop = true;
+      video.muted = true;
+      video.playsInline = true;
+      contenedor.appendChild(video);
+    }
+
+    contenedor.style.opacity = 1;
+    contenedor.style.transform = "scale(1)";
+  }, 200);
+}
+</script>
+
+  
+<!-- CONTACTO 
     <section class="project-hero-blue">
         <h1>VIVENDEX</h1>
         <p>Desarrollo de contenido visual y audiovisual para redes sociales de Vivendex, una inmobiliaria con un enfoque humano, donde la comunicación no se centra solo en inmuebles, sino también en las personas.</p>
@@ -37,10 +138,11 @@
             <source src="/palomaaguado.github.io/es/proyectos/vivendex-promo.mp4" type="video/mp4">
         </video>
     </main>
-
-    <footer style="text-align: center; padding: 40px 0; color: #888; font-family: sans-serif;">
+-->
+    <footer >
         <p>&copy; 2025 Paloma Aguado</p>
     </footer>
 
 </body>
 </html>
+
