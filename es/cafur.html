@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafur — Paloma Aguado</title>
+    <link rel="stylesheet" href="/palomaaguado.github.io/styles.css?v=3.3">
+    <style>
+        /* Estructura del carrusel */
+        .media-principal {
+            width: 100%;
+            height: 550px;
+            background: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 8px;
+            transition: opacity 0.3s ease;
+            margin-top: 20px;
+        }
+        .media-principal img, .media-principal video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .miniaturas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin: 20px 0 50px 0;
+        }
+        .miniaturas img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            cursor: pointer;
+            border-radius: 4px;
+            opacity: 0.6;
+            transition: 0.3s;
+        }
+        .miniaturas img:hover { opacity: 1; }
+
+        /* AZUL DIFERENCIAL DE CAFUR (Navy Blue) */
+        .cafur-blue-text { color: #003366; } 
+        .bg-cafur-blue { background-color: #003366; }
+    </style>
+</head>
+<body style="margin:0; padding:0; background-color: white; font-family: sans-serif;">
+
+    <header style="background-color: #003366; color: white; padding: 60px 5%; text-align: center;">
+        <div class="logo" style="margin-bottom: 30px;">
+            <a href="/palomaaguado.github.io/es/index.html" style="text-decoration: none; color: white; font-weight: bold; letter-spacing: 2px;">CAFUR</a>
+        </div>
+        <h1 style="font-size: 2.5rem; text-transform: uppercase; margin-bottom: 15px;">Marketing & Audiovisual Production</h1>
+        <p style="max-width: 700px; margin: 0 auto; opacity: 0.95; line-height: 1.6; font-weight: 300;">
+            Marketing Assistant: Planificación estratégica 360, gestión con Metricool y producción fotográfica de inmuebles.
+        </p>
+    </header>
+
+    <nav style="padding: 20px 5%;">
+        <a href="/palomaaguado.github.io/es/index.html" style="text-decoration: none; color: #888; font-size: 0.9rem;">← Volver a Proyectos</a>
+    </nav>
+
+    <main style="max-width: 1000px; margin: 0 auto; padding: 0 20px;">
+        
+        <div class="media-principal" id="media-principal">
+            <img src="/palomaaguado.github.io/es/proyectos/cafur-portada.jpg" alt="Cafur Portfolio">
+        </div>
+
+        <section class="miniaturas">
+            <img src="/palomaaguado.github.io/es/proyectos/cafur1.jpg" onclick="cambiarMedia(this)">
+            <img src="/palomaaguado.github.io/es/proyectos/cafur2.jpg" onclick="cambiarMedia(this)">
+            <img src="/palomaaguado.github.io/es/proyectos/cafur3.jpg" onclick="cambiarMedia(this)">
+            <img src="/palomaaguado.github.io/es/proyectos/cafur4.jpg" onclick="cambiarMedia(this)">
+        </section>
+
+        <section style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 80px;">
+            <div>
+                <h2 class="cafur-blue-text">Marketing Assistant & Content Strategist</h2>
+                <p style="color: #444; line-height: 1.8;">
+                    En mi etapa en Cafur, lideré la <strong>planificación estratégica de contenido</strong> mediante la creación de calendarios editoriales y la redacción creativa de copys. Como <strong>fotógrafa de la marca</strong>, me encargué de la producción y edición de vídeo y fotografía de propiedades, elevando la calidad visual de la oferta inmobiliaria.
+                </p>
+            </div>
+            <div style="background: #f0f4f8; padding: 25px; border-radius: 8px; border-left: 4px solid #003366;">
+                <p><strong class="cafur-blue-text">Áreas de especialización:</strong></p>
+                <ul style="color: #666; font-size: 0.9rem; line-height: 1.6;">
+                    <li><strong>Social Media:</strong> Gestión y análisis de impacto con <strong>Metricool</strong>.</li>
+                    <li><strong>Producción Audiovisual:</strong> Fotografía y edición profesional de activos inmobiliarios.</li>
+                    <li><strong>Email Marketing:</strong> Diseño y envío de boletines informativos.</li>
+                    <li><strong>Branding:</strong> Adaptación creativa de la identidad visual en plantillas de Canva.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section style="text-align: center; background: #fdfdfd; padding: 50px; border: 1px dashed #003366; border-radius: 15px; margin-bottom: 80px;">
+            <h3 style="margin-top: 0;" class="cafur-blue-text">Visual Identity & Creative Templates</h3>
+            <p>He desarrollado recursos gráficos estratégicos en Canva para unificar la imagen de marca de Cafur.</p>
+            <a href="TU_ENLACE_CANVA" target="_blank" style="display: inline-block; padding: 15px 35px; background: #003366; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; transition: 0.3s;">Ver Proyecto en Canva</a>
+        </section>
+
+    </main>
+
+    <footer style="text-align: center; padding: 60px 0; color: #ccc; font-size: 0.8rem; border-top: 1px solid #eee;">
+        <p>&copy; 2025 Paloma Aguado | Real Estate Marketing Specialist</p>
+    </footer>
+
+    <script>
+        const contenedor = document.getElementById("media-principal");
+        function cambiarMedia(elemento) {
+            contenedor.style.opacity = 0;
+            setTimeout(() => {
+                contenedor.innerHTML = `<img src="${elemento.src}" alt="Cafur Project">`;
+                contenedor.style.opacity = 1;
+            }, 300);
+        }
+    </script>
+</body>
+</html>
