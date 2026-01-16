@@ -1,53 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paloma Aguado | Portfolio</title>
-    <link rel="stylesheet" href="../es/style.css">
+    <title>Paloma Aguado — Portfolio</title>
+    <link rel="stylesheet" href="/palomaaguado.github.io/styles.css?v=4.3">
+    <style>
+        /* Franja Superior Gris Carbón */
+        .top-bar {
+            background-color: #2c2c2c; 
+            height: 12px;
+            width: 100%;
+        }
+
+        header {
+            padding: 50px 5% 30px 5%;
+            background-color: #ffffff;
+        }
+
+        .seccion-proyectos {
+            padding: 40px 5% 60px 5%;
+        }
+
+        .titulo-seccion {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #2c2c2c;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        /* Grid de 2 columnas */
+        .proyectos-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 40px;
+        }
+
+        .proyecto-card {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .proyecto-card img {
+            width: 100%;
+            height: 500px; 
+            object-fit: cover;
+            border-radius: 2px;
+            transition: 0.4s ease;
+        }
+
+        .proyecto-card:hover img {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .proyecto-card h3 {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #333;
+        }
+
+        /* Estilo para el Coming Soon */
+        .coming-soon-box {
+            background: #f7f7f7;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #bbb;
+            font-size: 0.8rem;
+            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 1px solid #eee;
+        }
+
+        @media (max-width: 768px) {
+            .proyectos-grid { grid-template-columns: 1fr; }
+            .proyecto-card img, .coming-soon-box { height: 350px; }
+        }
+    </style>
 </head>
-<body>
+<body style="margin:0; font-family: sans-serif;">
+
+    <div class="top-bar"></div>
+
     <header>
-        <div class="logo">PALOMA AGUADO</div>
-      <nav>
-    <a href="/palomaaguado.github.io/en/contact.html">Contact</a>
-    <span style="margin: 0 10px; color: #ccc;">|</span>
-    <a href="/palomaaguado.github.io/es/index.html">Español</a>
-</nav>
+        <h1 style="font-size: 2rem; margin:0; letter-spacing: -1px;">PALOMA AGUADO</h1>
+        <p style="color: #888; font-size: 0.9rem; margin-top: 5px; text-transform: uppercase; letter-spacing: 2px;">Content Creator & Marketing Specialist</p>
     </header>
-    <main class="gallery">
-   <div class="project-card">
-    <a href="kukicha.html" style="text-decoration: none;">
-        <img src="/palomaaguado.github.io/es/proyectos/packaging.png" alt="Kukicha — Brand Identity">
-        <div class="overlay">
-            <div class="text">
-                Kukicha<br>
-                <span style="font-size: 0.7rem; opacity: 0.8;">Brand Identity</span>
-            </div>
-        </div>
-    </a>
-</div>
-        </div>
-          <div class="project-card">
-    <a href="https://palomitas09.github.io/palomaaguado.github.io/en/vivendex.html" style="text-decoration: none;">
-        <img src="/palomaaguado.github.io/es/proyectos/feed%20Vivendex.jpg" alt="Vivendex">
-        <div class="overlay">
-            <div class="text">
-                Vivendex<br>
-                <span style="font-size: 0.7rem; opacity: 0.8;">More than a real estate agency</span>
-            </div>
-        </div>
-          <div class="project-card">
-            <a href="/palomaaguado.github.io/es/cafur.html">
-                <img src="/palomaaguado.github.io/es/proyectos/cafur5.jpg" alt="Cafur">
-                <div class="overlay">
-                    <div class="text">
-                        Cafur<br>
-                        <span>Strategy & Photography</span>
-                    </div>
+
+    <main>
+        <section class="seccion-proyectos">
+            <h2 class="titulo-seccion">Lifestyle & Brands</h2>
+            <div class="proyectos-grid">
+                
+                <a href="es/proyectos/kukicha.html" class="proyecto-card">
+                    <img src="/palomaaguado.github.io/es/proyectos/kukicha-portada.jpg" alt="Kukicha">
+                    <h3>KUKICHA — Content Creation</h3>
+                </a>
+
+                <div class="coming-soon-box">
+                    Coming Soon
                 </div>
-            </a>
-        </div>
+
+            </div>
+        </section>
+
+        <section class="seccion-proyectos" style="background-color: #fafafa; border-top: 1px solid #f0f0f0;">
+            <h2 class="titulo-seccion">Real Estate Strategy</h2>
+            <div class="proyectos-grid">
+                
+                <a href="es/proyectos/cafur.html" class="proyecto-card">
+                    <img src="/palomaaguado.github.io/es/proyectos/cafur1.jpg" alt="Cafur">
+                    <h3>CAFUR — Social Media & Audiovisual</h3>
+                </a>
+
+                <a href="es/proyectos/vivendex.html" class="proyecto-card">
+                    <img src="/palomaaguado.github.io/es/proyectos/vivendex-portada.jpg" alt="Vivendex">
+                    <h3>VIVENDEX — Branding & TikTok</h3>
+                </a>
+
+            </div>
+        </section>
     </main>
+
+    <footer style="padding: 60px 0; text-align: center; color: #ccc; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px;">
+        <p>© 2025 Paloma Aguado</p>
+    </footer>
+
 </body>
 </html>
