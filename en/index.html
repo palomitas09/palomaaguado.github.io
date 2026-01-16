@@ -6,48 +6,19 @@
     <title>Paloma Aguado | Portfolio</title>
     <link rel="stylesheet" href="../style.css">
     <style>
-        /* Tipografía idéntica al index español */
-        body {
-            margin: 0;
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            background-color: white;
-            color: #333;
+        /* Quitamos subrayados feos */
+        nav a, .project-card a {
+            text-decoration: none !important;
         }
 
-        /* Franja superior */
+        /* Franja superior Gris Carbón */
         .top-line {
             background-color: #2c2c2c;
             height: 12px;
             width: 100%;
         }
 
-        /* Logo y Header con estilo español */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 30px 5%;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #666;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: 0.3s;
-        }
-
-        nav a:hover { color: #000; }
-
-        /* Títulos de sección */
+        /* Estilo para los nombres de las secciones */
         .section-title {
             font-size: 1.1rem;
             text-transform: uppercase;
@@ -56,10 +27,9 @@
             margin: 60px 5% 25px 5%;
             padding-left: 15px;
             border-left: 3px solid #2c2c2c;
-            font-weight: bold;
         }
 
-        /* Grid */
+        /* Grid de 2 columnas por sección */
         .gallery-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -67,24 +37,24 @@
             padding: 0 5% 50px 5%;
         }
 
-        /* Tarjetas alineadas */
+        /* Forzamos alineación de las tarjetas */
         .project-card {
             height: 500px;
             overflow: hidden;
             position: relative;
+            margin-bottom: 0 !important;
         }
 
         .project-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
         }
 
-        /* Estilo del Coming Soon */
+        /* Caja de Coming Soon */
         .coming-soon-placeholder {
-            background-color: #f9f9f9;
             height: 500px;
+            background-color: #f9f9f9;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -107,9 +77,9 @@
     <header>
         <div class="logo">PALOMA AGUADO</div>
         <nav>
-            <a href="../es/contacto.html">Contact</a> 
+            <a href="/palomaaguado.github.io/es/contacto.html">Contact</a> 
             <span style="margin: 0 10px; color: #ccc;">|</span>
-            <a href="../es/index.html">Español</a>
+            <a href="/palomaaguado.github.io/es/index.html">Español</a>
         </nav>
     </header>
 
@@ -117,12 +87,12 @@
         <h2 class="section-title">Lifestyle & Brands</h2>
         <div class="gallery-grid">
             <div class="project-card">
-                <a href="kukicha.html">
-                    <img src="../es/proyectos/packaging.png" alt="Kukicha">
+                <a href="/palomaaguado.github.io/en/kukicha.html">
+                    <img src="/palomaaguado.github.io/es/proyectos/packaging.png" alt="Kukicha">
                     <div class="overlay">
                         <div class="text">
                             Kukicha<br>
-                            <span style="font-weight: 300; font-size: 0.8rem; text-transform: none; letter-spacing: 1px;">Brand Identity</span>
+                            <span>Brand Identity</span>
                         </div>
                     </div>
                 </a>
@@ -136,24 +106,24 @@
         <h2 class="section-title">Real Estate Strategy</h2>
         <div class="gallery-grid">
             <div class="project-card">
-                <a href="cafur.html">
-                    <img src="../es/proyectos/cafur5.jpg" alt="Cafur">
+                <a href="/palomaaguado.github.io/en/cafur.html">
+                    <img src="/palomaaguado.github.io/es/proyectos/cafur5.jpg" alt="Cafur">
                     <div class="overlay">
                         <div class="text">
                             Cafur<br>
-                            <span style="font-weight: 300; font-size: 0.8rem; text-transform: none; letter-spacing: 1px;">Strategy & Photography</span>
+                            <span>Strategy & Photography</span>
                         </div>
                     </div>
                 </a>
             </div>
 
             <div class="project-card">
-                <a href="vivendex.html">
-                    <img src="../es/proyectos/feed%20Vivendex.jpg" alt="Vivendex">
+                <a href="/palomaaguado.github.io/en/vivendex.html">
+                    <img src="/palomaaguado.github.io/es/proyectos/feed%20Vivendex.jpg" alt="Vivendex">
                     <div class="overlay">
                         <div class="text">
                             Vivendex<br>
-                            <span style="font-weight: 300; font-size: 0.8rem; text-transform: none; letter-spacing: 1px;">Creative Direction</span>
+                            <span>Creative Direction</span>
                         </div>
                     </div>
                 </a>
