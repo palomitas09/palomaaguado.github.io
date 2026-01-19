@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nike Case Study — Paloma Aguado</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .case-header { background-color: #111; color: white; padding: 80px 5%; text-align: center; }
+        .case-container { max-width: 1100px; margin: 0 auto; padding: 50px 20px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 50px; }
+        
+        /* Estilo del Mockup de iPhone */
+        .iphone-mockup {
+            width: 300px;
+            height: 600px;
+            background: #222;
+            border: 8px solid #333;
+            border-radius: 40px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .iphone-mockup video, .iphone-mockup img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .strategy-box { background: #f9f9f9; padding: 30px; border-radius: 12px; }
+        .strategy-box h3 { color: #111; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; }
+        .tag { display: inline-block; background: #eee; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; margin-right: 5px; margin-bottom: 10px; }
+        
+        .pdf-link { display: inline-block; margin-top: 20px; color: #111; font-weight: bold; text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <header class="case-header">
+        <h1 style="letter-spacing: 5px; text-transform: uppercase;">Shuttlerock x Nike</h1>
+        <p style="font-weight: 300; opacity: 0.8;">Content Strategy & Creative Trial</p>
+    </header>
+
+    <nav style="padding: 20px 5%;">
+        <a href="index.html" style="text-decoration: none; color: #888;">← Volver a Proyectos</a>
+    </nav>
+
+    <main class="case-container">
+        <div class="case-info">
+            <h2 style="color: #111;">El Desafío</h2>
+            <p style="line-height: 1.8; color: #444;">
+                Presentación estratégica para la integración de assets de marca de Nike en anuncios de video optimizados para dispositivos móviles. El enfoque se centró en maximizar el impacto visual manteniendo la identidad de marca.
+            </p>
+            
+            <div class="strategy-box">
+                <h3>Puntos Clave del Proceso:</h3>
+                <div style="margin-top: 15px;">
+                    <span class="tag">Briefing Estratégico</span>
+                    <span class="tag">Audience Insights</span>
+                    <span class="tag">Creative Direction</span>
+                    <span class="tag">Logistics & Timeline</span>
+                </div>
+                <p style="font-size: 0.9rem; color: #666; margin-top: 15px;">
+                    Desarrollé un plan de ejecución de 6 pasos, desde el Kick-off inicial hasta la entrega final, asegurando que los objetivos de campaña y el público objetivo estuvieran alineados con el estilo visual de Nike.
+                </p>
+            </div>
+
+            <a href="../es/proyectos/Shuttlerock_Nike_Paloma.pdf" target="_blank" class="pdf-link">Ver presentación completa (PDF)</a>
+        </div>
+
+        <div class="case-visual">
+            <div class="iphone-mockup">
+                <video autoplay muted loop>
+                    <source src="../es/proyectos/nike-reel.mp4" type="video/mp4">
+                    <img src="../es/proyectos/nike-mockup-fallback.jpg" alt="Nike Reel Mockup">
+                </video>
+            </div>
+            <p style="text-align: center; color: #999; font-size: 0.8rem; margin-top: 15px;">Mockup: Concepto de Reel para Campaña Mobile-First</p>
+        </div>
+    </main>
+
+    <footer style="text-align: center; padding: 50px; color: #ccc; font-size: 0.8rem;">
+        © 2026 Paloma Aguado
+    </footer>
+
+</body>
+</html>
