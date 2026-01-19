@@ -1,1 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nike Case Study — Paloma Aguado</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .case-header { background-color: #000; color: white; padding: 80px 5%; text-align: center; }
+        
+        /* Upper Grid: Text & iPhone */
+        .case-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 50px 20px; 
+            display: grid; 
+            grid-template-columns: 1.2fr 1fr; 
+            gap: 60px; 
+            align-items: start;
+        }
+        
+        /* Sticky iPhone on the right */
+        .iphone-mockup {
+            width: 300px;
+            height: 600px;
+            background: #1a1a1a;
+            border: 8px solid #333;
+            border-radius: 40px;
+            margin: 0 auto;
+            position: sticky;
+            top: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            cursor: pointer;
+        }
+        .iphone-mockup video { width: 100%; height: 100%; object-fit: cover; }
 
+        /* Text Content */
+        .briefing-info h4 { text-transform: uppercase; font-size: 0.8rem; color: #888; margin: 30px 0 10px 0; letter-spacing: 1px; }
+        .briefing-info p { margin-bottom: 20px; color: #333; line-height: 1.7; font-size: 1rem; }
+        
+        .strategy-box { background: #f4f4f4; padding: 25px; border-radius: 10px; margin: 30px 0; border-left: 5px solid #000; }
+        .tag { display: inline-block; background: #000; color: #fff; padding: 6px 14px; border-radius: 4px; font-size: 0.75rem; margin-right: 8px; margin-bottom: 10px; text-transform: uppercase; font-weight: bold; }
+
+        /* DOCUMENTATION SECTION */
+        .documentation-section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        .documentation-section h2 { 
+            text-transform: uppercase; letter-spacing: 3px; font-size: 1.1rem; 
+            border-left: 3px solid #000; padding-left: 15px; margin-bottom: 30px;
+        }
+
+        /* Carousel with Arrows */
+        .carousel-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .carousel-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 10px 0 30px 0;
+            scrollbar-width: none; 
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            width: 100%;
+        }
+        .carousel-container::-webkit-scrollbar { display: none; }
+
+        .carousel-item {
+            flex: 0 0 300px; 
+            position: relative;
+            aspect-ratio: 4/3;
+            border-radius: 12px;
+            overflow: hidden;
+            scroll-snap-align: start;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .carousel-item img {
+            width: 100%; height: 100%; object-fit: cover;
+            filter: grayscale(100%);
+            transition: 0.5s ease;
+        }
+        .carousel-item .overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            opacity: 0; transition: 0.4s ease; color: white; text-align: center;
+        }
+        .carousel-item:hover .overlay { opacity: 1; }
+        .carousel-item:hover img { filter: grayscale(0%); transform: scale(1.1); }
+        
+        /* Navigation Arrows */
+        .nav-arrow {
+            background: #000; color: white; border: none; width: 45px; height: 45px;
+            border-radius: 50%; cursor: pointer; position: absolute; z-index: 10;
+            font-size: 1.2rem; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+        .nav-arrow:hover { background: #333; transform: scale(1.1); }
+        .prev-arrow { left: -22px; }
+        .next-arrow { right: -22px; }
+
+        /* Main Image Viewer */
+        .image-viewer {
+            margin-top: 20px;
+            width: 100%;
+            background: #f9f9f9;
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            border: 1px solid #eee;
+        }
+        .image-viewer img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: opacity 0.5s ease;
+        }
+
+        @media (max-width: 900px) {
+            .case-container { grid-template-columns: 1fr; }
+            .iphone-mockup { position: relative; top: 0; margin-bottom: 40px; }
+            .case-visual { order: -1; }
+            .carousel-item { flex: 0 0 80%; }
+            .nav-arrow { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="case-header">
+        <h1 style="letter-spacing: 6px; text-transform: uppercase; font-size: 2.5rem;">Nike x Shuttlerock</h1>
+        <p style="font-weight: 300; opacity: 0.7; letter-spacing: 2px;">STRATEGIC BRIEFING & VISUAL CONCEPT</p>
+    </header>
+
+    <nav style="padding: 30px 5%;">
+        <a href="index.html" style="text-decoration: none; color: #111; font-weight: bold; letter-spacing: 1px;">← BACK TO PROJECTS</a>
+    </nav>
+
+    <main>
+        <div class="case-container">
+            <div class="case-info">
+                <h2 style="font-size: 2rem; color: #000; margin-bottom: 10px; text-transform: uppercase;">Feel the Future: Air Max</h2>
+                
+                <div class="briefing-info">
+                    <h4>The Creative Challenge</h4>
+                    <p>Analysis of brand assets for mobile-first video ad optimization, adapting Nike's iconic visual identity to native social media languages.</p>
+                    
+                    <h4>Target Audience</h4>
+                    <p>Gen Z and Millennials interested in streetwear culture and innovation. Content must be fast-paced, visually striking, and authentic.</p>
+                    
+                    <h4>Core Message</h4>
+                    <p><strong>"Feel the Future. Wear Air."</strong> — Merging technical heritage with contemporary cultural expression.</p>
+                </div>
+                
+                <div class="strategy-box">
+                    <h3 style="margin-top:0; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Creative Direction</h3>
+                    <div style="margin: 15px 0;">
+                        <span class="tag">Strategic Briefing</span>
+                        <span class="tag">Audience Insights</span>
+                        <span class="tag">Creative Direction</span>
+                        <span class="tag">Logistics & Timeline</span>
+                        <span class="tag">Mobile-First</span>
+                        <span class="tag">UGC Style</span>
+                    </div>
+                    <p style="font-size: 0.9rem; margin-bottom: 0; color: #555;">Integral strategy to ensure alignment between business goals and Nike's visual aesthetics.</p>
+                </div>
+            </div>
+
+            <div class="case-visual">
+                <div class="iphone-mockup" id="videoWrapper">
+                    <video id="nikeVideo" autoplay muted playsinline>
+                        <source src="../es/proyectos/Nike case.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <p style="text-align: center; color: #888; font-size: 0.8rem; margin-top: 20px; font-style: italic;">
+                    🔊 <span id="videoStatus">Tap the video for sound</span>
+                </p>
+            </div>
+        </div>
+
+        <section class="documentation-section">
+            <h2>Project Documentation</h2>
+            
+            <div class="carousel-wrapper">
+                <button class="nav-arrow prev-arrow" onclick="moveCarousel(-1)">❮</button>
+                
+                <div class="carousel-container" id="carousel">
+                    <div class="carousel-item" onclick="changeImage('../es/proyectos/nike3.jpg')">
+                        <img src="../es/proyectos/nike3.jpg" alt="Strategy">
+                        <div class="overlay"><h3>Strategy</h3><span>Slide 01</span></div>
+                    </div>
+                    <div class="carousel-item" onclick="changeImage('../es/proyectos/nike2.jpg')">
+                        <img src="../es/proyectos/nike2.jpg" alt="Execution">
+                        <div class="overlay"><h3>Execution</h3><span>Slide 02</span></div>
+                    </div>
+                    <div class="carousel-item" onclick="changeImage('../es/proyectos/nike1.jpg')">
+                        <img src="../es/proyectos/nike1.jpg" alt="Timeline">
+                        <div class="overlay"><h3>Timeline</h3><span>Slide 03</span></div>
+                    </div>
+                    <div class="carousel-item" onclick="changeImage('../es/proyectos/nike4.jpg')">
+                        <img src="../es/proyectos/nike4.jpg" alt="Details">
+                        <div class="overlay"><h3>Details</h3><span>Slide 04</span></div>
+                    </div>
+                </div>
+
+                <button class="nav-arrow next-arrow" onclick="moveCarousel(1)">❯</button>
+            </div>
+
+            <div class="image-viewer">
+                <img id="mainImage" src="../es/proyectos/nike3.jpg" alt="Expanded documentation">
+            </div>
+        </section>
+    </main>
+
+    <footer style="text-align: center; padding: 80px 0; color: #bbb; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase;">
+        © 2026 PALOMA AGUADO — CREATIVE STRATEGY
+    </footer>
+
+    <script>
+        // Video Logic
+        const video = document.getElementById('nikeVideo');
+        const statusText = document.getElementById('videoStatus');
+        const wrapper = document.getElementById('videoWrapper');
+
+        wrapper.addEventListener('click', function() {
+            if (video.ended) {
+                video.currentTime = 0;
+                video.muted = false;
+                video.play();
+                statusText.innerText = "Sound On (Tap to mute)";
+            } else {
+                video.muted = !video.muted;
+                statusText.innerText = video.muted ? "Tap the video for sound" : "Sound On (Tap to mute)";
+            }
+        });
+
+        video.onended = function() {
+            statusText.innerText = "Video finished. Tap to replay with sound";
+        };
+
+        // Carousel Logic (Arrows)
+        function moveCarousel(direction) {
+            const container = document.getElementById('carousel');
+            const scrollValue = 320; 
+            container.scrollBy({ left: direction * scrollValue, behavior: 'smooth' });
+        }
+
+        // Logic to switch the main expanded image
+        function changeImage(src) {
+            const mainImg = document.getElementById('mainImage');
+            mainImg.style.opacity = '0';
+            setTimeout(() => {
+                mainImg.src = src;
+                mainImg.style.opacity = '1';
+            }, 250);
+        }
+    </script>
+
+</body>
+</html>
