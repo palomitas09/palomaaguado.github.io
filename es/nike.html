@@ -8,28 +8,28 @@
     <style>
         .case-header { background-color: #000; color: white; padding: 80px 5%; text-align: center; }
         
-        /* Grid: iPhone a la izquierda (1fr) y Contenido a la derecha (1.2fr) */
+        /* Grid: Texto a la izquierda (1.2fr) e iPhone a la derecha (1fr) */
         .case-container { 
             max-width: 1200px; 
             margin: 0 auto; 
             padding: 50px 20px; 
             display: grid; 
-            grid-template-columns: 1fr 1.2fr; 
-            gap: 50px; 
+            grid-template-columns: 1.2fr 1fr; 
+            gap: 60px; 
             align-items: start;
         }
         
-        /* Estilo del Mockup de iPhone */
+        /* iPhone Mockup a la DERECHA */
         .iphone-mockup {
             width: 300px;
             height: 600px;
-            background: #222;
+            background: #1a1a1a;
             border: 8px solid #333;
             border-radius: 40px;
             margin: 0 auto;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
         }
         .iphone-mockup video {
             width: 100%;
@@ -38,38 +38,40 @@
             cursor: pointer;
         }
 
-        /* Contenido de texto */
-        .strategy-box { background: #f9f9f9; padding: 30px; border-radius: 12px; margin-top: 20px; }
-        .strategy-box h3 { color: #111; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
-        .tag { display: inline-block; background: #000; color: #fff; padding: 5px 12px; border-radius: 4px; font-size: 0.7rem; margin-right: 5px; margin-bottom: 10px; text-transform: uppercase; }
-        
-        .briefing-info h4 { text-transform: uppercase; font-size: 0.8rem; color: #888; margin-bottom: 5px; }
-        .briefing-info p { margin-bottom: 20px; color: #444; line-height: 1.6; }
+        /* Estilos de información */
+        .briefing-info h4 { text-transform: uppercase; font-size: 0.8rem; color: #888; margin-bottom: 5px; letter-spacing: 1px; }
+        .briefing-info p { margin-bottom: 25px; color: #333; line-height: 1.7; font-size: 1rem; }
+        .strategy-box { background: #f4f4f4; padding: 25px; border-radius: 10px; margin: 30px 0; border-left: 5px solid #000; }
+        .tag { display: inline-block; background: #000; color: #fff; padding: 6px 14px; border-radius: 4px; font-size: 0.75rem; margin-right: 8px; margin-bottom: 10px; text-transform: uppercase; font-weight: bold; }
 
-        /* GALERÍA HORIZONTAL FLEXBOX */
+        /* GALERÍA HORIZONTAL CON EFECTO */
         .slides-horizontal {
             display: flex;
             flex-direction: row;
-            gap: 10px;
-            margin-top: 30px;
-            justify-content: space-between;
+            gap: 15px;
+            margin-top: 40px;
+            justify-content: flex-start;
         }
         .slides-horizontal img {
-            width: calc(25% - 8px); /* 4 imágenes por fila */
-            border-radius: 6px;
-            transition: all 0.3s ease;
+            width: calc(25% - 12px); /* 4 imágenes en fila, tamaño más equilibrado */
+            height: auto;
+            border-radius: 8px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             cursor: pointer;
-            filter: grayscale(20%);
+            filter: brightness(0.9); /* Un poco más oscuras por defecto */
         }
+        
+        /* El efecto de Overlay/Zoom que querías */
         .slides-horizontal img:hover {
-            transform: scale(1.05);
-            filter: grayscale(0%);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform: translateY(-10px) scale(1.08); /* Sube un poco y crece */
+            filter: brightness(1.1); /* Se ilumina */
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            z-index: 10;
         }
 
         @media (max-width: 900px) {
             .case-container { grid-template-columns: 1fr; }
-            .slides-horizontal { flex-wrap: wrap; }
+            .case-visual { order: -1; } /* El video sale primero en móvil */
             .slides-horizontal img { width: calc(50% - 10px); }
         }
     </style>
@@ -77,83 +79,74 @@
 <body>
 
     <header class="case-header">
-        <h1 style="letter-spacing: 5px; text-transform: uppercase;">Nike x Shuttlerock</h1>
-        <p style="font-weight: 300; opacity: 0.8;">Creative Writing & Content Strategy</p>
+        <h1 style="letter-spacing: 6px; text-transform: uppercase; font-size: 2.5rem;">Nike x Shuttlerock</h1>
+        <p style="font-weight: 300; opacity: 0.7; letter-spacing: 2px;">STRATEGIC BRIEFING & VISUAL CONCEPT</p>
     </header>
 
-    <nav style="padding: 20px 5%;">
-        <a href="index.html" style="text-decoration: none; color: #888; font-weight: bold;">← Volver a Proyectos</a>
+    <nav style="padding: 30px 5%;">
+        <a href="index.html" style="text-decoration: none; color: #111; font-weight: bold; letter-spacing: 1px;">← VOLVER AL PORTFOLIO</a>
     </nav>
 
     <main class="case-container">
         
-        <div class="case-visual">
-            <div class="iphone-mockup">
-                <video id="nikeVideo" autoplay muted playsinline>
-                    <source src="../es/proyectos/Nike case.mp4" type="video/mp4">
-                    <img src="../es/proyectos/nike-mockup-fallback.jpg" alt="Nike Reel Mockup">
-                </video>
-            </div>
-            <p style="text-align: center; color: #999; font-size: 0.8rem; margin-top: 15px;">
-                🔊 <span id="videoStatus">Haz clic para repetir con sonido</span>
-            </p>
-        </div>
-
         <div class="case-info">
-            <h2 style="color: #111; margin-top: 0;">Estrategia: Air Max "Feel the Future"</h2>
+            <h2 style="font-size: 2rem; color: #000; margin-bottom: 30px; text-transform: uppercase;">Feel the Future: Air Max</h2>
             
             <div class="briefing-info">
-                <h4>Objetivo del Briefing</h4>
-                <p>Lanzamiento de la gama Air Max enfocado en <strong>Awareness & Consideration</strong>. Posicionamiento como icono cultural uniendo innovación y <em>street-style</em>.</p>
+                <h4>Campaign Goal</h4>
+                <p>Lanzamiento estratégico para la gama Air Max, optimizando la narrativa visual para generar impacto inmediato (Awareness) y deseo de compra (Consideration).</p>
                 
-                <h4>Mensaje Clave</h4>
-                <p><em>"Feel the Future. Wear Air."</em> — Enfoque en audacia y versatilidad urbana.</p>
-                
-                <h4>Canales y Target</h4>
-                <p>Optimización para <strong>TikTok y Meta</strong>, dirigida a audiencia Gen Z y Millennials.</p>
+                <h4>Core Message</h4>
+                <p><strong>"Feel the Future. Wear Air."</strong> — Una propuesta que celebra la versatilidad urbana y la identidad de la cultura streetwear.</p>
             </div>
             
             <div class="strategy-box">
-                <h3>Creative Direction</h3>
-                <div style="margin-top: 15px;">
+                <h3 style="margin-top:0; font-size: 0.9rem; text-transform: uppercase;">Creative Direction</h3>
+                <div style="margin: 15px 0;">
                     <span class="tag">Mobile-First</span>
-                    <span class="tag">UGC Style</span>
-                    <span class="tag">High-Energy Edits</span>
-                    <span class="tag">Typography Overlays</span>
+                    <span class="tag">UGC Narrative</span>
+                    <span class="tag">High-Energy</span>
                 </div>
-                <p style="font-size: 0.9rem; color: #666;">
-                    Ganchos visuales en los primeros 3 segundos y transición estratégica hacia la conversión (Shop Now).
-                </p>
+                <p style="font-size: 0.9rem; margin-bottom: 0;">Uso de ganchos visuales potentes y edición rítmica alineada con las tendencias de TikTok y Meta.</p>
             </div>
 
-            <section class="slides-horizontal">
-                <img src="../es/proyectos/nike3.jpg" alt="Estrategia Nike">
-                <img src="../es/proyectos/nike2.jpg" alt="Creative Execution Nike">
-                <img src="../es/proyectos/nike1.jpg" alt="Timeline Nike">
-                <img src="../es/proyectos/nike4.jpg" alt="Brand Elements Nike">
-            </section>
+            <div class="slides-horizontal">
+                <img src="../es/proyectos/nike3.jpg" alt="Estrategia">
+                <img src="../es/proyectos/nike2.jpg" alt="Ejecución">
+                <img src="../es/proyectos/nike1.jpg" alt="Timeline">
+                <img src="../es/proyectos/nike4.jpg" alt="Details">
+            </div>
+        </div>
+
+        <div class="case-visual">
+            <div class="iphone-mockup" id="videoWrapper">
+                <video id="nikeVideo" autoplay muted playsinline>
+                    <source src="../es/proyectos/Nike case.mp4" type="video/mp4">
+                </video>
+            </div>
+            <p style="text-align: center; color: #888; font-size: 0.8rem; margin-top: 20px; font-style: italic;">
+                🔊 Toca el terminal para reproducir con sonido
+            </p>
         </div>
 
     </main>
 
-    <footer style="text-align: center; padding: 80px 0; color: #ccc; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;">
-        © 2026 Paloma Aguado — Contenido Estratégico Protegido
+    <footer style="text-align: center; padding: 100px 0; color: #bbb; font-size: 0.7rem; letter-spacing: 3px;">
+        © 2026 PALOMA AGUADO — ESTRATEGIA PROTEGIDA
     </footer>
 
     <script>
         const video = document.getElementById('nikeVideo');
-        const statusText = document.getElementById('videoStatus');
+        const wrapper = document.getElementById('videoWrapper');
 
-        video.addEventListener('click', function() {
-            // Siempre reinicia y activa sonido al hacer clic
-            video.currentTime = 0;
-            video.muted = false;
+        wrapper.addEventListener('click', function() {
+            video.currentTime = 0; // Reinicia
+            video.muted = false;   // Sonido ON
             video.play();
-            statusText.innerText = "Reproduciendo con sonido";
         });
 
         video.onended = function() {
-            statusText.innerText = "Haz clic para volver a reproducir con sonido";
+            // Opcional: puedes poner un mensaje aquí si quieres
         };
     </script>
 
