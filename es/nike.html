@@ -7,9 +7,19 @@
     <link rel="stylesheet" href="../style.css">
     <style>
         .case-header { background-color: #000; color: white; padding: 80px 5%; text-align: center; }
-        .case-container { max-width: 1100px; margin: 0 auto; padding: 50px 20px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 50px; }
         
-        /* iPhone Mockup con botón de sonido */
+        /* Grid: iPhone a la izquierda (1fr) y Contenido a la derecha (1.2fr) */
+        .case-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 50px 20px; 
+            display: grid; 
+            grid-template-columns: 1fr 1.2fr; 
+            gap: 50px; 
+            align-items: start;
+        }
+        
+        /* Estilo del Mockup de iPhone */
         .iphone-mockup {
             width: 300px;
             height: 600px;
@@ -28,20 +38,39 @@
             cursor: pointer;
         }
 
+        /* Contenido de texto */
         .strategy-box { background: #f9f9f9; padding: 30px; border-radius: 12px; margin-top: 20px; }
         .strategy-box h3 { color: #111; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
         .tag { display: inline-block; background: #000; color: #fff; padding: 5px 12px; border-radius: 4px; font-size: 0.7rem; margin-right: 5px; margin-bottom: 10px; text-transform: uppercase; }
         
-        .briefing-info { margin-top: 30px; }
         .briefing-info h4 { text-transform: uppercase; font-size: 0.8rem; color: #888; margin-bottom: 5px; }
         .briefing-info p { margin-bottom: 20px; color: #444; line-height: 1.6; }
 
-        .image-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 30px; }
-        .image-gallery img { width: 100%; border-radius: 8px; filter: grayscale(100%); transition: 0.3s; }
-        .image-gallery img:hover { filter: grayscale(0%); }
+        /* GALERÍA HORIZONTAL FLEXBOX */
+        .slides-horizontal {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            margin-top: 30px;
+            justify-content: space-between;
+        }
+        .slides-horizontal img {
+            width: calc(25% - 8px); /* 4 imágenes por fila */
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            filter: grayscale(20%);
+        }
+        .slides-horizontal img:hover {
+            transform: scale(1.05);
+            filter: grayscale(0%);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
 
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .case-container { grid-template-columns: 1fr; }
+            .slides-horizontal { flex-wrap: wrap; }
+            .slides-horizontal img { width: calc(50% - 10px); }
         }
     </style>
 </head>
@@ -53,22 +82,35 @@
     </header>
 
     <nav style="padding: 20px 5%;">
-        <a href="index.html" style="text-decoration: none; color: #888;">← Volver a Proyectos</a>
+        <a href="index.html" style="text-decoration: none; color: #888; font-weight: bold;">← Volver a Proyectos</a>
     </nav>
 
     <main class="case-container">
+        
+        <div class="case-visual">
+            <div class="iphone-mockup">
+                <video id="nikeVideo" autoplay muted playsinline>
+                    <source src="../es/proyectos/Nike case.mp4" type="video/mp4">
+                    <img src="../es/proyectos/nike-mockup-fallback.jpg" alt="Nike Reel Mockup">
+                </video>
+            </div>
+            <p style="text-align: center; color: #999; font-size: 0.8rem; margin-top: 15px;">
+                🔊 <span id="videoStatus">Haz clic para repetir con sonido</span>
+            </p>
+        </div>
+
         <div class="case-info">
-            <h2 style="color: #111;">Estrategia: Air Max "Feel the Future"</h2>
+            <h2 style="color: #111; margin-top: 0;">Estrategia: Air Max "Feel the Future"</h2>
             
             <div class="briefing-info">
                 <h4>Objetivo del Briefing</h4>
-                <p>Lanzamiento de la nueva gama Air Max enfocado en <strong>Awareness & Consideration</strong>. La historia central posiciona a la zapatilla como un icono cultural que une la innovación deportiva con el estilo urbano ("Street-style evolution").</p>
+                <p>Lanzamiento de la gama Air Max enfocado en <strong>Awareness & Consideration</strong>. Posicionamiento como icono cultural uniendo innovación y <em>street-style</em>.</p>
                 
                 <h4>Mensaje Clave</h4>
-                <p><em>"Feel the Future. Wear Air."</em> — Un enfoque en la audacia, la comodidad y la versatilidad urbana.</p>
+                <p><em>"Feel the Future. Wear Air."</em> — Enfoque en audacia y versatilidad urbana.</p>
                 
                 <h4>Canales y Target</h4>
-                <p>Optimización específica para <strong>TikTok y Meta</strong>, dirigida a una audiencia <em>fashion-forward</em> (Gen Z y Millennials) interesada en la cultura del streetwear.</p>
+                <p>Optimización para <strong>TikTok y Meta</strong>, dirigida a audiencia Gen Z y Millennials.</p>
             </div>
             
             <div class="strategy-box">
@@ -80,64 +122,39 @@
                     <span class="tag">Typography Overlays</span>
                 </div>
                 <p style="font-size: 0.9rem; color: #666;">
-                    El plan de ejecución incluyó ganchos visuales (hooks) en los primeros 3 segundos y una transición de la fase de notoriedad a la de compra directa (CTA: Shop Now).
+                    Ganchos visuales en los primeros 3 segundos y transición estratégica hacia la conversión (Shop Now).
                 </p>
             </div>
 
-       
-<section class="slides-horizontal">
-    <img src="../es/proyectos/nike3.jpg" alt="Estrategia Nike">
-    <img src="../es/proyectos/nike2.jpg" alt="Creative Execution Nike">
-    <img src="../es/proyectos/nike1.jpg" alt="Timeline Nike">
-    <img src="../es/proyectos/nike4.jpg" alt="Brand Elements Nike">
-</section>
-
-        <div class="case-visual">
-            <div class="iphone-mockup">
-                <video id="nikeVideo" autoplay muted playsinline>
-                    <source src="../es/proyectos/Nike case.mp4" type="video/mp4">
-                    <img src="../es/proyectos/nike-mockup-fallback.jpg" alt="Nike Reel Mockup">
-                </video>
-            </div>
-            <p style="text-align: center; color: #999; font-size: 0.8rem; margin-top: 15px;">
-                🔊 <span id="videoStatus">Haz clic en el video para repetir con sonido</span>
-            </p>
+            <section class="slides-horizontal">
+                <img src="../es/proyectos/nike3.jpg" alt="Estrategia Nike">
+                <img src="../es/proyectos/nike2.jpg" alt="Creative Execution Nike">
+                <img src="../es/proyectos/nike1.jpg" alt="Timeline Nike">
+                <img src="../es/proyectos/nike4.jpg" alt="Brand Elements Nike">
+            </section>
         </div>
+
     </main>
+
+    <footer style="text-align: center; padding: 80px 0; color: #ccc; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;">
+        © 2026 Paloma Aguado — Contenido Estratégico Protegido
+    </footer>
 
     <script>
         const video = document.getElementById('nikeVideo');
         const statusText = document.getElementById('videoStatus');
 
-        // Escucha el clic en el video
         video.addEventListener('click', function() {
-            if (video.paused || video.ended) {
-                video.currentTime = 0; // Reinicia al segundo 0
-                video.muted = false;   // Quita el silencio
-                video.play();
-                statusText.innerText = "Reproduciendo con sonido";
-            } else {
-                // Si ya está reproduciéndose, alterna el silencio
-                video.muted = !video.muted;
-                statusText.innerText = video.muted ? "Sonido desactivado" : "Reproduciendo con sonido";
-            }
+            // Siempre reinicia y activa sonido al hacer clic
+            video.currentTime = 0;
+            video.muted = false;
+            video.play();
+            statusText.innerText = "Reproduciendo con sonido";
         });
 
-        // Detecta cuando el video termina la primera vez (el autoplay)
         video.onended = function() {
             statusText.innerText = "Haz clic para volver a reproducir con sonido";
         };
-    </script>
-
-    <footer style="text-align: center; padding: 50px; color: #ccc; font-size: 0.8rem;">
-        © 2026 Paloma Aguado — Contenido Estratégico Protegido
-    </footer>
-
-    <script>
-        function toggleMute() {
-            const video = document.getElementById('nikeVideo');
-            video.muted = !video.muted;
-        }
     </script>
 
 </body>
