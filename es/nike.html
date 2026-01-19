@@ -84,12 +84,43 @@
                 </p>
             </div>
 
-            <div class="image-gallery">
-                <img src="../es/proyectos/nike1.jpg" alt="Moodboard 1">
-                <img src="../es/proyectos/nike2.jpg" alt="Moodboard 2">
-                <img src="../es/proyectos/nike3.jpg" alt="Moodboard 3">
-            </div>
-        </div>
+            <style>
+    .slides-horizontal {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 40px;
+        flex-wrap: nowrap; /* Fuerza a que se mantengan en una fila */
+        overflow-x: auto;  /* Permite scroll lateral si la pantalla es muy pequeña */
+        padding-bottom: 20px;
+    }
+    
+    .slides-horizontal img {
+        width: calc(25% - 15px); /* Divide el espacio en 4 partes iguales */
+        min-width: 180px; /* Tamaño mínimo para que no se vean minúsculas */
+        height: auto;
+        border-radius: 6px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        border: 1px solid #eee;
+    }
+
+    @media (max-width: 768px) {
+        .slides-horizontal {
+            flex-wrap: wrap; /* En móvil, si no caben, bajan a la siguiente fila */
+        }
+        .slides-horizontal img {
+            width: calc(50% - 15px); /* En móvil se ven de 2 en 2 */
+        }
+    }
+</style>
+
+<section class="slides-horizontal">
+    <img src="../es/proyectos/nike3.jpg" alt="Estrategia Nike">
+    <img src="../es/proyectos/nike2.jpg" alt="Creative Execution Nike">
+    <img src="../es/proyectos/nike1.jpg" alt="Timeline Nike">
+    <img src="../es/proyectos/nike4.jpg" alt="Brand Elements Nike">
+</section>
 
         <div class="case-visual">
             <div class="iphone-mockup">
