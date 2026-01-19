@@ -6,10 +6,10 @@
     <title>Nike Case Study — Paloma Aguado</title>
     <link rel="stylesheet" href="../style.css">
     <style>
-        .case-header { background-color: #111; color: white; padding: 80px 5%; text-align: center; }
+        .case-header { background-color: #000; color: white; padding: 80px 5%; text-align: center; }
         .case-container { max-width: 1100px; margin: 0 auto; padding: 50px 20px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 50px; }
         
-        /* Estilo del Mockup de iPhone */
+        /* iPhone Mockup con botón de sonido */
         .iphone-mockup {
             width: 300px;
             height: 600px;
@@ -21,24 +21,35 @@
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
-        .iphone-mockup video, .iphone-mockup img {
+        .iphone-mockup video {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            cursor: pointer;
         }
 
-        .strategy-box { background: #f9f9f9; padding: 30px; border-radius: 12px; }
-        .strategy-box h3 { color: #111; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; }
-        .tag { display: inline-block; background: #eee; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; margin-right: 5px; margin-bottom: 10px; }
+        .strategy-box { background: #f9f9f9; padding: 30px; border-radius: 12px; margin-top: 20px; }
+        .strategy-box h3 { color: #111; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
+        .tag { display: inline-block; background: #000; color: #fff; padding: 5px 12px; border-radius: 4px; font-size: 0.7rem; margin-right: 5px; margin-bottom: 10px; text-transform: uppercase; }
         
-        .pdf-link { display: inline-block; margin-top: 20px; color: #111; font-weight: bold; text-decoration: underline; }
+        .briefing-info { margin-top: 30px; }
+        .briefing-info h4 { text-transform: uppercase; font-size: 0.8rem; color: #888; margin-bottom: 5px; }
+        .briefing-info p { margin-bottom: 20px; color: #444; line-height: 1.6; }
+
+        .image-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 30px; }
+        .image-gallery img { width: 100%; border-radius: 8px; filter: grayscale(100%); transition: 0.3s; }
+        .image-gallery img:hover { filter: grayscale(0%); }
+
+        @media (max-width: 768px) {
+            .case-container { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
     <header class="case-header">
-        <h1 style="letter-spacing: 5px; text-transform: uppercase;">Shuttlerock x Nike</h1>
-        <p style="font-weight: 300; opacity: 0.8;">Content Strategy & Creative Trial</p>
+        <h1 style="letter-spacing: 5px; text-transform: uppercase;">Nike x Shuttlerock</h1>
+        <p style="font-weight: 300; opacity: 0.8;">Creative Writing & Content Strategy</p>
     </header>
 
     <nav style="padding: 20px 5%;">
@@ -47,41 +58,60 @@
 
     <main class="case-container">
         <div class="case-info">
-            <h2 style="color: #111;">El Desafío</h2>
-            <p style="line-height: 1.8; color: #444;">
-                Presentación estratégica para la integración de assets de marca de Nike en anuncios de video optimizados para dispositivos móviles. El enfoque se centró en maximizar el impacto visual manteniendo la identidad de marca.
-            </p>
+            <h2 style="color: #111;">Estrategia: Air Max "Feel the Future"</h2>
+            
+            <div class="briefing-info">
+                <h4>Objetivo del Briefing</h4>
+                <p>Lanzamiento de la nueva gama Air Max enfocado en <strong>Awareness & Consideration</strong>. La historia central posiciona a la zapatilla como un icono cultural que une la innovación deportiva con el estilo urbano ("Street-style evolution").</p>
+                
+                <h4>Mensaje Clave</h4>
+                <p><em>"Feel the Future. Wear Air."</em> — Un enfoque en la audacia, la comodidad y la versatilidad urbana.</p>
+                
+                <h4>Canales y Target</h4>
+                <p>Optimización específica para <strong>TikTok y Meta</strong>, dirigida a una audiencia <em>fashion-forward</em> (Gen Z y Millennials) interesada en la cultura del streetwear.</p>
+            </div>
             
             <div class="strategy-box">
-                <h3>Puntos Clave del Proceso:</h3>
+                <h3>Creative Direction</h3>
                 <div style="margin-top: 15px;">
-                    <span class="tag">Briefing Estratégico</span>
-                    <span class="tag">Audience Insights</span>
-                    <span class="tag">Creative Direction</span>
-                    <span class="tag">Logistics & Timeline</span>
+                    <span class="tag">Mobile-First</span>
+                    <span class="tag">UGC Style</span>
+                    <span class="tag">High-Energy Edits</span>
+                    <span class="tag">Typography Overlays</span>
                 </div>
-                <p style="font-size: 0.9rem; color: #666; margin-top: 15px;">
-                    Desarrollé un plan de ejecución de 6 pasos, desde el Kick-off inicial hasta la entrega final, asegurando que los objetivos de campaña y el público objetivo estuvieran alineados con el estilo visual de Nike.
+                <p style="font-size: 0.9rem; color: #666;">
+                    El plan de ejecución incluyó ganchos visuales (hooks) en los primeros 3 segundos y una transición de la fase de notoriedad a la de compra directa (CTA: Shop Now).
                 </p>
             </div>
 
-            <a href="../es/proyectos/Shuttlerock_Nike_Paloma.pdf" target="_blank" class="pdf-link">Ver presentación completa (PDF)</a>
+            <div class="image-gallery">
+                <img src="../es/proyectos/nike-asset1.jpg" alt="Moodboard 1">
+                <img src="../es/proyectos/nike-asset2.jpg" alt="Moodboard 2">
+            </div>
         </div>
 
         <div class="case-visual">
             <div class="iphone-mockup">
-                <video autoplay muted loop>
+                <video id="nikeVideo" autoplay muted playsinline onclick="toggleMute()">
                     <source src="../es/proyectos/Nike case.mp4" type="video/mp4">
-                    <img src="../es/proyectos/nike-mockup-fallback.jpg" alt="Nike Reel Mockup">
                 </video>
             </div>
-            <p style="text-align: center; color: #999; font-size: 0.8rem; margin-top: 15px;">Mockup: Concepto de Reel para Campaña Mobile-First</p>
+            <p style="text-align: center; color: #999; font-size: 0.8rem; margin-top: 15px;">
+                🔊 Toca el video para activar/desactivar el sonido
+            </p>
         </div>
     </main>
 
     <footer style="text-align: center; padding: 50px; color: #ccc; font-size: 0.8rem;">
-        © 2026 Paloma Aguado
+        © 2026 Paloma Aguado — Contenido Estratégico Protegido
     </footer>
+
+    <script>
+        function toggleMute() {
+            const video = document.getElementById('nikeVideo');
+            video.muted = !video.muted;
+        }
+    </script>
 
 </body>
 </html>
