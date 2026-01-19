@@ -8,6 +8,7 @@
     <style>
         .case-header { background-color: #000; color: white; padding: 80px 5%; text-align: center; }
         
+        /* Grid Superior: Texto e iPhone */
         .case-container { 
             max-width: 1200px; 
             margin: 0 auto; 
@@ -18,7 +19,7 @@
             align-items: start;
         }
         
-        /* iPhone Mockup */
+        /* iPhone a la derecha y fijo */
         .iphone-mockup {
             width: 300px;
             height: 600px;
@@ -34,62 +35,64 @@
         }
         .iphone-mockup video { width: 100%; height: 100%; object-fit: cover; }
 
+        /* Contenido de Texto */
+        .briefing-info h4 { text-transform: uppercase; font-size: 0.8rem; color: #888; margin: 30px 0 10px 0; letter-spacing: 1px; }
+        .briefing-info p { margin-bottom: 20px; color: #333; line-height: 1.7; font-size: 1rem; }
+        
         .strategy-box { background: #f4f4f4; padding: 25px; border-radius: 10px; margin: 30px 0; border-left: 5px solid #000; }
-        .tag { display: inline-block; background: #000; color: #fff; padding: 5px 12px; border-radius: 4px; font-size: 0.7rem; margin-right: 8px; margin-bottom: 10px; text-transform: uppercase; font-weight: bold; }
+        .tag { display: inline-block; background: #000; color: #fff; padding: 6px 14px; border-radius: 4px; font-size: 0.75rem; margin-right: 8px; margin-bottom: 10px; text-transform: uppercase; font-weight: bold; }
 
-        /* CARRUSEL CON ESTILO OVERLAY */
+        /* SECCIÓN DOCUMENTACIÓN (CARRUSEL ABAJO DEL TODO) */
+        .documentation-section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        .documentation-section h2 { 
+            text-transform: uppercase; letter-spacing: 3px; font-size: 1.1rem; 
+            border-left: 3px solid #000; padding-left: 15px; margin-bottom: 30px;
+        }
+
         .carousel-container {
             display: flex;
-            overflow-x: auto; /* Permite scroll lateral */
+            overflow-x: auto;
             gap: 20px;
-            padding: 20px 0;
+            padding-bottom: 30px;
+            scrollbar-width: none; /* Oculta scrollbar */
             scroll-snap-type: x mandatory;
-            scrollbar-width: none; /* Oculta scrollbar en Firefox */
         }
-        .carousel-container::-webkit-scrollbar { display: none; } /* Oculta scrollbar en Chrome/Safari */
+        .carousel-container::-webkit-scrollbar { display: none; }
 
         .carousel-item {
-            flex: 0 0 300px; /* Ancho fijo de cada diapositiva en el carrusel */
+            flex: 0 0 350px; /* Tamaño de las tarjetas */
             position: relative;
-            border-radius: 10px;
+            aspect-ratio: 4/3;
+            border-radius: 12px;
             overflow: hidden;
             scroll-snap-align: start;
-            aspect-ratio: 4 / 3;
         }
-
         .carousel-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+            width: 100%; height: 100%; object-fit: cover;
+            filter: grayscale(100%);
+            transition: 0.5s ease;
         }
-
-        /* Capa Overlay (Estilo Cafur/Vivendex) */
         .carousel-item .overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            text-align: center;
-            padding: 20px;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            opacity: 0; transition: 0.4s ease; color: white; text-align: center;
         }
-
         .carousel-item:hover .overlay { opacity: 1; }
-        .carousel-item:hover img { transform: scale(1.1); }
-
-        .overlay h3 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
-        .overlay span { font-size: 0.7rem; opacity: 0.8; text-transform: uppercase; }
+        .carousel-item:hover img { filter: grayscale(0%); transform: scale(1.1); }
+        
+        .overlay h3 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; margin: 0; }
+        .overlay span { font-size: 0.7rem; text-transform: uppercase; opacity: 0.7; margin-top: 5px; }
 
         @media (max-width: 900px) {
             .case-container { grid-template-columns: 1fr; }
+            .iphone-mockup { position: relative; top: 0; margin-bottom: 40px; }
             .case-visual { order: -1; }
-            .carousel-item { flex: 0 0 80%; } /* En móvil se ven más grandes */
+            .carousel-item { flex: 0 0 85%; }
         }
     </style>
 </head>
@@ -97,75 +100,81 @@
 
     <header class="case-header">
         <h1 style="letter-spacing: 6px; text-transform: uppercase; font-size: 2.5rem;">Nike x Shuttlerock</h1>
+        <p style="font-weight: 300; opacity: 0.7; letter-spacing: 2px;">STRATEGIC BRIEFING & VISUAL CONCEPT</p>
     </header>
 
     <nav style="padding: 30px 5%;">
-        <a href="index.html" style="text-decoration: none; color: #111; font-weight: bold;">← VOLVER</a>
+        <a href="index.html" style="text-decoration: none; color: #111; font-weight: bold; letter-spacing: 1px;">← VOLVER AL PORTFOLIO</a>
     </nav>
 
-    <main class="case-container">
-        
-        <div class="case-info">
-            <h2 style="text-transform: uppercase;">Feel the Future: Air Max</h2>
-            
-            <div class="strategy-box">
-                <h3 style="margin-top:0; font-size: 0.8rem; text-transform: uppercase;">Creative Direction</h3>
-                <div style="margin: 15px 0;">
-                    <span class="tag">Briefing Estratégico</span>
-                    <span class="tag">Audience Insights</span>
-                    <span class="tag">Creative Direction</span>
-                    <span class="tag">Logistics & Timeline</span>
-                    <span class="tag">Mobile-First</span>
-                    <span class="tag">UGC Style</span>
+    <main>
+        <div class="case-container">
+            <div class="case-info">
+                <h2 style="font-size: 2rem; color: #000; margin-bottom: 10px; text-transform: uppercase;">Feel the Future: Air Max</h2>
+                
+                <div class="briefing-info">
+                    <h4>El Desafío Creativo</h4>
+                    <p>Análisis de assets de marca para la optimización de anuncios de video mobile-first, adaptando la identidad visual icónica de Nike a lenguajes nativos de redes sociales.</p>
+                    
+                    <h4>Target Audience</h4>
+                    <p>Gen Z y Millennials interesados en la cultura streetwear y la innovación. El contenido debe ser rápido, visualmente impactante y auténtico.</p>
+                    
+                    <h4>Mensaje Central</h4>
+                    <p><strong>"Feel the Future. Wear Air."</strong> — Uniendo la herencia técnica con la expresión cultural contemporánea.</p>
+                </div>
+                
+                <div class="strategy-box">
+                    <h3 style="margin-top:0; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Creative Direction</h3>
+                    <div style="margin: 15px 0;">
+                        <span class="tag">Briefing Estratégico</span>
+                        <span class="tag">Audience Insights</span>
+                        <span class="tag">Creative Direction</span>
+                        <span class="tag">Logistics & Timeline</span>
+                        <span class="tag">Mobile-First</span>
+                        <span class="tag">UGC Style</span>
+                    </div>
+                    <p style="font-size: 0.9rem; margin-bottom: 0; color: #555;">Estrategia integral para asegurar la alineación entre negocio y estética visual de Nike.</p>
                 </div>
             </div>
 
-            <h4 style="text-transform: uppercase; font-size: 0.8rem; color: #888; letter-spacing: 1px; margin-top: 40px;">Documentación del Proyecto (Desliza →)</h4>
-            
+            <div class="case-visual">
+                <div class="iphone-mockup" id="videoWrapper">
+                    <video id="nikeVideo" autoplay muted playsinline>
+                        <source src="../es/proyectos/Nike case.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <p style="text-align: center; color: #888; font-size: 0.8rem; margin-top: 20px; font-style: italic;">
+                    🔊 <span id="videoStatus">Toca el video para sonido</span>
+                </p>
+            </div>
+        </div>
+
+        <section class="documentation-section">
+            <h2>Documentación del Proyecto</h2>
             <div class="carousel-container">
                 <div class="carousel-item">
                     <img src="../es/proyectos/nike3.jpg" alt="Estrategia">
-                    <div class="overlay">
-                        <h3>Estrategia</h3>
-                        <span>Fases de Campaña</span>
-                    </div>
+                    <div class="overlay"><h3>Estrategia</h3><span>Slide 01</span></div>
                 </div>
                 <div class="carousel-item">
                     <img src="../es/proyectos/nike2.jpg" alt="Ejecución">
-                    <div class="overlay">
-                        <h3>Ejecución</h3>
-                        <span>Creative Features</span>
-                    </div>
+                    <div class="overlay"><h3>Ejecución</h3><span>Slide 02</span></div>
                 </div>
                 <div class="carousel-item">
                     <img src="../es/proyectos/nike1.jpg" alt="Timeline">
-                    <div class="overlay">
-                        <h3>Timeline</h3>
-                        <span>Logística y Plazos</span>
-                    </div>
+                    <div class="overlay"><h3>Timeline</h3><span>Slide 03</span></div>
                 </div>
                 <div class="carousel-item">
-                    <img src="../es/proyectos/nike4.jpg" alt="Details">
-                    <div class="overlay">
-                        <h3>Detalles</h3>
-                        <span>Brand Elements</span>
-                    </div>
+                    <img src="../es/proyectos/nike4.jpg" alt="Detalles">
+                    <div class="overlay"><h3>Detalles</h3><span>Slide 04</span></div>
                 </div>
             </div>
-        </div>
-
-        <div class="case-visual">
-            <div class="iphone-mockup" id="videoWrapper">
-                <video id="nikeVideo" autoplay muted playsinline>
-                    <source src="../es/proyectos/Nike case.mp4" type="video/mp4">
-                </video>
-            </div>
-            <p style="text-align: center; color: #888; font-size: 0.8rem; margin-top: 20px;">
-                🔊 <span id="videoStatus">Toca para activar sonido</span>
-            </p>
-        </div>
-
+        </section>
     </main>
+
+    <footer style="text-align: center; padding: 80px 0; color: #bbb; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase;">
+        © 2026 PALOMA AGUADO — CREATIVE STRATEGY
+    </footer>
 
     <script>
         const video = document.getElementById('nikeVideo');
@@ -177,16 +186,17 @@
                 video.currentTime = 0;
                 video.muted = false;
                 video.play();
-                statusText.innerText = "Sonido activado";
+                statusText.innerText = "Sonido activado (Toca para silenciar)";
             } else {
                 video.muted = !video.muted;
-                statusText.innerText = video.muted ? "Toca para activar sonido" : "Sonido activado";
+                statusText.innerText = video.muted ? "Toca para activar sonido" : "Sonido activado (Toca para silenciar)";
             }
         });
 
         video.onended = function() {
-            statusText.innerText = "Video finalizado. Toca para repetir";
+            statusText.innerText = "Video finalizado. Toca para repetir con sonido";
         };
     </script>
+
 </body>
 </html>
