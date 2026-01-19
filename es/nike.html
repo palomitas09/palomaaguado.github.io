@@ -8,7 +8,6 @@
     <style>
         .case-header { background-color: #000; color: white; padding: 80px 5%; text-align: center; }
         
-        /* Grid principal: Texto a la izquierda, iPhone a la derecha */
         .case-container { 
             max-width: 1200px; 
             margin: 0 auto; 
@@ -19,7 +18,7 @@
             align-items: start;
         }
         
-        /* iPhone Mockup fijo a la derecha */
+        /* iPhone Mockup */
         .iphone-mockup {
             width: 300px;
             height: 600px;
@@ -32,46 +31,65 @@
             overflow: hidden;
             box-shadow: 0 25px 50px rgba(0,0,0,0.3);
             cursor: pointer;
-            transition: transform 0.3s ease;
         }
-        .iphone-mockup:active { transform: scale(0.98); }
         .iphone-mockup video { width: 100%; height: 100%; object-fit: cover; }
 
-        /* Estilos de texto y briefing */
-        .briefing-info h4 { text-transform: uppercase; font-size: 0.8rem; color: #888; margin: 30px 0 10px 0; letter-spacing: 1px; }
-        .briefing-info p { margin-bottom: 20px; color: #333; line-height: 1.7; font-size: 1rem; }
         .strategy-box { background: #f4f4f4; padding: 25px; border-radius: 10px; margin: 30px 0; border-left: 5px solid #000; }
-        .tag { display: inline-block; background: #000; color: #fff; padding: 6px 14px; border-radius: 4px; font-size: 0.75rem; margin-right: 8px; margin-bottom: 10px; text-transform: uppercase; font-weight: bold; }
+        .tag { display: inline-block; background: #000; color: #fff; padding: 5px 12px; border-radius: 4px; font-size: 0.7rem; margin-right: 8px; margin-bottom: 10px; text-transform: uppercase; font-weight: bold; }
 
-        /* GALERÍA HORIZONTAL CON EFECTO OVERLAY/ZOOM */
-        .slides-horizontal {
+        /* CARRUSEL CON ESTILO OVERLAY */
+        .carousel-container {
             display: flex;
-            flex-direction: row;
-            gap: 15px;
-            margin-top: 30px;
-            padding-bottom: 20px;
+            overflow-x: auto; /* Permite scroll lateral */
+            gap: 20px;
+            padding: 20px 0;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none; /* Oculta scrollbar en Firefox */
         }
-        .slides-horizontal img {
-            width: calc(25% - 12px);
-            height: auto;
-            border-radius: 8px;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            filter: brightness(0.9);
-            cursor: pointer;
-            border: 1px solid #eee;
+        .carousel-container::-webkit-scrollbar { display: none; } /* Oculta scrollbar en Chrome/Safari */
+
+        .carousel-item {
+            flex: 0 0 300px; /* Ancho fijo de cada diapositiva en el carrusel */
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            scroll-snap-align: start;
+            aspect-ratio: 4 / 3;
         }
-        .slides-horizontal img:hover {
-            transform: translateY(-8px) scale(1.05);
-            filter: brightness(1.1);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
         }
+
+        /* Capa Overlay (Estilo Cafur/Vivendex) */
+        .carousel-item .overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .carousel-item:hover .overlay { opacity: 1; }
+        .carousel-item:hover img { transform: scale(1.1); }
+
+        .overlay h3 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
+        .overlay span { font-size: 0.7rem; opacity: 0.8; text-transform: uppercase; }
 
         @media (max-width: 900px) {
             .case-container { grid-template-columns: 1fr; }
-            .iphone-mockup { position: relative; top: 0; margin-bottom: 30px; }
-            .case-visual { order: -1; } /* Video primero en móvil */
-            .slides-horizontal { flex-wrap: wrap; }
-            .slides-horizontal img { width: calc(50% - 10px); }
+            .case-visual { order: -1; }
+            .carousel-item { flex: 0 0 80%; } /* En móvil se ven más grandes */
         }
     </style>
 </head>
@@ -79,45 +97,60 @@
 
     <header class="case-header">
         <h1 style="letter-spacing: 6px; text-transform: uppercase; font-size: 2.5rem;">Nike x Shuttlerock</h1>
-        <p style="font-weight: 300; opacity: 0.7; letter-spacing: 2px;">STRATEGIC BRIEFING & VISUAL CONCEPT</p>
     </header>
 
     <nav style="padding: 30px 5%;">
-        <a href="index.html" style="text-decoration: none; color: #111; font-weight: bold; letter-spacing: 1px;">← VOLVER AL PORTFOLIO</a>
+        <a href="index.html" style="text-decoration: none; color: #111; font-weight: bold;">← VOLVER</a>
     </nav>
 
     <main class="case-container">
         
         <div class="case-info">
-            <h2 style="font-size: 2rem; color: #000; margin-bottom: 10px; text-transform: uppercase;">Feel the Future: Air Max</h2>
-            
-            <div class="briefing-info">
-                <h4>El Desafío Creativo</h4>
-                <p>Desarrollo de una propuesta estratégica para el lanzamiento de la gama Air Max. El reto consistía en elevar los assets de marca hacia una narrativa <em>mobile-first</em> que conectara con las subculturas urbanas actuales.</p>
-                
-                <h4>Target Audience Insights</h4>
-                <p>Foco en la <strong>Gen Z y Millennials</strong>: una audiencia que ignora la publicidad tradicional pero responde al contenido con estética UGC, ritmos rápidos y autenticidad visual.</p>
-                
-                <h4>Narrativa de Campaña</h4>
-                <p><strong>"Feel the Future. Wear Air."</strong> — Un mensaje directo que posiciona la innovación de Nike no solo como una ventaja técnica, sino como una extensión de la identidad personal del consumidor.</p>
-            </div>
+            <h2 style="text-transform: uppercase;">Feel the Future: Air Max</h2>
             
             <div class="strategy-box">
-                <h3 style="margin-top:0; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Creative Direction</h3>
+                <h3 style="margin-top:0; font-size: 0.8rem; text-transform: uppercase;">Creative Direction</h3>
                 <div style="margin: 15px 0;">
-                    <span class="tag">Mobile-Optimized</span>
+                    <span class="tag">Briefing Estratégico</span>
+                    <span class="tag">Audience Insights</span>
+                    <span class="tag">Creative Direction</span>
+                    <span class="tag">Logistics & Timeline</span>
+                    <span class="tag">Mobile-First</span>
                     <span class="tag">UGC Style</span>
-                    <span class="tag">Typography Overlays</span>
                 </div>
-                <p style="font-size: 0.9rem; margin-bottom: 0; color: #555;">Implementación de "hooks" visuales en los primeros 3 segundos y edición rítmica basada en el <em>beat</em> de la música.</p>
             </div>
 
-            <h4 style="text-transform: uppercase; font-size: 0.8rem; color: #888; letter-spacing: 1px; margin-top: 50px; border-top: 1px solid #eee; padding-top: 30px;">Documentación del Proyecto</h4>
-            <div class="slides-horizontal">
-                <img src="../es/proyectos/nike3.jpg" alt="Estrategia">
-                <img src="../es/proyectos/nike2.jpg" alt="Ejecución">
-                <img src="../es/proyectos/nike1.jpg" alt="Timeline">
-                <img src="../es/proyectos/nike4.jpg" alt="Details">
+            <h4 style="text-transform: uppercase; font-size: 0.8rem; color: #888; letter-spacing: 1px; margin-top: 40px;">Documentación del Proyecto (Desliza →)</h4>
+            
+            <div class="carousel-container">
+                <div class="carousel-item">
+                    <img src="../es/proyectos/nike3.jpg" alt="Estrategia">
+                    <div class="overlay">
+                        <h3>Estrategia</h3>
+                        <span>Fases de Campaña</span>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="../es/proyectos/nike2.jpg" alt="Ejecución">
+                    <div class="overlay">
+                        <h3>Ejecución</h3>
+                        <span>Creative Features</span>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="../es/proyectos/nike1.jpg" alt="Timeline">
+                    <div class="overlay">
+                        <h3>Timeline</h3>
+                        <span>Logística y Plazos</span>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="../es/proyectos/nike4.jpg" alt="Details">
+                    <div class="overlay">
+                        <h3>Detalles</h3>
+                        <span>Brand Elements</span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -127,16 +160,12 @@
                     <source src="../es/proyectos/Nike case.mp4" type="video/mp4">
                 </video>
             </div>
-            <p style="text-align: center; color: #888; font-size: 0.8rem; margin-top: 20px; font-style: italic;">
-                🔊 <span id="videoStatus">Toca el video para activar sonido</span>
+            <p style="text-align: center; color: #888; font-size: 0.8rem; margin-top: 20px;">
+                🔊 <span id="videoStatus">Toca para activar sonido</span>
             </p>
         </div>
 
     </main>
-
-    <footer style="text-align: center; padding: 100px 0; color: #bbb; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase;">
-        © 2026 PALOMA AGUADO — CREATIVE STRATEGY
-    </footer>
 
     <script>
         const video = document.getElementById('nikeVideo');
@@ -144,29 +173,20 @@
         const wrapper = document.getElementById('videoWrapper');
 
         wrapper.addEventListener('click', function() {
-            // Si el video ha terminado, reinicia con sonido
             if (video.ended) {
                 video.currentTime = 0;
                 video.muted = false;
                 video.play();
-                statusText.innerText = "Sonido activado (Toca para mutear)";
-            } 
-            // Si está reproduciéndose, alterna el mute sin reiniciar
-            else {
+                statusText.innerText = "Sonido activado";
+            } else {
                 video.muted = !video.muted;
-                if (video.muted) {
-                    statusText.innerText = "Toca para activar sonido";
-                } else {
-                    statusText.innerText = "Sonido activado (Toca para mutear)";
-                }
+                statusText.innerText = video.muted ? "Toca para activar sonido" : "Sonido activado";
             }
         });
 
-        // Al finalizar el video avisamos que puede repetirse
         video.onended = function() {
-            statusText.innerText = "Video finalizado. Toca para repetir con sonido";
+            statusText.innerText = "Video finalizado. Toca para repetir";
         };
     </script>
-
 </body>
 </html>
