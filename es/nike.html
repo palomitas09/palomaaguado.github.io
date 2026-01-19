@@ -92,15 +92,40 @@
 
         <div class="case-visual">
             <div class="iphone-mockup">
-                <video id="nikeVideo" autoplay muted playsinline onclick="toggleMute()">
+                <video id="nikeVideo" autoplay muted playsinline>
                     <source src="../es/proyectos/Nike case.mp4" type="video/mp4">
+                    <img src="../es/proyectos/nike-mockup-fallback.jpg" alt="Nike Reel Mockup">
                 </video>
             </div>
             <p style="text-align: center; color: #999; font-size: 0.8rem; margin-top: 15px;">
-                🔊 Toca el video para activar/desactivar el sonido
+                🔊 <span id="videoStatus">Haz clic en el video para repetir con sonido</span>
             </p>
         </div>
     </main>
+
+    <script>
+        const video = document.getElementById('nikeVideo');
+        const statusText = document.getElementById('videoStatus');
+
+        // Escucha el clic en el video
+        video.addEventListener('click', function() {
+            if (video.paused || video.ended) {
+                video.currentTime = 0; // Reinicia al segundo 0
+                video.muted = false;   // Quita el silencio
+                video.play();
+                statusText.innerText = "Reproduciendo con sonido";
+            } else {
+                // Si ya está reproduciéndose, alterna el silencio
+                video.muted = !video.muted;
+                statusText.innerText = video.muted ? "Sonido desactivado" : "Reproduciendo con sonido";
+            }
+        });
+
+        // Detecta cuando el video termina la primera vez (el autoplay)
+        video.onended = function() {
+            statusText.innerText = "Haz clic para volver a reproducir con sonido";
+        };
+    </script>
 
     <footer style="text-align: center; padding: 50px; color: #ccc; font-size: 0.8rem;">
         © 2026 Paloma Aguado — Contenido Estratégico Protegido
