@@ -3,205 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leo — El caballero que escuchaba los árboles | Paloma Aguado</title>
+    <title>Leo — El caballero que escuchaba los árboles</title>
     <link rel="stylesheet" href="../style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400&family=Gochi+Hand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Crimson+Pro:wght@300;400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --color-papel: #fdfaf3; /* Color crema más cálido, tipo papel de cuento */
-            --color-texto: #2c2c2c;
-            --verde-cuento: #5d7a5c;
+            --paper: #fdfaf3;
+            --ink: #2c2c2c;
         }
 
         body { 
-            background-color: #e5e0d8; /* Fondo de la "mesa" sobre la que está el libro */
-            /* Textura de papel sutil aplicada a todo el cuerpo */
-            background-image: url('https://www.transparenttextures.com/patterns/parchment.png');
-            color: var(--color-texto);
-            font-family: 'Inter', sans-serif;
+            background-color: #d1ccc0; 
+            background-image: url('https://www.transparenttextures.com/patterns/felt.png');
+            color: var(--ink);
+            font-family: 'Crimson Pro', serif;
             margin: 0;
-            padding: 0;
+            overflow-x: hidden;
         }
 
-        /* Contenedor principal que simula el libro abierto */
-        .book-container {
-            max-width: 1200px;
-            margin: 40px auto;
-            background-color: var(--color-papel);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0; /* Sin gap para que las páginas se unan */
-            box-shadow: 0 40px 80px rgba(0,0,0,0.15);
+        /* Contenedor del Libro Abierto */
+        .book-wrapper {
+            max-width: 1100px;
+            margin: 50px auto;
+            display: flex;
+            background: var(--paper);
+            box-shadow: 0 50px 100px rgba(0,0,0,0.3);
             border-radius: 4px;
             position: relative;
-            overflow: hidden;
-            min-height: 85vh;
+            min-height: 75vh;
         }
 
-        /* Línea de sombra central (el lomo del libro) */
-        .book-container::after {
+        /* Sombra del lomo central */
+        .book-wrapper::before {
             content: "";
             position: absolute;
             left: 50%;
             top: 0;
             bottom: 0;
-            width: 40px;
-            background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.03), rgba(0,0,0,0.08), rgba(0,0,0,0.03), rgba(0,0,0,0));
+            width: 60px;
+            background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.05), rgba(0,0,0,0.15), rgba(0,0,0,0.05), rgba(0,0,0,0));
             transform: translateX(-50%);
+            z-index: 10;
             pointer-events: none;
         }
 
-        /* PÁGINA IZQUIERDA: Visual */
-        .page-visual {
-            padding: 60px 40px;
+        /* Lado Izquierdo: El "Lector" de hojas */
+        .book-page-left {
+            flex: 1.2;
+            padding: 40px;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            position: relative;
             border-right: 1px solid rgba(0,0,0,0.05);
         }
 
-        .book-gallery {
-            background: white;
-            padding: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border: 1px solid #e0ddd5;
+        .canvas-container {
             width: 100%;
-            max-width: 450px;
-            transform: rotate(-1deg); /* Ligera inclinación orgánica */
-        }
-
-        .main-view { 
-            width: 100%; 
-            display: block;
-            transition: opacity 0.4s ease;
+            position: relative;
             aspect-ratio: 1/1;
-            object-fit: cover;
+            background: #fff;
+            padding: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
-        /* PÁGINA DERECHA: Texto */
-        .page-text {
-            padding: 80px 60px;
+        .canvas-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        /* Controles de "Pasar Hoja" */
+        .page-controls {
+            position: absolute;
+            bottom: -60px;
             display: flex;
-            flex-direction: column;
+            gap: 20px;
+            width: 100%;
             justify-content: center;
         }
 
-        h1 { 
-            font-family: 'Gochi Hand', cursive; /* Nombre de Leo más juguetón */
-            font-size: 4.5rem; 
-            margin: 0;
-            color: var(--verde-cuento);
-        }
-
-        h4 { 
+        .nav-btn {
+            background: none;
+            border: 1px solid var(--ink);
+            padding: 8px 20px;
+            cursor: pointer;
             font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            color: #888;
-            margin-bottom: 30px;
-            font-size: 1.3rem;
-        }
-
-        .tag { 
-            display: inline-block; 
-            border: 1px solid var(--verde-cuento);
-            color: var(--verde-cuento); 
-            padding: 4px 12px; 
-            border-radius: 20px; 
-            font-size: 0.65rem; 
-            text-transform: uppercase; 
+            text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 20px;
+            font-size: 0.7rem;
+            transition: 0.3s;
         }
 
-        .quote {
-            font-family: 'Playfair Display', serif; 
-            font-size: 1.4rem; 
-            line-height: 1.6; 
-            font-style: italic; 
+        .nav-btn:hover {
+            background: var(--ink);
+            color: white;
+        }
+
+        /* Lado Derecho: Título y Contexto sutil */
+        .book-page-right {
+            flex: 0.8;
+            padding: 80px 50px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin: 0;
+            line-height: 1;
+            font-style: italic;
+        }
+
+        .book-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            margin-top: 10px;
+            color: #777;
+        }
+
+        .page-counter {
+            margin-top: auto;
+            font-family: 'Playfair Display', serif;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            opacity: 0.5;
+        }
+
+        .story-brief {
+            margin-top: 40px;
+            line-height: 1.7;
+            font-size: 1.05rem;
             color: #444;
-            border-left: 3px solid var(--verde-cuento);
-            padding-left: 20px;
-            margin-bottom: 30px;
         }
 
-        .description {
-            font-size: 0.95rem;
-            line-height: 1.8;
-            color: #555;
-            max-width: 450px;
+        .back-nav {
+            padding: 20px 5%;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
         }
 
-        /* Miniaturas */
-        .carousel-wrapper { margin-top: 40px; width: 100%; max-width: 450px; }
-        .carousel-container { display: flex; gap: 10px; overflow-x: auto; scrollbar-width: none; }
-        .carousel-item { flex: 0 0 70px; cursor: pointer; opacity: 0.4; transition: 0.3s; border: 1px solid transparent; }
-        .carousel-item.active { opacity: 1; border-color: var(--verde-cuento); }
-
-        @media (max-width: 950px) {
-            .book-container { grid-template-columns: 1fr; margin: 20px; }
-            .book-container::after { display: none; }
-            .page-text { padding: 40px; }
+        @media (max-width: 900px) {
+            .book-wrapper { flex-direction: column; margin: 20px; }
+            .book-wrapper::before { display: none; }
+            .book-page-right { padding: 40px; order: 2; }
+            .book-page-left { order: 1; }
         }
     </style>
 </head>
 <body>
 
-    <nav style="padding: 30px 5%;">
-        <a href="/palomaaguado.github.io/es/index.html" style="text-decoration: none; color: #2c2c2c; font-size: 0.8rem; letter-spacing: 2px; font-weight: bold;">← CERRAR LIBRO</a>
+    <nav class="back-nav">
+        <a href="/palomaaguado.github.io/es/index.html" style="text-decoration:none; color:inherit;">← Volver al Portfolio</a>
     </nav>
 
-    <main class="book-container">
-        
-        <div class="page-visual">
-            <div class="book-gallery">
-                <img id="activePage" src="../es/proyectos/leo1.png" class="main-view" alt="Leo">
+    <div class="book-wrapper">
+        <div class="book-page-left">
+            <div class="canvas-container">
+                <img id="leaf" src="../es/proyectos/leo1.png" alt="Ilustración Leo">
             </div>
             
-            <div class="carousel-wrapper">
-                <div class="carousel-container">
-                    <div class="carousel-item active" onclick="updateView(this)"><img src="../es/proyectos/leo1.png" width="100%"></div>
-                    <div class="carousel-item" onclick="updateView(this)"><img src="../es/proyectos/leo-amigo.png" width="100%"></div>
-                    <div class="carousel-item" onclick="updateView(this)"><img src="../es/proyectos/leo-armonia.png" width="100%"></div>
-                    <div class="carousel-item" onclick="updateView(this)"><img src="../es/proyectos/leo-campamento.png" width="100%"></div>
-                    <div class="carousel-item" onclick="updateView(this)"><img src="../es/proyectos/leo-familia.png" width="100%"></div>
-                </div>
+            <div class="page-controls">
+                <button class="nav-btn" onclick="prevPage()">Anterior</button>
+                <button class="nav-btn" onclick="nextPage()">Siguiente</button>
             </div>
         </div>
 
-        <div class="page-text">
-            <span class="tag">Proyecto Editorial & IA</span>
-            <h1>Leo</h1>
-            <h4>El caballero que escuchaba los árboles.</h4>
+        <div class="book-page-right">
+            <h1 class="book-title">Leo</h1>
+            <p class="book-subtitle">El caballero que escuchaba los árboles</p>
             
-            <div class="quote">
-                "Leo escuchaba el mundo de manera diferente. Donde otros oían ruido desordenado, él era capaz de percibir el susurro de una hoja al caer."
+            <div class="story-brief">
+                Este proyecto traduce visualmente la historia de Leo, un niño con una percepción sensorial extraordinaria. 
+                <br><br>
+                A través de la dirección de arte con IA, cada ilustración busca capturar los susurros de la naturaleza y el contraste emocional de su mundo.
             </div>
-            
-            <div class="description">
-                <p><strong>Dirección de Arte y Narrativa Sensorial</strong></p>
-                <p>Inspirado en el cuento de <strong>Carol Vila Micó</strong>, este proyecto visual aborda la hipersensibilidad sonora y el autodescubrimiento a través de los ojos de un niño.</p>
-                <p>La dirección de arte utiliza la IA para representar el contraste entre el barullo agobiante de la ciudad y la paz cromática de la naturaleza, donde Leo encuentra su verdadero superpoder: la capacidad de escuchar lo que otros ignoran.</p>
+
+            <div class="page-counter">
+                PÁGINA <span id="pageNumber">1</span> / 5
             </div>
         </div>
-
-    </main>
-
-    <footer style="text-align: center; padding: 60px 0; opacity: 0.4; font-size: 0.7rem; letter-spacing: 2px; color: #2c2c2c;">
-        © 2026 PALOMA AGUADO — ESTRATEGIA CREATIVA
-    </footer>
+    </div>
 
     <script>
-        function updateView(element) {
-            const mainImg = document.getElementById('activePage');
-            const thumbs = document.querySelectorAll('.carousel-item');
-            mainImg.style.opacity = '0';
+        const images = [
+            "../es/proyectos/leo1.png",
+            "../es/proyectos/leo-amigo.png",
+            "../es/proyectos/leo-armonia.png",
+            "../es/proyectos/leo-campamento.png",
+            "../es/proyectos/leo-familia.png"
+        ];
+        
+        let currentIndex = 0;
+        const imgElement = document.getElementById('leaf');
+        const pageNum = document.getElementById('pageNumber');
+
+        function updatePage() {
+            // Efecto de desvanecimiento suave al "pasar hoja"
+            imgElement.style.opacity = '0';
+            imgElement.style.transform = 'translateX(-10px)';
+            
             setTimeout(() => {
-                mainImg.src = element.querySelector('img').src;
-                mainImg.style.opacity = '1';
-            }, 250);
-            thumbs.forEach(t => t.classList.remove('active'));
-            element.classList.add('active');
+                imgElement.src = images[currentIndex];
+                imgElement.style.opacity = '1';
+                imgElement.style.transform = 'translateX(0)';
+                pageNum.innerText = currentIndex + 1;
+            }, 300);
+        }
+
+        function nextPage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            updatePage();
+        }
+
+        function prevPage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updatePage();
         }
     </script>
 </body>
