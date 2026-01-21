@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leo — Álbum Ilustrado</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
             --paper: #fdfaf3;
             --ink: #2c2c2c;
-            --font-main: 'Playfair Display', serif;
+            /* Usamos la misma familia para todo */
+            --font-main: 'Playfair Display', serif; 
+            --font-body: 'Crimson Pro', serif;
         }
 
         body {
@@ -21,11 +23,11 @@
             min-height: 100vh;
             margin: 0;
             overflow: hidden;
-            font-family: var(--font-main);
+            font-family: var(--font-body);
         }
 
         nav { width: 100%; padding: 20px; position: absolute; top: 0; z-index: 100; }
-        nav a { text-decoration: none; color: var(--ink); font-style: italic; font-size: 0.9rem; margin-left: 20px; }
+        nav a { text-decoration: none; color: var(--ink); font-family: var(--font-main); font-style: italic; font-size: 0.9rem; margin-left: 20px; }
 
         .scene {
             width: 1000px;
@@ -77,6 +79,7 @@
 
         .back { transform: rotateY(180deg); }
 
+        /* IMAGEN A SANGRE TOTAL */
         .full-img { 
             width: 100%; 
             height: 100%; 
@@ -94,40 +97,52 @@
             text-align: left;
         }
 
-        h1, h4 { font-weight: 700; color: var(--ink); margin: 0 0 20px 0; }
+        /* Tipografía unificada según "Escrito por" */
+        h1, h4 { 
+            font-family: var(--font-main); 
+            font-weight: 700;
+            color: var(--ink); 
+            margin: 0 0 20px 0; 
+        }
+        
         h1 { font-size: 3.5rem; text-align: center; font-style: italic; }
-        h4 { font-size: 1.6rem; text-transform: uppercase; letter-spacing: 1px; }
+        h4 { font-size: 1.8rem; text-transform: uppercase; letter-spacing: 1px; }
 
         .page-text { 
-            font-size: 1.05rem; 
-            line-height: 1.7; 
+            font-family: var(--font-main); /* Misma que los créditos */
+            font-size: 1.1rem; 
+            line-height: 1.8; 
             color: #333; 
-            margin-bottom: 15px;
-            font-style: italic; 
+            margin-bottom: 20px;
+            font-style: italic; /* Siguiendo el estilo elegante de los créditos */
         }
 
         .quote { 
-            font-size: 1.1rem;
+            font-family: var(--font-main);
+            font-size: 1.2rem;
+            font-weight: 400;
             border-left: 2px solid #d1ccc0; 
             padding-left: 20px; 
-            margin: 20px 0; 
+            margin: 25px 0; 
             color: #555; 
         }
 
+        /* Copyright al final */
         .footer-copy {
             margin-top: auto;
-            font-size: 0.7rem;
+            font-family: var(--font-main);
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: #999;
             border-top: 1px solid #eee;
-            padding-top: 20px;
+            padding-top: 25px;
             text-align: center;
             font-style: normal;
         }
 
         .flipped { transform: rotateY(-180deg); }
-        .hint { margin-top: 20px; font-style: italic; opacity: 0.5; }
+        .hint { margin-top: 20px; font-family: var(--font-main); font-style: italic; opacity: 0.5; }
     </style>
 </head>
 <body>
@@ -158,14 +173,14 @@
                         <div class="quote">
                             "Para Lucca: te deseo que tu peculiar manera de escuchar e interpretar el mundo te lleve a construir sueños tan grandes como la familia que cuida."
                         </div>
-                        <div class="page-text" style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-style: normal; color: #999;">
+                        <div class="page-text" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-style: normal; color: #999;">
                             Escrito por Carol Vila Micó<br>
                             Ilustrado por Paloma Aguado
                         </div>
                     </div>
                 </div>
                 <div class="back">
-                    <img src="../es/proyectos/leo-mama.jpg" class="full-img">
+                    <img src="../es/proyectos/leo-armonia.png" class="full-img">
                 </div>
             </div>
 
@@ -177,36 +192,7 @@
                             Utilizando herramientas de generación de imagen por IA, se trabajó en la creación de una atmósfera coherente que capturara la esencia del protagonista. 
                         </div>
                         <div class="page-text">
-                            Cada ilustración fue seleccionada y refinada para asegurar que el lenguaje visual acompañara el ritmo pausado de la historia.
-                        </div>
-                    </div>
-                </div>
-                <div class="back">
-                    <img src="../es/proyectos/leo-armonia.png" class="full-img">
-                </div>
-            </div>
-
-            <div class="paper" id="p4" style="z-index: 5;" onclick="flip(4)">
-                <div class="front">
-                    <div class="text-content">
-                        <div class="page-text">
-                            Leo escucha el mundo de manera diferente. Donde otros oyen ruido, él percibe el susurro de una hoja al caer.
-                        </div>
-                        <div class="page-text">
-                            En un campamento conoció a Carlos, quien le enseñó que su "oreja especial" no era un problema, sino una forma única de sentir.
-                        </div>
-                    </div>
-                </div>
-                <div class="back">
-                    <img src="../es/proyectos/leo-campamento.png" class="full-img">
-                </div>
-            </div>
-
-            <div class="paper" id="p5" style="z-index: 4;" onclick="flip(5)">
-                <div class="front">
-                    <div class="text-content">
-                        <div class="page-text">
-                            La tecnología se pone aquí al servicio de la empatía, permitiéndonos construir mundos que antes solo existían en la imaginación de quienes perciben la realidad de forma distinta.
+                            Cada ilustración fue seleccionada y refinada para asegurar que el lenguaje visual acompañara el ritmo pausado de la historia, traduciendo sonidos en texturas y colores vibrantes.
                         </div>
                     </div>
                 </div>
@@ -215,14 +201,15 @@
                 </div>
             </div>
 
-            <div class="paper" id="p6" style="z-index: 3;" onclick="flip(6)">
+            <div class="paper" id="p4" style="z-index: 5;" onclick="flip(4)">
                 <div class="front">
                     <div class="text-content">
+                        <h4>Narrativa Sensorial</h4>
                         <div class="page-text">
-                            "He hecho un nuevo amigo... Se llama Carlos y escucha el mundo de manera diferente, igual que yo."
+                            "Leo escuchaba el mundo de manera diferente. Donde otros oían ruido desordenado, él era capaz de percibir el susurro de una hoja al caer."
                         </div>
                         <div class="page-text">
-                            Leo comprendió que las pérdidas pueden ser ganancias y que el amor se puede expresar de muchas maneras, incluso a través del silencio.
+                            A través de esta obra, exploramos la hipersensibilidad sensorial y cómo los entornos pacíficos transforman la percepción de nuestro protagonista en un superpoder musical.
                         </div>
                     </div>
                 </div>
@@ -231,12 +218,15 @@
                 </div>
             </div>
 
-            <div class="paper" id="p7" style="z-index: 2;" onclick="flip(7)">
+            <div class="paper" id="p5" style="z-index: 4;" onclick="flip(5)">
                 <div class="front">
                     <div class="text-content">
                         <h4>Reflexión</h4>
                         <div class="page-text">
-                            Un ejercicio de diseño y narrativa sensorial para visibilizar la hipersensibilidad y la belleza de lo extraordinario.
+                            La tecnología se pone aquí al servicio de la empatía, permitiéndonos construir mundos que antes solo existían en la imaginación de quienes perciben la realidad de forma distinta.
+                        </div>
+                        <div class="page-text">
+                            Un ejercicio de diseño y narrativa para dar voz a una historia necesaria sobre la diversidad y la belleza de lo sutil.
                         </div>
                         <div class="footer-copy">
                             Escrito por Carol Vila Micó · Ilustrado por Paloma Aguado<br>
@@ -257,7 +247,7 @@
     <script>
         let book = document.getElementById('book');
         let currentLoc = 1;
-        let totalPapers = 7;
+        let totalPapers = 5;
 
         function flip(pageNum) {
             if (pageNum === 1 && !book.classList.contains('is-open')) {
