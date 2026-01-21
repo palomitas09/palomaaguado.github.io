@@ -3,74 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leo — Cuento Ilustrado | Paloma Aguado</title>
+    <title>Leo — Storytelling Visual | Paloma Aguado</title>
     <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        .case-header { background-color: #f4f4f4; color: #111; padding: 80px 5%; text-align: center; border-bottom: 1px solid #eee; }
-        .case-container { max-width: 1100px; margin: 0 auto; padding: 50px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-        .book-gallery { position: sticky; top: 20px; }
-        .main-view { width: 100%; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); transition: opacity 0.3s ease; }
-        .carousel-wrapper { position: relative; margin-top: 20px; display: flex; align-items: center; }
-        .carousel-container { display: flex; overflow-x: auto; gap: 15px; scrollbar-width: none; scroll-snap-type: x mandatory; scroll-behavior: smooth; }
-        .carousel-container::-webkit-scrollbar { display: none; }
-        .carousel-item { flex: 0 0 100px; aspect-ratio: 1; border-radius: 8px; overflow: hidden; cursor: pointer; scroll-snap-align: start; opacity: 0.6; transition: 0.3s; border: 2px solid transparent; }
-        .carousel-item:hover, .carousel-item.active { opacity: 1; border-color: #000; }
-        .carousel-item img { width: 100%; height: 100%; object-fit: cover; }
-        .nav-arrow { background: #000; color: #fff; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; position: absolute; z-index: 10; font-size: 1rem; }
-        .prev-arrow { left: -15px; } .next-arrow { right: -15px; }
-        .briefing-info h4 { text-transform: uppercase; font-size: 0.8rem; color: #888; margin: 30px 0 10px 0; letter-spacing: 1px; }
-        .tag { display: inline-block; background: #eee; color: #333; padding: 6px 14px; border-radius: 4px; font-size: 0.75rem; margin-right: 8px; margin-bottom: 10px; text-transform: uppercase; font-weight: bold; }
-        .ia-badge { background: #000; color: #fff; }
-        @media (max-width: 850px) { .case-container { grid-template-columns: 1fr; } .book-gallery { position: relative; order: -1; } }
+        :root {
+            --color-papel: #f9f7f2; /* Color crema tipo libro */
+            --color-texto: #2c2c2c;
+        }
+
+        body { 
+            background-color: var(--color-papel); 
+            color: var(--color-texto);
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Títulos estilo editorial */
+        h1, h2, h4 { 
+            font-family: 'Playfair Display', serif; 
+            font-weight: 700;
+        }
+
+        .case-header { padding: 80px 5%; text-align: center; }
+
+        .case-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 80px; 
+            align-items: center; 
+        }
+
+        /* Galería estilo Libro */
+        .book-gallery {
+            background: white;
+            padding: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            border-radius: 4px;
+            border: 1px solid #e0ddd5;
+        }
+
+        .main-view { 
+            width: 100%; 
+            display: block;
+            transition: opacity 0.4s ease;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+        }
+
+        /* Miniaturas */
+        .carousel-wrapper { margin-top: 30px; display: flex; align-items: center; gap: 10px; }
+        .carousel-container { display: flex; overflow-x: auto; gap: 10px; scrollbar-width: none; }
+        .carousel-item { 
+            flex: 0 0 80px; 
+            cursor: pointer; 
+            opacity: 0.5; 
+            transition: 0.3s; 
+            border: 1px solid #ddd;
+        }
+        .carousel-item.active { opacity: 1; border-color: var(--color-texto); }
+
+        /* Etiquetas */
+        .tag { 
+            display: inline-block; 
+            background: transparent; 
+            border: 1px solid var(--color-texto);
+            color: var(--color-texto); 
+            padding: 5px 15px; 
+            border-radius: 20px; 
+            font-size: 0.7rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .briefing-info p { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 1.2rem; 
+            line-height: 1.8; 
+            font-style: italic; 
+            color: #444;
+        }
+
+        @media (max-width: 900px) {
+            .case-container { grid-template-columns: 1fr; gap: 40px; }
+        }
     </style>
 </head>
 <body>
 
-    <nav style="padding: 30px 5%;">
-        <a href="index.html" style="text-decoration: none; color: #111; font-weight: bold;">← VOLVER A PROYECTOS</a>
+    <nav style="padding: 40px 5%;">
+        <a href="../index.html" style="text-decoration: none; color: #000; font-size: 0.8rem; letter-spacing: 2px;">← VOLVER</a>
     </nav>
 
     <main class="case-container">
         <div class="book-gallery">
-            <img id="activePage" src="../es/proyectos/leo_portada.jpg" class="main-view" alt="Portada Leo">
+            <img id="activePage" src="../es/proyectos/leo.png" class="main-view" alt="Leo">
+            
             <div class="carousel-wrapper">
-                <button class="nav-arrow prev-arrow" onclick="moveCarousel(-1)">❮</button>
                 <div class="carousel-container" id="thumbContainer">
-                    <div class="carousel-item active" onclick="updateView(this)"><img src="../es/proyectos/leo1.png"></div>
-                    <div class="carousel-item" onclick="updateView(this)"><img src="../es/proyectos/leo-amigo.png"></div>
-                    <div class="carousel-item" onclick="updateView(this)"><img src="../es/proyectos/leo-armonia.png"></div>
-                    <div class="carousel-item" onclick="updateView(this)"><img src="../es/proyectos/leo-campamento.png"></div>
-                    <div class="carousel-item" onclick="updateView(this)"><img src="../es/proyectos/leo-familia.png"></div>
+                    <div class="carousel-item active" onclick="updateView(this)"><img src="../es/proyectos/leo.png" width="100%"></div>
+                    <div class="carousel-item" onclick="updateView(this)"><img src="../es/proyectos/leo_pag1.jpg" width="100%"></div>
+                    <div class="carousel-item" onclick="updateView(this)"><img src="../es/proyectos/leo_pag2.jpg" width="100%"></div>
                 </div>
-                <button class="nav-arrow next-arrow" onclick="moveCarousel(1)">❯</button>
             </div>
         </div>
 
         <div class="briefing-info">
-            <h1 style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px;">Leo</h1>
-            <p style="color: #888; font-style: italic;">Escrito por Carol Vila Micó</p>
+            <span class="tag">Proyecto Editorial & IA</span>
+            <h1 style="font-size: 4rem; margin: 0 0 10px 0;">Leo</h1>
+            <h4 style="color: #888; margin-bottom: 40px;">Un viaje visual sobre la inocencia.</h4>
             
-            <div style="margin-top: 20px;">
-                <span class="tag ia-badge">Art Direction & IA</span>
-                <span class="tag">Visual Storytelling</span>
-            </div>
-
-            <h4>El Universo de Leo</h4>
-            <p>Este proyecto editorial nace de la necesidad de dar vida a los paisajes internos de "Leo". La narrativa requería una estética que combinara la inocencia con la profundidad del relato.</p>
-
-            <h4>Dirección de Arte</h4>
-            <p>Utilizando herramientas de generación de imagen por IA, se trabajó en la creación de una atmósfera coherente que capturara la esencia del protagonista. Cada ilustración fue seleccionada y refinada para asegurar que el lenguaje visual acompañara el ritmo pausado de la historia.</p>
+            <p>"Había una vez un mundo donde los sueños se podían ver..."</p>
             
-            <div style="background: #f9f9f9; padding: 25px; border-radius: 8px; margin-top: 40px; border-left: 4px solid #000;">
-                <p style="font-size: 0.85rem; margin: 0; color: #555; line-height: 1.5;">
-                    <strong>Proceso Creativo:</strong> Generación de activos visuales mediante IA, curaduría de estilo y post-producción digital para garantizar la consistencia narrativa.
-                </p>
+            <div style="margin-top: 50px; font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #666; max-width: 400px; line-height: 1.6;">
+                <strong>Dirección de Arte Generativa</strong><br>
+                Este proyecto utiliza IA para crear una atmósfera onírica constante, traduciendo la narrativa escrita por [Nombre de tu amiga] en una experiencia visual envolvente y coherente.
             </div>
         </div>
     </main>
 
-    <footer style="text-align: center; padding: 60px 0; color: #bbb; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;">
-        © 2026 PALOMA AGUADO — CREATIVE STRATEGY
+    <footer style="text-align: center; padding: 100px 0; opacity: 0.4; font-size: 0.7rem; letter-spacing: 2px;">
+        © 2026 PALOMA AGUADO
     </footer>
 
     <script>
@@ -81,12 +137,9 @@
             setTimeout(() => {
                 mainImg.src = element.querySelector('img').src;
                 mainImg.style.opacity = '1';
-            }, 200);
+            }, 250);
             thumbs.forEach(t => t.classList.remove('active'));
             element.classList.add('active');
-        }
-        function moveCarousel(dir) {
-            document.getElementById('thumbContainer').scrollBy({ left: dir * 150, behavior: 'smooth' });
         }
     </script>
 </body>
