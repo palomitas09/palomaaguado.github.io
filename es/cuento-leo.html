@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leo — Álbum Ilustrado</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
             --paper: #fdfaf3;
             --ink: #2c2c2c;
+            /* Usamos la misma familia para todo */
+            --font-main: 'Playfair Display', serif; 
+            --font-body: 'Crimson Pro', serif;
         }
 
         body {
@@ -20,11 +23,11 @@
             min-height: 100vh;
             margin: 0;
             overflow: hidden;
-            font-family: 'Crimson Pro', serif;
+            font-family: var(--font-body);
         }
 
         nav { width: 100%; padding: 20px; position: absolute; top: 0; z-index: 100; }
-        nav a { text-decoration: none; color: var(--ink); font-family: 'Playfair Display'; font-style: italic; font-size: 0.9rem; margin-left: 20px; }
+        nav a { text-decoration: none; color: var(--ink); font-family: var(--font-main); font-style: italic; font-size: 0.9rem; margin-left: 20px; }
 
         .scene {
             width: 1000px;
@@ -68,16 +71,19 @@
             background-color: var(--paper);
             box-shadow: inset 3px 0 10px rgba(0,0,0,0.1);
             box-sizing: border-box;
-            overflow: hidden; /* Importante para que la imagen no se salga */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
         }
 
         .back { transform: rotateY(180deg); }
 
-        /* IMÁGENES A SANGRE TOTAL (Ocupan toda la hoja) */
+        /* IMAGEN A SANGRE TOTAL */
         .full-img { 
             width: 100%; 
             height: 100%; 
-            object-fit: cover; /* Cambiado a cover para llenar cada rincón */
+            object-fit: cover; 
             display: block; 
         }
 
@@ -88,29 +94,55 @@
             height: 100%;
             width: 100%;
             box-sizing: border-box;
+            text-align: left;
         }
 
-        h1, h4 { font-family: 'Playfair Display', serif; color: var(--ink); margin: 0 0 15px 0; }
-        h1 { font-size: 3.5rem; text-align: center; margin-top: 20px; }
-        h4 { font-size: 1.8rem; }
+        /* Tipografía unificada según "Escrito por" */
+        h1, h4 { 
+            font-family: var(--font-main); 
+            font-weight: 700;
+            color: var(--ink); 
+            margin: 0 0 20px 0; 
+        }
         
-        .page-text { font-size: 1.15rem; line-height: 1.7; color: #444; margin-bottom: 20px; }
-        .quote { font-style: italic; border-left: 2px solid #d1ccc0; padding-left: 15px; margin: 20px 0; color: #666; }
+        h1 { font-size: 3.5rem; text-align: center; font-style: italic; }
+        h4 { font-size: 1.8rem; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* Copyright al final de la página */
+        .page-text { 
+            font-family: var(--font-main); /* Misma que los créditos */
+            font-size: 1.1rem; 
+            line-height: 1.8; 
+            color: #333; 
+            margin-bottom: 20px;
+            font-style: italic; /* Siguiendo el estilo elegante de los créditos */
+        }
+
+        .quote { 
+            font-family: var(--font-main);
+            font-size: 1.2rem;
+            font-weight: 400;
+            border-left: 2px solid #d1ccc0; 
+            padding-left: 20px; 
+            margin: 25px 0; 
+            color: #555; 
+        }
+
+        /* Copyright al final */
         .footer-copy {
             margin-top: auto;
+            font-family: var(--font-main);
             font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             color: #999;
             border-top: 1px solid #eee;
-            padding-top: 20px;
+            padding-top: 25px;
             text-align: center;
+            font-style: normal;
         }
 
         .flipped { transform: rotateY(-180deg); }
-        .hint { margin-top: 20px; font-family: 'Playfair Display'; font-style: italic; opacity: 0.5; }
+        .hint { margin-top: 20px; font-family: var(--font-main); font-style: italic; opacity: 0.5; }
     </style>
 </head>
 <body>
@@ -141,8 +173,9 @@
                         <div class="quote">
                             "Para Lucca: te deseo que tu peculiar manera de escuchar e interpretar el mundo te lleve a construir sueños tan grandes como la familia que cuida."
                         </div>
-                        <div class="page-text">
-                            A través de esta obra, Carol Vila Micó y Paloma Aguado colaboran para visibilizar la hipersensibilidad sensorial desde una perspectiva amable y mágica.
+                        <div class="page-text" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-style: normal; color: #999;">
+                            Escrito por Carol Vila Micó<br>
+                            Ilustrado por Paloma Aguado
                         </div>
                     </div>
                 </div>
@@ -159,10 +192,7 @@
                             Utilizando herramientas de generación de imagen por IA, se trabajó en la creación de una atmósfera coherente que capturara la esencia del protagonista. 
                         </div>
                         <div class="page-text">
-                            Cada ilustración fue seleccionada y refinada para asegurar que el lenguaje visual acompañara el ritmo pausado de la historia, traduciendo sonidos en texturas y colores.
-                        </div>
-                        <div class="page-text">
-                            La paleta cromática evoluciona con las emociones de Leo, desde los tonos vibrantes del agobio hasta la serenidad de los verdes y ocres de la naturaleza.
+                            Cada ilustración fue seleccionada y refinada para asegurar que el lenguaje visual acompañara el ritmo pausado de la historia, traduciendo sonidos en texturas y colores vibrantes.
                         </div>
                     </div>
                 </div>
@@ -174,12 +204,12 @@
             <div class="paper" id="p4" style="z-index: 5;" onclick="flip(4)">
                 <div class="front">
                     <div class="text-content">
-                        <h4>El Superpoder de Leo</h4>
+                        <h4>Narrativa Sensorial</h4>
                         <div class="page-text">
                             "Leo escuchaba el mundo de manera diferente. Donde otros oían ruido desordenado, él era capaz de percibir el susurro de una hoja al caer."
                         </div>
                         <div class="page-text">
-                            Este álbum ilustrado no solo cuenta una historia, sino que invita al lector a cerrar los ojos y "ver" a través de los oídos de un niño extraordinario.
+                            A través de esta obra, exploramos la hipersensibilidad sensorial y cómo los entornos pacíficos transforman la percepción de nuestro protagonista en un superpoder musical.
                         </div>
                     </div>
                 </div>
@@ -191,12 +221,12 @@
             <div class="paper" id="p5" style="z-index: 4;" onclick="flip(5)">
                 <div class="front">
                     <div class="text-content">
-                        <h4>Reflexión Final</h4>
+                        <h4>Reflexión</h4>
                         <div class="page-text">
-                            La tecnología de Inteligencia Artificial se pone aquí al servicio de la empatía, permitiéndonos construir mundos que antes solo existían en la imaginación de quienes perciben el mundo de forma distinta.
+                            La tecnología se pone aquí al servicio de la empatía, permitiéndonos construir mundos que antes solo existían en la imaginación de quienes perciben la realidad de forma distinta.
                         </div>
                         <div class="page-text">
-                            Leo nos enseña que las pérdidas pueden ser ganancias y que cada uno de nosotros tiene una "oreja especial" para aquello que ama.
+                            Un ejercicio de diseño y narrativa para dar voz a una historia necesaria sobre la diversidad y la belleza de lo sutil.
                         </div>
                         <div class="footer-copy">
                             Escrito por Carol Vila Micó · Ilustrado por Paloma Aguado<br>
@@ -223,9 +253,7 @@
             if (pageNum === 1 && !book.classList.contains('is-open')) {
                 book.classList.add('is-open');
             }
-            
             let paper = document.getElementById('p' + pageNum);
-
             if (pageNum === currentLoc) {
                 paper.classList.add('flipped');
                 paper.style.zIndex = pageNum;
@@ -234,7 +262,6 @@
                 paper.classList.remove('flipped');
                 paper.style.zIndex = totalPapers - pageNum + 1;
                 currentLoc--;
-                
                 if (currentLoc === 1) {
                     book.classList.remove('is-open');
                 }
