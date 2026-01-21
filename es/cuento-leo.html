@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leo — El caballero que escuchaba los árboles</title>
     <link rel="stylesheet" href="../style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Crimson+Pro:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --paper: #fdfaf3;
             --ink: #2c2c2c;
+            --sepia: rgba(0,0,0,0.05);
         }
 
         body { 
@@ -24,204 +25,204 @@
         /* Contenedor del Libro Abierto */
         .book-wrapper {
             max-width: 1100px;
-            margin: 50px auto;
+            margin: 40px auto;
             display: flex;
             background: var(--paper);
             box-shadow: 0 50px 100px rgba(0,0,0,0.3);
             border-radius: 4px;
             position: relative;
-            min-height: 75vh;
+            min-height: 550px;
         }
 
-        /* Sombra del lomo central */
+        /* Lomo central */
         .book-wrapper::before {
             content: "";
             position: absolute;
             left: 50%;
             top: 0;
             bottom: 0;
-            width: 60px;
-            background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.05), rgba(0,0,0,0.15), rgba(0,0,0,0.05), rgba(0,0,0,0));
+            width: 50px;
+            background: linear-gradient(to right, rgba(0,0,0,0), var(--sepia), rgba(0,0,0,0.15), var(--sepia), rgba(0,0,0,0));
             transform: translateX(-50%);
             z-index: 10;
             pointer-events: none;
         }
 
-        /* Lado Izquierdo: El "Lector" de hojas */
-        .book-page-left {
-            flex: 1.2;
-            padding: 40px;
+        /* PÁGINA IZQUIERDA: Ilustración */
+        .page-left {
+            flex: 1;
+            padding: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
             border-right: 1px solid rgba(0,0,0,0.05);
         }
 
-        .canvas-container {
+        .art-frame {
             width: 100%;
-            position: relative;
-            aspect-ratio: 1/1;
-            background: #fff;
+            background: white;
             padding: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: transform 0.5s ease;
         }
 
-        .canvas-container img {
+        .art-frame img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
             display: block;
-            transition: transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+            aspect-ratio: 1/1;
+            object-fit: cover;
         }
 
-        /* Controles de "Pasar Hoja" */
-        .page-controls {
-            position: absolute;
-            bottom: -60px;
+        /* PÁGINA DERECHA: Texto dinámico */
+        .page-right {
+            flex: 1;
+            padding: 60px 50px;
             display: flex;
-            gap: 20px;
-            width: 100%;
+            flex-direction: column;
             justify-content: center;
         }
 
-        .nav-btn {
+        .content-transition {
+            transition: opacity 0.4s ease;
+        }
+
+        .story-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin: 0;
+            line-height: 1;
+        }
+
+        .story-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        .story-paragraph {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            color: #444;
+            min-height: 150px;
+        }
+
+        /* Controles */
+        .controls {
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .btn {
             background: none;
             border: 1px solid var(--ink);
-            padding: 8px 20px;
+            padding: 10px 20px;
             cursor: pointer;
             font-family: 'Playfair Display', serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
             font-size: 0.7rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             transition: 0.3s;
         }
 
-        .nav-btn:hover {
-            background: var(--ink);
-            color: white;
-        }
+        .btn:hover { background: var(--ink); color: white; }
 
-        /* Lado Derecho: Título y Contexto sutil */
-        .book-page-right {
-            flex: 0.8;
-            padding: 80px 50px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .book-title {
+        .counter {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            margin: 0;
-            line-height: 1;
-            font-style: italic;
-        }
-
-        .book-subtitle {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            margin-top: 10px;
-            color: #777;
-        }
-
-        .page-counter {
-            margin-top: auto;
-            font-family: 'Playfair Display', serif;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
+            font-size: 0.8rem;
             opacity: 0.5;
         }
 
-        .story-brief {
-            margin-top: 40px;
-            line-height: 1.7;
-            font-size: 1.05rem;
-            color: #444;
-        }
-
-        .back-nav {
-            padding: 20px 5%;
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-        }
-
         @media (max-width: 900px) {
-            .book-wrapper { flex-direction: column; margin: 20px; }
+            .book-wrapper { flex-direction: column; }
             .book-wrapper::before { display: none; }
-            .book-page-right { padding: 40px; order: 2; }
-            .book-page-left { order: 1; }
+            .page-left, .page-right { padding: 40px; }
         }
     </style>
 </head>
 <body>
 
-    <nav class="back-nav">
-        <a href="/palomaaguado.github.io/es/index.html" style="text-decoration:none; color:inherit;">← Volver al Portfolio</a>
+    <nav style="padding: 20px 5%;">
+        <a href="/palomaaguado.github.io/es/index.html" style="text-decoration:none; color:inherit; font-size: 0.8rem; letter-spacing: 1px;">← CERRAR LIBRO</a>
     </nav>
 
     <div class="book-wrapper">
-        <div class="book-page-left">
-            <div class="canvas-container">
-                <img id="leaf" src="../es/proyectos/leo1.png" alt="Ilustración Leo">
-            </div>
-            
-            <div class="page-controls">
-                <button class="nav-btn" onclick="prevPage()">Anterior</button>
-                <button class="nav-btn" onclick="nextPage()">Siguiente</button>
+        <div class="page-left">
+            <div class="art-frame" id="frame">
+                <img id="bookImage" src="../es/proyectos/leo1.png" alt="Leo">
             </div>
         </div>
 
-        <div class="book-page-right">
-            <h1 class="book-title">Leo</h1>
-            <p class="book-subtitle">El caballero que escuchaba los árboles</p>
-            
-            <div class="story-brief">
-                Este proyecto traduce visualmente la historia de Leo, un niño con una percepción sensorial extraordinaria. 
-                <br><br>
-                A través de la dirección de arte con IA, cada ilustración busca capturar los susurros de la naturaleza y el contraste emocional de su mundo.
-            </div>
+        <div class="page-right" id="textContainer">
+            <div class="content-transition" id="content">
+                <h1 class="story-title">Leo</h1>
+                <p class="story-subtitle">El caballero que escuchaba los árboles</p>
+                
+                <div class="story-paragraph" id="storyText">
+                    Leo era un niño muy especial. Los señores de bata blanca le explicaron a mamá que él escucharía el mundo de manera diferente.
+                </div>
 
-            <div class="page-counter">
-                PÁGINA <span id="pageNumber">1</span> / 5
+                <div class="controls">
+                    <button class="btn" onclick="changePage(-1)">Anterior</button>
+                    <button class="btn" onclick="changePage(1)">Siguiente</button>
+                    <span class="counter"><span id="pageIdx">1</span> / 5</span>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        const images = [
-            "../es/proyectos/leo1.png",
-            "../es/proyectos/leo-amigo.png",
-            "../es/proyectos/leo-armonia.png",
-            "../es/proyectos/leo-campamento.png",
-            "../es/proyectos/leo-familia.png"
+        const storyData = [
+            {
+                img: "../es/proyectos/leo1.png",
+                text: "Leo era un niño muy especial. Los señores de bata blanca le explicaron a mamá que él escucharía el mundo de manera diferente. A veces, si había mucho ruido, Leo se agobiaba y se revolvía sin control."
+            },
+            {
+                img: "../es/proyectos/leo-amigo.png",
+                text: "En un campamento conoció a Carlos, un niño que tenía una 'oreja especial'. Carlos le explicó que él también escuchaba distinto y que eso no era malo, solo era otra forma de sentir."
+            },
+            {
+                img: "../es/proyectos/leo-armonia.png",
+                text: "Leo comprendió que podía sacar cosas muy buenas de su cualidad. Su superpoder para escuchar los susurros le permitía conocer notas musicales que otros no llegaban a percibir."
+            },
+            {
+                img: "../es/proyectos/leo-campamento.png",
+                text: "Decidió que quería aprender a abrazar de esa manera especial que Carlos le enseñó: tocando los cabellos de su abuela y de mamá para devolverles todo el amor recibido."
+            },
+            {
+                img: "../es/proyectos/leo-familia.png",
+                text: "Al volver a casa, Leo le dijo a su madre Nagore con una sonrisa: '¡He hecho un nuevo amigo! Se llama Carlos y escucha el mundo de manera diferente, igual que yo'."
+            }
         ];
-        
-        let currentIndex = 0;
-        const imgElement = document.getElementById('leaf');
-        const pageNum = document.getElementById('pageNumber');
 
-        function updatePage() {
-            // Efecto de desvanecimiento suave al "pasar hoja"
-            imgElement.style.opacity = '0';
-            imgElement.style.transform = 'translateX(-10px)';
-            
+        let current = 0;
+
+        function changePage(step) {
+            current += step;
+            if (current < 0) current = storyData.length - 1;
+            if (current >= storyData.length) current = 0;
+
+            const content = document.getElementById('content');
+            const bookImage = document.getElementById('bookImage');
+            const storyText = document.getElementById('storyText');
+            const pageIdx = document.getElementById('pageIdx');
+            const frame = document.getElementById('frame');
+
+            // Animación de transición
+            content.style.opacity = '0';
+            frame.style.transform = 'scale(0.98) rotate(-1deg)';
+
             setTimeout(() => {
-                imgElement.src = images[currentIndex];
-                imgElement.style.opacity = '1';
-                imgElement.style.transform = 'translateX(0)';
-                pageNum.innerText = currentIndex + 1;
-            }, 300);
-        }
-
-        function nextPage() {
-            currentIndex = (currentIndex + 1) % images.length;
-            updatePage();
-        }
-
-        function prevPage() {
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
-            updatePage();
+                bookImage.src = storyData[current].img;
+                storyText.innerText = storyData[current].text;
+                pageIdx.innerText = current + 1;
+                
+                content.style.opacity = '1';
+                frame.style.transform = 'scale(1) rotate(0deg)';
+            }, 400);
         }
     </script>
 </body>
