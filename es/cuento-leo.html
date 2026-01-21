@@ -68,21 +68,16 @@
             background-color: var(--paper);
             box-shadow: inset 3px 0 10px rgba(0,0,0,0.1);
             box-sizing: border-box;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
+            overflow: hidden; /* Importante para que la imagen no se salga */
         }
 
         .back { transform: rotateY(180deg); }
 
-        /* Ajuste para que las imágenes salgan ENTERAS */
+        /* IMÁGENES A SANGRE TOTAL (Ocupan toda la hoja) */
         .full-img { 
-            max-width: 100%; 
-            max-height: 100%; 
-            width: auto;
-            height: auto;
-            object-fit: contain; /* Esto asegura que no se corten los personajes */
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; /* Cambiado a cover para llenar cada rincón */
             display: block; 
         }
 
@@ -90,20 +85,20 @@
             padding: 60px 45px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             height: 100%;
             width: 100%;
             box-sizing: border-box;
         }
 
         h1, h4 { font-family: 'Playfair Display', serif; color: var(--ink); margin: 0 0 15px 0; }
-        h1 { font-size: 3.5rem; text-align: center; }
+        h1 { font-size: 3.5rem; text-align: center; margin-top: 20px; }
         h4 { font-size: 1.8rem; }
         
         .page-text { font-size: 1.15rem; line-height: 1.7; color: #444; margin-bottom: 20px; }
         .quote { font-style: italic; border-left: 2px solid #d1ccc0; padding-left: 15px; margin: 20px 0; color: #666; }
 
-        .credits-box {
+        /* Copyright al final de la página */
+        .footer-copy {
             margin-top: auto;
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -111,6 +106,7 @@
             color: #999;
             border-top: 1px solid #eee;
             padding-top: 20px;
+            text-align: center;
         }
 
         .flipped { transform: rotateY(-180deg); }
@@ -142,14 +138,16 @@
                         <div class="page-text">
                             Este proyecto editorial nace de la necesidad de dar vida a los paisajes internos de "Leo". La narrativa requería una estética que combinara la inocencia con la profundidad del relato.
                         </div>
-                                                <div class="credits-box">
-                            Escrito por Carol Vila Micó<br>
-                            Ilustrado por Paloma Aguado
+                        <div class="quote">
+                            "Para Lucca: te deseo que tu peculiar manera de escuchar e interpretar el mundo te lleve a construir sueños tan grandes como la familia que cuida."
+                        </div>
+                        <div class="page-text">
+                            A través de esta obra, Carol Vila Micó y Paloma Aguado colaboran para visibilizar la hipersensibilidad sensorial desde una perspectiva amable y mágica.
                         </div>
                     </div>
                 </div>
                 <div class="back">
-                    <img src="../es/proyectos/leo-familia.png" class="full-img">
+                    <img src="../es/proyectos/leo-armonia.png" class="full-img">
                 </div>
             </div>
 
@@ -161,59 +159,10 @@
                             Utilizando herramientas de generación de imagen por IA, se trabajó en la creación de una atmósfera coherente que capturara la esencia del protagonista. 
                         </div>
                         <div class="page-text">
-                            Cada ilustración fue seleccionada y refinada para asegurar que el lenguaje visual acompañara el ritmo pausado de la historia.
+                            Cada ilustración fue seleccionada y refinada para asegurar que el lenguaje visual acompañara el ritmo pausado de la historia, traduciendo sonidos en texturas y colores.
                         </div>
-                    </div>
-                </div>
-                <div class="back">
-                    <img src="../es/proyectos/leo-armonia.png" class="full-img">
-                </div>
-            </div>
-
-            <div class="paper" id="p4" style="z-index: 5;" onclick="flip(4)">
-                <div class="front">
-                    <div class="text-content">
                         <div class="page-text">
-                            "Leo escuchaba el mundo de manera diferente. Donde otros oían ruido desordenado, él era capaz de percibir el susurro de una hoja al caer."
-                        </div>
-                    </div>
-                </div>
-                <div class="back">
-                    <img src="../es/proyectos/leo-amigo.png" class="full-img">
-                </div>
-            </div>
-
-            <div class="paper" id="p5" style="z-index: 4;" onclick="flip(5)">
-                <div class="front">
-                    <div class="text-content">
-                        <div class="page-text">
-                            A través de esta narrativa visual, exploramos la hipersensibilidad sensorial y cómo los entornos pacíficos transforman la percepción de Leo.
-                        </div>
-                    </div>
-                </div>
-                <div class="back">
-                    <img src="../es/proyectos/leo-campamento.png" class="full-img">
-                </div>
-            </div>
-
-            <div class="paper" id="p6" style="z-index: 3;" onclick="flip(6)">
-                <div class="front">
-                    <div class="text-content">
-                        <div class="page-text">
-                            "He hecho un nuevo amigo... Se llama Carlos y escucha el mundo de manera diferente, igual que yo."
-                        </div>
-                    </div>
-                </div>
-                <div class="back">
-                    <img src="../es/proyectos/leo-mama.jpg" class="full-img">
-                </div>
-            </div>
-
-            <div class="paper" id="p7" style="z-index: 2;" onclick="flip(7)">
-                <div class="front">
-                    <div class="text-content">
-                        <div class="page-text">
-                            Un ejercicio de empatía y tecnología al servicio del arte, dando forma a una historia necesaria sobre la diversidad.
+                            La paleta cromática evoluciona con las emociones de Leo, desde los tonos vibrantes del agobio hasta la serenidad de los verdes y ocres de la naturaleza.
                         </div>
                     </div>
                 </div>
@@ -222,11 +171,36 @@
                 </div>
             </div>
 
-            <div class="paper" id="p8" style="z-index: 1;" onclick="flip(8)">
+            <div class="paper" id="p4" style="z-index: 5;" onclick="flip(4)">
                 <div class="front">
                     <div class="text-content">
-                        <div class="page-text" style="text-align: center; font-style: normal; opacity: 0.6;">
-                            © 2026 Paloma Aguado
+                        <h4>El Superpoder de Leo</h4>
+                        <div class="page-text">
+                            "Leo escuchaba el mundo de manera diferente. Donde otros oían ruido desordenado, él era capaz de percibir el susurro de una hoja al caer."
+                        </div>
+                        <div class="page-text">
+                            Este álbum ilustrado no solo cuenta una historia, sino que invita al lector a cerrar los ojos y "ver" a través de los oídos de un niño extraordinario.
+                        </div>
+                    </div>
+                </div>
+                <div class="back">
+                    <img src="../es/proyectos/leo-familia.png" class="full-img">
+                </div>
+            </div>
+
+            <div class="paper" id="p5" style="z-index: 4;" onclick="flip(5)">
+                <div class="front">
+                    <div class="text-content">
+                        <h4>Reflexión Final</h4>
+                        <div class="page-text">
+                            La tecnología de Inteligencia Artificial se pone aquí al servicio de la empatía, permitiéndonos construir mundos que antes solo existían en la imaginación de quienes perciben el mundo de forma distinta.
+                        </div>
+                        <div class="page-text">
+                            Leo nos enseña que las pérdidas pueden ser ganancias y que cada uno de nosotros tiene una "oreja especial" para aquello que ama.
+                        </div>
+                        <div class="footer-copy">
+                            Escrito por Carol Vila Micó · Ilustrado por Paloma Aguado<br>
+                            © 2026 Todos los derechos reservados
                         </div>
                     </div>
                 </div>
@@ -243,7 +217,7 @@
     <script>
         let book = document.getElementById('book');
         let currentLoc = 1;
-        let totalPapers = 8;
+        let totalPapers = 5;
 
         function flip(pageNum) {
             if (pageNum === 1 && !book.classList.contains('is-open')) {
