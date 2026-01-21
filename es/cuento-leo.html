@@ -73,42 +73,32 @@
 
         .back { transform: rotateY(180deg); }
 
-        /* Imágenes a sangre (toda la página) */
-        .full-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
+        .full-img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-        /* Contenedor de texto editorial */
         .text-content {
-            padding: 50px;
+            padding: 60px 45px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             height: 100%;
+            box-sizing: border-box;
         }
 
-        .page-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            font-style: italic;
-            color: #444;
-        }
+        h4 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin: 0 0 15px 0; color: var(--ink); }
+        .page-text { font-size: 1.15rem; line-height: 1.7; color: #444; margin-bottom: 20px; }
+        .quote { font-style: italic; border-left: 2px solid #d1ccc0; padding-left: 15px; margin: 20px 0; color: #666; }
 
-        .credits {
-            margin-top: 30px;
-            font-size: 0.8rem;
+        .credits-box {
+            margin-top: auto;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #888;
-            border-top: 1px solid #ddd;
+            color: #999;
+            border-top: 1px solid #eee;
             padding-top: 20px;
         }
 
         .flipped { transform: rotateY(-180deg); }
-        
         .hint { margin-top: 20px; font-family: 'Playfair Display'; font-style: italic; opacity: 0.5; }
     </style>
 </head>
@@ -121,7 +111,7 @@
     <div class="scene">
         <div class="book" id="book">
             
-            <div class="paper" id="p1" style="z-index: 6;" onclick="flip(1)">
+            <div class="paper" id="p1" style="z-index: 8;" onclick="flip(1)">
                 <div class="front">
                     <img src="../es/proyectos/leo1.png" class="full-img">
                 </div>
@@ -130,13 +120,17 @@
                 </div>
             </div>
 
-            <div class="paper" id="p2" style="z-index: 5;" onclick="flip(2)">
+            <div class="paper" id="p2" style="z-index: 7;" onclick="flip(2)">
                 <div class="front">
                     <div class="text-content">
+                        <h4>El Universo de Leo</h4>
                         <div class="page-text">
-                            "Leo escuchaba el mundo de manera diferente. Donde otros oían ruido desordenado, él percibía el susurro de una hoja al caer."
+                            Este proyecto editorial nace de la necesidad de dar vida a los paisajes internos de "Leo". La narrativa requería una estética que combinara la inocencia con la profundidad del relato.
                         </div>
-                        <div class="credits">
+                        <div class="quote">
+                            "Leo escuchaba el mundo de manera diferente. Donde otros oían ruido, él percibía el susurro de las hojas."
+                        </div>
+                        <div class="credits-box">
                             Escrito por Carol Vila Micó<br>
                             Ilustrado por Paloma Aguado
                         </div>
@@ -147,11 +141,15 @@
                 </div>
             </div>
 
-            <div class="paper" id="p3" style="z-index: 4;" onclick="flip(3)">
+            <div class="paper" id="p3" style="z-index: 6;" onclick="flip(3)">
                 <div class="front">
                     <div class="text-content">
+                        <h4>Dirección de Arte e IA</h4>
                         <div class="page-text">
-                            La dirección de arte utiliza la IA para representar el contraste entre el barullo de la ciudad y la paz de la naturaleza.
+                            Utilizando herramientas de generación de imagen por IA, se trabajó en la creación de una atmósfera coherente que capturara la esencia del protagonista. 
+                        </div>
+                        <div class="page-text">
+                            Cada ilustración fue seleccionada y refinada para asegurar que el lenguaje visual acompañara el ritmo pausado de la historia, centrando la atención en la sensibilidad sensorial de Leo.
                         </div>
                     </div>
                 </div>
@@ -160,11 +158,12 @@
                 </div>
             </div>
 
-            <div class="paper" id="p4" style="z-index: 3;" onclick="flip(4)">
+            <div class="paper" id="p4" style="z-index: 5;" onclick="flip(4)">
                 <div class="front">
                     <div class="text-content">
+                        <h4>Narrativa Sensorial</h4>
                         <div class="page-text">
-                            Un ejercicio de narrativa sensorial donde la tecnología se pone al servicio de la empatía.
+                            El reto visual consistía en plasmar la hipersensibilidad sonora. Se optó por una paleta de colores que transita entre el agobio cromático de la ciudad y la paz orgánica de la naturaleza.
                         </div>
                     </div>
                 </div>
@@ -173,16 +172,56 @@
                 </div>
             </div>
 
-            <div class="paper" id="p5" style="z-index: 2;" onclick="flip(5)">
+            <div class="paper" id="p5" style="z-index: 4;" onclick="flip(5)">
                 <div class="front">
                     <div class="text-content">
+                        <h4>El Superpoder de Leo</h4>
                         <div class="page-text">
-                            Leo descubrió que su peculiar manera de interpretar el mundo era, en realidad, su mayor tesoro.
+                            A través de la tecnología, buscamos empatizar con una percepción extraordinaria. Lo que para el mundo es ruido, para Leo es una partitura de detalles invisibles.
                         </div>
                     </div>
                 </div>
                 <div class="back">
-                    <img src="../es/proyectos/leo2.png" class="full-img">
+                    <img src="../es/proyectos/leo-amigo.png" class="full-img">
+                </div>
+            </div>
+
+            <div class="paper" id="p6" style="z-index: 3;" onclick="flip(6)">
+                <div class="front">
+                    <div class="text-content">
+                        <div class="page-text">
+                            "Leo comprendió que podía sacar cosas muy buenas de su cualidad especial. Las pérdidas pueden ser ganancias."
+                        </div>
+                    </div>
+                </div>
+                <div class="back">
+                    <img src="../es/proyectos/leo-armonia.png" class="full-img">
+                </div>
+            </div>
+
+            <div class="paper" id="p7" style="z-index: 2;" onclick="flip(7)">
+                <div class="front">
+                    <div class="text-content">
+                        <div class="page-text">
+                            Un viaje sobre el autodescubrimiento y la aceptación de nuestra propia manera de escuchar el mundo.
+                        </div>
+                    </div>
+                </div>
+                <div class="back">
+                    <img src="../es/proyectos/leo-campamento.png" class="full-img">
+                </div>
+            </div>
+
+            <div class="paper" id="p8" style="z-index: 1;" onclick="flip(8)">
+                <div class="front">
+                    <div class="text-content">
+                        <div class="page-text" style="text-align: center;">
+                            Fin de la muestra.
+                        </div>
+                    </div>
+                </div>
+                <div class="back">
+                    <img src="../es/proyectos/leo-familia.png" class="full-img">
                 </div>
             </div>
 
@@ -194,7 +233,7 @@
     <script>
         let book = document.getElementById('book');
         let currentLoc = 1;
-        let totalPapers = 5;
+        let totalPapers = 8;
 
         function flip(pageNum) {
             if (pageNum === 1 && !book.classList.contains('is-open')) {
