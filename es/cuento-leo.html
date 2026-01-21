@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leo — El caballero que escuchaba los árboles</title>
+    <title>Leo — Álbum Ilustrado</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --paper: #fdfaf3;
             --ink: #2c2c2c;
-            --cover: #5d7a5c; /* Verde bosque para la portada */
         }
 
         body {
@@ -20,96 +19,78 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
+            overflow: hidden;
             font-family: 'Crimson Pro', serif;
         }
 
-        nav { width: 100%; padding: 20px 50px; box-sizing: border-box; }
-        nav a { text-decoration: none; color: var(--ink); font-family: 'Playfair Display'; font-style: italic; font-size: 0.9rem; }
+        nav { width: 100%; padding: 20px; position: absolute; top: 0; z-index: 100; }
+        nav a { text-decoration: none; color: var(--ink); font-family: 'Playfair Display'; font-style: italic; font-size: 0.9rem; margin-left: 20px; }
 
         /* ESCENA 3D */
-        .book-scene {
-            perspective: 1500px;
-            width: 500px;
+        .scene {
+            width: 1000px; /* Doble del ancho de una página */
             height: 600px;
-            margin-top: 50px;
-            position: relative;
+            margin-top: 80px;
+            perspective: 2000px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .book {
-            width: 100%;
-            height: 100%;
             position: relative;
+            width: 450px; /* Ancho de una página */
+            height: 550px;
+            transition: transform 0.5s;
             transform-style: preserve-3d;
-            transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
-            cursor: pointer;
         }
 
-        /* Cuando el libro está abierto, desplazamos todo el conjunto */
-        .book.open { transform: translateX(50%); }
+        /* Cuando el libro está abierto se centra */
+        .book.is-open { transform: translateX(225px); }
 
-        .page {
+        .paper {
+            position: absolute;
             width: 100%;
             height: 100%;
-            position: absolute;
             top: 0;
             left: 0;
             transform-origin: left;
             transform-style: preserve-3d;
             transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
-            background: var(--paper);
-            box-shadow: inset 3px 0 10px rgba(0,0,0,0.1);
+            cursor: pointer;
         }
 
-        /* PORTADA */
-        .cover-front {
-            background-color: var(--cover);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            z-index: 5;
-            border-radius: 0 5px 5px 0;
-        }
-
-        .cover-front h1 { font-family: 'Playfair Display'; font-size: 4rem; margin: 0; }
-        .cover-front p { font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.8; }
-
-        /* PÁGINAS INTERIORES */
-        .page-content {
-            padding: 40px;
-            backface-visibility: hidden;
-            height: 100%;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .page img { width: 100%; aspect-ratio: 1/1; object-fit: cover; margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .page-text { font-size: 1.1rem; line-height: 1.6; font-style: italic; color: #444; }
-
-        /* TRASERA DE CADA PÁGINA (Para que no se vea vacío al girar) */
-        .page-back {
+        .front, .back {
             position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
-            background: #eee; /* Color de la página por detrás */
-            transform: rotateY(180deg);
+            top: 0;
+            left: 0;
             backface-visibility: hidden;
+            background-color: var(--paper);
+            box-shadow: inset 3px 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            padding: 30px;
+            box-sizing: border-box;
         }
 
-        /* ESTADOS DE GIRO */
+        .back { transform: rotateY(180deg); }
+
+        /* PORTADA Y CONTRAPORTADA */
+        .cover-img { width: 100%; height: 100%; object-fit: cover; border-radius: 2px; }
+        .page-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
+        /* ESTILOS DE TEXTO */
+        .title-page { text-align: center; justify-content: center; }
+        .title-page h1 { font-family: 'Playfair Display'; font-size: 3rem; margin-bottom: 0; }
+        .page-text { font-size: 1.2rem; line-height: 1.7; font-style: italic; color: #444; margin-top: 40px; }
+
+        /* CLASES PARA ANIMACIÓN */
         .flipped { transform: rotateY(-180deg); }
+        
+        .hint { margin-top: 20px; font-family: 'Playfair Display'; font-style: italic; opacity: 0.5; }
 
-        /* CONTRA PORTADA */
-        .cover-back { background: var(--cover); z-index: 1; border-radius: 0 5px 5px 0; }
-
-        /* INSTRUCCIONES */
-        .hint { margin-top: 30px; font-family: 'Playfair Display'; font-style: italic; opacity: 0.6; }
     </style>
 </head>
 <body>
@@ -118,84 +99,82 @@
         <a href="/palomaaguado.github.io/es/index.html">← Volver al Portfolio</a>
     </nav>
 
-    <div class="book-scene">
-        <div class="book" id="book" onclick="handleBookClick()">
+    <div class="scene">
+        <div class="book" id="book">
             
-            <div class="page cover-back"></div>
-
-            <div class="page" id="p3">
-                <div class="page-content">
-                    <img src="../es/proyectos/leo-familia.png">
-                    <div class="page-text">Un ejercicio de narrativa sensorial donde la tecnología se pone al servicio de la empatía.</div>
+            <div class="paper" id="p1" style="z-index: 4;" onclick="flip(1)">
+                <div class="front">
+                    <img src="../es/proyectos/leo1.png" class="cover-img">
+                    <div style="position: absolute; bottom: 40px; left: 0; width: 100%; text-align: center; color: white; background: rgba(0,0,0,0.2); padding: 10px 0;">
+                        <h2 style="font-family: 'Playfair Display'; margin: 0;">LEO</h2>
+                        <p style="margin: 0; font-size: 0.8rem; letter-spacing: 2px;">PALOMA AGUADO</p>
+                    </div>
                 </div>
-                <div class="page-back"></div>
+                <div class="back">
+                    <img src="../es/proyectos/leo-amigo.png" class="page-img">
+                </div>
             </div>
 
-            <div class="page" id="p2">
-                <div class="page-content">
-                    <img src="../es/proyectos/leo-armonia.png">
-                    <div class="page-text">La dirección de arte utiliza la IA para representar el contraste entre el barullo y la paz cromática.</div>
+            <div class="paper" id="p2" style="z-index: 3;" onclick="flip(2)">
+                <div class="front">
+                    <div class="page-text">
+                        "Leo escuchaba el mundo de manera diferente. Donde otros oían ruido desordenado, él percibía el susurro de una hoja al caer."
+                        <br><br>
+                        Inspirado en el cuento de Carol Vila Micó, este proyecto aborda la hipersensibilidad sonora a través de los ojos de un niño.
+                    </div>
                 </div>
-                <div class="page-back"></div>
+                <div class="back">
+                    <img src="../es/proyectos/leo-armonia.png" class="page-img">
+                </div>
             </div>
 
-            <div class="page" id="p1">
-                <div class="page-content">
-                    <img src="../es/proyectos/leo1.png">
-                    <div class="page-text">Leo escuchaba el mundo de manera diferente. Donde otros oían ruido, él percibía el susurro de las hojas.</div>
+            <div class="paper" id="p3" style="z-index: 2;" onclick="flip(3)">
+                <div class="front">
+                    <div class="page-text">
+                        La dirección de arte utiliza la IA para representar el contraste entre el barullo agobiante de la ciudad y la paz cromática de la naturaleza.
+                        <br><br>
+                        Un ejercicio de narrativa sensorial donde la tecnología se pone al servicio de la empatía.
+                    </div>
                 </div>
-                <div class="page-back"></div>
-            </div>
-
-            <div class="page cover-front" id="cover">
-                <h1>Leo</h1>
-                <p>El caballero que escuchaba los árboles</p>
-                <div style="margin-top: 40px; font-size: 0.7rem; border-top: 1px solid white; padding-top: 10px;">PALOMA AGUADO</div>
-                <div class="page-back"></div>
+                <div class="back">
+                    <img src="../es/proyectos/leo-familia.png" class="cover-img">
+                </div>
             </div>
 
         </div>
     </div>
 
-    <div class="hint">Haz clic en el libro para pasar las hojas</div>
+    <p class="hint">Haz clic en las hojas para pasar página</p>
 
     <script>
-        let currentState = 0;
-        const totalPages = 4; // Portada + 3 páginas de contenido
-        const book = document.getElementById('book');
-        const pages = [
-            document.getElementById('cover'),
+        let book = document.getElementById('book');
+        let papers = [
             document.getElementById('p1'),
             document.getElementById('p2'),
             document.getElementById('p3')
         ];
+        
+        let currentLoc = 1;
+        let maxLoc = 4;
 
-        function handleBookClick() {
-            if (currentState < totalPages) {
-                openPage();
-            } else {
-                closeBook();
+        function flip(pageNum) {
+            if (pageNum === 1 && !book.classList.contains('is-open')) {
+                book.classList.add('is-open');
             }
-        }
-
-        function openPage() {
-            if (currentState === 0) {
-                book.classList.add('open');
+            
+            if (pageNum === currentLoc) {
+                papers[currentLoc - 1].classList.add('flipped');
+                papers[currentLoc - 1].style.zIndex = currentLoc;
+                currentLoc++;
+            } else if (pageNum === currentLoc - 1) {
+                papers[currentLoc - 2].classList.remove('flipped');
+                papers[currentLoc - 2].style.zIndex = maxLoc - currentLoc + 2;
+                currentLoc--;
+                
+                if (currentLoc === 1) {
+                    book.classList.remove('is-open');
+                }
             }
-            pages[currentState].classList.add('flipped');
-            pages[currentState].style.zIndex = currentState + 5;
-            currentState++;
-        }
-
-        function closeBook() {
-            // Cerramos todas las páginas en orden inverso
-            for (let i = pages.length - 1; i >= 0; i--) {
-                setTimeout(() => {
-                    pages[i].classList.remove('flipped');
-                    if (i === 0) book.classList.remove('open');
-                }, (pages.length - 1 - i) * 150);
-            }
-            currentState = 0;
         }
     </script>
 </body>
