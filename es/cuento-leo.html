@@ -3,46 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leo — Storytelling Visual | Paloma Aguado</title>
+    <title>Leo — El caballero que escuchaba los árboles | Paloma Aguado</title>
     <link rel="stylesheet" href="../style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400&family=Gochi+Hand&display=swap" rel="stylesheet">
     <style>
         :root {
-            --color-papel: #f9f7f2; /* Color crema tipo libro */
+            --color-papel: #fdfaf3; /* Color crema más cálido, tipo papel de cuento */
             --color-texto: #2c2c2c;
+            --verde-cuento: #5d7a5c;
         }
 
         body { 
-            background-color: var(--color-papel); 
+            background-color: #e5e0d8; /* Fondo de la "mesa" sobre la que está el libro */
+            /* Textura de papel sutil aplicada a todo el cuerpo */
+            background-image: url('https://www.transparenttextures.com/patterns/parchment.png');
             color: var(--color-texto);
             font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
         }
 
-        /* Títulos estilo editorial */
-        h1, h2, h4 { 
-            font-family: 'Playfair Display', serif; 
-            font-weight: 700;
+        /* Contenedor principal que simula el libro abierto */
+        .book-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            background-color: var(--color-papel);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0; /* Sin gap para que las páginas se unan */
+            box-shadow: 0 40px 80px rgba(0,0,0,0.15);
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            min-height: 85vh;
         }
 
-        .case-header { padding: 80px 5%; text-align: center; }
-
-        .case-container { 
-            max-width: 1200px; 
-            margin: 0 auto; 
-            padding: 20px; 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 80px; 
-            align-items: center; 
+        /* Línea de sombra central (el lomo del libro) */
+        .book-container::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 40px;
+            background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.03), rgba(0,0,0,0.08), rgba(0,0,0,0.03), rgba(0,0,0,0));
+            transform: translateX(-50%);
+            pointer-events: none;
         }
 
-        /* Galería estilo Libro */
+        /* PÁGINA IZQUIERDA: Visual */
+        .page-visual {
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-right: 1px solid rgba(0,0,0,0.05);
+        }
+
         .book-gallery {
             background: white;
-            padding: 30px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
-            border-radius: 4px;
+            padding: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             border: 1px solid #e0ddd5;
+            width: 100%;
+            max-width: 450px;
+            transform: rotate(-1deg); /* Ligera inclinación orgánica */
         }
 
         .main-view { 
@@ -53,84 +79,116 @@
             object-fit: cover;
         }
 
-        /* Miniaturas */
-        .carousel-wrapper { margin-top: 30px; display: flex; align-items: center; gap: 10px; }
-        .carousel-container { display: flex; overflow-x: auto; gap: 10px; scrollbar-width: none; }
-        .carousel-item { 
-            flex: 0 0 80px; 
-            cursor: pointer; 
-            opacity: 0.5; 
-            transition: 0.3s; 
-            border: 1px solid #ddd;
+        /* PÁGINA DERECHA: Texto */
+        .page-text {
+            padding: 80px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-        .carousel-item.active { opacity: 1; border-color: var(--color-texto); }
 
-        /* Etiquetas */
+        h1 { 
+            font-family: 'Gochi Hand', cursive; /* Nombre de Leo más juguetón */
+            font-size: 4.5rem; 
+            margin: 0;
+            color: var(--verde-cuento);
+        }
+
+        h4 { 
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #888;
+            margin-bottom: 30px;
+            font-size: 1.3rem;
+        }
+
         .tag { 
             display: inline-block; 
-            background: transparent; 
-            border: 1px solid var(--color-texto);
-            color: var(--color-texto); 
-            padding: 5px 15px; 
+            border: 1px solid var(--verde-cuento);
+            color: var(--verde-cuento); 
+            padding: 4px 12px; 
             border-radius: 20px; 
-            font-size: 0.7rem; 
+            font-size: 0.65rem; 
             text-transform: uppercase; 
             letter-spacing: 1px;
             margin-bottom: 20px;
         }
 
-        .briefing-info p { 
+        .quote {
             font-family: 'Playfair Display', serif; 
-            font-size: 1.2rem; 
-            line-height: 1.8; 
+            font-size: 1.4rem; 
+            line-height: 1.6; 
             font-style: italic; 
             color: #444;
+            border-left: 3px solid var(--verde-cuento);
+            padding-left: 20px;
+            margin-bottom: 30px;
         }
 
-        @media (max-width: 900px) {
-            .case-container { grid-template-columns: 1fr; gap: 40px; }
+        .description {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #555;
+            max-width: 450px;
+        }
+
+        /* Miniaturas */
+        .carousel-wrapper { margin-top: 40px; width: 100%; max-width: 450px; }
+        .carousel-container { display: flex; gap: 10px; overflow-x: auto; scrollbar-width: none; }
+        .carousel-item { flex: 0 0 70px; cursor: pointer; opacity: 0.4; transition: 0.3s; border: 1px solid transparent; }
+        .carousel-item.active { opacity: 1; border-color: var(--verde-cuento); }
+
+        @media (max-width: 950px) {
+            .book-container { grid-template-columns: 1fr; margin: 20px; }
+            .book-container::after { display: none; }
+            .page-text { padding: 40px; }
         }
     </style>
 </head>
 <body>
 
-    <nav style="padding: 40px 5%;">
-        <a href="/palomaaguado.github.io/es/index.html" style="text-decoration: none; color: #000; font-size: 0.8rem; letter-spacing: 2px;">← Volver a Proyectos</a>
+    <nav style="padding: 30px 5%;">
+        <a href="/palomaaguado.github.io/es/index.html" style="text-decoration: none; color: #2c2c2c; font-size: 0.8rem; letter-spacing: 2px; font-weight: bold;">← CERRAR LIBRO</a>
     </nav>
 
-    <main class="case-container">
-        <div class="book-gallery">
-            <img id="activePage" src="../es/proyectos/leo1.png" class="main-view" alt="Leo">
+    <main class="book-container">
+        
+        <div class="page-visual">
+            <div class="book-gallery">
+                <img id="activePage" src="../es/proyectos/leo1.png" class="main-view" alt="Leo">
+            </div>
             
             <div class="carousel-wrapper">
-                <div class="carousel-container" id="thumbContainer">
+                <div class="carousel-container">
                     <div class="carousel-item active" onclick="updateView(this)"><img src="../es/proyectos/leo1.png" width="100%"></div>
                     <div class="carousel-item" onclick="updateView(this)"><img src="../es/proyectos/leo-amigo.png" width="100%"></div>
                     <div class="carousel-item" onclick="updateView(this)"><img src="../es/proyectos/leo-armonia.png" width="100%"></div>
-                     <div class="carousel-item" onclick="updateView(this)"><img src="../es/proyectos/leo-campamento.png" width="100%"></div>
-                     <div class="carousel-item" onclick="updateView(this)"><img src="../es/proyectos/leo-familia.png" width="100%"></div>
+                    <div class="carousel-item" onclick="updateView(this)"><img src="../es/proyectos/leo-campamento.png" width="100%"></div>
+                    <div class="carousel-item" onclick="updateView(this)"><img src="../es/proyectos/leo-familia.png" width="100%"></div>
                 </div>
             </div>
         </div>
 
-       <div class="briefing-info">
-    <span class="tag">Proyecto Editorial & IA</span>
-    <h1 style="font-size: 4rem; margin: 0 0 10px 0;">Leo</h1>
-    <h4 style="color: #888; margin-bottom: 40px;">El caballero que escuchaba los árboles.</h4>
-    
-    <p>"Leo escuchaba el mundo de manera diferente. Donde otros oían ruido desordenado, él era capaz de percibir el susurro de una hoja al caer."</p>
-    
-    <div style="margin-top: 50px; font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #666; max-width: 400px; line-height: 1.6;">
-        <strong>Dirección de Arte y Narrativa Sensorial</strong><br>
-        Inspirado en el cuento de Carol Vila Micó, este proyecto visual aborda la hipersensibilidad sonora y el autodescubrimiento a través de los ojos de un niño. 
-        <br><br>
-        La dirección de arte utiliza la IA para representar ese contraste entre el "barullo" agobiante de la ciudad y la paz cromática de la naturaleza, donde Leo encuentra su verdadero superpoder: la capacidad de escuchar lo que otros ignoran.
-    </div>
-</div>
+        <div class="page-text">
+            <span class="tag">Proyecto Editorial & IA</span>
+            <h1>Leo</h1>
+            <h4>El caballero que escuchaba los árboles.</h4>
+            
+            <div class="quote">
+                "Leo escuchaba el mundo de manera diferente. Donde otros oían ruido desordenado, él era capaz de percibir el susurro de una hoja al caer."
+            </div>
+            
+            <div class="description">
+                <p><strong>Dirección de Arte y Narrativa Sensorial</strong></p>
+                <p>Inspirado en el cuento de <strong>Carol Vila Micó</strong>, este proyecto visual aborda la hipersensibilidad sonora y el autodescubrimiento a través de los ojos de un niño.</p>
+                <p>La dirección de arte utiliza la IA para representar el contraste entre el barullo agobiante de la ciudad y la paz cromática de la naturaleza, donde Leo encuentra su verdadero superpoder: la capacidad de escuchar lo que otros ignoran.</p>
+            </div>
+        </div>
+
     </main>
 
-    <footer style="text-align: center; padding: 100px 0; opacity: 0.4; font-size: 0.7rem; letter-spacing: 2px;">
-        © 2026 PALOMA AGUADO
+    <footer style="text-align: center; padding: 60px 0; opacity: 0.4; font-size: 0.7rem; letter-spacing: 2px; color: #2c2c2c;">
+        © 2026 PALOMA AGUADO — ESTRATEGIA CREATIVA
     </footer>
 
     <script>
