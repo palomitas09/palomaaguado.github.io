@@ -26,11 +26,10 @@
         nav { width: 100%; padding: 20px; position: absolute; top: 0; z-index: 100; }
         nav a { text-decoration: none; color: var(--ink); font-family: 'Playfair Display'; font-style: italic; font-size: 0.9rem; margin-left: 20px; }
 
-        /* ESCENA 3D */
         .scene {
-            width: 1000px; /* Doble del ancho de una página */
+            width: 1000px;
             height: 600px;
-            margin-top: 80px;
+            margin-top: 60px;
             perspective: 2000px;
             display: flex;
             justify-content: center;
@@ -39,13 +38,12 @@
 
         .book {
             position: relative;
-            width: 450px; /* Ancho de una página */
-            height: 550px;
+            width: 450px; 
+            height: 580px;
             transition: transform 0.5s;
             transform-style: preserve-3d;
         }
 
-        /* Cuando el libro está abierto se centra */
         .book.is-open { transform: translateX(225px); }
 
         .paper {
@@ -69,28 +67,49 @@
             backface-visibility: hidden;
             background-color: var(--paper);
             box-shadow: inset 3px 0 10px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: column;
-            padding: 30px;
             box-sizing: border-box;
+            overflow: hidden;
         }
 
         .back { transform: rotateY(180deg); }
 
-        /* PORTADA Y CONTRAPORTADA */
-        .cover-img { width: 100%; height: 100%; object-fit: cover; border-radius: 2px; }
-        .page-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        /* Imágenes a sangre (toda la página) */
+        .full-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
 
-        /* ESTILOS DE TEXTO */
-        .title-page { text-align: center; justify-content: center; }
-        .title-page h1 { font-family: 'Playfair Display'; font-size: 3rem; margin-bottom: 0; }
-        .page-text { font-size: 1.2rem; line-height: 1.7; font-style: italic; color: #444; margin-top: 40px; }
+        /* Contenedor de texto editorial */
+        .text-content {
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
 
-        /* CLASES PARA ANIMACIÓN */
+        .page-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            font-style: italic;
+            color: #444;
+        }
+
+        .credits {
+            margin-top: 30px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+
         .flipped { transform: rotateY(-180deg); }
         
         .hint { margin-top: 20px; font-family: 'Playfair Display'; font-style: italic; opacity: 0.5; }
-
     </style>
 </head>
 <body>
@@ -102,73 +121,95 @@
     <div class="scene">
         <div class="book" id="book">
             
-            <div class="paper" id="p1" style="z-index: 4;" onclick="flip(1)">
+            <div class="paper" id="p1" style="z-index: 6;" onclick="flip(1)">
                 <div class="front">
-                    <img src="../es/proyectos/leo1.png" class="cover-img">
-                    <div style="position: absolute; bottom: 40px; left: 0; width: 100%; text-align: center; color: white; background: rgba(0,0,0,0.2); padding: 10px 0;">
-                        <h2 style="font-family: 'Playfair Display'; margin: 0;">LEO</h2>
-                        <p style="margin: 0; font-size: 0.8rem; letter-spacing: 2px;">PALOMA AGUADO</p>
-                    </div>
+                    <img src="../es/proyectos/leo1.png" class="full-img">
                 </div>
                 <div class="back">
-                    <img src="../es/proyectos/leo-amigo.png" class="page-img">
+                    <img src="../es/proyectos/leo-amigo.png" class="full-img">
                 </div>
             </div>
 
-            <div class="paper" id="p2" style="z-index: 3;" onclick="flip(2)">
+            <div class="paper" id="p2" style="z-index: 5;" onclick="flip(2)">
                 <div class="front">
-                    <div class="page-text">
-                        "Leo escuchaba el mundo de manera diferente. Donde otros oían ruido desordenado, él percibía el susurro de una hoja al caer."
-                        <br><br>
-                        Inspirado en el cuento de Carol Vila Micó, este proyecto aborda la hipersensibilidad sonora a través de los ojos de un niño.
+                    <div class="text-content">
+                        <div class="page-text">
+                            "Leo escuchaba el mundo de manera diferente. Donde otros oían ruido desordenado, él percibía el susurro de una hoja al caer."
+                        </div>
+                        <div class="credits">
+                            Escrito por Carol Vila Micó<br>
+                            Ilustrado por Paloma Aguado
+                        </div>
                     </div>
                 </div>
                 <div class="back">
-                    <img src="../es/proyectos/leo-armonia.png" class="page-img">
+                    <img src="../es/proyectos/leo-armonia.png" class="full-img">
                 </div>
             </div>
 
-            <div class="paper" id="p3" style="z-index: 2;" onclick="flip(3)">
+            <div class="paper" id="p3" style="z-index: 4;" onclick="flip(3)">
                 <div class="front">
-                    <div class="page-text">
-                        La dirección de arte utiliza la IA para representar el contraste entre el barullo agobiante de la ciudad y la paz cromática de la naturaleza.
-                        <br><br>
-                        Un ejercicio de narrativa sensorial donde la tecnología se pone al servicio de la empatía.
+                    <div class="text-content">
+                        <div class="page-text">
+                            La dirección de arte utiliza la IA para representar el contraste entre el barullo de la ciudad y la paz de la naturaleza.
+                        </div>
                     </div>
                 </div>
                 <div class="back">
-                    <img src="../es/proyectos/leo-familia.png" class="cover-img">
+                    <img src="../es/proyectos/leo-campamento.png" class="full-img">
+                </div>
+            </div>
+
+            <div class="paper" id="p4" style="z-index: 3;" onclick="flip(4)">
+                <div class="front">
+                    <div class="text-content">
+                        <div class="page-text">
+                            Un ejercicio de narrativa sensorial donde la tecnología se pone al servicio de la empatía.
+                        </div>
+                    </div>
+                </div>
+                <div class="back">
+                    <img src="../es/proyectos/leo-familia.png" class="full-img">
+                </div>
+            </div>
+
+            <div class="paper" id="p5" style="z-index: 2;" onclick="flip(5)">
+                <div class="front">
+                    <div class="text-content">
+                        <div class="page-text">
+                            Leo descubrió que su peculiar manera de interpretar el mundo era, en realidad, su mayor tesoro.
+                        </div>
+                    </div>
+                </div>
+                <div class="back">
+                    <img src="../es/proyectos/leo-familia.png" class="full-img">
                 </div>
             </div>
 
         </div>
     </div>
 
-    <p class="hint">Haz clic en las hojas para pasar página</p>
+    <p class="hint">Haz clic en los bordes para pasar las hojas</p>
 
     <script>
         let book = document.getElementById('book');
-        let papers = [
-            document.getElementById('p1'),
-            document.getElementById('p2'),
-            document.getElementById('p3')
-        ];
-        
         let currentLoc = 1;
-        let maxLoc = 4;
+        let totalPapers = 5;
 
         function flip(pageNum) {
             if (pageNum === 1 && !book.classList.contains('is-open')) {
                 book.classList.add('is-open');
             }
             
+            let paper = document.getElementById('p' + pageNum);
+
             if (pageNum === currentLoc) {
-                papers[currentLoc - 1].classList.add('flipped');
-                papers[currentLoc - 1].style.zIndex = currentLoc;
+                paper.classList.add('flipped');
+                paper.style.zIndex = pageNum;
                 currentLoc++;
             } else if (pageNum === currentLoc - 1) {
-                papers[currentLoc - 2].classList.remove('flipped');
-                papers[currentLoc - 2].style.zIndex = maxLoc - currentLoc + 2;
+                paper.classList.remove('flipped');
+                paper.style.zIndex = totalPapers - pageNum + 1;
                 currentLoc--;
                 
                 if (currentLoc === 1) {
