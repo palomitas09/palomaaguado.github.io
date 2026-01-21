@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexa — Cuento Ilustrado | Paloma Aguado</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .case-header { background-color: #f4f4f4; color: #111; padding: 80px 5%; text-align: center; border-bottom: 1px solid #eee; }
+        .case-container { max-width: 1100px; margin: 0 auto; padding: 50px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+        .book-gallery { position: sticky; top: 20px; }
+        .main-view { width: 100%; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); transition: opacity 0.3s ease; }
+        .carousel-wrapper { position: relative; margin-top: 20px; display: flex; align-items: center; }
+        .carousel-container { display: flex; overflow-x: auto; gap: 15px; scrollbar-width: none; scroll-snap-type: x mandatory; scroll-behavior: smooth; }
+        .carousel-container::-webkit-scrollbar { display: none; }
+        .carousel-item { flex: 0 0 100px; aspect-ratio: 1; border-radius: 8px; overflow: hidden; cursor: pointer; scroll-snap-align: start; opacity: 0.6; transition: 0.3s; border: 2px solid transparent; }
+        .carousel-item:hover, .carousel-item.active { opacity: 1; border-color: #000; }
+        .carousel-item img { width: 100%; height: 100%; object-fit: cover; }
+        .nav-arrow { background: #000; color: #fff; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; position: absolute; z-index: 10; font-size: 1rem; }
+        .prev-arrow { left: -15px; } .next-arrow { right: -15px; }
+        .briefing-info h4 { text-transform: uppercase; font-size: 0.8rem; color: #888; margin: 30px 0 10px 0; letter-spacing: 1px; }
+        .tag { display: inline-block; background: #eee; color: #333; padding: 6px 14px; border-radius: 4px; font-size: 0.75rem; margin-right: 8px; margin-bottom: 10px; text-transform: uppercase; font-weight: bold; }
+        .ia-badge { background: #000; color: #fff; }
+        @media (max-width: 850px) { .case-container { grid-template-columns: 1fr; } .book-gallery { position: relative; order: -1; } }
+    </style>
+</head>
+<body>
+
+    <nav style="padding: 30px 5%;">
+        <a href="index.html" style="text-decoration: none; color: #111; font-weight: bold;">← VOLVER A PROYECTOS</a>
+    </nav>
+
+    <main class="case-container">
+        <div class="book-gallery">
+            <img id="activePage" src="../es/proyectos/alexa_portada.jpg" class="main-view" alt="Portada Alexa">
+            <div class="carousel-wrapper">
+                <button class="nav-arrow prev-arrow" onclick="moveCarousel(-1)">❮</button>
+                <div class="carousel-container" id="thumbContainer">
+                    <div class="carousel-item active" onclick="updateView(this)"><img src="../es/proyectos/alexa_portada.jpg"></div>
+                    <div class="carousel-item" onclick="updateView(this)"><img src="../es/proyectos/alexa_pag1.jpg"></div>
+                    <div class="carousel-item" onclick="updateView(this)"><img src="../es/proyectos/alexa_pag2.jpg"></div>
+                    <div class="carousel-item" onclick="updateView(this)"><img src="../es/proyectos/alexa_pag3.jpg"></div>
+                </div>
+                <button class="nav-arrow next-arrow" onclick="moveCarousel(1)">❯</button>
+            </div>
+        </div>
+
+        <div class="briefing-info">
+            <h1 style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px;">Alexa</h1>
+            <p style="color: #888; font-style: italic;">Escrito por [Nombre de tu amiga]</p>
+            
+            <div style="margin-top: 20px;">
+                <span class="tag ia-badge">Art Direction & IA</span>
+                <span class="tag">Conceptual Design</span>
+            </div>
+
+            <h4>Explorando a Alexa</h4>
+            <p>A diferencia de otros relatos, "Alexa" demandaba una paleta visual más [ej: técnica/vibrante/compleja]. El proyecto se centró en cómo la inteligencia artificial puede interpretar emociones humanas sutiles.</p>
+
+            <h4>El Desafío Visual</h4>
+            <p>El reto principal fue la <strong>consistencia del personaje</strong> a través de diferentes escenarios. Mediante el uso de prompts estructurados y una dirección de arte meticulosa, se logró un hilo conductor visual que dota al cuento de una identidad única.</p>
+            
+            <div style="background: #f9f9f9; padding: 25px; border-radius: 8px; margin-top: 40px; border-left: 4px solid #000;">
+                <p style="font-size: 0.85rem; margin: 0; color: #555; line-height: 1.5;">
+                    <strong>Innovación Tecnológica:</strong> Este libro es un testimonio del potencial de la IA generativa como herramienta de soporte para la creación editorial independiente.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer style="text-align: center; padding: 60px 0; color: #bbb; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;">
+        © 2026 PALOMA AGUADO — CREATIVE STRATEGY
+    </footer>
+
+    <script>
+        function updateView(element) {
+            const mainImg = document.getElementById('activePage');
+            const thumbs = document.querySelectorAll('.carousel-item');
+            mainImg.style.opacity = '0';
+            setTimeout(() => {
+                mainImg.src = element.querySelector('img').src;
+                mainImg.style.opacity = '1';
+            }, 200);
+            thumbs.forEach(t => t.classList.remove('active'));
+            element.classList.add('active');
+        }
+        function moveCarousel(dir) {
+            document.getElementById('thumbContainer').scrollBy({ left: dir * 150, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
