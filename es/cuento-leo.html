@@ -68,11 +68,23 @@
             background-color: var(--paper);
             box-shadow: inset 3px 0 10px rgba(0,0,0,0.1);
             box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             overflow: hidden;
         }
 
         .back { transform: rotateY(180deg); }
-        .full-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        /* Ajuste para que las imágenes salgan ENTERAS */
+        .full-img { 
+            max-width: 100%; 
+            max-height: 100%; 
+            width: auto;
+            height: auto;
+            object-fit: contain; /* Esto asegura que no se corten los personajes */
+            display: block; 
+        }
 
         .text-content {
             padding: 60px 45px;
@@ -80,21 +92,25 @@
             flex-direction: column;
             justify-content: center;
             height: 100%;
+            width: 100%;
             box-sizing: border-box;
         }
 
-        h4 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin: 0 0 15px 0; color: var(--ink); }
-        .page-text { font-size: 1.1rem; line-height: 1.6; color: #444; margin-bottom: 15px; }
-        .quote { font-style: italic; border-left: 2px solid #d1ccc0; padding-left: 15px; margin: 15px 0; color: #666; font-size: 1rem; }
+        h1, h4 { font-family: 'Playfair Display', serif; color: var(--ink); margin: 0 0 15px 0; }
+        h1 { font-size: 3.5rem; text-align: center; }
+        h4 { font-size: 1.8rem; }
+        
+        .page-text { font-size: 1.15rem; line-height: 1.7; color: #444; margin-bottom: 20px; }
+        .quote { font-style: italic; border-left: 2px solid #d1ccc0; padding-left: 15px; margin: 20px 0; color: #666; }
 
         .credits-box {
             margin-top: auto;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: #999;
             border-top: 1px solid #eee;
-            padding-top: 15px;
+            padding-top: 20px;
         }
 
         .flipped { transform: rotateY(-180deg); }
@@ -122,7 +138,7 @@
             <div class="paper" id="p2" style="z-index: 7;" onclick="flip(2)">
                 <div class="front">
                     <div class="text-content">
-                        <h4>El Universo de Leo</h4>
+                        <h1>Leo</h1>
                         <div class="page-text">
                             Este proyecto editorial nace de la necesidad de dar vida a los paisajes internos de "Leo". La narrativa requería una estética que combinara la inocencia con la profundidad del relato.
                         </div>
@@ -145,10 +161,10 @@
                     <div class="text-content">
                         <h4>Dirección de Arte</h4>
                         <div class="page-text">
-                            Utilizando herramientas de IA, se trabajó en una atmósfera coherente que capturara la esencia del protagonista. Cada ilustración acompaña el ritmo pausado de la historia.
+                            Utilizando herramientas de generación de imagen por IA, se trabajó en la creación de una atmósfera coherente que capturara la esencia del protagonista. 
                         </div>
                         <div class="page-text">
-                            Leo escucha el mundo de manera diferente. Donde otros oyen ruido, él percibe el susurro de una hoja al caer.
+                            Cada ilustración fue seleccionada y refinada para asegurar que el lenguaje visual acompañara el ritmo pausado de la historia.
                         </div>
                     </div>
                 </div>
@@ -161,10 +177,7 @@
                 <div class="front">
                     <div class="text-content">
                         <div class="page-text">
-                            Muchas veces, si hay mucho ruido, Leo se agobia y se revolvía sin control. Los señores de bata blanca explicaron que su cerebro procesa los sonidos de forma única.
-                        </div>
-                        <div class="page-text">
-                            La IA permite representar ese contraste visual entre el barullo y la calma.
+                            "Leo escuchaba el mundo de manera diferente. Donde otros oían ruido desordenado, él era capaz de percibir el susurro de una hoja al caer."
                         </div>
                     </div>
                 </div>
@@ -177,7 +190,7 @@
                 <div class="front">
                     <div class="text-content">
                         <div class="page-text">
-                            En un campamento conoció a Carlos, un niño que tenía una "oreja especial". Él le enseñó que escuchar distinto no es malo, es solo otra forma de sentir el mundo.
+                            A través de esta narrativa visual, exploramos la hipersensibilidad sensorial y cómo los entornos pacíficos transforman la percepción de Leo.
                         </div>
                     </div>
                 </div>
@@ -190,7 +203,7 @@
                 <div class="front">
                     <div class="text-content">
                         <div class="page-text">
-                            Leo comprendió que su cualidad era un superpoder. Podía escuchar notas musicales que otros no llegaban a percibir y aprendió a abrazar de una manera especial.
+                            "He hecho un nuevo amigo... Se llama Carlos y escucha el mundo de manera diferente, igual que yo."
                         </div>
                     </div>
                 </div>
@@ -203,10 +216,7 @@
                 <div class="front">
                     <div class="text-content">
                         <div class="page-text">
-                            "¡Mamá! He hecho un nuevo amigo. Se llama Carlos y escucha el mundo de manera diferente, igual que yo."
-                        </div>
-                        <div class="page-text">
-                            Leo aprendió que las pérdidas pueden ser ganancias.
+                            Un ejercicio de empatía y tecnología al servicio del arte, dando forma a una historia necesaria sobre la diversidad.
                         </div>
                     </div>
                 </div>
@@ -217,10 +227,9 @@
 
             <div class="paper" id="p8" style="z-index: 1;" onclick="flip(8)">
                 <div class="front">
-                    <div class="text-content" style="text-align: center;">
-                        <h4>Fin del viaje</h4>
-                        <div class="page-text">
-                            Un proyecto de Paloma Aguado basado en el texto de Carol Vila Micó.
+                    <div class="text-content">
+                        <div class="page-text" style="text-align: center; font-style: normal; opacity: 0.6;">
+                            © 2026 Paloma Aguado
                         </div>
                     </div>
                 </div>
@@ -232,7 +241,7 @@
         </div>
     </div>
 
-    <p class="hint">Haz clic en el libro para descubrir la historia</p>
+    <p class="hint">Haz clic en el libro para pasar página</p>
 
     <script>
         let book = document.getElementById('book');
