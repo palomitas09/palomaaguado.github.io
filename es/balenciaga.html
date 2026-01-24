@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balenciaga: Estudio de Neuromarketing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --balenciaga-black: #000000;
+            --balenciaga-grey: #f2f2f2;
+            --accent-red: #d0021b; /* Para resaltar el concepto de crisis/error */
+            --text: #333;
+        }
+
+        body { font-family: 'Montserrat', sans-serif; margin: 0; line-height: 1.6; color: var(--text); }
+        
+        /* Franja de navegación NEGRA */
+        nav { padding: 20px; background: var(--balenciaga-black); position: sticky; top: 0; z-index: 1000; }
+        nav a { text-decoration: none; color: #fff; font-weight: 300; font-size: 0.9rem; letter-spacing: 1px; }
+
+        .hero {
+            height: 70vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('../es/proyectos/balenciaga-hero.jpg') center/cover;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            color: white; text-align: center;
+        }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin: 0; letter-spacing: 4px; text-transform: uppercase; }
+        .hero p { color: #ccc; font-weight: 300; text-transform: uppercase; letter-spacing: 3px; margin-top: 10px; }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
+
+        .project-meta {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px; border-bottom: 1px solid #ddd; padding-bottom: 40px; margin-bottom: 40px;
+        }
+        .meta-item h4 { color: var(--balenciaga-black); text-transform: uppercase; font-size: 0.8rem; margin-bottom: 5px; }
+
+        .concept-box {
+            background-color: var(--balenciaga-grey); padding: 40px;
+            border-left: 8px solid var(--balenciaga-black); margin: 40px 0;
+        }
+        .concept-box h3 { color: var(--balenciaga-black); margin-top: 0; text-transform: uppercase; font-size: 1.2rem; }
+
+        .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        .gallery img { width: 100%; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-radius: 2px; filter: grayscale(20%); }
+        .gallery img.full { grid-column: span 2; }
+
+        footer { background: var(--balenciaga-black); color: white; text-align: center; padding: 40px; font-size: 0.8rem; letter-spacing: 1px; }
+    </style>
+</head>
+<body>
+
+    <nav><a href="/palomaaguado.github.io/es/index.html">← VOLVER AL PORTFOLIO</a></nav>
+
+    <header class="hero">
+        <p>Neuromarketing & Consumer Behavior</p>
+        <h1>BALENCIAGA <span style="color: #999;">CRISIS</span></h1>
+    </header>
+
+    <main class="container">
+        <section class="project-meta">
+            <div class="meta-item"><h4>Estudio</h4><p>Hipersexualización Infantil</p></div>
+            <div class="meta-item"><h4>Metodología</h4><p>Análisis de Neuromarketing</p></div>
+            <div class="meta-item"><h4>Foco</h4><p>Ética Publicitaria</p></div>
+            <div class="meta-item"><h4>Herramientas</h4><p>Eye-tracking & Biometría</p></div>
+        </section>
+
+        <section>
+            <h2 style="color: var(--balenciaga-black); text-transform: uppercase;">Análisis de una <span style="color: var(--accent-red);">Estrategia Fallida</span></h2>
+            <p>Análisis profundo de la campaña Primavera/Verano 2023 de Balenciaga. El estudio examina cómo el uso de elementos disruptivos y fuera de contexto generó un rechazo instintivo en el consumidor, analizando la percepción visual y la respuesta emocional ante la controversia.</p>
+        </section>
+
+        <section class="concept-box">
+            <h3>"El límite de la provocación"</h3>
+            <p>A través del neuromarketing, identificamos cómo la marca rompió los esquemas mentales del consumidor, transformando una intención de "pensamiento crítico" en una crisis de reputación global y rechazo de marca.</p>
+        </section>
+
+        <section class="gallery">
+            <img src="../es/proyectos/balenciaga-1.jpg" alt="Análisis del Sector Moda">
+            <img src="../es/proyectos/balenciaga-2.jpg" alt="Objetivos del Estudio">
+            
+            <img src="../es/proyectos/balenciaga-3.jpg" alt="Análisis de Atención Visual">
+            <img src="../es/proyectos/balenciaga-4.jpg" alt="Mapas de Calor y Biometría">
+            
+            <img src="../es/proyectos/balenciaga-5.jpg" class="full" alt="Conclusiones y Recomendaciones Éticas">
+        </section>
+    </main>
+
+    <footer><p>© 2026 Paloma Aguado — Research & Insights</p></footer>
+</body>
+</html>
