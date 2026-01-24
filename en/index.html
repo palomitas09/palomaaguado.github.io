@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paloma Aguado | Portfolio</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
     <style>
         /* Quitamos subrayados feos */
         nav a, .project-card a {
@@ -42,7 +42,7 @@
             height: 500px;
             overflow: hidden;
             position: relative;
-            margin-bottom: 0 !important;
+            margin-bottom: 0 !important; 
         }
 
         .project-card img {
@@ -51,23 +51,9 @@
             object-fit: cover;
         }
 
-        /* Caja de Coming Soon */
-        .coming-soon-placeholder {
-            height: 500px;
-            background-color: #f9f9f9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ccc;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.8rem;
-            border: 1px solid #eee;
-        }
-
         @media (max-width: 768px) {
             .gallery-grid { grid-template-columns: 1fr; }
-            .project-card, .coming-soon-placeholder { height: 350px; }
+            .project-card { height: 350px; }
         }
     </style>
 </head>
@@ -77,9 +63,9 @@
     <header>
         <div class="logo">PALOMA AGUADO</div>
         <nav>
-            <a href="/palomaaguado.github.io/es/contacto.html">Contact</a> 
+            <a href="/palomaaguado.github.io/en/contact.html">Contacto</a> 
             <span style="margin: 0 10px; color: #ccc;">|</span>
-            <a href="/palomaaguado.github.io/es/index.html">Español</a>
+            <a href="/palomaaguado.github.io/es/index.html">English</a>
         </nav>
     </header>
 
@@ -109,6 +95,7 @@
                     </div>
                 </a>
             </div>
+        </div> 
 
         <h2 class="section-title">Real Estate Strategy</h2>
         <div class="gallery-grid">
@@ -131,6 +118,33 @@
                         <div class="text">
                             Vivendex<br>
                             <span>Creative Direction</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <h2 class="section-title">Storytelling visual e IA</h2>
+        <div class="gallery-grid">
+            <div class="project-card">
+                <a href="/palomaaguado.github.io/en/cuento-leo.html">
+                    <img src="/palomaaguado.github.io/es/proyectos/leo1.png" alt="Leo - Cuento Ilustrado">
+                    <div class="overlay">
+                        <div class="text">
+                            Leo<br>
+                            <span>Visual Storytelling & AI</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="project-card">
+                <a href="/palomaaguado.github.io/es/cuento-alexa.html">
+                    <img src="../es/proyectos/alexa_portada.jpg" alt="Alexa - Cuento Ilustrado">
+                    <div class="overlay">
+                        <div class="text">
+                            Alexa<br>
+                            <span>Visual Storytelling & IA</span>
                         </div>
                     </div>
                 </a>
