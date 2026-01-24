@@ -58,7 +58,7 @@
 
         .scene {
             position: relative;
-            z-index: 10; /* Por encima de la nieve */
+            z-index: 10; 
             width: 1000px;
             height: 600px;
             margin-top: 60px;
@@ -111,7 +111,20 @@
             height: 100%; width: 100%; box-sizing: border-box;
         }
 
-        h1 { font-family: var(--font-main); font-size: 3.5rem; text-align: center; font-style: italic; color: var(--bg-winter); margin-bottom: 20px;}
+        /* NUEVO ESTILO PARA EL TÍTULO ALEXA */
+        h1 { 
+            font-family: var(--font-main); 
+            font-size: 4rem; 
+            text-align: center; 
+            font-style: italic; 
+            font-weight: 400; 
+            color: #1a2a3a; 
+            margin-bottom: 30px;
+            letter-spacing: 5px; 
+            text-transform: capitalize;
+            opacity: 0.9;
+        }
+
         h4 { font-family: var(--font-main); font-size: 1.6rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 20px; }
 
         .page-text { 
@@ -193,7 +206,6 @@
     <p class="hint">Haz clic en el libro para pasar página</p>
 
     <script>
-        // Lógica del Libro
         let book = document.getElementById('book');
         let currentLoc = 1;
         let totalPapers = 4;
@@ -215,14 +227,12 @@
             }
         }
 
-        // Lógica de la Nieve (Generador automático)
         const snowContainer = document.getElementById('snow');
         const snowflakeCount = 50;
 
         for (let i = 0; i < snowflakeCount; i++) {
             const flake = document.createElement('div');
             flake.classList.add('snowflake');
-            
             const size = Math.random() * 5 + 2 + 'px';
             flake.style.width = size;
             flake.style.height = size;
@@ -230,7 +240,6 @@
             flake.style.opacity = Math.random();
             flake.style.animationDuration = Math.random() * 3 + 2 + 's';
             flake.style.animationDelay = Math.random() * 5 + 's';
-            
             snowContainer.appendChild(flake);
         }
     </script>
