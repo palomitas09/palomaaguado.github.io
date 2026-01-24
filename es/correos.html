@@ -13,8 +13,10 @@
         }
 
         body { font-family: 'Montserrat', sans-serif; margin: 0; line-height: 1.6; color: var(--text); }
-        nav { padding: 20px; background: var(--correos-blue); position: sticky; top: 0; z-index: 1000; }
-        nav a { text-decoration: none; color: white; font-weight: 300; font-size: 0.9rem; }
+        
+        /* 1. Franja de navegación AMARILLA (como pediste) */
+        nav { padding: 20px; background: var(--correos-yellow); position: sticky; top: 0; z-index: 1000; }
+        nav a { text-decoration: none; color: #000; font-weight: 600; font-size: 0.9rem; }
 
         .hero {
             height: 70vh;
@@ -28,6 +30,7 @@
 
         .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
 
+        /* 2. Detalles del proyecto en AZUL y AMARILLO */
         .project-meta {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px; border-bottom: 2px solid var(--correos-yellow); padding-bottom: 40px; margin-bottom: 40px;
@@ -41,9 +44,10 @@
         .concept-box h3 { color: var(--correos-blue); margin-top: 0; }
 
         .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
-        .gallery img { width: 100%; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-radius: 4px; }
+        .gallery img { width: 100%; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-radius: 4px; object-fit: cover; }
         .gallery img.full { grid-column: span 2; }
 
+        /* 3. Footer en AZUL original */
         footer { background: var(--correos-blue); color: white; text-align: center; padding: 40px; font-size: 0.8rem; }
     </style>
 </head>
@@ -60,31 +64,31 @@
         <section class="project-meta">
             <div class="meta-item"><h4>Objetivo</h4><p>Conversión y Branding</p></div>
             <div class="meta-item"><h4>Rol</h4><p>Planificación de Medios</p></div>
-            <div class="meta-item"><h4>Target</h4><p>Jóvenes (18-35 años)</p></div>
-            <div class="meta-item"><h4>Canales</h4><p>Social Ads, Spotify, Mupis</p></div>
+            <div class="meta-item"><h4>Target</h4><p>Generación Z (18-35 años)</p></div>
+            <div class="meta-item"><h4>Canales</h4><p>Social Ads, Spotify, Podcasts</p></div>
         </section>
 
         <section>
             <h2 style="color: var(--correos-blue);">El Reto: Conectar con la <span style="color: var(--correos-blue); font-weight: 700;">Generación Z</span></h2>
-            <p>El desafío principal consistía en rejuvenecer la percepción de Correos Market. Diseñamos una estrategia centrada en la autenticidad, apoyándonos en patrocinios de podcasts de éxito (como Nude Project) y presencia en plataformas donde el público joven consume contenido de forma orgánica.</p>
+            <p>El desafío principal consistía en rejuvenecer la percepción de Correos Market. Diseñamos una estrategia centrada en la autenticidad, apoyándonos en patrocinios de podcasts de éxito como <strong>Nude Project</strong> para llegar donde el público joven consume contenido de forma orgánica.</p>
         </section>
 
         <section class="concept-box">
             <h3>"Llegar donde están los jóvenes"</h3>
-            <p>No se trata solo de vender, sino de estar presentes en su día a día a través de cuñas en Spotify, Ads en TikTok e Instagram, y una presencia física estratégica en festivales e IFEMA.</p>
+            <p>Una estrategia 360º que combina la potencia de los Social Ads con la cercanía del audio digital y la visibilidad de los mupis en puntos estratégicos.</p>
         </section>
 
         <section class="gallery">
-            <img src="../es/proyectos/correos-obj.jpg" alt="Objetivos del Plan de Medios">
-            <img src="../es/proyectos/correos-target.jpg" alt="Público Objetivo Gen Z">
+            <img src="../es/proyectos/correos-obj.jpg" alt="Objetivos">
+            <img src="../es/proyectos/correos-target.jpg" alt="Target">
             
-            <img src="../es/proyectos/correos-mupi.jpg" alt="Mupis Publicidad Exterior">
-            <img src="../es/proyectos/correos-mupi2.jpg" alt="Publicidad en Punto de Venta">
+            <img src="../es/proyectos/correos-mupi1.jpg" alt="Mupis">
+            <img src="../es/proyectos/correos-mupi2.jpg" alt="Punto de Venta">
             
-            <img src="../es/proyectos/correos-social.jpg" class="full" alt="Estrategia en Spotify y Podcasts">
+            <img src="../es/proyectos/correos-social.jpg" class="full" alt="Estrategia Social y Podcasts">
         </section>
     </main>
 
-    <footer><p>© 2026 Paloma Aguado - Case Study Medios</p></footer>
+    <footer><p>© 2026 Paloma Aguado - Case Study Correos Market</p></footer>
 </body>
 </html>
