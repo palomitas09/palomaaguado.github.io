@@ -40,6 +40,15 @@
         }
         .concept-box h3 { color: var(--suchard-gold); }
 
+        /* Estilo para el video principal */
+        .main-video {
+            width: 100%;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            display: block;
+        }
+
         .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
         .gallery img { width: 100%; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-radius: 4px; }
         .gallery img.full { grid-column: span 2; }
@@ -74,10 +83,15 @@
             <p>Sacamos a Suchard de la estacionalidad navideña para convertirlo en el capricho premium de diario.</p>
         </section>
 
+        <video class="main-video" controls poster="../es/proyectos/suchard1.jpg">
+            <source src="../es/proyectos/suchard-spot.mp4" type="video/mp4">
+            Tu navegador no soporta el video.
+        </video>
+
         <section class="gallery">
             <img src="../es/proyectos/suchard-packaging.jpg" alt="Nuevo Packaging">
             <img src="../es/proyectos/suchard-mupi.jpg" class="full" alt="Mupis Exterior">
-           </section>
+        </section>
     </main>
 
     <footer><p>© 2026 Paloma Aguado</p></footer>
