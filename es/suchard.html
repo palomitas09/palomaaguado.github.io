@@ -18,8 +18,9 @@
 
         .hero {
             height: 70vh;
+            /* Portada actualizada a Suchard.jpg */
             background: linear-gradient(rgba(61, 31, 20, 0.6), rgba(61, 31, 20, 0.6)), 
-                        url('../es/proyectos/suchard1.jpg') center/cover;
+                        url('../es/proyectos/Suchard.jpg') center/cover;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             color: white; text-align: center;
         }
@@ -40,18 +41,26 @@
         }
         .concept-box h3 { color: var(--suchard-gold); }
 
-        /* Estilo para el video principal */
         .main-video {
             width: 100%;
             margin-bottom: 40px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             border-radius: 4px;
-            display: block;
         }
 
-        .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
-        .gallery img { width: 100%; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-radius: 4px; }
-        .gallery img.full { grid-column: span 2; }
+        /* Galería configurada para mostrar 2 columnas */
+        .gallery { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 25px; 
+        }
+        .gallery img { 
+            width: 100%; 
+            height: auto;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
+            border-radius: 4px; 
+            object-fit: cover;
+        }
 
         footer { background: var(--suchard-brown); color: white; text-align: center; padding: 40px; font-size: 0.8rem; }
     </style>
@@ -83,14 +92,14 @@
             <p>Sacamos a Suchard de la estacionalidad navideña para convertirlo en el capricho premium de diario.</p>
         </section>
 
-        <video class="main-video" controls poster="../es/proyectos/suchard1.jpg">
+        <video class="main-video" controls poster="../es/proyectos/Suchard.jpg">
             <source src="../es/proyectos/suchard-spot.mp4" type="video/mp4">
             Tu navegador no soporta el video.
         </video>
 
         <section class="gallery">
             <img src="../es/proyectos/suchard-packaging.jpg" alt="Nuevo Packaging">
-            <img src="../es/proyectos/suchard-mupi.jpg" class="full" alt="Mupis Exterior">
+            <img src="../es/proyectos/suchard-mupi.jpg" alt="Mupis Exterior">
         </section>
     </main>
 
