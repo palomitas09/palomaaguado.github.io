@@ -106,12 +106,11 @@
         }
 
         .text-content {
-            padding: 60px 45px;
+            padding: 50px 40px;
             display: flex; flex-direction: column;
             height: 100%; width: 100%; box-sizing: border-box;
         }
 
-        /* NUEVO ESTILO PARA EL TÍTULO ALEXA */
         h1 { 
             font-family: var(--font-main); 
             font-size: 4rem; 
@@ -119,23 +118,23 @@
             font-style: italic; 
             font-weight: 400; 
             color: #1a2a3a; 
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             letter-spacing: 5px; 
             text-transform: capitalize;
             opacity: 0.9;
         }
 
-        h4 { font-family: var(--font-main); font-size: 1.6rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 20px; }
+        h4 { font-family: var(--font-main); font-size: 1.4rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 15px; }
 
         .page-text { 
-            font-family: var(--font-main); font-size: 1.1rem; line-height: 1.8; color: #2c3e50; 
-            margin-bottom: 20px; font-style: italic;
+            font-family: var(--font-main); font-size: 1.05rem; line-height: 1.7; color: #2c3e50; 
+            margin-bottom: 15px; font-style: italic;
         }
 
         .footer-copy {
-            margin-top: auto; font-family: var(--font-main); font-size: 0.75rem;
+            margin-top: auto; font-family: var(--font-main); font-size: 0.7rem;
             text-transform: uppercase; letter-spacing: 2px; color: var(--accent);
-            border-top: 1px solid rgba(0,0,0,0.05); padding-top: 25px; text-align: center;
+            border-top: 1px solid rgba(0,0,0,0.05); padding-top: 20px; text-align: center;
         }
 
         .flipped { transform: rotateY(-180deg); }
@@ -163,9 +162,12 @@
                     <div class="text-content">
                         <h1>Alexa</h1>
                         <div class="page-text">
-                            Alexa es un relato visual sobre la magia que se esconde en los días fríos y la calidez que habita en la imaginación de una niña.
+                            Alexa es un relato visual nacido bajo el cielo de invierno. Es la historia de una niña cuya curiosidad es capaz de derretir el hielo y encontrar magia en los rincones más gélidos de su mundo.
                         </div>
-                        <div class="page-text" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-style: normal; color: var(--accent);">
+                        <div class="page-text">
+                            A través de este álbum ilustrado, exploramos la mirada infantil: esa capacidad de ver un reino entero donde otros solo ven nieve, y de encontrar calidez en el silencio de un bosque dormido.
+                        </div>
+                        <div class="page-text" style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-style: normal; color: var(--accent); margin-top: 10px;">
                             Escrito por Carol Vila Micó<br>Ilustrado por Paloma Aguado
                         </div>
                     </div>
@@ -176,9 +178,12 @@
             <div class="paper" id="p3" style="z-index: 6;" onclick="flip(3)">
                 <div class="front">
                     <div class="text-content">
-                        <h4>Atmósfera de Cristal</h4>
+                        <h4>Dirección de Arte</h4>
                         <div class="page-text">
-                            Cada pincelada digital busca capturar la pureza del invierno. La luz se filtra entre los copos de nieve para guiar a Alexa en su aventura.
+                            La estética de Alexa se apoya en una paleta de azules profundos y blancos gélidos, buscando una armonía que transmita paz y asombro a partes iguales.
+                        </div>
+                        <div class="page-text">
+                            Utilizando herramientas de IA generativa, cada textura ha sido refinada para evocar la suavidad del algodón y el brillo del cristal. La luz no es solo un elemento visual, sino el hilo conductor que guía a nuestra protagonista a través de la penumbra invernal.
                         </div>
                     </div>
                 </div>
@@ -190,7 +195,10 @@
                     <div class="text-content">
                         <h4>El Corazón del Cuento</h4>
                         <div class="page-text">
-                            Un recordatorio de que la curiosidad es la bufanda más cálida para el alma en los días de nieve.
+                            "Había una vez una niña que podía oír el susurro de los copos al caer". Este proyecto editorial busca conectar con la parte más tierna de nuestra imaginación.
+                        </div>
+                        <div class="page-text">
+                            Más que un cuento, Alexa es un ejercicio de diseño que demuestra cómo la tecnología puede capturar la esencia de la narrativa clásica, creando mundos que invitan a soñar despiertos.
                         </div>
                         <div class="footer-copy">
                             Escrito por Carol Vila Micó · Ilustrado por Paloma Aguado<br>© 2026 Todos los derechos reservados
@@ -228,7 +236,7 @@
         }
 
         const snowContainer = document.getElementById('snow');
-        const snowflakeCount = 50;
+        const snowflakeCount = 60; // Un poco más de nieve
 
         for (let i = 0; i < snowflakeCount; i++) {
             const flake = document.createElement('div');
@@ -238,7 +246,7 @@
             flake.style.height = size;
             flake.style.left = Math.random() * 100 + 'vw';
             flake.style.opacity = Math.random();
-            flake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            flake.style.animationDuration = Math.random() * 3 + 3 + 's';
             flake.style.animationDelay = Math.random() * 5 + 's';
             snowContainer.appendChild(flake);
         }
