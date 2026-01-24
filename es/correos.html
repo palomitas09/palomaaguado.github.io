@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correos Market — Plan de Medios</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --correos-yellow: #ffec00;
+            --correos-blue: #003168;
+            --text: #333;
+        }
+
+        body { font-family: 'Montserrat', sans-serif; margin: 0; line-height: 1.6; color: var(--text); }
+        nav { padding: 20px; background: var(--correos-blue); position: sticky; top: 0; z-index: 1000; }
+        nav a { text-decoration: none; color: white; font-weight: 300; font-size: 0.9rem; }
+
+        .hero {
+            height: 70vh;
+            background: linear-gradient(rgba(0, 49, 104, 0.7), rgba(0, 49, 104, 0.7)), 
+                        url('../es/proyectos/correos1.jpg') center/cover;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            color: white; text-align: center;
+        }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 4rem; margin: 0; letter-spacing: 2px; }
+        .hero p { color: var(--correos-yellow); font-weight: 600; text-transform: uppercase; letter-spacing: 2px; }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
+
+        .project-meta {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px; border-bottom: 2px solid var(--correos-yellow); padding-bottom: 40px; margin-bottom: 40px;
+        }
+        .meta-item h4 { color: var(--correos-blue); text-transform: uppercase; font-size: 0.8rem; margin-bottom: 5px; }
+
+        .concept-box {
+            background-color: #f9f9f9; padding: 40px;
+            border-left: 8px solid var(--correos-yellow); margin: 40px 0;
+        }
+        .concept-box h3 { color: var(--correos-blue); margin-top: 0; }
+
+        .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        .gallery img { width: 100%; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-radius: 4px; }
+        .gallery img.full { grid-column: span 2; }
+
+        footer { background: var(--correos-blue); color: white; text-align: center; padding: 40px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <nav><a href="/palomaaguado.github.io/es/index.html">← VOLVER AL PORTFOLIO</a></nav>
+
+    <header class="hero">
+        <p>Estrategia Digital y Plan de Medios</p>
+        <h1>CORREOS <span style="color: var(--correos-yellow);">MARKET</span></h1>
+    </header>
+
+    <main class="container">
+        <section class="project-meta">
+            <div class="meta-item"><h4>Objetivo</h4><p>Conversión y Branding</p></div>
+            <div class="meta-item"><h4>Rol</h4><p>Planificación de Medios</p></div>
+            <div class="meta-item"><h4>Target</h4><p>Jóvenes (18-35 años)</p></div>
+            <div class="meta-item"><h4>Canales</h4><p>Social Ads, Spotify, Mupis</p></div>
+        </section>
+
+        <section>
+            <h2 style="color: var(--correos-blue);">El Reto: Conectar con la <span style="color: var(--correos-blue); font-weight: 700;">Generación Z</span></h2>
+            <p>El desafío principal consistía en rejuvenecer la percepción de Correos Market. Diseñamos una estrategia centrada en la autenticidad, apoyándonos en patrocinios de podcasts de éxito (como Nude Project) y presencia en plataformas donde el público joven consume contenido de forma orgánica.</p>
+        </section>
+
+        <section class="concept-box">
+            <h3>"Llegar donde están los jóvenes"</h3>
+            <p>No se trata solo de vender, sino de estar presentes en su día a día a través de cuñas en Spotify, Ads en TikTok e Instagram, y una presencia física estratégica en festivales e IFEMA.</p>
+        </section>
+
+        <section class="gallery">
+            <img src="../es/proyectos/correos-obj.jpg" alt="Objetivos del Plan de Medios">
+            <img src="../es/proyectos/correos-target.jpg" alt="Público Objetivo Gen Z">
+            
+            <img src="../es/proyectos/correos-mupi.jpg" alt="Mupis Publicidad Exterior">
+            <img src="../es/proyectos/correos-mupi2.jpg" alt="Publicidad en Punto de Venta">
+            
+            <img src="../es/proyectos/correos-social.jpg" class="full" alt="Estrategia en Spotify y Podcasts">
+        </section>
+    </main>
+
+    <footer><p>© 2026 Paloma Aguado - Case Study Medios</p></footer>
+</body>
+</html>
