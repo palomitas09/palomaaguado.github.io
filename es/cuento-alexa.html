@@ -3,89 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alexa — Cuento Ilustrado | Paloma Aguado</title>
-    <link rel="stylesheet" href="../style.css">
+    <title>Alexa — Cuento Invernal Mágico</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
-        .case-header { background-color: #f4f4f4; color: #111; padding: 80px 5%; text-align: center; border-bottom: 1px solid #eee; }
-        .case-container { max-width: 1100px; margin: 0 auto; padding: 50px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-        .book-gallery { position: sticky; top: 20px; }
-        .main-view { width: 100%; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); transition: opacity 0.3s ease; }
-        .carousel-wrapper { position: relative; margin-top: 20px; display: flex; align-items: center; }
-        .carousel-container { display: flex; overflow-x: auto; gap: 15px; scrollbar-width: none; scroll-snap-type: x mandatory; scroll-behavior: smooth; }
-        .carousel-container::-webkit-scrollbar { display: none; }
-        .carousel-item { flex: 0 0 100px; aspect-ratio: 1; border-radius: 8px; overflow: hidden; cursor: pointer; scroll-snap-align: start; opacity: 0.6; transition: 0.3s; border: 2px solid transparent; }
-        .carousel-item:hover, .carousel-item.active { opacity: 1; border-color: #000; }
-        .carousel-item img { width: 100%; height: 100%; object-fit: cover; }
-        .nav-arrow { background: #000; color: #fff; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; position: absolute; z-index: 10; font-size: 1rem; }
-        .prev-arrow { left: -15px; } .next-arrow { right: -15px; }
-        .briefing-info h4 { text-transform: uppercase; font-size: 0.8rem; color: #888; margin: 30px 0 10px 0; letter-spacing: 1px; }
-        .tag { display: inline-block; background: #eee; color: #333; padding: 6px 14px; border-radius: 4px; font-size: 0.75rem; margin-right: 8px; margin-bottom: 10px; text-transform: uppercase; font-weight: bold; }
-        .ia-badge { background: #000; color: #fff; }
-        @media (max-width: 850px) { .case-container { grid-template-columns: 1fr; } .book-gallery { position: relative; order: -1; } }
+        :root {
+            --bg-winter: #1a2a3a;
+            --paper: #f0f4f7; 
+            --ink: #101820;   
+            --accent: #5d8aa8; 
+            --font-main: 'Playfair Display', serif; 
+            --font-body: 'Crimson Pro', serif;
+        }
+
+        body {
+            background-color: var(--bg-winter);
+            background-image: radial-gradient(circle at center, #2c3e50 0%, #1a2a3a 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            font-family: var(--font-body);
+        }
+
+        /* --- EFECTO NIEVE --- */
+        .snow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            filter: blur(1px);
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(105vh) translateX(20px); }
+        }
+
+        /* --- CONTENIDO --- */
+        nav { width: 100%; padding: 20px; position: absolute; top: 0; z-index: 100; }
+        nav a { text-decoration: none; color: #ffffff; font-family: var(--font-main); font-style: italic; font-size: 0.9rem; margin-left: 20px; opacity: 0.8; }
+
+        .scene {
+            position: relative;
+            z-index: 10; /* Por encima de la nieve */
+            width: 1000px;
+            height: 600px;
+            margin-top: 60px;
+            perspective: 2000px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .book {
+            position: relative;
+            width: 450px; 
+            height: 580px;
+            transition: transform 0.5s;
+            transform-style: preserve-3d;
+        }
+
+        .book.is-open { transform: translateX(225px); }
+
+        .paper {
+            position: absolute;
+            width: 100%; height: 100%; top: 0; left: 0;
+            transform-origin: left;
+            transform-style: preserve-3d;
+            transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+            cursor: pointer;
+        }
+
+        .front, .back {
+            position: absolute;
+            width: 100%; height: 100%; top: 0; left: 0;
+            backface-visibility: hidden;
+            background-color: var(--paper);
+            box-shadow: inset 3px 0 15px rgba(0,0,0,0.15);
+            box-sizing: border-box;
+            display: flex; justify-content: center; align-items: center;
+            overflow: hidden;
+        }
+
+        .back { transform: rotateY(180deg); }
+
+        .full-img { 
+            width: 100%; height: 100%; object-fit: cover; display: block; 
+            filter: brightness(0.95);
+        }
+
+        .text-content {
+            padding: 60px 45px;
+            display: flex; flex-direction: column;
+            height: 100%; width: 100%; box-sizing: border-box;
+        }
+
+        h1 { font-family: var(--font-main); font-size: 3.5rem; text-align: center; font-style: italic; color: var(--bg-winter); margin-bottom: 20px;}
+        h4 { font-family: var(--font-main); font-size: 1.6rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 20px; }
+
+        .page-text { 
+            font-family: var(--font-main); font-size: 1.1rem; line-height: 1.8; color: #2c3e50; 
+            margin-bottom: 20px; font-style: italic;
+        }
+
+        .footer-copy {
+            margin-top: auto; font-family: var(--font-main); font-size: 0.75rem;
+            text-transform: uppercase; letter-spacing: 2px; color: var(--accent);
+            border-top: 1px solid rgba(0,0,0,0.05); padding-top: 25px; text-align: center;
+        }
+
+        .flipped { transform: rotateY(-180deg); }
+        .hint { margin-top: 20px; font-family: var(--font-main); font-style: italic; color: #ffffff; opacity: 0.6; position: relative; z-index: 10; }
     </style>
 </head>
 <body>
 
-    <nav style="padding: 30px 5%;">
-        <a href="index.html" style="text-decoration: none; color: #111; font-weight: bold;">← VOLVER A PROYECTOS</a>
+    <div class="snow-container" id="snow"></div>
+
+    <nav>
+        <a href="/palomaaguado.github.io/es/index.html">← Volver al Portfolio</a>
     </nav>
 
-    <main class="case-container">
-        <div class="book-gallery">
-            <img id="activePage" src="../es/proyectos/alexa_portada.jpg" class="main-view" alt="Portada Alexa">
-            <div class="carousel-wrapper">
-                <button class="nav-arrow prev-arrow" onclick="moveCarousel(-1)">❮</button>
-                <div class="carousel-container" id="thumbContainer">
-                    <div class="carousel-item active" onclick="updateView(this)"><img src="../es/proyectos/alexa_portada.jpg"></div>
-                    <div class="carousel-item" onclick="updateView(this)"><img src="../es/proyectos/alexa_pag1.jpg"></div>
-                    <div class="carousel-item" onclick="updateView(this)"><img src="../es/proyectos/alexa_pag2.jpg"></div>
-                    <div class="carousel-item" onclick="updateView(this)"><img src="../es/proyectos/alexa_pag3.jpg"></div>
+    <div class="scene">
+        <div class="book" id="book">
+            
+            <div class="paper" id="p1" style="z-index: 8;" onclick="flip(1)">
+                <div class="front"><img src="../es/proyectos/alexa_portada.jpg" class="full-img"></div>
+                <div class="back"><img src="../es/proyectos/alexa1.jpg" class="full-img"></div>
+            </div>
+
+            <div class="paper" id="p2" style="z-index: 7;" onclick="flip(2)">
+                <div class="front">
+                    <div class="text-content">
+                        <h1>Alexa</h1>
+                        <div class="page-text">
+                            Alexa es un relato visual sobre la magia que se esconde en los días fríos y la calidez que habita en la imaginación de una niña.
+                        </div>
+                        <div class="page-text" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-style: normal; color: var(--accent);">
+                            Escrito por Carol Vila Micó<br>Ilustrado por Paloma Aguado
+                        </div>
+                    </div>
                 </div>
-                <button class="nav-arrow next-arrow" onclick="moveCarousel(1)">❯</button>
+                <div class="back"><img src="../es/proyectos/alexa2.jpg" class="full-img"></div>
             </div>
+
+            <div class="paper" id="p3" style="z-index: 6;" onclick="flip(3)">
+                <div class="front">
+                    <div class="text-content">
+                        <h4>Atmósfera de Cristal</h4>
+                        <div class="page-text">
+                            Cada pincelada digital busca capturar la pureza del invierno. La luz se filtra entre los copos de nieve para guiar a Alexa en su aventura.
+                        </div>
+                    </div>
+                </div>
+                <div class="back"><img src="../es/proyectos/alexa3.jpg" class="full-img"></div>
+            </div>
+
+            <div class="paper" id="p4" style="z-index: 5;" onclick="flip(4)">
+                <div class="front">
+                    <div class="text-content">
+                        <h4>El Corazón del Cuento</h4>
+                        <div class="page-text">
+                            Un recordatorio de que la curiosidad es la bufanda más cálida para el alma en los días de nieve.
+                        </div>
+                        <div class="footer-copy">
+                            Escrito por Carol Vila Micó · Ilustrado por Paloma Aguado<br>© 2026 Todos los derechos reservados
+                        </div>
+                    </div>
+                </div>
+                <div class="back"><img src="../es/proyectos/alexa4.jpg" class="full-img"></div>
+            </div>
+
         </div>
+    </div>
 
-        <div class="briefing-info">
-            <h1 style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px;">Alexa</h1>
-            <p style="color: #888; font-style: italic;">Escrito por [Nombre de tu amiga]</p>
-            
-            <div style="margin-top: 20px;">
-                <span class="tag ia-badge">Art Direction & IA</span>
-                <span class="tag">Conceptual Design</span>
-            </div>
-
-            <h4>Explorando a Alexa</h4>
-            <p>A diferencia de otros relatos, "Alexa" demandaba una paleta visual más [ej: técnica/vibrante/compleja]. El proyecto se centró en cómo la inteligencia artificial puede interpretar emociones humanas sutiles.</p>
-
-            <h4>El Desafío Visual</h4>
-            <p>El reto principal fue la <strong>consistencia del personaje</strong> a través de diferentes escenarios. Mediante el uso de prompts estructurados y una dirección de arte meticulosa, se logró un hilo conductor visual que dota al cuento de una identidad única.</p>
-            
-            <div style="background: #f9f9f9; padding: 25px; border-radius: 8px; margin-top: 40px; border-left: 4px solid #000;">
-                <p style="font-size: 0.85rem; margin: 0; color: #555; line-height: 1.5;">
-                    <strong>Innovación Tecnológica:</strong> Este libro es un testimonio del potencial de la IA generativa como herramienta de soporte para la creación editorial independiente.
-                </p>
-            </div>
-        </div>
-    </main>
-
-    <footer style="text-align: center; padding: 60px 0; color: #bbb; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;">
-        © 2026 PALOMA AGUADO — CREATIVE STRATEGY
-    </footer>
+    <p class="hint">Haz clic en el libro para pasar página</p>
 
     <script>
-        function updateView(element) {
-            const mainImg = document.getElementById('activePage');
-            const thumbs = document.querySelectorAll('.carousel-item');
-            mainImg.style.opacity = '0';
-            setTimeout(() => {
-                mainImg.src = element.querySelector('img').src;
-                mainImg.style.opacity = '1';
-            }, 200);
-            thumbs.forEach(t => t.classList.remove('active'));
-            element.classList.add('active');
+        // Lógica del Libro
+        let book = document.getElementById('book');
+        let currentLoc = 1;
+        let totalPapers = 4;
+
+        function flip(pageNum) {
+            if (pageNum === 1 && !book.classList.contains('is-open')) {
+                book.classList.add('is-open');
+            }
+            let paper = document.getElementById('p' + pageNum);
+            if (pageNum === currentLoc) {
+                paper.classList.add('flipped');
+                paper.style.zIndex = pageNum;
+                currentLoc++;
+            } else if (pageNum === currentLoc - 1) {
+                paper.classList.remove('flipped');
+                paper.style.zIndex = totalPapers - pageNum + 1;
+                currentLoc--;
+                if (currentLoc === 1) book.classList.remove('is-open');
+            }
         }
-        function moveCarousel(dir) {
-            document.getElementById('thumbContainer').scrollBy({ left: dir * 150, behavior: 'smooth' });
+
+        // Lógica de la Nieve (Generador automático)
+        const snowContainer = document.getElementById('snow');
+        const snowflakeCount = 50;
+
+        for (let i = 0; i < snowflakeCount; i++) {
+            const flake = document.createElement('div');
+            flake.classList.add('snowflake');
+            
+            const size = Math.random() * 5 + 2 + 'px';
+            flake.style.width = size;
+            flake.style.height = size;
+            flake.style.left = Math.random() * 100 + 'vw';
+            flake.style.opacity = Math.random();
+            flake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            flake.style.animationDelay = Math.random() * 5 + 's';
+            
+            snowContainer.appendChild(flake);
         }
     </script>
 </body>
