@@ -102,31 +102,70 @@
             </div>
         </div> 
 
-        <h2 class="section-title">Publicidad & Casos de Estudio</h2>
-        <div class="gallery-grid">
-            <div class="project-card">
-                <a href="/palomaaguado.github.io/es/mazda.html">
-                    <img src="/palomaaguado.github.io/es/proyectos/mazda1.jpg" alt="Mazda Case Study"> 
-                    <div class="overlay">
-                        <div class="text">
-                            Mazda Skyactiv-X<br>
-                            <span>Estrategia de Medios & Creatividad</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
+       <style>
+    /* Estilo específico para el carrusel de Publicidad */
+    .carousel-container {
+        display: flex;
+        overflow-x: auto;
+        gap: 20px;
+        padding: 0 5% 50px 5%;
+        scroll-snap-type: x mandatory; /* Hace que las tarjetas se "ajusten" al desplazarse */
+        -webkit-overflow-scrolling: touch;
+    }
 
-            <div class="project-card">
-                <a href="/palomaaguado.github.io/es/caixa.html">
-                    <img src="/palomaaguado.github.io/es/proyectos/caixa1.jpg" alt="CaixaBank Case Study">
-                    <div class="overlay">
-                        <div class="text">
-                            CaixaBank: Vive la Música<br>
-                            <span>Estrategia de Medios & Experiencia IA</span>
-                        </div>
-                    </div>
-                </a>
+    .carousel-container::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    .carousel-container::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 10px;
+    }
+
+    .carousel-card {
+        flex: 0 0 45%; /* Cada tarjeta ocupa el 45% del ancho para que se vea la siguiente */
+        scroll-snap-align: start;
+        height: 500px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+        .carousel-card { flex: 0 0 85%; height: 350px; }
+    }
+</style>
+
+<h2 class="section-title">Publicidad & Casos de Estudio</h2>
+<div class="carousel-container">
+    
+    <div class="project-card carousel-card">
+        <a href="/palomaaguado.github.io/es/mazda.html">
+            <img src="/palomaaguado.github.io/es/proyectos/mazda1.png" alt="Mazda">
+            <div class="overlay">
+                <div class="text">Mazda Skyactiv-X<br><span>Estrategia de Medios</span></div>
             </div>
+        </a>
+    </div>
+
+    <div class="project-card carousel-card">
+        <a href="/palomaaguado.github.io/es/caixa.html">
+            <img src="/palomaaguado.github.io/es/proyectos/caixa1.jpg" alt="CaixaBank">
+            <div class="overlay">
+                <div class="text">CaixaBank: Vive la Música<br><span>Estrategia & IA</span></div>
+            </div>
+        </a>
+    </div>
+
+    <div class="project-card carousel-card">
+        <a href="/palomaaguado.github.io/es/suchard.html">
+            <img src="/palomaaguado.github.io/es/proyectos/suchard1.jpg" alt="Suchard">
+            <div class="overlay">
+                <div class="text">Suchard: Cacao Real<br><span>Campaña 2024</span></div>
+            </div>
+        </a>
+    </div>
+
+</div>
         </div> <h2 class="section-title">Estrategia Inmobiliaria</h2>
         <div class="gallery-grid">
             <div class="project-card">
