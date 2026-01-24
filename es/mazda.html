@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mazda Skyactiv-X — Case Study</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --mazda-red: #9e1b32; /* El rojo característico de Mazda */
+            --dark: #111111;
+            --gray: #f4f4f4;
+            --text: #333333;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            background-color: white;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* --- NAVEGACIÓN --- */
+        nav {
+            padding: 20px;
+            background: var(--dark);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav a { text-decoration: none; color: white; font-weight: 300; font-size: 0.9rem; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('../es/proyectos/mazda_hero.jpg') center/cover; /* Pon aquí tu imagen principal */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 4rem; 
+            margin: 0; 
+            letter-spacing: 5px;
+        }
+        
+        .hero p { font-size: 1.2rem; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; }
+
+        /* --- INFO SECCIÓN --- */
+        .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
+
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 40px;
+            margin-bottom: 40px;
+        }
+
+        .meta-item h4 { color: var(--mazda-red); text-transform: uppercase; font-size: 0.8rem; margin-bottom: 5px; }
+        .meta-item p { margin: 0; font-size: 0.95rem; font-weight: 500; }
+
+        /* --- CONTENIDO --- */
+        .content-section { margin-bottom: 80px; }
+        .content-section h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 20px; }
+        
+        .concept-box {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px;
+            border-left: 5px solid var(--mazda-red);
+            margin: 40px 0;
+        }
+
+        /* --- GALERÍA DE PIEZAS --- */
+        .gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .gallery img { width: 100%; display: block; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .gallery img.full { grid-column: span 2; }
+
+        footer { background: var(--dark); color: white; text-align: center; padding: 40px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/palomaaguado.github.io/es/index.html">← VOLVER AL PORTFOLIO</a>
+    </nav>
+
+    <header class="hero">
+        <p>Campaña Tecnología Skyactiv-X</p>
+        <h1>MAZDA</h1>
+    </header>
+
+    <main class="container">
+        
+        <section class="project-meta">
+            <div class="meta-item">
+                <h4>Proyecto</h4>
+                <p>Estrategia de Medios y Creatividad</p>
+            </div>
+            <div class="meta-item">
+                <h4>Rol</h4>
+                <p>Planificación de Medios / Dirección de Arte</p>
+            </div>
+            <div class="meta-item">
+                <h4>Equipo</h4>
+                <p>Saúl, Mª Andrea, Carmen, Paloma, Lucía, Gabriela, Ariana</p>
+            </div>
+            <div class="meta-item">
+                <h4>Concepto</h4>
+                <p>Unmei no Akai Ito (Hilo Rojo)</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>El Desafío</h2>
+            <p>Comunicar la tecnología revolucionaria <strong>Skyactiv-X</strong>: un motor de gasolina que funciona con la eficiencia de un diésel. El reto era traducir una ventaja técnica compleja en una conexión emocional con el usuario bajo el marco de la sostenibilidad y la etiqueta ECO.</p>
+        </section>
+
+        <section class="concept-box">
+            <h3>Akai Ito: Para los que estaban destinados a encontrarse</h3>
+            <p>Basado en la leyenda japonesa del Hilo Rojo, propusimos que el Skyactiv-X no es solo un motor, sino un vínculo invisible entre el propósito del usuario (conducir con potencia) y su responsabilidad con el planeta (sostenibilidad).</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Piezas de la Campaña</h2>
+            <div class="gallery">
+                <img src="../es/proyectos/mazda_mupi1.jpg" alt="Gráfica Mazda 1">
+                <img src="../es/proyectos/mazda_mupi2.jpg" alt="Gráfica Mazda 2">
+                <img src="../es/proyectos/mazda_post.jpg" class="full" alt="Social Media Campaign">
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Paloma Aguado - Proyecto Académico Máster</p>
+    </footer>
+
+</body>
+</html>
