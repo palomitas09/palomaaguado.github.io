@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CaixaBank: Vive la Música — Case Study</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --caixa-blue: #007ea9;
+            --caixa-dark: #0b2135;
+            --text: #333;
+        }
+
+        body { font-family: 'Montserrat', sans-serif; margin: 0; line-height: 1.6; color: var(--text); }
+        
+        nav { padding: 20px; background: var(--caixa-dark); position: sticky; top: 0; z-index: 1000; }
+        nav a { text-decoration: none; color: white; font-weight: 300; font-size: 0.9rem; }
+
+        .hero {
+            height: 70vh;
+            background: linear-gradient(rgba(11, 33, 53, 0.7), rgba(11, 33, 53, 0.7)), 
+                        url('../es/proyectos/caixa1.png') center/cover;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            color: white; text-align: center;
+        }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin: 0; letter-spacing: 3px; }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
+
+        .project-meta {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px; border-bottom: 1px solid #ddd; padding-bottom: 40px; margin-bottom: 40px;
+        }
+        .meta-item h4 { color: var(--caixa-blue); text-transform: uppercase; font-size: 0.8rem; margin-bottom: 5px; }
+        .meta-item p { margin: 0; font-size: 0.95rem; font-weight: 500; }
+
+        .concept-box {
+            background-color: #f0f7fa; padding: 40px;
+            border-right: 5px solid var(--caixa-blue); margin: 40px 0;
+        }
+
+        .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .gallery img { width: 100%; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .gallery img.full { grid-column: span 2; }
+
+        footer { background: var(--caixa-dark); color: white; text-align: center; padding: 40px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <nav><a href="/palomaaguado.github.io/es/index.html">← VOLVER AL PORTFOLIO</a></nav>
+
+    <header class="hero">
+        <p>REPOSICIONAMIENTO PARA EL SEGMENTO JOVEN</p>
+        <h1>CAIXABANK: VIVE LA MÚSICA</h1>
+    </header>
+
+    <main class="container">
+        <section class="project-meta">
+            <div class="meta-item"><h4>Proyecto</h4><p>Caixa Music Club & ImaginCafé</p></div>
+            <div class="meta-item"><h4>Rol</h4><p>Estrategia de Medios</p></div>
+            <div class="meta-item"><h4>Core</h4><p>Inteligencia Artificial & Experiencia</p></div>
+            <div class="meta-item"><h4>Target</h4><p>Segmento Joven (Gen Z)</p></div>
+        </section>
+
+        <section>
+            <h2>El Contexto</h2>
+            <p>El reto consistía en cambiar la percepción de CaixaBank entre los jóvenes, pasando de ser una entidad financiera tradicional a un aliado cultural. Propusimos un ecosistema donde la música y la tecnología (IA) actúan como el nexo de unión real y sincero.</p>
+        </section>
+
+        <section class="concept-box">
+            <h3>"Algunas personas tienen vida, otras tienen a la música."</h3>
+            <p>Bajo este insight de John Green, creamos <strong>Caixa Music Club</strong> e <strong>ImaginCafé Madrid</strong>, espacios físicos y digitales para experimentar la música de forma inmersiva mediante herramientas de IA (MusicLab IA).</p>
+        </section>
+
+        <section class="gallery">
+            <img src="../es/proyectos/caixa2.png" alt="Briefing">
+            <img src="../es/proyectos/caixa3.png" alt="Concepto Musical">
+            
+            <img src="../es/proyectos/caixa4.png" class="full" alt="Publicidad Exterior">
+            
+            <img src="../es/proyectos/caixa5.png" alt="ImaginCafé">
+            <img src="../es/proyectos/caixa6.png" alt="Experiencia IA">
+            
+            <img src="../es/proyectos/caixa7.png" class="full" alt="Plan de Medios">
+        </section>
+    </main>
+
+    <footer><p>© 2026 Paloma Aguado - Case Study Publicidad</p></footer>
+</body>
+</html>
