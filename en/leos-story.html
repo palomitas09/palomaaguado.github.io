@@ -1,1 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leo — Illustrated Book</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --paper: #fdfaf3;
+            --ink: #2c2c2c;
+            --font-main: 'Playfair Display', serif; 
+            --font-body: 'Crimson Pro', serif;
+        }
 
+        body {
+            background-color: #d1ccc0;
+            background-image: url('https://www.transparenttextures.com/patterns/felt.png');
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            font-family: var(--font-body);
+        }
+
+        nav { width: 100%; padding: 20px; position: absolute; top: 0; z-index: 100; }
+        nav a { text-decoration: none; color: var(--ink); font-family: var(--font-main); font-style: italic; font-size: 0.9rem; margin-left: 20px; }
+
+        .scene {
+            width: 1000px;
+            height: 600px;
+            margin-top: 60px;
+            perspective: 2000px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .book {
+            position: relative;
+            width: 450px; 
+            height: 580px;
+            transition: transform 0.5s;
+            transform-style: preserve-3d;
+        }
+
+        .book.is-open { transform: translateX(225px); }
+
+        .paper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            transform-origin: left;
+            transform-style: preserve-3d;
+            transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+            cursor: pointer;
+        }
+
+        .front, .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            backface-visibility: hidden;
+            background-color: var(--paper);
+            box-shadow: inset 3px 0 10px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .back { transform: rotateY(180deg); }
+
+        .full-img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            display: block; 
+        }
+
+        .text-content {
+            padding: 60px 45px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: left;
+        }
+
+        h1, h4 { 
+            font-family: var(--font-main); 
+            font-weight: 700;
+            color: var(--ink); 
+            margin: 0 0 20px 0; 
+        }
+        
+        h1 { font-size: 3.5rem; text-align: center; font-style: italic; }
+        h4 { font-size: 1.8rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        .page-text { 
+            font-family: var(--font-main); 
+            font-size: 1.1rem; 
+            line-height: 1.8; 
+            color: #333; 
+            margin-bottom: 20px;
+            font-style: italic; 
+        }
+
+        .quote { 
+            font-family: var(--font-main);
+            font-size: 1.2rem;
+            font-weight: 400;
+            border-left: 2px solid #d1ccc0; 
+            padding-left: 20px; 
+            margin: 25px 0; 
+            color: #555; 
+        }
+
+        .footer-copy {
+            margin-top: auto;
+            font-family: var(--font-main);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #999;
+            border-top: 1px solid #eee;
+            padding-top: 25px;
+            text-align: center;
+            font-style: normal;
+        }
+
+        .flipped { transform: rotateY(-180deg); }
+        .hint { margin-top: 20px; font-family: var(--font-main); font-style: italic; opacity: 0.5; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/palomaaguado.github.io/en/index.html">← Back to Portfolio</a>
+    </nav>
+
+    <div class="scene">
+        <div class="book" id="book">
+            
+            <div class="paper" id="p1" style="z-index: 8;" onclick="flip(1)">
+                <div class="front">
+                    <img src="../es/proyectos/leo1.png" class="full-img">
+                </div>
+                <div class="back">
+                    <img src="../es/proyectos/leo2.png" class="full-img">
+                </div>
+            </div>
+
+            <div class="paper" id="p2" style="z-index: 7;" onclick="flip(2)">
+                <div class="front">
+                    <div class="text-content">
+                        <h1>Leo</h1>
+                        <div class="page-text">
+                            This editorial project was born from the need to bring "Leo's" inner landscapes to life. The narrative required an aesthetic that combined innocence with the depth of the story.
+                        </div>
+                        
+                        <div class="page-text" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-style: normal; color: #999;">
+                            Written by Carol Vila Micó<br>
+                            Illustrated by Paloma Aguado
+                        </div>
+                    </div>
+                </div>
+                <div class="back">
+                    <img src="../es/proyectos/leo-armonia.png" class="full-img">
+                </div>
+            </div>
+
+            <div class="paper" id="p3" style="z-index: 6;" onclick="flip(3)">
+                <div class="front">
+                    <div class="text-content">
+                        <h4>Art Direction</h4>
+                        <div class="page-text">
+                            Using AI image generation tools, we worked on creating a coherent atmosphere that captured the essence of the protagonist.
+                        </div>
+                        <div class="page-text">
+                            Each illustration was selected and refined to ensure the visual language followed the steady pace of the story, translating sounds into textures and vibrant colors.
+                        </div>
+                    </div>
+                </div>
+                <div class="back">
+                    <img src="../es/proyectos/leo-carlos.jpg" class="full-img">
+                </div>
+            </div>
+
+            <div class="paper" id="p4" style="z-index: 5;" onclick="flip(4)">
+                <div class="front">
+                    <div class="text-content">
+                        <h4>Sensory Narrative</h4>
+                        <div class="page-text">
+                            "Leo listened to the world differently. Where others heard disordered noise, he was able to perceive the whisper of a leaf falling."
+                        </div>
+                        <div class="page-text">
+                            Through this work, we explore sensory hypersensitivity and how peaceful environments transform our protagonist's perception into a musical superpower.
+                        </div>
+                    </div>
+                </div>
+                <div class="back">
+                    <img src="../es/proyectos/leo-familia.png" class="full-img">
+                </div>
+            </div>
+
+            <div class="paper" id="p5" style="z-index: 4;" onclick="flip(5)">
+                <div class="front">
+                    <div class="text-content">
+                        <h4>Reflection</h4>
+                        <div class="page-text">
+                            Here, technology is placed at the service of empathy, allowing us to build worlds that previously only existed in the imagination of those who perceive reality differently.
+                        </div>
+                        <div class="page-text">
+                            An exercise in design and storytelling to give a voice to a necessary story about diversity and the beauty of the subtle.
+                        </div>
+                        <div class="footer-copy">
+                            Written by Carol Vila Micó · Illustrated by Paloma Aguado<br>
+                            © 2026 All rights reserved
+                        </div>
+                    </div>
+                </div>
+                <div class="back">
+                    <img src="../es/proyectos/leo-contraportada.png" class="full-img">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <p class="hint">Click on the book to flip pages</p>
+
+    <script>
+        let book = document.getElementById('book');
+        let currentLoc = 1;
+        let totalPapers = 5;
+
+        function flip(pageNum) {
+            if (pageNum === 1 && !book.classList.contains('is-open')) {
+                book.classList.add('is-open');
+            }
+            let paper = document.getElementById('p' + pageNum);
+            if (pageNum === currentLoc) {
+                paper.classList.add('flipped');
+                paper.style.zIndex = pageNum;
+                currentLoc++;
+            } else if (pageNum === currentLoc - 1) {
+                paper.classList.remove('flipped');
+                paper.style.zIndex = totalPapers - pageNum + 1;
+                currentLoc--;
+                if (currentLoc === 1) {
+                    book.classList.remove('is-open');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
