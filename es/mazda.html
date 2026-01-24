@@ -35,7 +35,7 @@
         .hero {
             height: 80vh;
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('../es/proyectos/mazda_hero.jpg') center/cover; /* Pon aquí tu imagen principal */
+                        url('../es/proyectos/mazda1.png') center/cover; /* Portada Principal */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -87,7 +87,13 @@
             grid-template-columns: 1fr 1fr;
             gap: 20px;
         }
-        .gallery img { width: 100%; display: block; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .gallery img { 
+            width: 100%; 
+            display: block; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            transition: transform 0.3s ease;
+        }
+        .gallery img:hover { transform: scale(1.02); }
         .gallery img.full { grid-column: span 2; }
 
         footer { background: var(--dark); color: white; text-align: center; padding: 40px; font-size: 0.8rem; }
@@ -138,9 +144,16 @@
         <section class="content-section">
             <h2>Piezas de la Campaña</h2>
             <div class="gallery">
-                <img src="../es/proyectos/mazda_mupi1.jpg" alt="Gráfica Mazda 1">
-                <img src="../es/proyectos/mazda_mupi2.jpg" alt="Gráfica Mazda 2">
-                <img src="../es/proyectos/mazda_post.jpg" class="full" alt="Social Media Campaign">
+                <img src="../es/proyectos/mazda2.png" alt="Mazda Concept">
+                <img src="../es/proyectos/mazda3.png" alt="Mazda Tech">
+                
+                <img src="../es/proyectos/mazda4.png" class="full" alt="Mazda Campaign Hero">
+                
+                <img src="../es/proyectos/mazda5.png" alt="Mazda Mupi">
+                <img src="../es/proyectos/mazda6.png" alt="Mazda Outdoor">
+                
+                <img src="../es/proyectos/mazda7.png" alt="Mazda Social Media">
+                <img src="../es/proyectos/mazda8.png" alt="Mazda Details">
             </div>
         </section>
 
