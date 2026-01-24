@@ -55,7 +55,7 @@
         .concept-box strong { color: var(--caixa-red); }
 
         .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
-        .gallery img, .gallery video { width: 100%; box-shadow: 0 10px 20px rgba(0,0,0,0.1); display: block; border-radius: 4px; }
+        .gallery img, .gallery video { width: 100%; box-shadow: 0 10px 20px rgba(0,0,0,0.1); display: block; border-radius: 4px; object-fit: cover; }
         .gallery img.full, .gallery video.full { grid-column: span 2; }
 
         footer { background: var(--caixa-dark); color: white; text-align: center; padding: 40px; font-size: 0.8rem; }
@@ -91,14 +91,20 @@
         <section class="gallery">
             <video controls>
                 <source src="../es/proyectos/caixa2.mp4" type="video/mp4">
-                <source src="../es/proyectos/caixa6.mp4" type="video/mp4">
+                Tu navegador no soporta video.
             </video>
 
+            <video controls>
+                <source src="../es/proyectos/caixa6.mp4" type="video/mp4">
+                Tu navegador no soporta video.
+            </video>
                       
             <img src="../es/proyectos/caixa4.jpg" class="full" alt="Publicidad Exterior">
+            
             <img src="../es/proyectos/caixa5.jpg" alt="ImaginCafé">
             <img src="../es/proyectos/caixa8.jpg" alt="Detalle Branding">         
-            <img src="../es/proyectos/caixa7.jpg class="full" alt="Plan de Medios">
+            
+            <img src="../es/proyectos/caixa7.jpg" class="full" alt="Plan de Medios">
         </section>
     </main>
 
