@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexa — A Magical Winter Tale</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-winter: #1a2a3a;
+            --paper: #f0f4f7; 
+            --ink: #101820;   
+            --accent: #5d8aa8; 
+            --font-main: 'Playfair Display', serif; 
+            --font-body: 'Crimson Pro', serif;
+        }
+
+        body {
+            background-color: var(--bg-winter);
+            background-image: radial-gradient(circle at center, #2c3e50 0%, #1a2a3a 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            font-family: var(--font-body);
+        }
+
+        /* --- SNOW EFFECT --- */
+        .snow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            filter: blur(1px);
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(105vh) translateX(20px); }
+        }
+
+        /* --- CONTENT --- */
+        nav { width: 100%; padding: 20px; position: absolute; top: 0; z-index: 100; }
+        nav a { text-decoration: none; color: #ffffff; font-family: var(--font-main); font-style: italic; font-size: 0.9rem; margin-left: 20px; opacity: 0.8; }
+
+        .scene {
+            position: relative;
+            z-index: 10; 
+            width: 1000px;
+            height: 600px;
+            margin-top: 60px;
+            perspective: 2000px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .book {
+            position: relative;
+            width: 450px; 
+            height: 580px;
+            transition: transform 0.5s;
+            transform-style: preserve-3d;
+        }
+
+        .book.is-open { transform: translateX(225px); }
+
+        .paper {
+            position: absolute;
+            width: 100%; height: 100%; top: 0; left: 0;
+            transform-origin: left;
+            transform-style: preserve-3d;
+            transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+            cursor: pointer;
+        }
+
+        .front, .back {
+            position: absolute;
+            width: 100%; height: 100%; top: 0; left: 0;
+            backface-visibility: hidden;
+            background-color: var(--paper);
+            box-shadow: inset 3px 0 15px rgba(0,0,0,0.15);
+            box-sizing: border-box;
+            display: flex; justify-content: center; align-items: center;
+            overflow: hidden;
+        }
+
+        .back { transform: rotateY(180deg); }
+
+        .full-img { 
+            width: 100%; height: 100%; object-fit: cover; display: block; 
+            filter: brightness(0.95);
+        }
+
+        .text-content {
+            padding: 50px 40px;
+            display: flex; flex-direction: column;
+            height: 100%; width: 100%; box-sizing: border-box;
+        }
+
+        h1 { 
+            font-family: var(--font-main); 
+            font-size: 4rem; 
+            text-align: center; 
+            font-style: italic; 
+            font-weight: 400; 
+            color: #1a2a3a; 
+            margin-bottom: 25px;
+            letter-spacing: 5px; 
+            text-transform: capitalize;
+            opacity: 0.9;
+        }
+
+        h4 { font-family: var(--font-main); font-size: 1.4rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 15px; }
+
+        .page-text { 
+            font-family: var(--font-main); font-size: 1.05rem; line-height: 1.7; color: #2c3e50; 
+            margin-bottom: 15px; font-style: italic;
+        }
+
+        .footer-copy {
+            margin-top: auto; font-family: var(--font-main); font-size: 0.7rem;
+            text-transform: uppercase; letter-spacing: 2px; color: var(--accent);
+            border-top: 1px solid rgba(0,0,0,0.05); padding-top: 20px; text-align: center;
+        }
+
+        .flipped { transform: rotateY(-180deg); }
+        .hint { margin-top: 20px; font-family: var(--font-main); font-style: italic; color: #ffffff; opacity: 0.6; position: relative; z-index: 10; }
+    </style>
+</head>
+<body>
+
+    <div class="snow-container" id="snow"></div>
+
+    <nav>
+        <a href="/palomaaguado.github.io/en/index.html">← Back to Portfolio</a>
+    </nav>
+
+    <div class="scene">
+        <div class="book" id="book">
+            
+            <div class="paper" id="p1" style="z-index: 8;" onclick="flip(1)">
+                <div class="front"><img src="/palomaaguado.github.io/es/proyectos/alexa1.png" class="full-img"></div>
+                <div class="back"><img src="/palomaaguado.github.io/es/proyectos/alexa2.png" class="full-img"></div>
+            </div>
+
+            <div class="paper" id="p2" style="z-index: 7;" onclick="flip(2)">
+                <div class="front">
+                    <div class="text-content">
+                        <h1>Alexa</h1>
+                        <div class="page-text">
+                            Alexa is a visual tale born under the winter sky. It is the story of a girl whose curiosity is capable of melting ice and finding magic in the frostiest corners of her world.
+                        </div>
+                        <div class="page-text">
+                            Through this illustrated story, we explore a child's gaze: the ability to see an entire kingdom where others only see snow, and to find warmth in the silence of a sleeping city.
+                        </div>
+                        <div class="page-text" style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-style: normal; color: var(--accent); margin-top: 10px;">
+                            Written by Carol Vila Micó<br>Illustrated by Paloma Aguado
+                        </div>
+                    </div>
+                </div>
+                <div class="back"><img src="/palomaaguado.github.io/es/proyectos/alexa-familia.png" class="full-img"></div>
+            </div>
+
+            <div class="paper" id="p3" style="z-index: 6;" onclick="flip(3)">
+                <div class="front">
+                    <div class="text-content">
+                        <h4>Art Direction</h4>
+                        <div class="page-text">
+                            Alexa's aesthetic relies on a palette of deep blues and icy whites, seeking a harmony that transmits both peace and wonder in equal measure.
+                        </div>
+                        <div class="page-text">
+                            Using generative AI tools, every texture has been refined to evoke the softness of cotton and the brilliance of crystal. Light is not just a visual element, but the guiding thread that leads our protagonist through the winter twilight.
+                        </div>
+                    </div>
+                </div>
+                <div class="back"><img src="/palomaaguado.github.io/es/proyectos/alexa3.png" class="full-img"></div>
+            </div>
+
+            <div class="paper" id="p4" style="z-index: 5;" onclick="flip(4)">
+                <div class="front">
+                    <div class="text-content">
+                        <h4>The Story's Heart</h4>
+                        <div class="page-text">
+                            "Once upon a time, there was a girl who could hear the whisper of falling snowflakes." This editorial project seeks to connect with the most tender part of our imagination.
+                        </div>
+                        <div class="page-text">
+                            More than a story, Alexa is a design exercise that demonstrates how technology can capture the essence of classic storytelling, creating worlds that invite us to dream with our eyes wide open.
+                        </div>
+                        <div class="footer-copy">
+                            Written by Carol Vila Micó · Illustrated by Paloma Aguado<br>© 2026 All rights reserved
+                        </div>
+                    </div>
+                </div>
+                <div class="back"><img src="/palomaaguado.github.io/es/proyectos/alexa16.png" class="full-img"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <p class="hint">Click on the book to flip pages</p>
+
+    <script>
+        let book = document.getElementById('book');
+        let currentLoc = 1;
+        let totalPapers = 4;
+
+        function flip(pageNum) {
+            if (pageNum === 1 && !book.classList.contains('is-open')) {
+                book.classList.add('is-open');
+            }
+            let paper = document.getElementById('p' + pageNum);
+            if (pageNum === currentLoc) {
+                paper.classList.add('flipped');
+                paper.style.zIndex = pageNum;
+                currentLoc++;
+            } else if (pageNum === currentLoc - 1) {
+                paper.classList.remove('flipped');
+                paper.style.zIndex = totalPapers - pageNum + 1;
+                currentLoc--;
+                if (currentLoc === 1) book.classList.remove('is-open');
+            }
+        }
+
+        const snowContainer = document.getElementById('snow');
+        const snowflakeCount = 60;
+
+        for (let i = 0; i < snowflakeCount; i++) {
+            const flake = document.createElement('div');
+            flake.classList.add('snowflake');
+            const size = Math.random() * 5 + 2 + 'px';
+            flake.style.width = size;
+            flake.style.height = size;
+            flake.style.left = Math.random() * 100 + 'vw';
+            flake.style.opacity = Math.random();
+            flake.style.animationDuration = Math.random() * 3 + 3 + 's';
+            flake.style.animationDelay = Math.random() * 5 + 's';
+            snowContainer.appendChild(flake);
+        }
+    </script>
+</body>
+</html>
