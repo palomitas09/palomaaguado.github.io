@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIDL — Propuesta de Servicios Virtuales</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --lidl-blue: #0050aa;
+            --lidl-yellow: #fff000;
+            --lidl-red: #e10a19;
+            --text: #333;
+        }
+
+        body { font-family: 'Montserrat', sans-serif; margin: 0; line-height: 1.6; color: var(--text); }
+        
+        nav { padding: 20px; background: var(--lidl-blue); position: sticky; top: 0; z-index: 1000; }
+        nav a { text-decoration: none; color: white; font-weight: 300; font-size: 0.9rem; }
+
+        .hero {
+            height: 70vh;
+            background: linear-gradient(rgba(0, 80, 170, 0.7), rgba(0, 80, 170, 0.7)), 
+                        url('../es/proyectos/lidl.jpg') center/cover;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            color: white; text-align: center;
+        }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 4rem; margin: 0; letter-spacing: 2px; }
+        
+        /* Resaltado para legibilidad */
+        .hero p { 
+            color: #fff; 
+            background-color: var(--lidl-red); 
+            padding: 5px 15px;
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+            border-radius: 2px;
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
+
+        .project-meta {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px; border-bottom: 2px solid var(--lidl-blue); padding-bottom: 40px; margin-bottom: 40px;
+        }
+        .meta-item h4 { color: var(--lidl-blue); text-transform: uppercase; font-size: 0.8rem; margin-bottom: 5px; }
+
+        .concept-box {
+            background-color: #f0f5fa; padding: 40px;
+            border-left: 8px solid var(--lidl-yellow); margin: 40px 0;
+        }
+        .concept-box h3 { color: var(--lidl-blue); margin-top: 0; }
+
+        .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        .gallery img { width: 100%; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-radius: 4px; }
+        .gallery img.full { grid-column: span 2; }
+
+        footer { background: var(--lidl-blue); color: white; text-align: center; padding: 40px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <nav><a href="/palomaaguado.github.io/es/index.html">← VOLVER AL PORTFOLIO</a></nav>
+
+    <header class="hero">
+        <p>E-commerce & Digital Transformation</p>
+        <h1>LIDL <span style="color: var(--lidl-yellow);">ESPAÑA</span></h1>
+    </header>
+
+    <main class="container">
+        <section class="project-meta">
+            <div class="meta-item"><h4>Estrategia</h4><p>Venta Online Alimentación</p></div>
+            <div class="meta-item"><h4>Rol</h4><p>Planificación de Medios & UX</p></div>
+            <div class="meta-item"><h4>Canales</h4><p>Web, App, Email Marketing</p></div>
+            <div class="meta-item"><h4>Key Focus</h4><p>User Experience & Fidelización</p></div>
+        </section>
+
+        <section>
+            <h2 style="color: var(--lidl-blue);">Innovación en el <span style="color: var(--lidl-red);">Retail</span></h2>
+            <p>Este proyecto plantea una solución integral para la entrada de Lidl España en el mercado del e-commerce de frescos. Se centra en reestructurar la experiencia de usuario (UX) tanto en la web como en la App, implementando sistemas de compra rápida, cupones exclusivos y sugerencias de recetas vinculadas al carrito de compra.</p>
+        </section>
+
+        <section class="concept-box">
+            <h3>Propuesta Transmedia</h3>
+            <p>Para asegurar el éxito de la plataforma, se diseñó una estrategia que incluye rediseño web, optimización de métodos de pago en App y campañas de Email Marketing segmentadas para incentivar la primera compra online.</p>
+        </section>
+
+        <section class="gallery">
+            <img src="../es/proyectos/lidl-investigacion.jpg" alt="Investigación de mercado E-commerce">
+            <img src="../es/proyectos/lidl-web.jpg" alt="Rediseño Web User Friendly">
+            <img src="../es/proyectos/lidl-app.jpg" alt="Optimización App Mobile">
+            <img src="../es/proyectos/lidl-mockup.jpg" alt="Visualización de Cupones y Ofertas">
+            <img src="../es/proyectos/lidl-email.jpg" class="full" alt="Estrategia de Email Marketing">
+        </section>
+    </main>
+
+    <footer><p>© 2026 Paloma Aguado - Case Study LIDL España</p></footer>
+</body>
+</html>
