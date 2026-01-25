@@ -32,7 +32,6 @@
             transition: background 0.5s ease;
         }
 
-        /* El contenedor de la imagen ahora es dinámico */
         .profile-img { 
             width: 160px; height: 160px; 
             background-size: cover;
@@ -41,7 +40,6 @@
             transition: 0.3s;
         }
         
-        /* ESTILOS ESPECÍFICOS POR MARCA */
         .mode-netflix { background: #141414; }
         .mode-netflix .profile-img { border-radius: 4px; }
         .mode-netflix .profile-img:hover { border-color: white; transform: scale(1.05); }
@@ -61,21 +59,49 @@
         /* 3. INTERFACES FINALES */
         .slide { position: absolute; top:0; left:0; width: 100vw; height: 100vh; display: none; background-size: contain; background-repeat: no-repeat; background-position: center; }
         
+        /* MINIATURAS DE VIDEO TIPO SERIE */
+        .video-trigger {
+            position: absolute; top: 45%; left: 8%; width: 320px; height: 180px;
+            background: rgba(0,0,0,0.4); border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 10px; cursor: pointer; display: flex; align-items: center;
+            justify-content: center; transition: 0.3s; overflow: hidden;
+        }
+        .video-trigger:hover { transform: scale(1.05); border-color: white; box-shadow: 0 0 20px rgba(255,255,255,0.2); }
+        .play-btn { font-size: 3rem; color: white; opacity: 0.8; }
+
+        /* REPRODUCTOR FLOTANTE */
+        #video-container {
+            position: fixed; top: 10%; left: 10%; width: 80%; height: 75%;
+            background: #000; z-index: 1000; border-radius: 15px; display: none;
+            box-shadow: 0 0 50px rgba(0,0,0,0.9); border: 1px solid #333;
+        }
+        .video-controls {
+            position: absolute; bottom: -45px; right: 0; display: flex; gap: 20px;
+        }
+        .control-btn { color: white; cursor: pointer; font-size: 0.9rem; font-weight: 600; background: rgba(255,255,255,0.1); padding: 5px 15px; border-radius: 5px; }
+
         .back-arrow {
             position: fixed; top: 30px; left: 40px; width: 40px; height: 40px;
-            background: rgba(255,255,255,0.1); border-radius: 50%;
+            background: rgba(0,0,0,0.5); border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             cursor: pointer; z-index: 500; transition: 0.3s;
         }
         .back-arrow:hover { background: white; color: black; }
 
-        .video-overlay { position: absolute; top: 20%; left: 15%; width: 70%; height: 50%; z-index: 10; border-radius: 8px; overflow: hidden; }
-        iframe { width: 100%; height: 100%; border: none; }
+        iframe { width: 100%; height: 100%; border: none; border-radius: 15px; }
     </style>
 </head>
 <body>
 
     <div id="btn-back" class="back-arrow" style="display:none;" onclick="handleBack()">←</div>
+
+    <div id="video-container">
+        <div id="player-iframe-target" style="width:100%; height:100%;"></div>
+        <div class="video-controls">
+            <div class="control-btn" onclick="toggleFullScreen()">[ ] PANTALLA COMPLETA</div>
+            <div class="control-btn" onclick="closeVideo()" style="background: var(--netflix);">CERRAR ×</div>
+        </div>
+    </div>
 
     <section id="screen-tv" style="display: flex;">
         <div class="tv-content">
@@ -99,14 +125,23 @@
 
     <div id="slide-netflix" class="slide" style="background-image: url('../es/proyectos/tfm-netflix.jpg'); background-color: #141414;"></div>
     <div id="slide-prime" class="slide" style="background-image: url('../es/proyectos/tfm-prime.jpg'); background-color: #0f171e;"></div>
-    <div id="slide-hbo" class="slide" style="background-image: url('../es/proyectos/tfm-hbo.jpg'); background-color: #000;"><div class="video-overlay" id="vid-hbo"></div></div>
-    <div id="slide-disney" class="slide" style="background-image: url('../es/proyectos/tfm-disney.jpg'); background-color: #1a1d29;"><div class="video-overlay" id="vid-disney"></div></div>
+    
+    <div id="slide-hbo" class="slide" style="background-image: url('../es/proyectos/tfm-hbo.jpg'); background-color: #000;">
+        <div class="video-trigger" onclick="openVideo('TcYRdfOJXL8')">
+            <div class="play-btn">▶</div>
+        </div>
+    </div>
+    
+    <div id="slide-disney" class="slide" style="background-image: url('../es/proyectos/tfm-disney1.jpg'); background-color: #1a1d29;">
+        <div class="video-trigger" onclick="openVideo('dgulLqAKjvk')">
+            <div class="play-btn">▶</div>
+        </div>
+    </div>
 
     <script>
         let selectedApp = "";
         let currentStep = "tv"; 
 
-        // Configuración de rutas de imagen y textos
         const configs = {
             netflix: { title: "¿Quién eres?", img: "../es/proyectos/perfil-paloma.jpg" },
             disney:  { title: "¿Quién eres?", img: "../es/proyectos/perfil-disney.png" },
@@ -117,37 +152,44 @@
         function startLogin(appId) {
             selectedApp = appId;
             currentStep = "profile";
-            
             const screen = document.getElementById('screen-profile');
             const profileImg = document.getElementById('p-img');
-            
-            // 1. Cambiamos el estilo del contenedor (clase CSS)
             screen.className = 'mode-' + appId;
-            
-            // 2. Cambiamos el texto
             document.getElementById('profile-title').innerText = configs[appId].title;
-            
-            // 3. Cambiamos la imagen de fondo específicamente
             profileImg.style.backgroundImage = `url('${configs[appId].img}')`;
-            
             updateDisplay();
         }
 
         function accessApp() {
             currentStep = "app";
             updateDisplay();
-            if(selectedApp === 'hbo') {
-                document.getElementById('vid-hbo').innerHTML = `<iframe src="https://www.youtube.com/embed/TcYRdfOJXL8?autoplay=1&mute=1" allow="autoplay"></iframe>`;
-            } else if(selectedApp === 'disney') {
-                document.getElementById('vid-disney').innerHTML = `<iframe src="https://www.youtube.com/embed/dgulLqAKjvk?autoplay=1&mute=1" allow="autoplay"></iframe>`;
+        }
+
+        function openVideo(ytId) {
+            const container = document.getElementById('video-container');
+            const target = document.getElementById('player-iframe-target');
+            container.style.display = 'block';
+            target.innerHTML = `<iframe id="video-iframe" src="https://www.youtube.com/embed/${ytId}?autoplay=1" allow="autoplay; fullscreen"></iframe>`;
+        }
+
+        function closeVideo() {
+            document.getElementById('video-container').style.display = 'none';
+            document.getElementById('player-iframe-target').innerHTML = "";
+        }
+
+        function toggleFullScreen() {
+            const iframe = document.getElementById('video-iframe');
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.webkitRequestFullscreen) {
+                iframe.webkitRequestFullscreen();
             }
         }
 
         function handleBack() {
+            closeVideo();
             if (currentStep === "app") {
                 currentStep = "profile";
-                document.getElementById('vid-hbo').innerHTML = "";
-                document.getElementById('vid-disney').innerHTML = "";
             } else if (currentStep === "profile") {
                 currentStep = "tv";
             }
