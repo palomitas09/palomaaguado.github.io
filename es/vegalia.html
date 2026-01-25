@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vegalia — Análisis y Evolución de Marca</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --vegalia-green: #2d5a27;
+            --vegalia-light-green: #89b031;
+            --text: #333;
+        }
+
+        body { font-family: 'Montserrat', sans-serif; margin: 0; line-height: 1.6; color: var(--text); }
+        
+        /* Navegación en Verde Vegalia */
+        nav { padding: 20px; background: var(--vegalia-green); position: sticky; top: 0; z-index: 1000; }
+        nav a { text-decoration: none; color: white; font-weight: 300; font-size: 0.9rem; }
+
+        .hero {
+            height: 70vh;
+            background: linear-gradient(rgba(45, 90, 39, 0.6), rgba(45, 90, 39, 0.6)), 
+                        url('../es/proyectos/vegalia.jpg') center/cover;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            color: white; text-align: center;
+        }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 4rem; margin: 0; letter-spacing: 2px; }
+        .hero p { color: var(--vegalia-light-green); font-weight: 600; text-transform: uppercase; letter-spacing: 2px; }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
+
+        .project-meta {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px; border-bottom: 2px solid var(--vegalia-light-green); padding-bottom: 40px; margin-bottom: 40px;
+        }
+        .meta-item h4 { color: var(--vegalia-green); text-transform: uppercase; font-size: 0.8rem; margin-bottom: 5px; }
+
+        .concept-box {
+            background-color: #f4f7f2; padding: 40px;
+            border-left: 8px solid var(--vegalia-light-green); margin: 40px 0;
+        }
+        .concept-box h3 { color: var(--vegalia-green); margin-top: 0; }
+
+        .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        .gallery img { width: 100%; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-radius: 4px; object-fit: cover; }
+        .gallery img.full { grid-column: span 2; }
+
+        footer { background: var(--vegalia-green); color: white; text-align: center; padding: 40px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <nav><a href="/palomaaguado.github.io/es/index.html">← VOLVER AL PORTFOLIO</a></nav>
+
+    <header class="hero">
+        <p>Branding & Estrategia de Posicionamiento</p>
+        <h1>VEGALIA <span style="color: var(--vegalia-light-green);">(Campofrío)</span></h1>
+    </header>
+
+    <main class="container">
+        <section class="project-meta">
+            <div class="meta-item"><h4>Objetivo</h4><p>Reposicionamiento y Sostenibilidad</p></div>
+            <div class="meta-item"><h4>Rol</h4><p>Estrategia de Medios y RRSS</p></div>
+            <div class="meta-item"><h4>Análisis</h4><p>Competencia (Heura, Beyond Meat)</p></div>
+            <div class="meta-item"><h4>Canales</h4><p>Mupis, Instagram, Influencers</p></div>
+        </section>
+
+        <section>
+            <h2 style="color: var(--vegalia-green);">El Reto: De lo Vegetariano a lo <span style="color: var(--vegalia-light-green);">Sostenible</span></h2>
+            <p>A pesar de ser una marca reconocida, Vegalia necesitaba evolucionar para competir con marcas nativas vegetales. El proyecto se centró en mejorar el packaging para hacerlo más divisible y sostenible, y en separar la identidad digital de la marca matriz (Campofrío) para ganar autenticidad.</p>
+        </section>
+
+        <section class="concept-box">
+            <h3>"Tu receta puede ser la estrella"</h3>
+            <p>Estrategia centrada en el usuario mediante un concurso de recetas para generar comunidad, apoyado por influencers especializados y una campaña de exteriores (Mupis) en puntos estratégicos.</p>
+        </section>
+
+        <section class="gallery">
+            <img src="../es/proyectos/vegalia-investigacion.jpg" alt="Investigación de mercado">
+            <img src="../es/proyectos/vegalia-ranking.jpg" alt="Ranking de consumo en España">
+            
+            <img src="../es/proyectos/vegalia-packaging.jpg" alt="Propuesta de Packaging Sostenible">
+            <img src="../es/proyectos/vegalia-mupi.jpg" alt="Publicidad Exterior">
+            
+            <img src="../es/proyectos/vegalia-social.jpg" class="full" alt="Estrategia en Redes Sociales e Influencers">
+        </section>
+    </main>
+
+    <footer><p>© 2026 Paloma Aguado - Case Study Vegalia</p></footer>
+</body>
+</html>
