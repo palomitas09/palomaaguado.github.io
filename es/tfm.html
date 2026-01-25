@@ -8,75 +8,64 @@
         .slide { position: absolute; width: 100vw; height: 100vh; display: none; background-size: contain; background-repeat: no-repeat; background-position: center; }
         .active { display: block; }
         
-        /* HERRAMIENTA DE MAPEO: Borrar "border" cuando termines de ajustar */
-        .hotspot { 
-            position: absolute; 
-            cursor: pointer; 
-            border: 2px solid yellow; 
-            z-index: 10; 
-            transition: background 0.2s;
-        }
-        .hotspot:hover { background: rgba(255, 255, 255, 0.2); }
+        /* HERRAMIENTA DE MAPEO (Quitar border al finalizar) */
+        .hotspot { position: absolute; cursor: pointer; border: 1px dashed rgba(255,255,0,0.5); z-index: 20; }
+        .hotspot:hover { background: rgba(255,255,255,0.1); }
 
-        /* Estilo para los vídeos incrustados */
-        .video-layer {
+        /* Contenedor del Iframe de YouTube */
+        .video-container {
             position: absolute;
-            top: 25%; left: 18%; width: 64%; height: 42%; /* Ajustar al marco de tu TV */
+            top: 15%; left: 10%; width: 80%; height: 60%; /* Ajustar según tu diseño de TV */
             z-index: 5;
-            pointer-events: none;
+            background: #000;
         }
-        video { width: 100%; height: 100%; object-fit: cover; }
+        iframe { width: 100%; height: 100%; border: none; }
+
+        .btn-back { position: absolute; top: 20px; left: 20px; color: white; cursor: pointer; z-index: 30; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px; }
     </style>
 </head>
 <body oncontextmenu="return false;">
 
     <div id="slide-menu" class="slide active" style="background-image: url('../es/proyectos/slide-menu.jpg');">
-        <div class="hotspot" title="Netflix" style="top: 30%; left: 10%; width: 18%; height: 30%;" onclick="selectPlatform('netflix')"></div>
-        <div class="hotspot" title="Prime"   style="top: 30%; left: 32%; width: 18%; height: 30%;" onclick="selectPlatform('prime')"></div>
-        <div class="hotspot" title="HBO"     style="top: 30%; left: 54%; width: 18%; height: 30%;" onclick="selectPlatform('hbo')"></div>
-        <div class="hotspot" title="Disney"  style="top: 30%; left: 76%; width: 18%; height: 30%;" onclick="selectPlatform('disney')"></div>
-        
-        <div class="hotspot" title="Stats"   style="top: 80%; left: 40%; width: 20%; height: 10%;" onclick="showSlide('stats')"></div>
+        <div class="hotspot" style="top: 30%; left: 10%; width: 18%; height: 30%;" onclick="selectPlatform('netflix')"></div>
+        <div class="hotspot" style="top: 30%; left: 32%; width: 18%; height: 30%;" onclick="selectPlatform('prime')"></div>
+        <div class="hotspot" style="top: 30%; left: 54%; width: 18%; height: 30%;" onclick="selectPlatform('hbo')"></div>
+        <div class="hotspot" style="top: 30%; left: 76%; width: 18%; height: 30%;" onclick="selectPlatform('disney')"></div>
     </div>
 
     <div id="slide-perfil" class="slide" style="background-image: url('../es/proyectos/perfil-paloma.jpg');">
-        <div class="hotspot" title="Entrar" style="top: 35%; left: 42%; width: 15%; height: 25%;" onclick="goToPlatform()"></div>
-        <div class="hotspot" title="Volver" style="top: 5%; left: 5%; width: 5%; height: 5%;" onclick="showSlide('menu')"></div>
-    </div>
-
-    <div id="slide-netflix" class="slide" style="background-image: url('../es/proyectos/tfm-netflix.jpg');">
-        <div class="video-layer" id="vid-netflix"></div> <div class="hotspot" title="Menu" style="top: 2%; left: 2%; width: 8%; height: 8%;" onclick="showSlide('menu')"></div>
-    </div>
-
-    <div id="slide-prime" class="slide" style="background-image: url('../es/proyectos/tfm-prime.jpg');">
-        <div class="video-layer" id="vid-prime"></div>
-        <div class="hotspot" title="Menu" style="top: 2%; left: 2%; width: 8%; height: 8%;" onclick="showSlide('menu')"></div>
+        <div class="hotspot" style="top: 35%; left: 42%; width: 15%; height: 25%;" onclick="goToPlatform()"></div>
     </div>
 
     <div id="slide-hbo" class="slide" style="background-image: url('../es/proyectos/tfm-hbo.jpg');">
-        <div class="video-layer" id="vid-hbo"></div>
-        <div class="hotspot" title="Menu" style="top: 2%; left: 2%; width: 8%; height: 8%;" onclick="showSlide('menu')"></div>
+        <div class="btn-back" onclick="showSlide('menu')">← VOLVER</div>
+        <div class="video-container" id="container-hbo"></div>
     </div>
 
     <div id="slide-disney" class="slide" style="background-image: url('../es/proyectos/tfm-disney.jpg');">
-        <div class="video-layer" id="vid-disney"></div>
-        <div class="hotspot" title="Menu" style="top: 2%; left: 2%; width: 8%; height: 8%;" onclick="showSlide('menu')"></div>
+        <div class="btn-back" onclick="showSlide('menu')">← VOLVER</div>
+        <div class="video-container" id="container-disney"></div>
+        <div style="position:absolute; bottom:20px; width:100%; text-align:center; z-index:30;">
+            <button onclick="playDisney(0)">Spot 1</button>
+            <button onclick="playDisney(1)">Spot 2</button>
+            <button onclick="playDisney(2)">Spot 3</button>
+            <button onclick="playDisney(3)">Spot 4</button>
+        </div>
     </div>
 
-    <div id="slide-stats" class="slide" style="background-image: url('../es/proyectos/tfm-stats.jpg');">
-        <div class="hotspot" title="Menu" style="top: 85%; left: 45%; width: 10%; height: 8%;" onclick="showSlide('menu')"></div>
+    <div id="slide-netflix" class="slide" style="background-image: url('../es/proyectos/tfm-netflix.jpg');">
+        <div class="btn-back" onclick="showSlide('menu')">← VOLVER</div>
+    </div>
+    <div id="slide-prime" class="slide" style="background-image: url('../es/proyectos/tfm-prime.jpg');">
+        <div class="btn-back" onclick="showSlide('menu')">← VOLVER</div>
     </div>
 
     <script>
         let plataformaDestino = "";
-
-        // Diccionario de vídeos (puedes ponerme los enlaces de YouTube o Drive luego)
-        const videos = {
-            'netflix': '',
-            'prime': '',
-            'hbo': '',
-            'disney': ''
-        };
+        
+        // IDs de YouTube que me pasaste
+        const v_hbo = "TcYRdfOJXL8";
+        const v_disney = ["dgulLqAKjvk", "BC6lkiBx01c", "5U_OBfXYs-4", "KAiFRHNWuWY"];
 
         function selectPlatform(name) {
             plataformaDestino = name;
@@ -85,26 +74,24 @@
 
         function goToPlatform() {
             showSlide(plataformaDestino);
-            playVideoFor(plataformaDestino);
+            if(plataformaDestino === 'hbo') {
+                document.getElementById('container-hbo').innerHTML = `<iframe src="https://www.youtube.com/embed/${v_hbo}?autoplay=1&mute=1" allow="autoplay"></iframe>`;
+            } else if(plataformaDestino === 'disney') {
+                playDisney(0);
+            }
+        }
+
+        function playDisney(index) {
+            document.getElementById('container-disney').innerHTML = `<iframe src="https://www.youtube.com/embed/${v_disney[index]}?autoplay=1&mute=1" allow="autoplay"></iframe>`;
         }
 
         function showSlide(id) {
             document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
-            // Parar todos los vídeos al cambiar de slide
-            document.querySelectorAll('.video-layer').forEach(layer => layer.innerHTML = '');
+            // Limpiar vídeos para que no sigan sonando
+            document.getElementById('container-hbo').innerHTML = "";
+            document.getElementById('container-disney').innerHTML = "";
             
             document.getElementById('slide-' + id).classList.add('active');
-        }
-
-        function playVideoFor(platform) {
-            if (videos[platform]) {
-                const container = document.getElementById('vid-' + platform);
-                // Si es un enlace de vídeo directo (.mp4)
-                container.innerHTML = `<video autoplay muted loop><source src="${videos[platform]}" type="video/mp4"></video>`;
-                
-                // Si es un iframe (YouTube/Canva embebido), se usaría:
-                // container.innerHTML = `<iframe src="${videos[platform]}" frameborder="0" allow="autoplay"></iframe>`;
-            }
         }
     </script>
 </body>
