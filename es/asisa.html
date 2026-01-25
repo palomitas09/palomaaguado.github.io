@@ -51,6 +51,19 @@
         }
         .concept-box h3 { color: var(--asisa-dark); margin-top: 0; }
 
+        /* Estilos para el reproductor de audio */
+        .audio-player {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
         .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
         .gallery img { width: 100%; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-radius: 4px; }
         .gallery img.full { grid-column: span 2; }
@@ -83,6 +96,14 @@
         <section class="concept-box">
             <h3>Planificación de Medios de Alto Impacto</h3>
             <p>Mi labor se centró en la selección táctica de canales para la Etapa 2, coordinando una inversión en <strong>Exterior (Cartelería Nacional), Twitter, Radio y Televisión</strong>, con el objetivo de elevar el recuerdo de marca al 35%.</p>
+            
+            <div class="audio-player">
+                <span style="font-size: 0.8rem; color: var(--asisa-blue); font-weight: 600; text-transform: uppercase;">Escuchar Cuña de Radio</span>
+                <audio controls autoplay>
+                    <source src="../es/proyectos/cuña-asisa.mp3" type="audio/mpeg">
+                    Tu navegador no soporta la reproducción de audio.
+                </audio>
+            </div>
         </section>
 
         <section class="gallery">
