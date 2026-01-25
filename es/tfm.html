@@ -2,97 +2,192 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="robots" content="noindex, nofollow">
-    <title>TFM — Paloma Aguado | Copyright Protegido</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TFM — Paloma Aguado | Investigación Estratégica</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    
     <style>
-        /* Desactivar selección de texto para evitar copiar/pegar */
+        :root {
+            --n-red: #E50914;
+            --bg: #141414;
+        }
+
+        /* PROTECCIÓN CONTRA PLAGIO */
         body { 
-            -webkit-user-select: none; 
-            -moz-user-select: none; 
-            -ms-user-select: none; 
-            user-select: none; 
-            background-color: #141414;
-            color: white;
-            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg); 
+            color: white; 
+            font-family: 'Montserrat', sans-serif; 
+            margin: 0; 
+            overflow-x: hidden;
+            -webkit-user-select: none;
+            user-select: none;
         }
 
-        /* Estilo de la Interfaz Interactiva */
-        .profile-selector {
-            text-align: center;
-            padding: 100px 20px;
+        /* PANTALLA 1: QUIÉN ERES */
+        #login-screen {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
         }
-        .profile-card {
-            width: 150px;
+
+        .profile-container {
+            text-align: center;
             cursor: pointer;
-            transition: transform 0.3s;
-            border: 3px solid transparent;
-        }
-        .profile-card:hover {
-            transform: scale(1.1);
-            border-color: #E50914;
         }
 
-        .platform-menu {
-            display: none; /* Se activa al elegir perfil */
-            text-align: center;
-            padding: 50px;
+        .profile-avatar {
+            width: 150px;
+            height: 150px;
+            background: url('../es/proyectos/perfil-paloma.jpg') center/cover;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            transition: border 0.3s;
         }
 
-        .copyright-notice {
-            background: rgba(229, 9, 20, 0.1);
-            border: 1px solid #E50914;
-            padding: 15px;
-            margin: 20px auto;
-            max-width: 800px;
-            font-size: 0.8rem;
+        .profile-container:hover .profile-avatar {
+            border: 3px solid white;
+        }
+
+        /* PANTALLA 2: DASHBOARD INTERACTIVO */
+        #dashboard {
+            display: none;
+            padding: 40px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .platform-card {
+            background: #2f2f2f;
+            padding: 40px;
+            border-radius: 8px;
             text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s, background 0.3s;
         }
-        
-        footer {
+
+        .platform-card:hover {
+            transform: scale(1.05);
+            background: #3f3f3f;
+        }
+
+        .platform-card img { width: 100%; max-width: 120px; }
+
+        /* CONTENIDO DE ANÁLISIS (MODAL) */
+        #analysis-view {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
             padding: 50px;
-            color: #666;
-            font-size: 0.75rem;
+            box-sizing: border-box;
+            overflow-y: auto;
         }
+
+        .close-btn {
+            position: absolute;
+            top: 30px; right: 30px;
+            font-size: 2rem; color: white; cursor: pointer;
+        }
+
+        .copyright-tag {
+            background: var(--n-red);
+            padding: 10px;
+            font-size: 0.7rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+        }
+
+        .fade-in { opacity: 1 !important; }
     </style>
 </head>
-<body oncontextmenu="return false;"> <nav style="padding: 20px;"><a href="index.html" style="color:white; text-decoration:none;">← VOLVER</a></nav>
+<body oncontextmenu="return false;">
 
-    <section id="login-screen" class="profile-selector">
-        <h1>¿Quién eres?</h1>
-        <div onclick="unlockTFM()">
-            <img src="../es/proyectos/perfil-paloma.jpg" class="profile-card" alt="Perfil Paloma">
-            <p>Paloma</p>
+    <section id="login-screen">
+        <h1 style="font-weight: 300; font-size: 2.5rem; margin-bottom: 40px;">¿Quién eres?</h1>
+        <div class="profile-container" onclick="enterTFM()">
+            <div class="profile-avatar"></div>
+            <p style="color: #808080; font-size: 1.2rem;">Paloma</p>
         </div>
     </section>
 
-    <main id="tfm-content" class="platform-menu">
-        <div class="copyright-notice">
-            <strong>AVISO DE COPYRIGHT:</strong> Este Trabajo de Fin de Máster es propiedad intelectual de <strong>Paloma Aguado López</strong>. 
-            Queda prohibida la reproducción total o parcial, distribución o transformación de este contenido sin autorización expresa.
-        </div>
+    <main id="dashboard">
+        <nav style="margin-bottom: 40px;"><a href="index.html" style="color:white; text-decoration:none;">← SALIR</a></nav>
         
-        <h2>Selecciona una plataforma para explorar el análisis</h2>
-        </main>
+        <header>
+            <h2 style="font-size: 2rem;">TFM: La Publicidad en el Streaming</h2>
+            <p style="color: #aaa;">Selecciona una plataforma para explorar los insights del proyecto.</p>
+        </header>
 
-    <footer>
-        <p>© 2026 Paloma Aguado López. Todos los derechos reservados. <br>
-        Obra registrada y protegida legalmente contra plagio.</p>
-    </footer>
+        <div class="platform-grid">
+            <div class="platform-card" onclick="openAnalysis('netflix')">
+                <img src="../es/proyectos/logo-netflix.png" alt="Netflix">
+                <p>Madriguera de Entretenimiento</p>
+            </div>
+            <div class="platform-card" onclick="openAnalysis('disney')">
+                <img src="../es/proyectos/logo-disney.png" alt="Disney+">
+                <p>Nostalgia y Exclusividad</p>
+            </div>
+            <div class="platform-card" onclick="openAnalysis('prime')">
+                <img src="../es/proyectos/logo-prime.png" alt="Prime Video">
+                <p>Ecosistema y Conveniencia</p>
+            </div>
+            <div class="platform-card" onclick="openAnalysis('hbo')">
+                <img src="../es/proyectos/logo-hbo.png" alt="HBO Max">
+                <p>Calidad y Prestigio</p>
+            </div>
+        </div>
+    </main>
+
+    <div id="analysis-view">
+        <div class="copyright-tag">CONTENIDO PROTEGIDO POR COPYRIGHT © 2026 PALOMA AGUADO LÓPEZ</div>
+        <span class="close-btn" onclick="closeAnalysis()">×</span>
+        <div id="content-area" style="max-width: 800px; margin: 50px auto;">
+            </div>
+    </div>
 
     <script>
-        function unlockTFM() {
-            document.getElementById('login-screen').style.display = 'none';
-            document.getElementById('tfm-content').style.display = 'block';
+        function enterTFM() {
+            document.getElementById('login-screen').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('login-screen').style.display = 'none';
+                const dash = document.getElementById('dashboard');
+                dash.style.display = 'block';
+                setTimeout(() => dash.classList.add('fade-in'), 100);
+            }, 500);
         }
 
-        // Aviso si intentan usar atajos de teclado para copiar
+        function openAnalysis(platform) {
+            const view = document.getElementById('analysis-view');
+            const area = document.getElementById('content-area');
+            
+            const data = {
+                'netflix': '<h1>Netflix</h1><img src="../es/proyectos/tfm-netflix.jpg" style="width:100%"><p>Aquí incluirías tus conclusiones sobre el posicionamiento de marca de Netflix y su plan de anuncios...</p>',
+                'disney': '<h1>Disney+</h1><img src="../es/proyectos/tfm-disney.jpg" style="width:100%"><p>Análisis de la nostalgia como motor de suscripción...</p>',
+                // ... añadir el resto
+            };
+
+            area.innerHTML = data[platform] || '<h1>En desarrollo</h1>';
+            view.style.display = 'block';
+        }
+
+        function closeAnalysis() {
+            document.getElementById('analysis-view').style.display = 'none';
+        }
+
+        // Bloqueo de teclas de copia
         document.onkeydown = function(e) {
-            if(e.ctrlKey && (e.keyCode === 67 || e.keyCode === 85 || e.keyCode === 83)) {
-                alert("Este contenido está protegido por Copyright.");
-                return false;
-            }
+            if(e.ctrlKey && (e.keyCode === 67 || e.keyCode === 85)) return false;
         };
     </script>
 </body>
