@@ -19,8 +19,9 @@
 
         .hero {
             height: 70vh;
+            /* Actualizado a once.jpg */
             background: linear-gradient(rgba(0, 149, 59, 0.7), rgba(0, 149, 59, 0.7)), 
-                        url('../es/proyectos/once-hero.jpg') center/cover;
+                        url('../es/proyectos/once.jpg') center/cover;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             color: white; text-align: center;
         }
@@ -34,6 +35,17 @@
             gap: 20px; border-bottom: 2px solid var(--once-green); padding-bottom: 40px; margin-bottom: 40px;
         }
         .meta-item h4 { color: var(--once-green); text-transform: uppercase; font-size: 0.8rem; margin-bottom: 5px; }
+
+        .video-section {
+            margin: 40px 0;
+            text-align: center;
+        }
+        .video-section video {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
 
         .concept-box {
             background-color: var(--once-light); padding: 40px;
@@ -60,9 +72,17 @@
     <main class="container">
         <section class="project-meta">
             <div class="meta-item"><h4>Objetivo</h4><p>Visibilidad y Reconocimiento Gen Z & Millennial</p></div>
-            <div class="meta-item"><h4>Rol</h4><p>Planificación de Medios y Estrategia</p></div>
+            <div class="meta-item"><h4>Rol</h4><p>Planificación de Medios & Copywriting</p></div>
             <div class="meta-item"><h4>KPIs</h4><p>+18% Interacción IG / +19% Exterior</p></div>
             <div class="meta-item"><h4>Canales</h4><p>TikTok, YouTube, Spotify, Exterior</p></div>
+        </section>
+
+        <section class="video-section">
+            <h2 style="color: var(--once-green); text-transform: uppercase; font-size: 1.2rem; margin-bottom: 20px;">Spot de Campaña</h2>
+            <video controls>
+                <source src="../es/proyectos/once-spot.mp4" type="video/mp4">
+                Tu navegador no soporta el video.
+            </video>
         </section>
 
         <section>
@@ -76,13 +96,8 @@
         </section>
 
         <section class="gallery">
-            <img src="../es/proyectos/once-estrategia.jpg" alt="Estrategia de Medios">
-            <img src="../es/proyectos/once-tiktok.jpg" alt="Selección TikTok e Instagram">
-            
-            <img src="../es/proyectos/once-exterior.jpg" alt="Impacto en Exteriores">
-            <img src="../es/proyectos/once-youtube.jpg" alt="Alcance en YouTube">
-            
-            <img src="../es/proyectos/once-conclusiones.jpg" class="full" alt="Medición de Estrategia y KPIs">
+            <img src="../es/proyectos/once-estrategia.jpg" class="full" alt="Estrategia de Medios Detallada">
+            <img src="../es/proyectos/once-mockup.jpg" class="full" alt="Visualización de Campaña">
         </section>
     </main>
 
