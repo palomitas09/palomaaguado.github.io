@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONCE — Plan de Marketing y Medios</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --once-green: #00953b;
+            --once-light: #f4f9f5;
+            --text: #333;
+        }
+
+        body { font-family: 'Montserrat', sans-serif; margin: 0; line-height: 1.6; color: var(--text); }
+        
+        nav { padding: 20px; background: var(--once-green); position: sticky; top: 0; z-index: 1000; }
+        nav a { text-decoration: none; color: white; font-weight: 300; font-size: 0.9rem; }
+
+        .hero {
+            height: 70vh;
+            background: linear-gradient(rgba(0, 149, 59, 0.7), rgba(0, 149, 59, 0.7)), 
+                        url('../es/proyectos/once-hero.jpg') center/cover;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            color: white; text-align: center;
+        }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 4rem; margin: 0; letter-spacing: 2px; }
+        .hero p { color: #fff; font-weight: 400; text-transform: uppercase; letter-spacing: 2px; opacity: 0.9; }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
+
+        .project-meta {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px; border-bottom: 2px solid var(--once-green); padding-bottom: 40px; margin-bottom: 40px;
+        }
+        .meta-item h4 { color: var(--once-green); text-transform: uppercase; font-size: 0.8rem; margin-bottom: 5px; }
+
+        .concept-box {
+            background-color: var(--once-light); padding: 40px;
+            border-left: 8px solid var(--once-green); margin: 40px 0;
+        }
+        .concept-box h3 { color: var(--once-green); margin-top: 0; }
+
+        .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        .gallery img { width: 100%; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-radius: 4px; }
+        .gallery img.full { grid-column: span 2; }
+
+        footer { background: var(--once-green); color: white; text-align: center; padding: 40px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <nav><a href="/palomaaguado.github.io/es/index.html">← VOLVER AL PORTFOLIO</a></nav>
+
+    <header class="hero">
+        <p>Plan de Marketing e Impacto Social</p>
+        <h1>PROYECTO <span style="font-weight: 700;">ONCE</span></h1>
+    </header>
+
+    <main class="container">
+        <section class="project-meta">
+            <div class="meta-item"><h4>Objetivo</h4><p>Visibilidad y Reconocimiento Gen Z & Millennial</p></div>
+            <div class="meta-item"><h4>Rol</h4><p>Planificación de Medios y Estrategia</p></div>
+            <div class="meta-item"><h4>KPIs</h4><p>+18% Interacción IG / +19% Exterior</p></div>
+            <div class="meta-item"><h4>Canales</h4><p>TikTok, YouTube, Spotify, Exterior</p></div>
+        </section>
+
+        <section>
+            <h2 style="color: var(--once-green);">Evolucionando la <span style="font-weight: 700;">Ilusión</span></h2>
+            <p>El reto consistía en modernizar la percepción de la ONCE para conectar con audiencias más jóvenes. Desarrollamos una estrategia transmedia integrando TikTok como eje central de contenido orgánico y una potente campaña de exteriores para reforzar la recordación.</p>
+        </section>
+
+        <section class="concept-box">
+            <h3>Resultados Estimados</h3>
+            <p>Gracias a la selección táctica de medios, proyectamos un alcance de <strong>8.8 millones de usuarios</strong> en TikTok y un incremento del 10% en la recordación de marca a través de formatos auditivos (Spotify/Podcasts).</p>
+        </section>
+
+        <section class="gallery">
+            <img src="../es/proyectos/once-estrategia.jpg" alt="Estrategia de Medios">
+            <img src="../es/proyectos/once-tiktok.jpg" alt="Selección TikTok e Instagram">
+            
+            <img src="../es/proyectos/once-exterior.jpg" alt="Impacto en Exteriores">
+            <img src="../es/proyectos/once-youtube.jpg" alt="Alcance en YouTube">
+            
+            <img src="../es/proyectos/once-conclusiones.jpg" class="full" alt="Medición de Estrategia y KPIs">
+        </section>
+    </main>
+
+    <footer><p>© 2026 Paloma Aguado - Case Study ONCE</p></footer>
+</body>
+</html>
