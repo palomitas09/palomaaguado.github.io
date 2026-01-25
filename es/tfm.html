@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <title>TFM — Paloma Aguado | Copyright Protegido</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Desactivar selección de texto para evitar copiar/pegar */
+        body { 
+            -webkit-user-select: none; 
+            -moz-user-select: none; 
+            -ms-user-select: none; 
+            user-select: none; 
+            background-color: #141414;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Estilo de la Interfaz Interactiva */
+        .profile-selector {
+            text-align: center;
+            padding: 100px 20px;
+        }
+        .profile-card {
+            width: 150px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            border: 3px solid transparent;
+        }
+        .profile-card:hover {
+            transform: scale(1.1);
+            border-color: #E50914;
+        }
+
+        .platform-menu {
+            display: none; /* Se activa al elegir perfil */
+            text-align: center;
+            padding: 50px;
+        }
+
+        .copyright-notice {
+            background: rgba(229, 9, 20, 0.1);
+            border: 1px solid #E50914;
+            padding: 15px;
+            margin: 20px auto;
+            max-width: 800px;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+        
+        footer {
+            padding: 50px;
+            color: #666;
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;"> <nav style="padding: 20px;"><a href="index.html" style="color:white; text-decoration:none;">← VOLVER</a></nav>
+
+    <section id="login-screen" class="profile-selector">
+        <h1>¿Quién eres?</h1>
+        <div onclick="unlockTFM()">
+            <img src="../es/proyectos/perfil-paloma.jpg" class="profile-card" alt="Perfil Paloma">
+            <p>Paloma</p>
+        </div>
+    </section>
+
+    <main id="tfm-content" class="platform-menu">
+        <div class="copyright-notice">
+            <strong>AVISO DE COPYRIGHT:</strong> Este Trabajo de Fin de Máster es propiedad intelectual de <strong>Paloma Aguado López</strong>. 
+            Queda prohibida la reproducción total o parcial, distribución o transformación de este contenido sin autorización expresa.
+        </div>
+        
+        <h2>Selecciona una plataforma para explorar el análisis</h2>
+        </main>
+
+    <footer>
+        <p>© 2026 Paloma Aguado López. Todos los derechos reservados. <br>
+        Obra registrada y protegida legalmente contra plagio.</p>
+    </footer>
+
+    <script>
+        function unlockTFM() {
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('tfm-content').style.display = 'block';
+        }
+
+        // Aviso si intentan usar atajos de teclado para copiar
+        document.onkeydown = function(e) {
+            if(e.ctrlKey && (e.keyCode === 67 || e.keyCode === 85 || e.keyCode === 83)) {
+                alert("Este contenido está protegido por Copyright.");
+                return false;
+            }
+        };
+    </script>
+</body>
+</html>
