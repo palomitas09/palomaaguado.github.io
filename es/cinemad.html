@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CINEMAD+ — Email Marketing & Fidelización</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cinema-red: #800000; /* Granate del PDF */
+            --cinema-black: #1a1a1a;
+            --text: #333;
+        }
+
+        body { font-family: 'Montserrat', sans-serif; margin: 0; line-height: 1.6; color: var(--text); }
+        
+        nav { padding: 20px; background: var(--cinema-black); position: sticky; top: 0; z-index: 1000; }
+        nav a { text-decoration: none; color: white; font-weight: 300; font-size: 0.9rem; letter-spacing: 1px; }
+
+        .hero {
+            height: 70vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('../es/proyectos/cinemad-hero.jpg') center/cover;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            color: white; text-align: center;
+        }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 4rem; margin: 0; letter-spacing: 4px; }
+        .hero p { color: var(--cinema-red); font-weight: 600; text-transform: uppercase; letter-spacing: 3px; }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
+
+        .project-meta {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px; border-bottom: 2px solid var(--cinema-red); padding-bottom: 40px; margin-bottom: 40px;
+        }
+        .meta-item h4 { color: var(--cinema-red); text-transform: uppercase; font-size: 0.8rem; margin-bottom: 5px; }
+
+        .concept-box {
+            background-color: #f9f9f9; padding: 40px;
+            border-left: 8px solid var(--cinema-red); margin: 40px 0;
+        }
+        .concept-box h3 { color: var(--cinema-black); margin-top: 0; text-transform: uppercase; }
+
+        .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        .gallery img { width: 100%; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-radius: 4px; }
+        .gallery img.full { grid-column: span 2; }
+
+        footer { background: var(--cinema-black); color: white; text-align: center; padding: 40px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <nav><a href="/palomaaguado.github.io/es/index.html">← VOLVER AL PORTFOLIO</a></nav>
+
+    <header class="hero">
+        <p>Email Marketing & CRM Strategy</p>
+        <h1>CINEMAD<span style="color: var(--cinema-red);">+</span></h1>
+    </header>
+
+    <main class="container">
+        <section class="project-meta">
+            <div class="meta-item"><h4>Estrategia</h4><p>Fidelización y Captación</p></div>
+            <div class="meta-item"><h4>Canales</h4><p>Newsletter, Landing Page, App</p></div>
+            <div class="meta-item"><h4>Club</h4><p>Sistema de Niveles (Dorado, Plata, Cobre)</p></div>
+            <div class="meta-item"><h4>Software</h4><p>Email Marketing Automation</p></div>
+        </section>
+
+        <section>
+            <h2 style="color: var(--cinema-black); text-transform: uppercase;">Más que un cine, una <span style="color: var(--cinema-red);">comunidad</span></h2>
+            <p>Desarrollo de una estrategia integral de Email Marketing para CINEMAD+. El proyecto abarca desde el diseño de piezas de captación hasta la creación de un programa de fidelización por niveles, optimizando el Customer Journey para aumentar la recurrencia de los espectadores.</p>
+        </section>
+
+        <section class="concept-box">
+            <h3>Fidelización por Gamificación</h3>
+            <p>Implementación de un sistema de recompensas donde los usuarios escalan categorías (Cobre, Plateado, Dorado) según su consumo, incentivando la descarga de la App y el registro en la Newsletter mediante beneficios exclusivos.</p>
+        </section>
+
+        <section class="gallery">
+            <img src="../es/proyectos/cinemad-captacion.jpg" alt="Estrategia de Captación">
+            <img src="../es/proyectos/cinemad-landing.jpg" alt="Diseño de Landing Page y App">
+            <img src="../es/proyectos/cinemad-newsletter.jpg" class="full" alt="Diseño de Newsletter y Promociones">
+            <img src="../es/proyectos/cinemad-niveles.jpg" class="full" alt="Sistema de Fidelización por Niveles">
+        </section>
+    </main>
+
+    <footer><p>© 2026 Paloma Aguado - Email Marketing Case Study</p></footer>
+</body>
+</html>
