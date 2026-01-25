@@ -2,96 +2,104 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>TFM Interactivo | Paloma Aguado</title>
+    <title>Smart TV Interface | Paloma Aguado</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
     <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; font-family: 'Montserrat', sans-serif; }
-        .slide { position: absolute; width: 100vw; height: 100vh; display: none; background-size: contain; background-repeat: no-repeat; background-position: center; }
-        .active { display: block; }
-        
-        /* HERRAMIENTA DE MAPEO (Quitar border al finalizar) */
-        .hotspot { position: absolute; cursor: pointer; border: 1px dashed rgba(255,255,0,0.5); z-index: 20; }
-        .hotspot:hover { background: rgba(255,255,255,0.1); }
+        :root { --bg: #050505; --accent: #E50914; }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: var(--bg); color: white; font-family: 'Montserrat', sans-serif; overflow: hidden; }
 
-        /* Contenedor del Iframe de YouTube */
-        .video-container {
-            position: absolute;
-            top: 15%; left: 10%; width: 80%; height: 60%; /* Ajustar según tu diseño de TV */
-            z-index: 5;
-            background: #000;
+        /* PANTALLA INICIAL: SMART TV */
+        #screen-tv {
+            height: 100vh; width: 100vw;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), var(--bg)), url('../es/proyectos/slide-menu.jpg'); /* Aquí puedes poner una imagen de una serie potente */
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; justify-content: flex-end;
+            transition: 0.5s;
+        }
+
+        .tv-content { padding: 60px; background: linear-gradient(transparent, var(--bg)); }
+        .tv-title { font-size: 3.5rem; font-weight: 600; margin: 0; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        .tv-subtitle { font-size: 1.2rem; opacity: 0.8; margin-bottom: 30px; max-width: 600px; }
+
+        /* CARRUSEL DE APPS */
+        .apps-row { display: flex; gap: 20px; padding-bottom: 40px; }
+        .app-card {
+            width: 140px; height: 140px; background: rgba(255,255,255,0.1);
+            border-radius: 15px; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: 0.3s; border: 3px solid transparent;
+            backdrop-filter: blur(10px);
+        }
+        .app-card:hover { transform: scale(1.15); border-color: white; background: rgba(255,255,255,0.2); }
+        .app-card img { width: 70%; filter: brightness(1.2); }
+
+        /* PANTALLAS DE CONTENIDO */
+        .slide { position: absolute; top:0; left:0; width: 100vw; height: 100vh; display: none; background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #000; }
+        .active { display: block; }
+
+        .video-frame {
+            position: absolute; top: 18%; left: 14%; width: 72%; height: 50%;
+            z-index: 5; background: #000;
         }
         iframe { width: 100%; height: 100%; border: none; }
-
-        .btn-back { position: absolute; top: 20px; left: 20px; color: white; cursor: pointer; z-index: 30; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px; }
+        
+        .back-btn { position: absolute; top: 30px; left: 30px; z-index: 100; cursor: pointer; background: rgba(255,255,255,0.2); padding: 10px 20px; border-radius: 30px; font-size: 0.8rem; }
     </style>
 </head>
 <body oncontextmenu="return false;">
 
-    <div id="slide-menu" class="slide active" style="background-image: url('../es/proyectos/slide-menu.jpg');">
-        <div class="hotspot" style="top: 30%; left: 10%; width: 18%; height: 30%;" onclick="selectPlatform('netflix')"></div>
-        <div class="hotspot" style="top: 30%; left: 32%; width: 18%; height: 30%;" onclick="selectPlatform('prime')"></div>
-        <div class="hotspot" style="top: 30%; left: 54%; width: 18%; height: 30%;" onclick="selectPlatform('hbo')"></div>
-        <div class="hotspot" style="top: 30%; left: 76%; width: 18%; height: 30%;" onclick="selectPlatform('disney')"></div>
+    <section id="screen-tv">
+        <div class="tv-content">
+            <h1 class="tv-title">Mis Plataformas</h1>
+            <p class="tv-subtitle">Explora el análisis estratégico de publicidad en los gigantes del streaming. Selecciona una aplicación para comenzar.</p>
+            
+            <div class="apps-row">
+                <div class="app-card" onclick="openApp('netflix')"><img src="../es/proyectos/logo-netflix.png"></div>
+                <div class="app-card" onclick="openApp('prime')"><img src="../es/proyectos/logo-prime.png"></div>
+                <div class="app-card" onclick="openApp('hbo')"><img src="../es/proyectos/logo-hbo.png"></div>
+                <div class="app-card" onclick="openApp('disney')"><img src="../es/proyectos/logo-disney.png"></div>
+            </div>
+        </div>
+    </section>
+
+    <div id="slide-netflix" class="slide" style="background-image: url('../es/proyectos/tfm-netflix.jpg');">
+        <div class="back-btn" onclick="closeApp()">✕ CERRAR APP</div>
     </div>
 
-    <div id="slide-perfil" class="slide" style="background-image: url('../es/proyectos/perfil-paloma.jpg');">
-        <div class="hotspot" style="top: 35%; left: 42%; width: 15%; height: 25%;" onclick="goToPlatform()"></div>
+    <div id="slide-prime" class="slide" style="background-image: url('../es/proyectos/tfm-prime.jpg');">
+        <div class="back-btn" onclick="closeApp()">✕ CERRAR APP</div>
     </div>
 
     <div id="slide-hbo" class="slide" style="background-image: url('../es/proyectos/tfm-hbo.jpg');">
-        <div class="btn-back" onclick="showSlide('menu')">← VOLVER</div>
-        <div class="video-container" id="container-hbo"></div>
+        <div class="back-btn" onclick="closeApp()">✕ CERRAR APP</div>
+        <div class="video-frame" id="vid-hbo"></div>
     </div>
 
     <div id="slide-disney" class="slide" style="background-image: url('../es/proyectos/tfm-disney.jpg');">
-        <div class="btn-back" onclick="showSlide('menu')">← VOLVER</div>
-        <div class="video-container" id="container-disney"></div>
-        <div style="position:absolute; bottom:20px; width:100%; text-align:center; z-index:30;">
-            <button onclick="playDisney(0)">Spot 1</button>
-            <button onclick="playDisney(1)">Spot 2</button>
-            <button onclick="playDisney(2)">Spot 3</button>
-            <button onclick="playDisney(3)">Spot 4</button>
-        </div>
-    </div>
-
-    <div id="slide-netflix" class="slide" style="background-image: url('../es/proyectos/tfm-netflix.jpg');">
-        <div class="btn-back" onclick="showSlide('menu')">← VOLVER</div>
-    </div>
-    <div id="slide-prime" class="slide" style="background-image: url('../es/proyectos/tfm-prime.jpg');">
-        <div class="btn-back" onclick="showSlide('menu')">← VOLVER</div>
+        <div class="back-btn" onclick="closeApp()">✕ CERRAR APP</div>
+        <div class="video-frame" id="vid-disney"></div>
     </div>
 
     <script>
-        let plataformaDestino = "";
-        
-        // IDs de YouTube que me pasaste
         const v_hbo = "TcYRdfOJXL8";
-        const v_disney = ["dgulLqAKjvk", "BC6lkiBx01c", "5U_OBfXYs-4", "KAiFRHNWuWY"];
+        const v_disney = "dgulLqAKjvk";
 
-        function selectPlatform(name) {
-            plataformaDestino = name;
-            showSlide('perfil');
-        }
+        function openApp(id) {
+            document.getElementById('screen-tv').style.display = 'none';
+            const target = document.getElementById('slide-' + id);
+            target.classList.add('active');
 
-        function goToPlatform() {
-            showSlide(plataformaDestino);
-            if(plataformaDestino === 'hbo') {
-                document.getElementById('container-hbo').innerHTML = `<iframe src="https://www.youtube.com/embed/${v_hbo}?autoplay=1&mute=1" allow="autoplay"></iframe>`;
-            } else if(plataformaDestino === 'disney') {
-                playDisney(0);
+            if(id === 'hbo') {
+                document.getElementById('vid-hbo').innerHTML = `<iframe src="https://www.youtube.com/embed/${v_hbo}?autoplay=1&mute=1" allow="autoplay"></iframe>`;
+            } else if(id === 'disney') {
+                document.getElementById('vid-disney').innerHTML = `<iframe src="https://www.youtube.com/embed/${v_disney}?autoplay=1&mute=1" allow="autoplay"></iframe>`;
             }
         }
 
-        function playDisney(index) {
-            document.getElementById('container-disney').innerHTML = `<iframe src="https://www.youtube.com/embed/${v_disney[index]}?autoplay=1&mute=1" allow="autoplay"></iframe>`;
-        }
-
-        function showSlide(id) {
+        function closeApp() {
             document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
-            // Limpiar vídeos para que no sigan sonando
-            document.getElementById('container-hbo').innerHTML = "";
-            document.getElementById('container-disney').innerHTML = "";
-            
-            document.getElementById('slide-' + id).classList.add('active');
+            document.getElementById('vid-hbo').innerHTML = "";
+            document.getElementById('vid-disney').innerHTML = "";
+            document.getElementById('screen-tv').style.display = 'flex';
         }
     </script>
 </body>
