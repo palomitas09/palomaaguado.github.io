@@ -19,14 +19,23 @@
 
         .hero {
             height: 70vh;
-            /* SE HA CORREGIDO A cinemad.jpg */
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
                         url('../es/proyectos/cinemad.jpg') center/cover;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             color: white; text-align: center;
         }
         .hero h1 { font-family: 'Playfair Display', serif; font-size: 4rem; margin: 0; letter-spacing: 4px; }
-        .hero p { color: var(--cinema-red); font-weight: 600; text-transform: uppercase; letter-spacing: 3px; }
+        
+        /* RESALTADO DEL SUBTÍTULO */
+        .hero p { 
+            color: #ffffff; /* Cambiado a blanco para legibilidad */
+            background-color: rgba(128, 0, 0, 0.8); /* Fondo granate semitransparente para resaltar */
+            padding: 5px 15px;
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            border-radius: 2px;
+        }
 
         .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
 
