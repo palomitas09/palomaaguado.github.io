@@ -57,7 +57,7 @@
             align-items: flex-start;
         }
 
-        /* GRID DE FOTOS DE REDES */
+        /* GRID DE FOTOS */
         .visual-grid {
             flex: 1;
             min-width: 320px;
@@ -102,23 +102,57 @@
 
         .intro { font-size: 1.5rem; line-height: 1.3; margin-bottom: 25px; font-weight: 700; color: #1a1a1a; }
 
-        /* SECCIÓN IDIOMAS - TU RADAR CULTURAL */
+        /* --- SECCIÓN IDIOMAS UNIFICADA --- */
         .languages-box {
             margin: 40px 0;
             padding: 30px;
             background: white;
-            border: 2px solid var(--dark);
+            border: 1px solid #ddd;
             box-shadow: 10px 10px 0px rgba(0,0,0,0.05);
         }
 
-        .languages-box h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .languages-box h3 { 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            margin-bottom: 25px; 
+            color: #888;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
         
-        .lang-list { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .lang-item { font-size: 0.9rem; color: #444; }
-        .lang-item b { color: var(--dark); }
-        .status { font-size: 0.7rem; text-transform: uppercase; color: var(--accent); font-weight: bold; margin-left: 5px; }
+        .lang-list { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); 
+            gap: 20px; 
+        }
 
-        /* BOTÓN CV Y LINKEDIN */
+        .lang-item { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 4px;
+        }
+
+        .lang-name { 
+            font-size: 0.9rem; 
+            font-weight: 800; 
+            color: var(--dark); 
+            text-transform: uppercase;
+        }
+
+        .lang-level { 
+            font-size: 0.75rem; 
+            color: var(--accent); 
+            font-family: monospace;
+            font-weight: bold;
+        }
+
+        .learning-tag {
+            color: #999;
+            font-style: italic;
+        }
+
+        /* BOTONES */
         .cv-section {
             display: flex;
             align-items: center;
@@ -144,11 +178,10 @@
             text-decoration: none;
             color: inherit;
             display: inline-block;
+            transition: 0.3s;
         }
         
-        .linkedin-link:hover {
-            color: var(--accent);
-        }
+        .linkedin-link:hover { color: var(--accent); }
 
         @media (max-width: 850px) {
             .about-container { flex-direction: column; }
@@ -166,7 +199,7 @@
     </div>
 
     <nav>
-        <a href="index.html">← Inicio</a>
+        <a href="index.html">← INICIO</a>
         <a href="https://www.instagram.com/palomitas09/" target="_blank">INSTAGRAM</a>
     </nav>
 
@@ -194,13 +227,34 @@
             <div class="languages-box">
                 <h3>Sistemas de Comunicación</h3>
                 <div class="lang-list">
-                    <div class="lang-item"><b>Español</b> (Nativo)</div>
-                    <div class="lang-item"><b>Inglés</b> Nivel C1/C2</div>
-                    <div class="lang-item"><b>Alemán</b> Nivel C1</div>
-                    <div class="lang-item"><b>Ruso</b> <span class="status">Nivel A1</span></div>
-                    <div class="lang-item"><b>Francés</b> <span class="status">Nivel A1</span></div>
-                    <div class="lang-item"><b>Italiano</b> <span class="status">Aprendiendo</span></div>
-                    <div class="lang-item"><b>Chino</b> <span class="status">Aprendiendo</span></div>
+                    <div class="lang-item">
+                        <span class="lang-name">Español</span>
+                        <span class="lang-level">NATIVO</span>
+                    </div>
+                    <div class="lang-item">
+                        <span class="lang-name">Inglés</span>
+                        <span class="lang-level">C1 / C2</span>
+                    </div>
+                    <div class="lang-item">
+                        <span class="lang-name">Alemán</span>
+                        <span class="lang-level">C1</span>
+                    </div>
+                    <div class="lang-item">
+                        <span class="lang-name">Ruso</span>
+                        <span class="lang-level">A1</span>
+                    </div>
+                    <div class="lang-item">
+                        <span class="lang-name">Francés</span>
+                        <span class="lang-level">A1</span>
+                    </div>
+                    <div class="lang-item">
+                        <span class="lang-name">Italiano</span>
+                        <span class="lang-level learning-tag">APRENDIENDO</span>
+                    </div>
+                    <div class="lang-item">
+                        <span class="lang-name">Chino</span>
+                        <span class="lang-level learning-tag">APRENDIENDO</span>
+                    </div>
                 </div>
             </div>
 
