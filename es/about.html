@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About — Paloma Aguado</title>
+    <title>Sobre mí — Paloma Aguado</title>
     <style>
-        /* --- VARIABLES DE COLOR (Energía y Análisis) --- */
         :root {
             --bg: #F9F7F2;
-            --accent: #e63946; /* Rojo pasional */
-            --highlight: #ffb703; /* Amarillo analítico */
+            --accent: #e63946; 
+            --highlight: #ffb703; 
             --dark: #1a1a1a;
         }
 
@@ -26,7 +25,7 @@
             overflow-x: hidden;
         }
 
-        /* --- MARQUEE TIPO CINTA MÉTRICA (Analítica) --- */
+        /* BANNER SUPERIOR */
         .marquee-header {
             background: var(--dark);
             color: var(--bg);
@@ -37,7 +36,6 @@
             letter-spacing: 3px;
             font-weight: bold;
             text-transform: uppercase;
-            border-bottom: 4px solid var(--highlight);
         }
 
         .marquee-content {
@@ -45,110 +43,112 @@
             animation: marquee 25s linear infinite;
         }
 
-        nav { padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; }
-        nav a { text-decoration: none; color: var(--dark); font-size: 0.8rem; font-weight: bold; letter-spacing: 1px; border-bottom: 2px solid transparent; transition: 0.3s; }
-        nav a:hover { border-bottom: 2px solid var(--accent); }
+        nav { padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; }
+        nav a { text-decoration: none; color: var(--dark); font-size: 0.8rem; font-weight: bold; letter-spacing: 1px; }
 
-        .about-layout {
-            max-width: 1300px;
+        /* CONTENEDOR PRINCIPAL - Evita que se tapen los elementos */
+        .about-container {
+            max-width: 1200px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 80px;
-            padding: 0 5% 100px 5%;
+            padding: 40px 5% 100px 5%;
+            display: flex;
+            flex-wrap: wrap; /* Permite que bajen en móvil */
+            gap: 60px;
+            align-items: flex-start;
         }
 
-        /* --- GRID DE INSTAGRAM "VIVO" (Creativa/Viajera) --- */
-        .visual-stack {
-            position: relative;
+        /* SECCIÓN VISUAL (Izquierda) */
+        .visual-grid {
+            flex: 1;
+            min-width: 350px;
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr 1fr;
             gap: 15px;
-            transform: rotate(-2deg); /* Toque rebelde */
         }
 
-        .insta-shot {
+        .insta-frame {
             width: 100%;
             aspect-ratio: 1/1;
+            overflow: hidden;
+            border: 10px solid white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .insta-frame img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            border: 8px solid white;
-            box-shadow: 10px 10px 30px rgba(0,0,0,0.05);
-            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .insta-shot:hover {
-            transform: scale(1.05) rotate(2deg);
-            z-index: 10;
-            box-shadow: 15px 15px 0px var(--highlight);
+        .insta-frame:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 10px 10px 0px var(--highlight);
         }
 
-        /* Posicionamiento irregular para que no parezca una tabla aburrida */
-        .shot-1 { margin-top: 40px; }
-        .shot-4 { margin-top: -40px; }
-
-        /* --- CONTENIDO CON DATOS (Analista/Idiomas) --- */
-        .content-area h1 { 
-            font-size: 6rem; 
-            line-height: 0.85; 
-            margin: 0 0 40px 0; 
-            letter-spacing: -5px;
+        /* SECCIÓN TEXTO (Derecha) */
+        .text-content {
+            flex: 1.2;
+            min-width: 350px;
         }
 
-        .data-point {
-            font-family: monospace; /* Fuente de "datos" */
-            font-size: 0.8rem;
+        .data-tag {
+            font-family: monospace;
             color: var(--accent);
-            margin-bottom: 10px;
+            font-weight: bold;
             display: block;
+            margin-bottom: 15px;
         }
 
-        .bio-main { font-size: 1.6rem; line-height: 1.3; margin-bottom: 30px; font-weight: 600; }
-        .bio-secondary { font-size: 1.1rem; line-height: 1.8; color: #555; margin-bottom: 40px; }
+        h1 { 
+            font-size: clamp(3rem, 6vw, 5.5rem); 
+            line-height: 0.9; 
+            margin: 0 0 30px 0; 
+            letter-spacing: -3px;
+            text-transform: uppercase;
+        }
 
-        /* TAGS DE IDIOMAS Y SKILLS */
-        .tag-cloud { display: flex; flex-wrap: wrap; gap: 10px; }
-        .tag {
+        .intro { font-size: 1.6rem; line-height: 1.3; margin-bottom: 25px; font-weight: 700; }
+        .details { font-size: 1.1rem; line-height: 1.8; color: #444; margin-bottom: 40px; }
+
+        /* SKILLS */
+        .skills { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 50px; }
+        .skill-tag {
             padding: 8px 18px;
-            border: 1px solid var(--dark);
-            border-radius: 0px 15px 0px 15px; /* Forma de pétalo/divertida */
+            border: 2px solid var(--dark);
             font-size: 0.75rem;
             font-weight: bold;
             text-transform: uppercase;
-            transition: 0.3s;
         }
-        .tag:hover { background: var(--dark); color: white; }
 
-        /* BOTÓN DE ACCIÓN */
-        .cta-box {
-            margin-top: 50px;
+        /* BOTÓN CV */
+        .cv-box {
             padding: 30px;
-            border: 1px dashed var(--dark);
+            border: 2px dashed var(--dark);
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 20px;
         }
 
-        .cv-download-btn {
-            background: var(--accent);
+        .btn-download {
+            background: var(--dark);
             color: white;
             text-decoration: none;
-            padding: 15px 30px;
+            padding: 15px 25px;
             font-weight: bold;
             font-size: 0.8rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            letter-spacing: 1px;
             transition: 0.3s;
         }
 
-        .cv-download-btn:hover {
-            background: var(--dark);
-            box-shadow: 5px 5px 0px var(--highlight);
+        .btn-download:hover {
+            background: var(--accent);
         }
 
-        @media (max-width: 900px) {
-            .about-layout { grid-template-columns: 1fr; }
-            .visual-stack { order: 2; transform: rotate(0); }
-            .content-area h1 { font-size: 4rem; }
+        @media (max-width: 768px) {
+            .about-container { flex-direction: column; }
+            .visual-grid { min-width: 100%; order: 2; }
+            .text-content { min-width: 100%; order: 1; }
         }
     </style>
 </head>
@@ -156,49 +156,55 @@
 
     <div class="marquee-header">
         <div class="marquee-content">
-            LOC: 40.4168° N, 3.7038° W • CANCER SIGN • MULTILINGUAL • DESIGN ANALYST • TRAVELER • @PALOMITAS09 • POPCORN MIND • LOC: 40.4168° N, 3.7038° W • CANCER SIGN • MULTILINGUAL •
+            CÁNCER • VIAJERA • POLÍGLOTA • ANALISTA CREATIVA • @PALOMITAS09 • DISEÑO VISUAL • ESTRATEGIA • CÁNCER • VIAJERA • POLÍGLOTA • ANALISTA CREATIVA • @PALOMITAS09 •
         </div>
     </div>
 
     <nav>
-        <a href="index.html">← INDEX</a>
-        <div style="font-weight: 900; letter-spacing: -1px;">ABOUT ME</div>
-        <a href="https://instagram.com/palomitas09" target="_blank">@PALOMITAS09</a>
+        <a href="index.html">← INICIO</a>
+        <a href="https://instagram.com/palomitas09" target="_blank">INSTAGRAM</a>
     </nav>
 
-    <main class="about-layout">
+    <main class="about-container">
         
-        <section class="visual-stack">
-            <img src="../es/proyectos/viaje-1.jpg" alt="Travel" class="insta-shot shot-1">
-            <img src="../es/proyectos/perfil-paloma.jpg" alt="Paloma" class="insta-shot shot-2">
-            <img src="../es/proyectos/diseño.jpg" alt="Design" class="insta-shot shot-3">
-            <img src="../es/proyectos/viaje-2.jpg" alt="Adventure" class="insta-shot shot-4">
+        <section class="visual-grid">
+            <div class="insta-frame">
+                <img src="URL_DE_TU_FOTO_IG_1" alt="Perfil">
+            </div>
+            <div class="insta-frame">
+                <img src="URL_DE_TU_FOTO_VIAJE" alt="Viajes">
+            </div>
+            <div class="insta-frame">
+                <img src="URL_DE_TU_FOTO_LINKEDIN" alt="Profesional">
+            </div>
+            <div class="insta-frame">
+                <img src="URL_DE_TU_FOTO_CREATIVA" alt="Diseño">
+            </div>
         </section>
 
-        <section class="content-area">
-            <span class="data-point">// USER PROFILE: PALOMA AGUADO</span>
-            <h1>Pop<br>Culture<br>& Logic.</h1>
+        <section class="text-content">
+            <span class="data-tag">// PERFIL_USUARIO: PALOMA AGUADO</span>
+            <h1>Lógica<br>& Cultura<br>Pop.</h1>
 
-            <p class="bio-main">
-                Diseñadora visual que analiza el mundo a través del color y lo traduce a varios idiomas.
+            <p class="intro">
+                Creativa por instinto, analista por vocación y viajera por curiosidad infinita.
             </p>
 
-            <p class="bio-secondary">
-                Como <b>@palomitas09</b>, mi enfoque es una mezcla de intuición Cáncer y una disciplina analítica obsesiva. No solo hago que las cosas se vean bien; me aseguro de que cuenten una historia coherente, ya sea en español, inglés o francés. Viajar me ha enseñado que el buen diseño es el lenguaje universal que no necesita subtítulos.
+            <p class="details">
+                Como <b>@palomitas09</b>, mezclo la intuición de mi signo Cáncer con un enfoque analítico riguroso. No solo diseño; traduzco ideas a lenguajes visuales que conectan. Mi pasión por los idiomas y los viajes me permite entender el mundo como un grid infinito de posibilidades donde la estética y la funcionalidad siempre deben ir de la mano.
             </p>
 
-            <div class="tag-cloud">
-                <div class="tag">Spanish</div>
-                <div class="tag">English</div>
-                <div class="tag">French</div>
-                <div class="tag">Identity</div>
-                <div class="tag">UX/UI</div>
-                <div class="tag">Art Direction</div>
+            <div class="skills">
+                <div class="skill-tag">Español</div>
+                <div class="skill-tag">Inglés</div>
+                <div class="skill-tag">Francés</div>
+                <div class="skill-tag">Branding</div>
+                <div class="skill-tag">Estrategia</div>
             </div>
 
-            <div class="cta-box">
-                <span style="font-size: 0.7rem; line-height: 1.2;">¿Quieres ver mi trayectoria completa?<br><b>Resumen profesional:</b></span>
-                <a href="../assets/CV_Paloma_Aguado.pdf" download class="cv-download-btn">Descargar CV</a>
+            <div class="cv-box">
+                <span style="font-size: 0.8rem;"><b>¿Necesitas los detalles?<br>Mi trayectoria profesional:</b></span>
+                <a href="../assets/CV_Paloma_Aguado.pdf" download class="btn-download">DESCARGAR CV</a>
             </div>
         </section>
 
