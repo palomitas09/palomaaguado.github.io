@@ -1,45 +1,133 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kukicha — Paloma Aguado</title>
-    <link rel="stylesheet" href="/palomaaguado.github.io/styles.css">
-</head>
- <body style="margin:0; padding:0; background-color: white;">
+    <style>
+        /* --- ANIMACIÓN DE ENTRADA --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    <nav style="padding: 40px; font-family: sans-serif;">
-        <a href="/palomaaguado.github.io/en/index.html" style="text-decoration: none; color: #888;">← Volver</a>
+        body { 
+            margin: 0; padding: 0; 
+            background-color: #F9F8F5; /* Color papel orgánico */
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            color: #333; 
+            overflow-x: hidden;
+        }
+
+        .reveal { 
+            animation: fadeInUp 1.2s ease-out forwards; 
+        }
+        
+        nav { padding: 40px; }
+        nav a { 
+            text-decoration: none; 
+            color: #888; 
+            font-size: 0.8rem; 
+            letter-spacing: 1px; 
+            transition: color 0.3s;
+            text-transform: uppercase;
+        }
+        nav a:hover { color: #1a1a1a; }
+
+        .project-container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* HERO IMAGE */
+        .project-hero { margin-bottom: 80px; }
+        .project-hero img { 
+            width: 100%; height: auto; display: block; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+        }
+
+        /* TEXTOS */
+        .project-header { margin-bottom: 80px; max-width: 800px; }
+        .project-header h1 { font-size: 3.5rem; font-weight: 200; margin-bottom: 15px; letter-spacing: -1px; }
+        .project-header p.tag { color: #A5A58D; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; font-weight: bold; }
+        
+        .project-description { margin-top: 40px; line-height: 1.8; color: #555; font-size: 1.1rem; }
+        .project-description h3 { font-weight: 600; color: #1a1a1a; margin-bottom: 10px; }
+
+        /* GALERÍA */
+        .project-gallery { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 30px; 
+            padding-bottom: 120px; 
+        }
+        
+        .img-wrapper { 
+            overflow: hidden; 
+            height: 550px; 
+            background-color: #fff;
+        }
+
+        .project-gallery img { 
+            width: 100%; height: 100%; 
+            object-fit: cover; 
+            display: block; 
+            transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1); 
+        }
+
+        .img-wrapper:hover img { 
+            transform: scale(1.05); 
+        }
+
+        .img-contain img { object-fit: contain; padding: 20px; }
+
+        footer { text-align: center; padding: 100px 0; color: #bbb; font-size: 0.75rem; letter-spacing: 1px; }
+
+        @media (max-width: 768px) {
+            .project-gallery { grid-template-columns: 1fr; }
+            .img-wrapper { height: 400px; }
+            .project-header h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="reveal">
+        <a href="index.html">← Back to Portfolio</a>
     </nav>
 
-    <main class="project-container" style="max-width: 1000px; margin: 0 auto; padding: 0 20px;">
+    <main class="project-container">
         
-        <section class="project-hero" style="margin-bottom: 60px;">
-            <img src="/palomaaguado.github.io/es/proyectos/packaging.png" alt="Kukicha" style="width: 100%; height: auto; display: block;">
+        <section class="project-hero reveal" style="animation-delay: 0.2s;">
+            <img src="../es/proyectos/packaging.png" alt="Kukicha Packaging">
         </section>
 
-        <header class="project-header" style="margin-bottom: 60px; font-family: sans-serif;">
-            <h1 style="font-size: 3rem; font-weight: 200; margin-bottom: 10px;">Kukicha</h1>
-            <p style="color: #888; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Brand Identity / 2025</p>
-            <div style="margin-top: 30px; line-height: 1.8; color: #333; max-width: 750px;">
-                <h3 style="font-weight: 600;">Project Development</h3>
+        <header class="project-header reveal" style="animation-delay: 0.4s;">
+            <p class="tag">Brand Identity / 2025</p>
+            <h1>Kukicha</h1>
+            <div class="project-description">
+                <h3>Project Development</h3>
                 <p>Kukicha is a fictional Japanese tea brand developed from scratch as a corporate identity project. The goal was to create a minimalist, elegant, and sustainable visual brand inspired by Japanese tradition and aimed at a young adult audience conscious of wellness and design.</p>
             </div>
         </header>
 
-    
-<section class="project-gallery" style="display: grid; grid-template-columns: 4fr 4fr; gap: 20px; padding-bottom: 100px;">
-   <img src="/palomaaguado.github.io/es/proyectos/merchan.png" alt="Merchan" style="width: 100%; height: 450px; display: block;">
-    <img src="/palomaaguado.github.io/es/proyectos/papeleria.png" alt="Papeleria" style="width: 100%; height: 450px; display: block;">
-    <img src="/palomaaguado.github.io/es/proyectos/web.png" alt="Web" style="width: 100%; height: 600px; display: block;">
-    <img src="/palomaaguado.github.io/es/proyectos/rrss.png" alt="RRSS" style="width: 100%; height: 600px; display: block;">
-</section>
+        <section class="project-gallery reveal" style="animation-delay: 0.6s;">
+            <div class="img-wrapper">
+                <img src="../es/proyectos/merchan.png" alt="Merchandising">
+            </div>
+            <div class="img-wrapper">
+                <img src="../es/proyectos/papeleria.png" alt="Stationery">
+            </div>
+            <div class="img-wrapper img-contain">
+                <img src="../es/proyectos/web.png" alt="Web Design">
+            </div>
+            <div class="img-wrapper img-contain">
+                <img src="../es/proyectos/rrss.png" alt="Social Media">
+            </div>
+        </section>
 
     </main>
-    <footer style="text-align: center; padding: 80px 0; color: #ccc; font-family: sans-serif; font-size: 0.8rem;">
-        <p>&copy; 2025 Paloma Aguado</p>
+
+    <footer class="reveal">
+        <p>&copy; 2025 — PALOMA AGUADO</p>
     </footer>
 
 </body>
 </html>
-
