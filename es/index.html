@@ -4,10 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paloma Aguado | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
     <style>
         /* --- ESTILOS GENERALES --- */
-        nav a, .project-card a { text-decoration: none !important; }
+        body { margin: 0; font-family: Arial, sans-serif; }
+        nav a, .project-card a { text-decoration: none !important; color: inherit; }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            position: relative;
+            z-index: 1000; /* Soluciona el problema de clics en menú */
+        }
 
         .top-line {
             background-color: #2c2c2c;
@@ -25,7 +34,7 @@
             border-left: 3px solid #2c2c2c;
         }
 
-        /* Grid estándar para secciones fijas */
+        /* Grid estándar */
         .gallery-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -37,6 +46,7 @@
             height: 500px;
             overflow: hidden;
             position: relative;
+            background: #f0f0f0;
         }
 
         .project-card img {
@@ -46,9 +56,34 @@
             transition: transform 0.5s ease;
         }
 
+        /* --- ESTILOS DEL EFECTO (OVERLAY) --- */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0; /* Oculto por defecto */
+            transition: opacity 0.4s ease;
+        }
+
+        .project-card:hover .overlay { opacity: 1; }
         .project-card:hover img { transform: scale(1.05); }
 
-        /* --- ESTILOS ESPECÍFICOS DEL CARRUSEL (Solo Publicidad) --- */
+        .text {
+            color: white;
+            text-align: center;
+            padding: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .text span { font-weight: normal; font-size: 0.8rem; display: block; margin-top: 5px; }
+
+        /* --- CARRUSEL --- */
         .carousel-wrapper {
             position: relative;
             padding: 0 5%;
@@ -64,7 +99,7 @@
         }
 
         .carousel-card {
-            flex: 0 0 calc(50% - 10px); /* 2 tarjetas por vista */
+            flex: 0 0 calc(50% - 10px);
             height: 500px;
         }
 
@@ -84,7 +119,6 @@
             align-items: center;
             justify-content: center;
             font-size: 1.2rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         .prev-btn { left: 1%; }
@@ -95,49 +129,38 @@
             .gallery-grid { grid-template-columns: 1fr; }
             .carousel-card { flex: 0 0 100%; }
             .project-card, .carousel-card { height: 350px; }
-            .nav-btn { width: 40px; height: 40px; }
         }
     </style>
 </head>
 <body>
-   <div class="top-line"></div>
+    <div class="top-line"></div>
 
-    <header style="display: flex; justify-content: space-between; align-items: center; padding: 30px 5%; position: relative; z-index: 1000;">
-        <div class="logo" style="font-weight: bold; letter-spacing: 3px; font-size: 1.2rem; color: #2c2c2c;">
-            PALOMA AGUADO
-        </div>
-        <nav style="display: flex; align-items: center;">
-            <a href="/palomaaguado.github.io/es/contacto.html" style="text-decoration: none; color: #2c2c2c; font-size: 0.9rem; text-transform: uppercase;">
-                Contacto
-            </a> 
-            <span style="margin: 0 15px; color: #ccc;">|</span>
-            <a href="/palomaaguado.github.io/en/index.html" style="text-decoration: none; color: #2c2c2c; font-size: 0.9rem; text-transform: uppercase;">
-                English
-            </a>
+    <header>
+        <div class="logo">PALOMA AGUADO</div>
+        <nav>
+            <a href="/palomaaguado.github.io/es/contacto.html">Contacto</a> 
+            <span style="margin: 0 10px; color: #ccc;">|</span>
+            <a href="/palomaaguado.github.io/en/index.html">English</a>
         </nav>
     </header>
-    <main>
-      <h2 class="section-title">Lifestyle & Brands</h2>
-<div class="gallery-grid">
-    <div class="project-card">
-        <a href="/palomaaguado.github.io/es/kukicha.html">
-            <img src="/palomaaguado.github.io/es/proyectos/packaging.png" alt="Kukicha">
-            <div class="overlay">
-                <div class="text">Kukicha<br><span>Identidad de Marca</span></div>
-            </div>
-        </a>
-    </div>
 
-    <div class="project-card">
-        <a href="/palomaaguado.github.io/es/nike.html">
-            <img src="/palomaaguado.github.io/es/proyectos/nike5.jpg" alt="Nike">
-            <div class="overlay">
-                <div class="text">Nike x Shuttlerock<br><span>Case Study & Mockup</span></div>
+    <main>
+        <h2 class="section-title">Lifestyle & Brands</h2>
+        <div class="gallery-grid">
+            <div class="project-card">
+                <a href="/palomaaguado.github.io/es/kukicha.html">
+                    <img src="/palomaaguado.github.io/es/proyectos/packaging.png" alt="Kukicha">
+                    <div class="overlay"><div class="text">Kukicha<br><span>Identidad de Marca</span></div></div>
+                </a>
             </div>
-        </a>
-    </div>
-</div>
-      
+            <div class="project-card">
+                <a href="/palomaaguado.github.io/es/nike.html">
+                    <img src="/palomaaguado.github.io/es/proyectos/nike5.jpg" alt="Nike">
+                    <div class="overlay"><div class="text">Nike x Shuttlerock<br><span>Case Study & Mockup</span></div></div>
+                </a>
+            </div>
+        </div>
+
         <h2 class="section-title">Publicidad & Casos de Estudio</h2>
         <div class="carousel-wrapper">
             <button class="nav-btn prev-btn" onclick="moveSlide(-1)">&#10094;</button>
@@ -163,103 +186,66 @@
                     </a>
                 </div>
                 <div class="project-card carousel-card">
-    <a href="/palomaaguado.github.io/es/correos.html">
-        <img src="/palomaaguado.github.io/es/proyectos/correos.jpg" alt="Correos Market">
-        <div class="overlay">
-            <div class="text">
-                Correos Market<br>
-                <span>Plan de Medios Gen Z</span>
-            </div>
-        </div>
-    </a>
-</div>
+                    <a href="/palomaaguado.github.io/es/correos.html">
+                        <img src="/palomaaguado.github.io/es/proyectos/correos.jpg" alt="Correos Market">
+                        <div class="overlay"><div class="text">Correos Market<br><span>Plan de Medios Gen Z</span></div></div>
+                    </a>
+                </div>
                 <div class="project-card carousel-card">
-    <a href="/palomaaguado.github.io/es/balenciaga.html">
-        <img src="/palomaaguado.github.io/es/proyectos/balenciaga.jpg" alt="Balenciaga Neuromarketing">
-        <div class="overlay">
-            <div class="text">
-                Balenciaga Case Study<br>
-                <span>Neuromarketing & Ética</span>
-            </div>
-        </div>
-    </a>
-</div>
+                    <a href="/palomaaguado.github.io/es/balenciaga.html">
+                        <img src="/palomaaguado.github.io/es/proyectos/balenciaga.jpg" alt="Balenciaga Neuromarketing">
+                        <div class="overlay"><div class="text">Balenciaga Case Study<br><span>Neuromarketing & Ética</span></div></div>
+                    </a>
+                </div>
                 <div class="project-card carousel-card">
-    <a href="/palomaaguado.github.io/es/vegalia.html">
-        <img src="/palomaaguado.github.io/es/proyectos/vegalia.jpg" alt="Vegalia">
-        <div class="overlay">
-            <div class="text">
-                Vegalia <br>
-                <span>Estrategia & Posicionamiento</span>
-            </div>
-        </div>
-    </a>
-</div>
+                    <a href="/palomaaguado.github.io/es/vegalia.html">
+                        <img src="/palomaaguado.github.io/es/proyectos/vegalia.jpg" alt="Vegalia">
+                        <div class="overlay"><div class="text">Vegalia <br><span>Estrategia & Posicionamiento</span></div></div>
+                    </a>
+                </div>
                 <div class="project-card carousel-card">
-    <a href="/palomaaguado.github.io/es/once.html">
-        <img src="/palomaaguado.github.io/es/proyectos/once.jpg" alt="Proyecto ONCE">
-        <div class="overlay">
-            <div class="text">
-                ONCE: Plan de Marketing<br>
-                <span>Estrategia de Medios & KPIs</span>
-            </div>
-        </div>
-    </a>
-</div>
+                    <a href="/palomaaguado.github.io/es/once.html">
+                        <img src="/palomaaguado.github.io/es/proyectos/once.jpg" alt="Proyecto ONCE">
+                        <div class="overlay"><div class="text">ONCE: Plan de Marketing<br><span>Estrategia de Medios & KPIs</span></div></div>
+                    </a>
+                </div>
                 <div class="project-card carousel-card">
-    <a href="/palomaaguado.github.io/es/cinemad.html">
-        <img src="/palomaaguado.github.io/es/proyectos/cinemad.jpg" alt="Cinemad+">
-        <div class="overlay">
-            <div class="text">
-                Cinemad+ Email Marketing<br>
-                <span>Fidelización & CRM</span>
-            </div>
-        </div>
-    </a>
-</div>
+                    <a href="/palomaaguado.github.io/es/cinemad.html">
+                        <img src="/palomaaguado.github.io/es/proyectos/cinemad.jpg" alt="Cinemad+">
+                        <div class="overlay"><div class="text">Cinemad+ Email Marketing<br><span>Fidelización & CRM</span></div></div>
+                    </a>
+                </div>
                 <div class="project-card carousel-card">
-    <a href="/palomaaguado.github.io/es/lidl.html">
-        <img src="/palomaaguado.github.io/es/proyectos/lidl.jpg" alt="Lidl Case Study">
-        <div class="overlay">
-            <div class="text">
-                Lidl: E-commerce Strategy<br>
-                <span>UX & Transformación Digital</span>
-            </div>
-        </div>
-    </a>
-</div>
+                    <a href="/palomaaguado.github.io/es/lidl.html">
+                        <img src="/palomaaguado.github.io/es/proyectos/lidl.jpg" alt="Lidl Case Study">
+                        <div class="overlay"><div class="text">Lidl: E-commerce Strategy<br><span>UX & Transformación Digital</span></div></div>
+                    </a>
+                </div>
                 <div class="project-card carousel-card">
-    <a href="/palomaaguado.github.io/es/asisa.html">
-        <img src="/palomaaguado.github.io/es/proyectos/asisa.jpg" alt="Asisa Case Study">
-        <div class="overlay">
-            <div class="text">
-                Asisa: "Mejor Así"<br>
-                <span>Campaña 360º & Medios</span>
+                    <a href="/palomaaguado.github.io/es/asisa.html">
+                        <img src="/palomaaguado.github.io/es/proyectos/asisa.jpg" alt="Asisa Case Study">
+                        <div class="overlay"><div class="text">Asisa: "Mejor Así"<br><span>Campaña 360º & Medios</span></div></div>
+                    </a>
+                </div>
             </div>
         </div>
-    </a>
-</div>
-            </div>
-        </div>
-<section class="tfm-highlight">
-    <div class="tfm-content">
-        <div class="tfm-text">
-             <h2 class="section-title">Investigación y Estrategia</h2>
+
+        <h2 class="section-title">Investigación y Estrategia</h2>
         <div class="gallery-grid">
+            <div class="project-card" style="height: auto; background: none;">
+                <span class="badge">Research & Strategy</span>
+                <h2>La Publicidad en el Streaming</h2>
+                <p>Un análisis profundo sobre el cambio de paradigma en plataformas como Netflix, Disney+ y HBO. Una investigación interactiva sobre el futuro de los anuncios en el VOD.</p>
+                <a href="/palomaaguado.github.io/es/tfm.html" style="display:inline-block; padding: 10px 20px; background: #2c2c2c; color: white;">EXPLORAR INVESTIGACIÓN</a>
+            </div>
             <div class="project-card">
-            <span class="badge">Research & Strategy</span>
-            <h2>La Publicidad en el Streaming</h2>
-            <p>Un análisis profundo sobre el cambio de paradigma en plataformas como Netflix, Disney+ y HBO. Una investigación interactiva sobre el futuro de los anuncios en el VOD.</p>
-            <a href="/palomaaguado.github.io/es/tfm.html" class="btn-interactivo">EXPLORAR INVESTIGACIÓN</a>
-        </div>
-        <div class="tfm-visual">
-            <img src="es/proyectos/perfil-paloma.jpg" alt="TFM Paloma Aguado">
-             <div class="overlay"><div class="text">TFM<br><span>Publicidad en las plataformas streaming</span></div></div>
+                <a href="/palomaaguado.github.io/es/tfm.html">
+                    <img src="/palomaaguado.github.io/es/proyectos/perfil-paloma.jpg" alt="TFM Paloma Aguado">
+                    <div class="overlay"><div class="text">TFM<br><span>Publicidad en las plataformas streaming</span></div></div>
                 </a>
             </div>
         </div>
-    </div>
-</section>
+
         <h2 class="section-title">Estrategia Inmobiliaria</h2>
         <div class="gallery-grid">
             <div class="project-card">
