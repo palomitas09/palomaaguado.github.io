@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — Paloma Aguado</title>
+    <style>
+        /* --- ANIMACIONES VIBRANTES --- */
+        @keyframes pop {
+            0% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.05) rotate(2deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        body { 
+            margin: 0; padding: 0; 
+            background-color: #f0ebe3; /* Un beige crema que hace resaltar los colores */
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            color: #1a1a1a; 
+            overflow-x: hidden;
+        }
+
+        /* --- BANNER DINÁMICO (Lado Extrovertido) --- */
+        .marquee-container {
+            background: #e63946; /* Un rojo coral vibrante y divertido */
+            color: white;
+            padding: 10px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 0.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+
+        nav { padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; }
+        nav a { text-decoration: none; color: #1a1a1a; font-size: 0.9rem; font-weight: bold; letter-spacing: 1px; }
+
+        .about-grid { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 40px 5% 100px 5%;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        /* --- FOTO ESTILO STICKER (Tu vibe de IG) --- */
+        .photo-area {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .main-img-container {
+            position: relative;
+            width: 80%;
+            animation: pop 5s ease-in-out infinite;
+        }
+
+        .main-img-container img {
+            width: 100%;
+            border: 15px solid white; /* Efecto Polaroid/Sticker */
+            box-shadow: 15px 15px 0px #ffb703; /* Sombra sólida amarilla divertida */
+        }
+
+        .badge {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            background: #1a1a1a;
+            color: white;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+            transform: rotate(15deg);
+            line-height: 1.2;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* --- TEXTO CON PERSONALIDAD --- */
+        .text-area h1 { 
+            font-size: 5rem; 
+            line-height: 0.9; 
+            margin: 0 0 30px 0; 
+            letter-spacing: -3px;
+        }
+
+        .text-area h1 span { color: #e63946; } /* Color de acento */
+
+        .bio-intro { font-size: 1.5rem; line-height: 1.4; margin-bottom: 25px; font-weight: 500; }
+        .bio-details { font-size: 1.1rem; line-height: 1.8; color: #444; }
+
+        .tags { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 10px; }
+        .tag { 
+            background: #fff; 
+            border: 2px solid #1a1a1a; 
+            padding: 5px 15px; 
+            border-radius: 50px; 
+            font-size: 0.8rem; 
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* BOTÓN CV DIVERTIDO */
+        .cv-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 15px 40px;
+            background: #1a1a1a;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cv-btn:hover {
+            background: #e63946;
+            transform: translate(-5px, -5px);
+            box-shadow: 8px 8px 0px #ffb703;
+        }
+
+        @media (max-width: 900px) {
+            .about-grid { grid-template-columns: 1fr; }
+            .text-area h1 { font-size: 3.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="marquee-container">
+        <div class="marquee-content">
+            CREATIVE SOUL • ANALYTICAL MIND • TRAVELER • CANCER SIGN • POLYGLOT • @PALOMITAS09 • CREATIVE SOUL • ANALYTICAL MIND • TRAVELER • CANCER SIGN • POLYGLOT • @PALOMITAS09 •
+        </div>
+    </div>
+
+    <nav>
+        <a href="index.html">← HOME</a>
+        <a href="https://instagram.com/palomitas09" target="_blank">IG @PALOMITAS09</a>
+    </nav>
+
+    <main class="about-grid">
+        
+        <section class="photo-area">
+            <div class="main-img-container">
+                <img src="../es/proyectos/perfil-paloma.jpg" alt="Paloma">
+                <div class="badge">DESIGNER<br>FROM<br>THE HEART</div>
+            </div>
+        </section>
+
+        <section class="text-area">
+            <h1>Hola,<br>soy <span>Paloma.</span></h1>
+            
+            <p class="bio-intro">Creativa por instinto, analista por vocación y viajera por necesidad.</p>
+            
+            <p class="bio-details">
+                Me conoces como <b>@palomitas09</b>, donde comparto mi visión del mundo: una mezcla de colores, idiomas y mucha curiosidad. Mi signo Cáncer me da esa intuición para conectar con las personas y las marcas, mientras que mi lado analítico pone el orden necesario para que todo funcione.
+            </p>
+
+            <div class="tags">
+                <div class="tag">Español</div>
+                <div class="tag">English</div>
+                <div class="tag">Français</div>
+                <div class="tag">Branding</div>
+                <div class="tag">Web Design</div>
+                <div class="tag">Strategy</div>
+            </div>
+
+            <a href="../assets/CV_Paloma_Aguado.pdf" download class="cv-btn">¡Descarga mi CV!</a>
+        </section>
+
+    </main>
+
+</body>
+</html>
