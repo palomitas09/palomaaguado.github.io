@@ -4,39 +4,147 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kukicha — Paloma Aguado</title>
-    <link rel="stylesheet" href="../style.css">
-</head>
-<body style="margin:0; padding:0; background-color: white;">
+    <style>
+        /* Estilos base para que se vea igual que el resto de tu web */
+        body { 
+            margin: 0; 
+            padding: 0; 
+            background-color: white; 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            color: #2c2c2c;
+            line-height: 1.6;
+        }
 
-    <nav style="padding: 40px; font-family: sans-serif;">
-        <a href="index.html" style="text-decoration: none; color: #888; font-weight: bold;">← Volver</a>
+        nav { 
+            padding: 40px 5%; 
+        }
+
+        nav a { 
+            text-decoration: none; 
+            color: #888; 
+            font-weight: bold; 
+            text-transform: uppercase; 
+            font-size: 0.8rem; 
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: #2c2c2c; }
+
+        .project-container { 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 0 5%; 
+        }
+
+        /* Hero Image */
+        .project-hero img { 
+            width: 100%; 
+            height: auto; 
+            display: block; 
+            margin-bottom: 60px;
+        }
+
+        /* Textos corregidos */
+        header { 
+            margin-bottom: 80px; 
+        }
+
+        h1 { 
+            font-size: 3.5rem; 
+            font-weight: 200; 
+            margin: 0 0 10px 0; 
+            letter-spacing: -1px;
+        }
+
+        .category { 
+            color: #888; 
+            text-transform: uppercase; 
+            font-size: 0.85rem; 
+            letter-spacing: 2px; 
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        .description-box { 
+            max-width: 700px; 
+        }
+
+        .description-box h3 { 
+            font-size: 1.1rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            margin-bottom: 20px;
+        }
+
+        /* Galería de imágenes corregida */
+        .project-gallery { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 30px; 
+            padding-bottom: 100px; 
+        }
+
+        .project-gallery img { 
+            width: 100%; 
+            height: 550px; /* Altura fija para uniformidad */
+            object-fit: cover; /* Evita que se deformen */
+            display: block; 
+        }
+
+        /* Imagen de la web a pantalla completa o más alta */
+        .img-large { 
+            grid-column: span 1; 
+            height: 700px !important; 
+        }
+
+        footer { 
+            text-align: center; 
+            padding: 60px 0; 
+            color: #ccc; 
+            font-size: 0.7rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+        }
+
+        /* Ajuste para móviles */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .project-gallery { grid-template-columns: 1fr; }
+            .project-gallery img { height: 400px !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">← Volver al Portfolio</a>
     </nav>
 
-    <main class="project-container" style="max-width: 1000px; margin: 0 auto; padding: 0 20px;">
-        
-        <section class="project-hero" style="margin-bottom: 60px;">
-            <img src="proyectos/packaging.png" alt="Kukicha" style="width: 100%; height: auto; display: block;">
+    <main class="project-container">
+        <section class="project-hero">
+            <img src="proyectos/packaging.png" alt="Kukicha Packaging">
         </section>
 
-        <header class="project-header" style="margin-bottom: 60px; font-family: sans-serif;">
-            <h1 style="font-size: 3rem; font-weight: 200; margin-bottom: 10px;">Kukicha</h1>
-            <p style="color: #888; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Identidad de Marca / 2025</p>
-            <div style="margin-top: 30px; line-height: 1.8; color: #333; max-width: 750px;">
-                <h3 style="font-weight: 600;">Desarrollo del Proyecto</h3>
+        <header>
+            <span class="category">Identidad de Marca / 2025</span>
+            <h1>Kukicha</h1>
+            <div class="description-box">
+                <h3>Desarrollo del Proyecto</h3>
                 <p>Kukicha es una marca ficticia de té japonés desarrollada desde cero como proyecto de identidad corporativa. El objetivo fue crear una marca visual minimalista, elegante y sostenible, inspirada en la tradición japonesa y orientada a un público joven-adulto consciente del bienestar y el diseño.</p>
             </div>
         </header>
 
-        <section class="project-gallery" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding-bottom: 100px;">
-            <img src="proyectos/merchan.png" alt="Merchan" style="width: 100%; height: 450px; object-fit: cover; display: block;">
-            <img src="proyectos/papeleria.png" alt="Papeleria" style="width: 100%; height: 450px; object-fit: cover; display: block;">
-            <img src="proyectos/web.png" alt="Web" style="width: 100%; height: 600px; object-fit: cover; display: block;">
-            <img src="proyectos/rrss.png" alt="RRSS" style="width: 100%; height: 600px; object-fit: cover; display: block;">
+        <section class="project-gallery">
+            <img src="proyectos/merchan.png" alt="Merchandising">
+            <img src="proyectos/papeleria.png" alt="Papelería Corporativa">
+            <img src="proyectos/web.png" alt="Diseño Web" class="img-large">
+            <img src="proyectos/rrss.png" alt="Redes Sociales" class="img-large">
         </section>
-
     </main>
-    <footer style="text-align: center; padding: 80px 0; color: #ccc; font-family: sans-serif; font-size: 0.8rem;">
-        <p>&copy; 2025 Paloma Aguado</p>
+
+    <footer>
+        © 2025 Paloma Aguado
     </footer>
 
 </body>
