@@ -5,71 +5,118 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kukicha — Paloma Aguado</title>
     <style>
+        /* --- RESET Y ESTILOS BASE --- */
         * { box-sizing: border-box; }
-        body { margin: 0; padding: 0; background-color: white; font-family: 'Helvetica', Arial, sans-serif; color: #1a1a1a; }
-        
-        nav { padding: 40px 5%; }
-        nav a { text-decoration: none; color: #999; text-transform: uppercase; font-size: 12px; letter-spacing: 2px; }
+        body { 
+            margin: 0; 
+            padding: 0; 
+            background-color: white; 
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+            color: #1a1a1a; 
+            -webkit-font-smoothing: antialiased;
+        }
 
+        /* --- NAVEGACIÓN --- */
+        nav { padding: 40px 5%; }
+        nav a { 
+            text-decoration: none; 
+            color: #999; 
+            text-transform: uppercase; 
+            font-size: 11px; 
+            letter-spacing: 2px; 
+            font-weight: bold;
+        }
+        nav a:hover { color: #1a1a1a; }
+
+        /* --- CONTENEDOR PRINCIPAL --- */
         .container { max-width: 1100px; margin: 0 auto; padding: 0 5%; }
         
-        /* Imagen principal */
-        .hero img { width: 100%; height: auto; display: block; margin-bottom: 50px; }
+        /* --- IMAGEN HERO (PRINCIPAL) --- */
+        .hero { width: 100%; margin-bottom: 60px; }
+        .hero img { width: 100%; height: auto; display: block; }
 
-        /* Textos */
-        header { margin-bottom: 70px; }
-        h1 { font-size: 48px; font-weight: 300; margin: 0 0 10px 0; }
-        .meta { color: #999; text-transform: uppercase; font-size: 11px; letter-spacing: 2px; display: block; margin-bottom: 30px; }
-        .info { max-width: 600px; line-height: 1.8; font-size: 16px; color: #444; }
+        /* --- TEXTOS DEL PROYECTO --- */
+        header { margin-bottom: 80px; }
+        h1 { font-size: 50px; font-weight: 200; margin: 0 0 10px 0; letter-spacing: -1px; }
+        .meta { 
+            color: #999; 
+            text-transform: uppercase; 
+            font-size: 11px; 
+            letter-spacing: 2px; 
+            display: block; 
+            margin-bottom: 35px; 
+        }
+        .info { max-width: 650px; line-height: 1.8; font-size: 16px; color: #444; }
+        .info h3 { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #1a1a1a; }
 
-        /* Galería - AQUÍ ESTÁ EL ARREGLO */
+        /* --- GALERÍA CORREGIDA --- */
         .gallery { 
             display: flex; 
             flex-wrap: wrap; 
             gap: 20px; 
             padding-bottom: 100px; 
         }
+
+        /* Imágenes cuadradas/normales (Merchan y Papelería) */
         .gallery img { 
-            width: calc(50% - 10px); /* Dos columnas exactas */
-            height: 500px; 
-            object-fit: cover; /* Esto evita que se estiren */
+            width: calc(50% - 10px); 
+            height: 550px; 
+            object-fit: cover; 
             display: block;
         }
 
+        /* ESTILO PARA LA WEB Y RRSS (ANCHO COMPLETO SIN DEFORMAR) */
+        .gallery img.full-width { 
+            width: 100% !important; 
+            height: auto !important; 
+            object-fit: contain !important; 
+            margin-top: 10px;
+        }
+
+        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            .gallery img { width: 100%; height: auto; }
-            h1 { font-size: 32px; }
+            h1 { font-size: 34px; }
+            .gallery img { 
+                width: 100%; 
+                height: auto; 
+            }
         }
     </style>
 </head>
 <body>
 
-    <nav><a href="index.html">← Volver</a></nav>
+    <nav>
+        <a href="index.html">← Volver al Portfolio</a>
+    </nav>
 
     <div class="container">
         <section class="hero">
-            <img src="proyectos/packaging.png" alt="Kukicha">
+            <img src="proyectos/packaging.png" alt="Kukicha Packaging">
         </section>
 
         <header>
             <span class="meta">Identidad de Marca / 2025</span>
             <h1>Kukicha</h1>
             <div class="info">
-                <p>Kukicha es una marca ficticia de té japonés desarrollada desde cero como proyecto de identidad corporativa. El objetivo fue crear una marca visual minimalista, elegante y sostenible.</p>
+                <h3>Desarrollo del Proyecto</h3>
+                <p>Kukicha es una marca ficticia de té japonés desarrollada desde cero como proyecto de identidad corporativa. El objetivo fue crear una marca visual minimalista, elegante y sostenible, inspirada en la tradición japonesa y orientada a un público joven-adulto consciente del bienestar y el diseño.</p>
             </div>
         </header>
 
         <section class="gallery">
-            <img src="proyectos/merchan.png" alt="Merchan">
-            <img src="proyectos/papeleria.png" alt="Papeleria">
-            <img src="proyectos/web.png" alt="Web" style="width: 100%; height: auto; grid-column: span 2; object-fit: contain; margin-top: 10px;">
-            <img src="proyectos/rrss.png" alt="RRSS">
+            <img src="proyectos/merchan.png" alt="Merchandising">
+            <img src="proyectos/papeleria.png" alt="Papelería">
+            
+            <img src="proyectos/web.png" alt="Diseño Web" class="full-width">
+            <img src="proyectos/rrss.png" alt="Redes Sociales" class="full-width">
         </section>
     </div>
 
-    <footer style="text-align: center; padding-bottom: 50px; color: #ccc; font-size: 10px; letter-spacing: 2px;">
-        © 2026 PALOMA AGUADO
+    <footer style="text-align: center; padding: 60px 0; color: #ddd; font-size: 10px; text-transform: uppercase; letter-spacing: 2px;">
+        © 2026 Paloma Aguado
     </footer>
 
+</body>
+</html>
 </body>
 </html>
