@@ -4,33 +4,182 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Paloma Aguado</title>
-    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* --- VIBE & STYLE (MATCHING THE SPANISH VERSION) --- */
+        body { 
+            margin: 0; padding: 0; 
+            background-color: #F9F8F5; 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            color: #1a1a1a; 
+            overflow-x: hidden;
+        }
+
+        header { 
+            padding: 40px 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+
+        .logo a { 
+            text-decoration: none; 
+            color: inherit; 
+            font-weight: 200; 
+            letter-spacing: 3px; 
+            text-transform: uppercase; 
+        }
+
+        nav a { 
+            text-decoration: none; 
+            color: #888; 
+            font-size: 0.8rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: #e63946; }
+
+        /* --- CONTACT CONTAINER --- */
+        .contact-container { 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 60px 20px 100px 20px; 
+            text-align: center;
+        }
+
+        h1 { 
+            font-size: 4.5rem; 
+            font-weight: 900; 
+            letter-spacing: -3px; 
+            margin-bottom: 10px; 
+            line-height: 0.9;
+        }
+
+        .intro-text { 
+            font-size: 1.2rem; 
+            color: #555; 
+            margin-bottom: 50px; 
+            max-width: 500px; 
+            margin-left: auto; 
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        /* --- BOLD FORM DESIGN --- */
+        .contact-form { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 20px; 
+            background: white; 
+            padding: 40px; 
+            border: 2px solid #1a1a1a; 
+            box-shadow: 15px 15px 0px #ffb703; /* Pop Yellow Shadow */
+        }
+
+        input, textarea { 
+            width: 100%; 
+            padding: 15px; 
+            border: 1px solid #ddd; 
+            font-family: inherit; 
+            font-size: 1rem; 
+            outline: none; 
+            transition: border-color 0.3s;
+            box-sizing: border-box;
+        }
+
+        input:focus, textarea:focus { 
+            border-color: #e63946; /* Coral Focus */
+        }
+
+        textarea { grid-column: span 2; resize: none; }
+
+        button { 
+            grid-column: span 2; 
+            background: #1a1a1a; 
+            color: white; 
+            border: none; 
+            padding: 20px; 
+            font-size: 0.9rem; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: all 0.3s;
+        }
+
+        button:hover { 
+            background: #e63946; 
+            transform: translateY(-3px);
+        }
+
+        /* --- SOCIAL LINKS --- */
+        .social-links { 
+            margin-top: 60px; 
+            font-size: 0.9rem; 
+            letter-spacing: 1px; 
+            text-transform: uppercase;
+        }
+
+        .social-links a { 
+            text-decoration: none; 
+            color: #1a1a1a; 
+            font-weight: bold; 
+            margin: 0 15px; 
+            position: relative;
+        }
+
+        .social-links a::after {
+            content: '';
+            position: absolute;
+            width: 100%; height: 2px;
+            bottom: -4px; left: 0;
+            background-color: #ffb703;
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover::after { transform: scaleX(1); }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .contact-form { 
+                grid-template-columns: 1fr; 
+                padding: 20px;
+                box-shadow: 8px 8px 0px #ffb703;
+            }
+            textarea { grid-column: span 1; }
+            button { grid-column: span 1; }
+        }
+    </style>
 </head>
 <body>
+
     <header>
-        <div class="logo"><a href="index.html" style="text-decoration:none; color:inherit;">PALOMA AGUADO</a></div>
-       <nav>
-    <a href="index.html">Projects</a>
-    <a href="/palomaaguado.github.io/es/contacto.html" class="lang-switch" style="margin-left: 20px;">Español</a>
-</nav>
+        <div class="logo"><a href="index.html">PALOMA AGUADO</a></div>
+        <nav>
+            <a href="index.html">Projects</a>
+            <a href="/palomaaguado.github.io/es/contacto.html" style="margin-left: 20px; color: #e63946; font-weight: bold;">ES</a>
+        </nav>
     </header>
 
     <main class="contact-container">
-        <h1>Contact</h1>
-        <p>Have a project in mind or just want to say hello? I'd love to hear from you.</p>
+        <h1>Let's talk!</h1>
+        <p class="intro-text">Have a project in mind or just want to say hi? I'm only a message away.</p>
         
-        <form action="#" class="contact-form">
-            <input type="text" placeholder="Name" required>
-            <input type="email" placeholder="Email" required>
-            <textarea placeholder="Message" rows="5" required></textarea>
-            <button type="submit">Send</button>
+        <form action="#" method="POST" class="contact-form">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <textarea name="message" placeholder="How can I help you?" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
         </form>
 
         <div class="social-links">
-    <a href="https://www.linkedin.com/in/paloma-aguado-l%C3%B3pez/" target="_blank">LinkedIn</a> / 
-    <a href="https://www.instagram.com/palomitas09/?hl=es" target="_blank">Instagram</a> / 
-    <a href="mailto:paloaglo@gmail.com">Email</a>
-</div>
+            <a href="https://www.linkedin.com/in/paloma-aguado-l%C3%B3pez/" target="_blank">LinkedIn</a>
+            <a href="https://www.instagram.com/palomitas09/" target="_blank">Instagram</a>
+            <a href="mailto:paloaglo@gmail.com">Email</a>
+        </div>
     </main>
+
 </body>
 </html>
