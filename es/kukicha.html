@@ -5,83 +5,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kukicha — Paloma Aguado</title>
     <style>
-        * { box-sizing: border-box; }
+        /* --- ANIMACIÓN DE ENTRADA --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         body { 
-            margin: 0; padding: 0; background-color: white; 
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
-            color: #1a1a1a; 
+            margin: 0; padding: 0; 
+            background-color: #F9F8F5; /* Color papel orgánico */
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            color: #333; 
+            overflow-x: hidden;
         }
 
-        nav { padding: 40px 5%; }
-        nav a { text-decoration: none; color: #999; text-transform: uppercase; font-size: 11px; letter-spacing: 2px; }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+        /* Aplicar animación a las secciones principales */
+        .reveal { 
+            animation: fadeInUp 1.2s ease out forwards; 
+        }
         
-        .hero { width: 100%; margin-bottom: 60px; }
-        .hero img { width: 100%; height: auto; display: block; }
+        nav { padding: 40px; }
+        nav a { 
+            text-decoration: none; 
+            color: #888; 
+            font-size: 0.8rem; 
+            letter-spacing: 1px; 
+            transition: color 0.3s;
+        }
+        nav a:hover { color: #1a1a1a; }
 
-        header { margin-bottom: 80px; }
-        h1 { font-size: 45px; font-weight: 200; margin: 0 0 10px 0; }
-        .meta { color: #999; text-transform: uppercase; font-size: 11px; letter-spacing: 2px; display: block; margin-bottom: 30px; }
-        .info { max-width: 650px; line-height: 1.8; font-size: 16px; color: #444; }
+        .project-container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-        /* --- NUEVA GALERÍA EQUILIBRADA --- */
-        .gallery { 
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Dos columnas */
-            gap: 20px;
-            padding-bottom: 100px;
+        /* HERO IMAGE */
+        .project-hero { margin-bottom: 80px; }
+        .project-hero img { 
+            width: 100%; height: auto; display: block; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Sombra muy sutil */
         }
 
-        .gallery img { 
-            width: 100%; 
-            height: 500px; /* Altura estándar para que todo encaje */
+        /* TEXTOS */
+        .project-header { margin-bottom: 80px; max-width: 800px; }
+        .project-header h1 { font-size: 3.5rem; font-weight: 200; margin-bottom: 15px; letter-spacing: -1px; }
+        .project-header p.tag { color: #A5A58D; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; font-weight: bold; }
+        
+        .project-description { margin-top: 40px; line-height: 1.8; color: #555; font-size: 1.1rem; }
+        .project-description h3 { font-weight: 600; color: #1a1a1a; margin-bottom: 10px; }
+
+        /* GALERÍA */
+        .project-gallery { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 30px; 
+            padding-bottom: 120px; 
+        }
+        
+        /* Contenedor de imagen para el zoom */
+        .img-wrapper { 
+            overflow: hidden; 
+            height: 550px; 
+            background-color: #fff;
+        }
+
+        .project-gallery img { 
+            width: 100%; height: 100%; 
             object-fit: cover; 
-            display: block;
+            display: block; 
+            transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1); /* Zoom suave */
         }
 
-        /* AJUSTE ESPECIAL PARA WEB Y RRSS */
-        /* Hacemos que la web sea un poco más ancha o destaque sin romper el ritmo */
-        .gallery img.special { 
-            object-fit: contain; /* Para que no se corte el diseño de la web */
-            background-color: #f9f9f9; /* Un fondo sutil por si la imagen es más estrecha */
+        .img-wrapper:hover img { 
+            transform: scale(1.05); 
         }
+
+        /* Ajuste para Web y RRSS (Contain para no cortar diseño) */
+        .img-contain img { object-fit: contain; padding: 20px; }
+
+        footer { text-align: center; padding: 100px 0; color: #bbb; font-size: 0.75rem; letter-spacing: 1px; }
 
         @media (max-width: 768px) {
-            .gallery { grid-template-columns: 1fr; }
-            h1 { font-size: 30px; }
-            .gallery img { height: auto; }
+            .project-gallery { grid-template-columns: 1fr; }
+            .img-wrapper { height: 400px; }
+            .project-header h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <nav><a href="index.html">← Volver</a></nav>
+    <nav class="reveal">
+        <a href="index.html">← VOLVER AL PORTFOLIO</a>
+    </nav>
 
-    <div class="container">
-        <section class="hero">
-            <img src="proyectos/packaging.png" alt="Kukicha">
+    <main class="project-container">
+        
+        <section class="project-hero reveal" style="animation-delay: 0.2s;">
+            <img src="proyectos/packaging.png" alt="Kukicha Packaging">
         </section>
 
-        <header>
-            <span class="meta">Identidad de Marca / 2025</span>
+        <header class="project-header reveal" style="animation-delay: 0.4s;">
+            <p class="tag">Identidad de Marca / 2025</p>
             <h1>Kukicha</h1>
-            <div class="info">
-                <p>Kukicha es una marca ficticia de té japonés inspirada en la tradición y el minimalismo. El diseño se centra en la pureza y la sostenibilidad.</p>
+            <div class="project-description">
+                <h3>El Concepto</h3>
+                <p>Kukicha es una marca de té japonés que celebra la simplicidad. El diseño se basa en la honestidad de los materiales y una paleta cromática extraída directamente de la naturaleza: tierras y hojas secas.</p>
             </div>
         </header>
 
-        <section class="gallery">
-            <img src="proyectos/merchan.png" alt="Merchan">
-            <img src="proyectos/papeleria.png" alt="Papelería">
-            
-            <img src="proyectos/web.png" alt="Web" class="special">
-            <img src="proyectos/rrss.png" alt="RRSS" class="special">
+        <section class="project-gallery reveal" style="animation-delay: 0.6s;">
+            <div class="img-wrapper">
+                <img src="proyectos/merchan.png" alt="Merchandising">
+            </div>
+            <div class="img-wrapper">
+                <img src="proyectos/papeleria.png" alt="Papelería">
+            </div>
+            <div class="img-wrapper img-contain">
+                <img src="proyectos/web.png" alt="Diseño Web">
+            </div>
+            <div class="img-wrapper img-contain">
+                <img src="proyectos/rrss.png" alt="Social Media">
+            </div>
         </section>
-    </div>
 
-    <footer style="text-align: center; padding: 40px 0; color: #ddd; font-size: 10px; letter-spacing: 2px;">
-        © 2026 PALOMA AGUADO
+    </main>
+
+    <footer class="reveal">
+        <p>&copy; 2025 — PALOMA AGUADO</p>
     </footer>
 
 </body>
