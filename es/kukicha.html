@@ -5,82 +5,208 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kukicha — Paloma Aguado</title>
     <style>
+        /* --- RESET Y FUNDAMENTOS MINIMALISTAS --- */
         * { box-sizing: border-box; }
         body { 
-            margin: 0; padding: 0; background-color: white; 
+            margin: 0; 
+            padding: 0; 
+            background-color: #fff; /* Blanco puro */
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
-            color: #1a1a1a; 
+            color: #1a1a1a; /* Negro suave */
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
         }
 
-        nav { padding: 40px 5%; }
-        nav a { text-decoration: none; color: #999; text-transform: uppercase; font-size: 11px; letter-spacing: 2px; }
+        /* --- NAVEGACIÓN SUTIL --- */
+        nav { 
+            padding: 50px 5%; 
+            position: absolute; /* Para que no ocupe espacio visual inicial */
+            top: 0; left: 0; width: 100%;
+            z-index: 10;
+        }
+        nav a { 
+            text-decoration: none; 
+            color: #aaa; /* Gris muy suave */
+            text-transform: uppercase; 
+            font-size: 11px; 
+            letter-spacing: 3px; 
+            font-weight: 300;
+            transition: color 0.4s ease;
+        }
+        nav a:hover { color: #1a1a1a; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
-        
-        .hero { width: 100%; margin-bottom: 60px; }
-        .hero img { width: 100%; height: auto; display: block; }
-
-        header { margin-bottom: 80px; }
-        h1 { font-size: 45px; font-weight: 200; margin: 0 0 10px 0; }
-        .meta { color: #999; text-transform: uppercase; font-size: 11px; letter-spacing: 2px; display: block; margin-bottom: 30px; }
-        .info { max-width: 650px; line-height: 1.8; font-size: 16px; color: #444; }
-
-        /* --- NUEVA GALERÍA EQUILIBRADA --- */
-        .gallery { 
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Dos columnas */
-            gap: 20px;
-            padding-bottom: 100px;
+        /* --- CONTENEDOR EDITORIAL --- */
+        .project-wrap { 
+            max-width: 1400px; /* Ancho máximo generoso */
+            margin: 0 auto; 
+            padding: 0 5%; 
         }
 
-        .gallery img { 
+        /* --- SECCIÓN HERO (LA PORTADA) --- */
+        .hero { 
             width: 100%; 
-            height: 500px; /* Altura estándar para que todo encaje */
-            object-fit: cover; 
+            height: 100vh; /* Ocupa toda la altura de la pantalla */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-color: #f9f9f9; /* Fondo sutil para la imagen */
+            margin-bottom: 100px;
+        }
+        .hero img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; /* Imagen a pantalla completa */
             display: block;
         }
 
-        /* AJUSTE ESPECIAL PARA WEB Y RRSS */
-        /* Hacemos que la web sea un poco más ancha o destaque sin romper el ritmo */
-        .gallery img.special { 
-            object-fit: contain; /* Para que no se corte el diseño de la web */
-            background-color: #f9f9f9; /* Un fondo sutil por si la imagen es más estrecha */
+        /* --- CABECERA DE TEXTO (ESTILO JAPONÉS) --- */
+        header { 
+            max-width: 900px; 
+            margin: 0 auto 150px auto; /* Mucho espacio debajo */
+            text-align: center; /* Centrado para elegancia */
+            padding-top: 50px;
+        }
+        
+        h1 { 
+            font-size: 60px; /* Muy grande y fino */
+            font-weight: 100; /* Peso ultra-ligero */
+            margin: 0 0 15px 0; 
+            letter-spacing: -2px; 
+            line-height: 1;
+        }
+        
+        .meta { 
+            color: #999; 
+            text-transform: uppercase; 
+            font-size: 10px; 
+            letter-spacing: 3px; 
+            display: block; 
+            margin-bottom: 50px; 
+            font-weight: 300;
+        }
+        
+        .info { 
+            max-width: 600px; 
+            margin: 0 auto; 
+            line-height: 1.9; 
+            font-size: 16px; 
+            color: #444; 
+            font-weight: 300;
+            text-align: left; /* Texto alineado a la izquierda para lectura */
+        }
+        
+        .info h3 { 
+            font-size: 13px; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            color: #1a1a1a; 
+            margin-bottom: 25px; 
+            font-weight: 400;
         }
 
+        /* --- DISEÑO DE GALERÍA DE "AUTOR" --- */
+        .editorial-gallery { 
+            padding-bottom: 150px; 
+        }
+
+        /* Estilo base para todas las imágenes de la galería */
+        .editorial-gallery img { 
+            display: block; 
+            margin-bottom: 100px; /* Espacio generoso entre bloques */
+            height: auto;
+            max-width: 100%;
+        }
+
+        /* 1. Imagen de Merchandising (Ancho completo) */
+        .img-full { 
+            width: 100%; 
+            height: 80vh !important; /* Altura controlada, no infinita */
+            object-fit: cover; 
+        }
+
+        /* 2. Bloque de Papelería (Centrado y más estrecho) */
+        .img-centered { 
+            max-width: 900px !important; 
+            margin: 0 auto 100px auto !important; 
+            height: auto !important;
+            object-fit: contain;
+        }
+
+        /* 3. Bloque de la WEB (Ancho completo con fondo sutil para detalles) */
+        .img-web { 
+            width: 100%; 
+            height: auto !important; /* Altura automática para que no se corte NADA */
+            background-color: #f6f6f6; /* Fondo gris muy sutil para la web */
+            padding: 50px 0; /* Espacio para que la web respire */
+            object-fit: contain;
+        }
+
+        /* 4. Bloque RRSS (Centrado, altura fija para coherencia) */
+        .img-rrss { 
+            max-width: 1000px !important; 
+            margin: 0 auto !important; 
+            height: 600px !important; 
+            object-fit: cover; 
+        }
+
+        /* --- FOOTER MINIMALISTA --- */
+        footer { 
+            text-align: center; 
+            padding: 80px 0; 
+            color: #ddd; 
+            font-size: 10px; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            font-weight: 300;
+        }
+
+        /* --- AJUSTES PARA MÓVILES --- */
         @media (max-width: 768px) {
-            .gallery { grid-template-columns: 1fr; }
-            h1 { font-size: 30px; }
-            .gallery img { height: auto; }
+            h1 { font-size: 40px; }
+            header { margin-bottom: 80px; }
+            .hero { height: 60vh; }
+            .img-full, .img-rrss { height: auto !important; }
+            .editorial-gallery img { margin-bottom: 60px; }
+            .img-web { padding: 20px 0; }
         }
     </style>
 </head>
 <body>
 
-    <nav><a href="index.html">← Volver</a></nav>
+    <nav>
+        <a href="index.html">← Volver</a>
+    </nav>
 
-    <div class="container">
-        <section class="hero">
-            <img src="proyectos/packaging.png" alt="Kukicha">
-        </section>
+    <section class="hero">
+        <img src="proyectos/packaging.png" alt="Kukicha Packaging Premium">
+    </section>
+
+    <div class="project-wrap">
 
         <header>
             <span class="meta">Identidad de Marca / 2025</span>
             <h1>Kukicha</h1>
             <div class="info">
-                <p>Kukicha es una marca ficticia de té japonés inspirada en la tradición y el minimalismo. El diseño se centra en la pureza y la sostenibilidad.</p>
+                <h3>Desarrollo del Proyecto</h3>
+                <p>Kukicha es una marca ficticia de té japonés desarrollada desde cero como proyecto de identidad corporativa. El objetivo fue crear una marca visual minimalista, elegante y sostenible, inspirada en la tradición japonesa y orientada a un público joven-adulto consciente del bienestar y el diseño.</p>
             </div>
         </header>
 
-        <section class="gallery">
-            <img src="proyectos/merchan.png" alt="Merchan">
-            <img src="proyectos/papeleria.png" alt="Papelería">
+        <section class="editorial-gallery">
             
-            <img src="proyectos/web.png" alt="Web" class="special">
-            <img src="proyectos/rrss.png" alt="RRSS" class="special">
+            <img src="proyectos/merchan.png" alt="Merchandising Kukicha" class="img-full">
+            
+            <img src="proyectos/papeleria.png" alt="Papelería Corporativa" class="img-centered">
+            
+            <img src="proyectos/web.png" alt="Diseño Web Completo" class="img-web">
+            
+            <img src="proyectos/rrss.png" alt="Redes Sociales Feed" class="img-rrss">
+
         </section>
     </div>
 
-    <footer style="text-align: center; padding: 40px 0; color: #ddd; font-size: 10px; letter-spacing: 2px;">
+    <footer>
         © 2026 PALOMA AGUADO
     </footer>
 
