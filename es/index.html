@@ -48,15 +48,16 @@
             background: #f4f4f4;
         }
 
-        .project-card img {
+        /* Aplicamos estilos tanto a imágenes como a vídeos para que sean uniformes */
+        .project-card img, .project-card video {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
+            display: block;
         }
 
-        /* --- EL ARREGLO DE LIFESTYLE Y EL RESTO --- */
-        /* Definimos el overlay para que funcione en cualquier sección */
+        /* --- OVERLAYS --- */
         .overlay {
             position: absolute;
             top: 0;
@@ -67,8 +68,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 0; /* Empieza invisible */
+            opacity: 0;
             transition: opacity 0.4s ease;
+            z-index: 2; /* Por encima del vídeo */
         }
 
         .text {
@@ -81,8 +83,8 @@
         }
         .text span { font-weight: normal; font-size: 0.8rem; display: block; margin-top: 5px; opacity: 0.8; }
 
-        /* El activador del efecto */
-        .project-card:hover img { transform: scale(1.05); }
+        /* Efectos hover */
+        .project-card:hover img, .project-card:hover video { transform: scale(1.05); }
         .project-card:hover .overlay { opacity: 1; }
 
         /* CARRUSEL */
@@ -129,8 +131,9 @@
     <main>
         <h2 class="section-title">Creative Lab & IA</h2>
         <div class="gallery-grid">
-            <div class="project-card" style="grid-column: span 2;"> <a href="/palomaaguado.github.io/es/casio.html">
-                    <img src="/palomaaguado.github.io/es/proyectos/casio-thumbnail.jpg" alt="Casio Project">
+            <div class="project-card" style="grid-column: span 2;"> 
+                <a href="/palomaaguado.github.io/es/casio.html">
+                    <video src="/palomaaguado.github.io/es/proyectos/Casio v.mp4" autoplay loop muted playsinline poster="/palomaaguado.github.io/es/proyectos/casio-thumbnail.jpg"></video>
                     <div class="overlay">
                         <div class="text">
                             CASIO: The Constant in Evolution<br>
@@ -140,7 +143,7 @@
                 </a>
             </div>
         </div>
-        </section>
+
         <h2 class="section-title">Lifestyle & Brands</h2>
         <div class="gallery-grid">
             <div class="project-card">
