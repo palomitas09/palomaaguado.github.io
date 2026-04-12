@@ -23,7 +23,7 @@
             line-height: 1.6;
         }
 
-        /* --- NAVEGACIÓN --- */
+        /* --- NAVEGACIÓN ESTILO PORTFOLIO --- */
         nav {
             padding: 30px 5%;
             position: absolute;
@@ -46,7 +46,7 @@
         nav a:hover { color: var(--casio-blue); }
         nav a span { margin-right: 15px; font-size: 1.2rem; }
 
-        /* --- CABECERA --- */
+        /* CABECERA ESTILO RELOJ (RESPETADA) */
         header {
             height: 100vh;
             display: flex;
@@ -70,79 +70,69 @@
         h1 { font-size: 3.5rem; text-transform: uppercase; letter-spacing: -1px; margin: 0; }
         .tagline { color: #666; font-size: 1.1rem; margin-top: 10px; }
 
-        /* --- CONTENEDOR PRINCIPAL --- */
+        /* --- NUEVA ESTRUCTURA DE VÍDEOS --- */
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 80px 20px;
         }
 
-        /* --- ESTRUCTURA DE VÍDEOS (EL TAMAÑO QUE TE GUSTABA) --- */
-        .proposal-wrapper {
+        .proposal-layout {
             display: grid;
-            grid-template-columns: 1.8fr 1fr; /* Proporción de tamaño original */
-            gap: 25px;
-            margin-bottom: 80px;
+            grid-template-columns: 1.2fr 1fr; /* El de Instagram destaca a la izquierda */
+            gap: 30px;
+            margin-bottom: 60px;
         }
 
-        .hero-video {
+        .main-proposal {
             position: relative;
+            border: 8px solid var(--gray);
             background: #000;
-            border: 1px solid var(--gray);
             border-radius: 4px;
             overflow: hidden;
             box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-            aspect-ratio: 16 / 9; /* Mantiene el tamaño visual amplio */
         }
 
-        .gallery-stack {
+        .main-proposal video { width: 100%; height: 100%; display: block; object-fit: cover; }
+
+        .side-gallery {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
         }
 
-        .small-video {
+        .gallery-item {
             position: relative;
-            background: #000;
             border: 1px solid var(--gray);
+            background: #000;
             overflow: hidden;
             aspect-ratio: 16 / 9;
             transition: 0.4s;
         }
 
-        /* CLAVE: object-fit contain para que NO SE CHAFE el vertical */
-        video {
-            width: 100%;
-            height: 100%;
-            object-fit: contain; 
-            background: #000;
-        }
-
-        .small-video:hover { border-color: var(--casio-blue); transform: translateX(-5px); }
-        .small-video:hover video { opacity: 1; }
-        .small-video video { opacity: 0.7; }
+        .gallery-item video { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; transition: 0.4s; }
+        .gallery-item:hover { border-color: var(--casio-blue); transform: translateX(5px); }
+        .gallery-item:hover video { opacity: 1; }
 
         .label {
             position: absolute;
-            bottom: 12px;
-            left: 12px;
-            font-size: 0.65rem;
+            bottom: 10px;
+            left: 10px;
+            font-size: 0.6rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             background: rgba(0, 71, 187, 0.9);
-            padding: 4px 10px;
+            padding: 3px 8px;
             color: white;
-            z-index: 5;
+            z-index: 2;
         }
 
-        /* --- SECCIONES DE TEXTO --- */
+        /* STORYTELLING Y DEMÁS (RESPETADOS) */
         .storytelling {
             margin-top: 60px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
-            border-top: 1px solid var(--gray);
-            padding-top: 60px;
         }
 
         .copy-principal {
@@ -164,7 +154,12 @@
             padding: 30px;
             border-radius: 2px;
             border-top: 4px solid var(--gray);
+            transition: 0.3s;
         }
+
+        .spec-card:hover { border-top-color: var(--casio-blue); background: #1a1a1a; }
+        .spec-card h3 { font-size: 0.8rem; text-transform: uppercase; color: var(--casio-blue); letter-spacing: 2px; }
+        .spec-card p { font-size: 0.9rem; color: #aaa; }
 
         .cta-mail {
             display: inline-block;
@@ -176,16 +171,18 @@
             text-decoration: none;
             text-transform: uppercase;
             font-weight: 700;
+            font-size: 0.8rem;
             letter-spacing: 2px;
             transition: 0.3s;
         }
 
         .cta-mail:hover { background: white; color: black; }
 
-        footer { text-align: center; padding: 60px; font-size: 0.7rem; color: #444; border-top: 1px solid var(--gray); }
+        footer { text-align: center; padding: 40px; font-size: 0.7rem; color: #444; border-top: 1px solid var(--gray); }
 
-        @media (max-width: 900px) {
-            .proposal-wrapper, .storytelling, .tech-specs { grid-template-columns: 1fr; }
+        @media (max-width: 850px) {
+            .proposal-layout, .storytelling, .tech-specs { grid-template-columns: 1fr; }
+            h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -203,23 +200,23 @@
 
     <div class="container">
         
-        <div class="proposal-wrapper">
-            <div class="hero-video">
+        <div class="proposal-layout">
+            <div class="main-proposal">
                 <video src="../es/proyectos/Casio h.mp4" controls playsinline></video>
-                <div class="label" style="font-weight: bold;">Main Proposal: Instagram Reel</div>
+                <div class="label" style="background: var(--casio-blue); font-weight: bold;">Main Creative: Instagram Reel</div>
             </div>
 
-            <div class="gallery-stack">
-                <div class="small-video">
-                    <video src="../es/proyectos/Casio h1.mp4" controls playsinline></video>
+            <div class="side-gallery">
+                <div class="gallery-item">
+                    <video src="../es/proyectos/Casio h1.mp4" controls playsinline"></video>
                     <div class="label">Vertical Alt</div>
                 </div>
-                <div class="small-video">
-                    <video src="../es/proyectos/Casio v.mp4" controls playsinline></video>
-                    <div class="label">Landscape Ads</div>
+                <div class="gallery-item">
+                    <video src="../es/proyectos/Casio v.mp4" controls playsinline"></video>
+                    <div class="label">Landscape Display</div>
                 </div>
-                <div class="small-video">
-                    <video src="../es/proyectos/Casio v1.mp4" controls playsinline></video>
+                <div class="gallery-item">
+                    <video src="../es/proyectos/Casio v1.mp4" controls playsinline"></video>
                     <div class="label">Cinematic Detail</div>
                 </div>
             </div>
@@ -230,32 +227,32 @@
                 "En un mundo que cambia a la velocidad del bit, el Casio A168W permanece inmutable."
             </div>
             <div>
-                <p>Propuesta visual optimizada para Instagram Reels. Mediante el uso de IA y fotografía macro, estas piezas demuestran cómo la esencia de Casio se adapta a las nuevas tendencias de consumo digital sin perder su identidad premium.</p>
+                <p>Este proyecto visual explora la dualidad de la marca: una herencia analógica que se siente más moderna que nunca. A través de transiciones generadas por IA y una atmósfera cinematográfica, mostramos que mientras el entorno evoluciona, el estilo es una constante.</p>
             </div>
         </section>
 
         <section class="tech-specs">
             <div class="spec-card">
-                <h3 style="color: var(--casio-blue); font-size: 0.8rem; letter-spacing: 2px;">01. Concepto</h3>
-                <p style="font-size: 0.9rem; color: #aaa;">Fondos dinámicos generados por IA que simbolizan el flujo del tiempo.</p>
+                <h3>01. El Concepto</h3>
+                <p>Uso de IA generativa para crear fondos dinámicos que simbolizan el flujo del tiempo frente a la estabilidad del diseño.</p>
             </div>
             <div class="spec-card">
-                <h3 style="color: var(--casio-blue); font-size: 0.8rem; letter-spacing: 2px;">02. Técnica</h3>
-                <p style="font-size: 0.9rem; color: #aaa;">Hibridación de entornos virtuales y fotografía macro de producto real.</p>
+                <h3>02. La Técnica</h3>
+                <p>Hibridación de entornos virtuales mediante inteligencia artificial y fotografía macro de producto real.</p>
             </div>
             <div class="spec-card">
-                <h3 style="color: var(--casio-blue); font-size: 0.8rem; letter-spacing: 2px;">03. Social Ready</h3>
-                <p style="font-size: 0.9rem; color: #aaa;">Contenido diseñado específicamente para generar impacto en el feed de Instagram.</p>
+                <h3>03. El Objetivo</h3>
+                <p>Piezas de alto impacto optimizadas para Instagram, manteniendo la esencia premium de la marca en formatos dinámicos.</p>
             </div>
         </section>
 
         <center>
-            <a href="mailto:paloma@tuemail.com" class="cta-mail">Contactar para Propuesta</a>
+            <a href="mailto:tuemail@ejemplo.com" class="cta-mail">Contactar para Propuesta</a>
         </center>
     </div>
 
     <footer>
-        CASIO PROJECT /  © 2026 PALOMA AGUADO
+        CASIO PROJECT / CONTENT CREATOR PROPOSAL / 2026 PALOMA AGUADO
     </footer>
 
     <script>
