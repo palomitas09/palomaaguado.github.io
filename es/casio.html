@@ -23,6 +23,35 @@
             line-height: 1.6;
         }
 
+        /* --- NAVEGACIÓN ESTILO PORTFOLIO --- */
+        nav {
+            padding: 30px 5%;
+            position: absolute;
+            z-index: 10000;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #eee;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            display: flex;
+            align-items: center;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--casio-blue);
+        }
+
+        nav a span {
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
         /* CABECERA ESTILO RELOJ */
         header {
             height: 100vh;
@@ -164,9 +193,11 @@
     </style>
 </head>
 <body>
-<a href="index.html" class="back-button">
-    <span class="arrow">←</span> VOLVER AL PORTFOLIO
-</a>
+
+    <nav>
+        <a href="index.html"><span>←</span> Volver</a>
+    </nav>
+
     <header>
         <div class="digital-clock" id="clock">12:00:00</div>
         <h1>The Constant in Evolution</h1>
@@ -215,7 +246,6 @@
     </footer>
 
     <script>
-        // Reloj digital en tiempo real para el toque Casio
         function updateClock() {
             const now = new Date();
             const h = String(now.getHours()).padStart(2, '0');
