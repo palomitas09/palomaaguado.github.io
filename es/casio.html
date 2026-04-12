@@ -10,7 +10,6 @@
     <style>
         :root {
             --casio-blue: #0047bb;
-            --lcd-green: #b4c1a9;
             --dark: #0a0a0a;
             --gray: #222;
         }
@@ -23,7 +22,6 @@
             line-height: 1.6;
         }
 
-        /* --- NAVEGACIÓN ESTILO PORTFOLIO --- */
         nav {
             padding: 30px 5%;
             position: absolute;
@@ -40,13 +38,10 @@
             letter-spacing: 3px;
             display: flex;
             align-items: center;
-            transition: 0.3s;
         }
 
-        nav a:hover { color: var(--casio-blue); }
         nav a span { margin-right: 15px; font-size: 1.2rem; }
 
-        /* CABECERA ESTILO RELOJ (RESPETADA) */
         header {
             height: 100vh;
             display: flex;
@@ -64,22 +59,20 @@
             font-size: 1.5rem;
             letter-spacing: 5px;
             margin-bottom: 20px;
-            text-shadow: 0 0 10px rgba(0, 71, 187, 0.5);
         }
 
-        h1 { font-size: 3.5rem; text-transform: uppercase; letter-spacing: -1px; margin: 0; }
-        .tagline { color: #666; font-size: 1.1rem; margin-top: 10px; }
+        h1 { font-size: 3.5rem; text-transform: uppercase; margin: 0; }
 
-        /* --- NUEVA ESTRUCTURA DE VÍDEOS --- */
         .container {
             max-width: 1100px;
             margin: 0 auto;
             padding: 80px 20px;
         }
 
+        /* --- CORRECCIÓN DE DISEÑO --- */
         .proposal-layout {
             display: grid;
-            grid-template-columns: 1.2fr 1fr; /* El de Instagram destaca a la izquierda */
+            grid-template-columns: 1.2fr 1fr;
             gap: 30px;
             margin-bottom: 60px;
         }
@@ -89,11 +82,18 @@
             border: 8px solid var(--gray);
             background: #000;
             border-radius: 4px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            height: 600px; /* Altura fija para que el vertical luzca */
+            display: flex;
+            justify-content: center;
         }
 
-        .main-proposal video { width: 100%; height: 100%; display: block; object-fit: cover; }
+        /* object-fit: contain para NO DEFORMAR */
+        .main-proposal video, .gallery-item video { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: contain; 
+            background: #000;
+        }
 
         .side-gallery {
             display: flex;
@@ -105,14 +105,12 @@
             position: relative;
             border: 1px solid var(--gray);
             background: #000;
+            height: 190px; /* Altura proporcional */
             overflow: hidden;
-            aspect-ratio: 16 / 9;
             transition: 0.4s;
         }
 
-        .gallery-item video { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; transition: 0.4s; }
-        .gallery-item:hover { border-color: var(--casio-blue); transform: translateX(5px); }
-        .gallery-item:hover video { opacity: 1; }
+        .gallery-item:hover { border-color: var(--casio-blue); }
 
         .label {
             position: absolute;
@@ -123,66 +121,20 @@
             letter-spacing: 2px;
             background: rgba(0, 71, 187, 0.9);
             padding: 3px 8px;
-            color: white;
-            z-index: 2;
+            z-index: 10;
         }
 
-        /* STORYTELLING Y DEMÁS (RESPETADOS) */
-        .storytelling {
-            margin-top: 60px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
+        .storytelling { margin-top: 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .copy-principal { font-size: 1.4rem; border-left: 3px solid var(--casio-blue); padding-left: 25px; }
 
-        .copy-principal {
-            font-size: 1.4rem;
-            font-weight: 300;
-            border-left: 3px solid var(--casio-blue);
-            padding-left: 25px;
-        }
-
-        .tech-specs {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 80px;
-        }
-
-        .spec-card {
-            background: #151515;
-            padding: 30px;
-            border-radius: 2px;
-            border-top: 4px solid var(--gray);
-            transition: 0.3s;
-        }
-
-        .spec-card:hover { border-top-color: var(--casio-blue); background: #1a1a1a; }
-        .spec-card h3 { font-size: 0.8rem; text-transform: uppercase; color: var(--casio-blue); letter-spacing: 2px; }
-        .spec-card p { font-size: 0.9rem; color: #aaa; }
-
-        .cta-mail {
-            display: inline-block;
-            margin-top: 50px;
-            padding: 15px 40px;
-            background: transparent;
-            color: white;
-            border: 1px solid white;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-weight: 700;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            transition: 0.3s;
-        }
-
-        .cta-mail:hover { background: white; color: black; }
+        .tech-specs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 80px; }
+        .spec-card { background: #151515; padding: 30px; border-top: 4px solid var(--gray); }
 
         footer { text-align: center; padding: 40px; font-size: 0.7rem; color: #444; border-top: 1px solid var(--gray); }
 
         @media (max-width: 850px) {
             .proposal-layout, .storytelling, .tech-specs { grid-template-columns: 1fr; }
-            h1 { font-size: 2.2rem; }
+            .main-proposal { height: 500px; }
         }
     </style>
 </head>
@@ -195,28 +147,28 @@
     <header>
         <div class="digital-clock" id="clock">12:00:00</div>
         <h1>The Constant in Evolution</h1>
-        <p class="tagline">CASIO A168W // Content Creator Proposal</p>
+        <p style="color: #666;">CASIO A168W // Content Creator Proposal</p>
     </header>
 
     <div class="container">
         
         <div class="proposal-layout">
             <div class="main-proposal">
-                <video src="../es/proyectos/Casio h.mp4" loop muted playsinline autoplay></video>
-                <div class="label" style="background: var(--casio-blue); font-weight: bold;">Main Creative: Instagram Reel</div>
+                <video src="../es/proyectos/Casio h.mp4" controls playsinline></video>
+                <div class="label" style="background: var(--casio-blue);">Main Creative: Instagram Reel</div>
             </div>
 
             <div class="side-gallery">
                 <div class="gallery-item">
-                    <video src="../es/proyectos/Casio h1.mp4" loop muted playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+                    <video src="../es/proyectos/Casio h1.mp4" controls playsinline></video>
                     <div class="label">Vertical Alt</div>
                 </div>
                 <div class="gallery-item">
-                    <video src="../es/proyectos/Casio v.mp4" loop muted playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+                    <video src="../es/proyectos/Casio v.mp4" controls playsinline></video>
                     <div class="label">Landscape Display</div>
                 </div>
                 <div class="gallery-item">
-                    <video src="../es/proyectos/Casio v1.mp4" loop muted playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+                    <video src="../es/proyectos/Casio v1.mp4" controls playsinline></video>
                     <div class="label">Cinematic Detail</div>
                 </div>
             </div>
@@ -227,41 +179,24 @@
                 "En un mundo que cambia a la velocidad del bit, el Casio A168W permanece inmutable."
             </div>
             <div>
-                <p>Este proyecto visual explora la dualidad de la marca: una herencia analógica que se siente más moderna que nunca. A través de transiciones generadas por IA y una atmósfera cinematográfica, mostramos que mientras el entorno evoluciona, el estilo es una constante.</p>
+                <p>Propuesta optimizada para Instagram Reels y entornos digitales de alta fidelidad.</p>
             </div>
         </section>
 
         <section class="tech-specs">
-            <div class="spec-card">
-                <h3>01. El Concepto</h3>
-                <p>Uso de IA generativa para crear fondos dinámicos que simbolizan el flujo del tiempo frente a la estabilidad del diseño.</p>
-            </div>
-            <div class="spec-card">
-                <h3>02. La Técnica</h3>
-                <p>Hibridación de entornos virtuales mediante inteligencia artificial y fotografía macro de producto real.</p>
-            </div>
-            <div class="spec-card">
-                <h3>03. El Objetivo</h3>
-                <p>Piezas de alto impacto optimizadas para Instagram, manteniendo la esencia premium de la marca en formatos dinámicos.</p>
-            </div>
+            <div class="spec-card"><h3>Concepto</h3><p>IA Generativa y flujo temporal.</p></div>
+            <div class="spec-card"><h3>Técnica</h3><p>Hibridación analógico-digital.</p></div>
+            <div class="spec-card"><h3>Formato</h3><p>Optimizado para Social Ads.</p></div>
         </section>
 
-        <center>
-            <a href="mailto:tuemail@ejemplo.com" class="cta-mail">Contactar para Propuesta</a>
-        </center>
     </div>
 
-    <footer>
-        CASIO PROJECT // CONTENT CREATOR PROPOSAL // 2026 PALOMA AGUADO
-    </footer>
+    <footer>2026 PALOMA AGUADO</footer>
 
     <script>
         function updateClock() {
             const now = new Date();
-            const h = String(now.getHours()).padStart(2, '0');
-            const m = String(now.getMinutes()).padStart(2, '0');
-            const s = String(now.getSeconds()).padStart(2, '0');
-            document.getElementById('clock').textContent = `${h}:${m}:${s}`;
+            document.getElementById('clock').textContent = now.getHours().toString().padStart(2, '0') + ":" + now.getMinutes().toString().padStart(2, '0') + ":" + now.getSeconds().toString().padStart(2, '0');
         }
         setInterval(updateClock, 1000);
         updateClock();
