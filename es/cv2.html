@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Profesional - Paloma Aguado</title>
+    <style>
+        :root {
+            --dark-blue: #1a2a3a;
+            --soft-gold: #d4b996;
+            --bg-gray: #f8f9fa;
+            --sidebar-color: #f0ebe5;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: var(--bg-gray);
+            margin: 0; 
+            padding: 20px;
+            display: flex; 
+            justify-content: center; /* centra horizontalmente el CV */
+        }
+
+        .cv-card {
+            background: white;
+            width: 900px;
+            max-width: 100%;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .left-col {
+            background-color: var(--sidebar-color);
+            padding: 40px 30px;
+            color: var(--dark-blue);
+        }
+
+        /* FOTO CIRCULAR CON IMG */
+        .photo-area {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;              /* círculo perfecto */
+            margin: 0 auto 30px;             /* centra el div */
+            border: 4px solid white;
+            overflow: hidden;                 /* recorta la imagen que sobresalga */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .photo-area img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;               /* escala sin deformar */
+            object-position: top center;     /* centra la cabeza arriba */
+            display: block;
+        }
+
+        h3 { 
+            border-bottom: 2px solid var(--soft-gold); 
+            padding-bottom: 5px; margin-top: 30px;
+            font-size: 1.1rem; letter-spacing: 1px;
+        }
+
+        .skill-group { margin-bottom: 15px; font-size: 0.85rem; }
+        .skill-group b { display: block; margin-bottom: 5px; }
+        
+        .contact-info p { font-size: 0.9rem; margin: 8px 0; }
+        .contact-info a { color: var(--dark-blue); text-decoration: none; font-weight: 500; }
+        .contact-info a:hover { color: var(--soft-gold); }
+
+        .right-col {
+            padding: 50px;
+        }
+
+        h1 { margin: 0; font-size: 2.8rem; color: var(--dark-blue); }
+        .tagline { color: var(--soft-gold); font-weight: bold; font-size: 1.2rem; margin-bottom: 30px; }
+
+        h2 { 
+            background: var(--dark-blue); color: white;
+            padding: 8px 15px; font-size: 1.1rem;
+            margin-top: 40px; border-radius: 3px;
+        }
+
+        .exp-item { margin-bottom: 25px; border-left: 3px solid var(--soft-gold); padding-left: 15px; }
+        .exp-header { display: flex; justify-content: space-between; font-weight: bold; color: var(--dark-blue); }
+        .company { color: #666; font-style: italic; margin-bottom: 8px; }
+        
+        .exp-content { font-size: 0.95rem; line-height: 1.5; color: #444; }
+        ul { padding-left: 18px; margin: 5px 0; }
+
+        .edu-item { margin-bottom: 15px; font-size: 0.95rem; }
+        .cert-list { font-size: 0.85rem; color: #555; list-style-type: square; padding-left: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="cv-card">
+    <div class="left-col">
+        <div class="photo-area">
+            <img src="paloma.png" alt="Paloma Aguado">
+        </div>
+        
+        <h3>PERFIL</h3>
+        <p style="font-size: 0.9rem; line-height: 1.4;">
+            Especialista en Marketing y Publicidad con enfoque internacional. 
+            Experta en gestión bilingüe de contenidos, localización y representación de marca en mercados globales.
+        </p>
+
+        <h3>IDIOMAS</h3>
+        <p><b>Castellano / Catalán:</b> Nativo (C2)</p>
+        <p><b>Inglés:</b> C1/C2 (Avanzado)</p>
+        <p><b>Alemán:</b> C1 (Avanzado)</p>
+        <p><b>Francés / Ruso:</b> A1 (Básico)</p>
+
+        <h3>SKILLS TOP</h3>
+        <div class="skill-group">
+            <b>MARKETING Y GESTIÓN</b>
+            Meta Business, Google Analytics, Metricool, WordPress, Clientify. Trello
+        </div>
+        <div class="skill-group">
+            <b>DISEÑO Y EDICIÓN</b>
+            Adobe InDesign, Filmora, Photoshop, After Effects, Figma, Canva, Capcut.
+        </div>
+        <div class="skill-group">
+            <b>IA Y TRADUCCIÓN</b>
+            ChatGPT, SDL Trados, Visual Studio, Aegisub.
+        </div>
+
+        <h3>CONTACTO</h3>
+        <div class="contact-info">
+            <p>📞 <a href="tel:+34630206827">+34 630 206 827</a></p>
+            <p>📧 <a href="mailto:paloaglo@gmail.com">paloaglo@gmail.com</a></p>
+            <p>🔗 <a href="https://www.linkedin.com/in/paloma-aguado-lópez/" target="_blank">linkedin.com/in/paloma-aguado</a></p>
+        </div>
+    </div>
+
+    <div class="right-col">
+        <h1>PALOMA AGUADO</h1>
+        <div class="tagline">Marketing Specialist & Academic Coordinator</div>
+
+        <h2>EXPERIENCIA PROFESIONAL</h2>
+
+        <div class="exp-item">
+            <div class="exp-header"><span>Asistente de Departamento Académico</span> <span>Ene. 2026 - Abr. 2026</span></div>
+            <div class="company">IFEVET (Instituto de Formación Veterinaria)  </div>
+            <div class="exp-content">
+                <ul>
+<li> Mercados ES / EN / DE </li>
+                    <li><b>Representación Internacional:</b> Asistencia al congreso de Bielefeld (Alemania) para la promoción y venta de nuevos programas internacionales.</li>
+                    <li>Edición audiovisual educativa y maquetación de materiales académicos y diplomas con InDesign.</li>
+                    <li>Gestión bilingüe de atención al alumno y soporte técnico en sesiones internacionales.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-header"><span>Marketing Assistant</span> <span>Ene. 2025 - Jn. 2025</span></div>
+            <div class="company">Cafur</div>
+            <div class="exp-content">
+                <ul>
+                    <li>Gestión de redes sociales y creación de contenido estratégico multicanal.</li>
+                    <li>Producción y edición de material audiovisual especializado para el sector inmobiliario.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-header"><span>Marketing Assistant</span> <span>Abr. 2024 - Nov. 2024</span></div>
+            <div class="company">Vivendex</div>
+            <div class="exp-content">
+                <ul>
+                    <li>Configuración de campañas en Meta Business y automatización de flujos de clientes.</li>
+                    <li>Maquetación de catálogos y dossieres corporativos unificando la identidad visual.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-header"><span>Data Management</span> <span>Sep. 2023 - Ene. 2024</span></div>
+            <div class="company">Veepee</div>
+            <div class="exp-content">
+                <ul>
+                    <li>International Brand Sales Management y gestión de datos bilingüe (ES/DE).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-header"><span>Global Campaign Deployment </span> <span>Mar. 2023 - Ag. 2023</span></div>
+            <div class="company">Signify</div>
+            <div class="exp-content">
+                <ul>
+                    <li><b>Digital Acceleration:</b> Apoyo en branding, comunicación y despliegue digital (BCD).</li>
+                    <li>Control del desarrollo de campañas internacionales para marcas líderes (B2B & B2C).</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>FORMACIÓN ACADÉMICA</h2>
+        <div class="edu-item">
+            <b>Máster en Gestión Publicitaria</b> | Univ. Complutense de Madrid
+        </div>
+        <div class="edu-item">
+            <b>Grado en Traducción e Interpretación</b> | Univ. de Alicante
+        </div>
+        <div class="edu-item">
+            <b>Programa Erasmus+ (Linguistik & Amerikanistik)</b> | Universität Leipzig, Alemania
+        </div>
+
+        <h2>FORMACIÓN COMPLEMENTARIA</h2>
+        <ul class="cert-list">
+            <li><b>Marketing & Data:</b> Campaign Manager 360, Google Ads Measurement, Google Analytics.</li>
+            <li><b>Estrategia & Negocio:</b> Strategic Thinking, Business Plan Development, Digital Intelligence.</li>
+            <li><b>Habilidades Transversales:</b> Storytelling, Cybersecurity in Teleworking, Coaching.</li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
