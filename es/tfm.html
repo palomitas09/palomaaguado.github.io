@@ -12,7 +12,7 @@
         
         body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: var(--bg); color: white; font-family: 'Montserrat', sans-serif; overflow: hidden; }
 
-        /* --- PANTALLA SMART TV (HOME) --- */
+        /* --- HOME --- */
         #screen-tv {
             height: 100vh; width: 100vw;
             background: linear-gradient(to bottom, rgba(0,0,0,0.2), var(--bg)), url('../es/proyectos/slide-menu.jpg'); 
@@ -29,47 +29,56 @@
         .app-card:hover { transform: scale(1.15); border-color: white; }
         .app-card img { max-width: 75%; max-height: 60%; object-fit: contain; }
 
-        /* --- PANTALLA DE PERFIL --- */
+        /* --- PERFILES AJUSTADOS --- */
         #screen-profile {
             position: absolute; top:0; left:0; width: 100%; height: 100%;
             display: none; flex-direction: column; justify-content: center; align-items: center; z-index: 100;
         }
-        .profile-img { width: 160px; height: 160px; background-size: cover; border: 3px solid transparent; transition: 0.3s; }
+        .profile-img { width: 160px; height: 160px; background-size: cover; background-position: center; border: 3px solid transparent; transition: 0.3s; }
+        
+        /* Netflix: Cuadrado */
         .mode-netflix { background: #141414; }
-        .mode-netflix .profile-img { border-radius: 4px; }
+        .mode-netflix .profile-img { border-radius: 8px; }
         .mode-netflix .profile-img:hover { border-color: white; }
+
+        /* Disney: Circular con resplandor */
         .mode-disney { background: radial-gradient(circle, #1a1d29, #02040a); }
         .mode-disney .profile-img { border-radius: 50%; }
-        .mode-disney .profile-img:hover { border-color: #00e6ff; }
+        .mode-disney .profile-img:hover { border-color: #00e6ff; box-shadow: 0 0 20px #00e6ff; }
 
-        /* --- DIAPOSITIVAS (SLIDES) --- */
+        /* Prime: Cuadrado redondeado */
+        .mode-prime { background: #0f171e; }
+        .mode-prime .profile-img { border-radius: 20px; }
+        .mode-prime .profile-img:hover { border-color: var(--prime); }
+
+        /* HBO: Circular minimalista */
+        .mode-hbo { background: black; }
+        .mode-hbo .profile-img { border-radius: 50%; }
+        .mode-hbo .profile-img:hover { border-color: var(--hbo); }
+
+        /* --- SLIDES --- */
         .slide { 
             position: absolute; top:0; left:0; width: 100vw; height: 100vh; 
             display: none; background-size: contain; background-repeat: no-repeat; background-position: center; 
         }
 
-        /* --- SISTEMA DE HOTSPOTS (BOTONES INVISIBLES) --- */
+        /* --- HOTSPOTS (MODO DISEÑO ACTIVADO) --- */
         .hotspot-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        
         .hotspot {
-            position: absolute;
-            cursor: pointer;
-            z-index: 10;
-            /* MODO DISEÑO: Cambia 'rgba(0,255,255,0.3)' a 'transparent' cuando termines */
-            background: rgba(0, 255, 255, 0.3); 
+            position: absolute; cursor: pointer; z-index: 10;
+            background: rgba(0, 255, 255, 0.3); /* Cambiar a transparent al finalizar */
             border: 1px solid cyan;
             transition: 0.2s;
         }
         .hotspot:hover { background: rgba(255, 255, 255, 0.2); border-color: white; }
 
-        /* --- BOTÓN VOLVER --- */
         .back-arrow {
             position: fixed; top: 30px; left: 40px; width: 45px; height: 45px;
             background: rgba(0,0,0,0.5); border-radius: 50%; color: white;
             display: none; align-items: center; justify-content: center;
-            cursor: pointer; z-index: 1000; transition: 0.3s; font-size: 20px;
+            cursor: pointer; z-index: 1000; transition: 0.3s;
         }
-        .back-arrow:hover { background: white; color: black; transform: scale(1.1); }
+        .back-arrow:hover { background: white; color: black; }
     </style>
 </head>
 <body>
@@ -78,12 +87,12 @@
 
     <section id="screen-tv">
         <div class="tv-content">
-            <h1 style="font-size: 2rem; margin:0;">Smart TV Home</h1>
+            <h1 style="font-size: 2rem;">Smart TV Home</h1>
             <div class="apps-row">
-                <div class="app-card" onclick="startLogin('netflix')"><img src="../es/proyectos/netflix-logo.png"></div>
-                <div class="app-card" onclick="startLogin('prime')"><img src="../es/proyectos/prime video.png"></div>
-                <div class="app-card" onclick="startLogin('hbo')"><img src="../es/proyectos/hbo.png"></div>
-                <div class="app-card" onclick="startLogin('disney')"><img src="../es/proyectos/disney.png"></div>
+                <div id="card-netflix" class="app-card" onclick="startLogin('netflix')"><img src="../es/proyectos/netflix-logo.png"></div>
+                <div id="card-prime" class="app-card" onclick="startLogin('prime')"><img src="../es/proyectos/prime video.png"></div>
+                <div id="card-hbo" class="app-card" onclick="startLogin('hbo')"><img src="../es/proyectos/hbo.png"></div>
+                <div id="card-disney" class="app-card" onclick="startLogin('disney')"><img src="../es/proyectos/disney.png"></div>
             </div>
         </div>
     </section>
@@ -98,20 +107,31 @@
 
     <div id="slide-netflix" class="slide" style="background-image: url('../es/proyectos/tfm-netflix.jpg');">
         <div class="hotspot-layer">
-            <div class="hotspot" style="top: 40%; left: 10%; width: 18%; height: 35%;" onclick="showSubSlide('datos-n-1')"></div>
-            <div class="hotspot" style="top: 40%; left: 30%; width: 18%; height: 35%;" onclick="showSubSlide('datos-n-2')"></div>
+            <div class="hotspot" style="top: 40%; left: 52%; width: 18%; height: 35%;" onclick="showSubSlide('emily')"></div>
         </div>
     </div>
+    <div id="slide-emily" class="slide" style="background-image: url('../es/proyectos/emily.jpg');"></div>
 
-    <div id="slide-datos-n-1" class="slide" style="background-image: url('../es/proyectos/datos-netflix-serie1.jpg');"></div>
-    <div id="slide-datos-n-2" class="slide" style="background-image: url('../es/proyectos/datos-netflix-serie2.jpg');"></div>
+    <div id="slide-prime" class="slide" style="background-image: url('../es/proyectos/tfm-prime.jpg');">
+        <div class="hotspot-layer">
+            <div class="hotspot" style="top: 40%; left: 10%; width: 20%; height: 35%;" onclick="showSubSlide('datos-prime')"></div>
+        </div>
+    </div>
+    <div id="slide-datos-prime" class="slide" style="background-image: url('../es/proyectos/datos-prime.jpg');"></div>
+
+    <div id="slide-hbo" class="slide" style="background-image: url('../es/proyectos/tfm-hbo.jpg');">
+        <div class="hotspot-layer">
+            <div class="hotspot" style="top: 40%; left: 10%; width: 20%; height: 35%;" onclick="showSubSlide('datos-hbo')"></div>
+        </div>
+    </div>
+    <div id="slide-datos-hbo" class="slide" style="background-image: url('../es/proyectos/datos-hbo.jpg');"></div>
 
     <div id="slide-disney" class="slide" style="background-image: url('../es/proyectos/tfm-disney1.jpg');">
         <div class="hotspot-layer">
-            <div class="hotspot" style="top: 45%; left: 15%; width: 20%; height: 30%;" onclick="showSubSlide('datos-d-1')"></div>
+            <div class="hotspot" style="top: 40%; left: 10%; width: 20%; height: 35%;" onclick="showSubSlide('datos-disney')"></div>
         </div>
     </div>
-    <div id="slide-datos-d-1" class="slide" style="background-image: url('../es/proyectos/datos-disney-1.jpg');"></div>
+    <div id="slide-datos-disney" class="slide" style="background-image: url('../es/proyectos/datos-disney.jpg');"></div>
 
     <script>
         let selectedApp = "";
@@ -130,6 +150,7 @@
             currentStep = "profile";
             const screen = document.getElementById('screen-profile');
             screen.className = 'mode-' + appId;
+            document.getElementById('profile-title').innerText = configs[appId].title;
             document.getElementById('p-img').style.backgroundImage = `url('${configs[appId].img}')`;
             updateDisplay();
         }
@@ -158,7 +179,6 @@
         }
 
         function updateDisplay() {
-            // Ocultar todo por defecto
             document.getElementById('screen-tv').style.display = 'none';
             document.getElementById('screen-profile').style.display = 'none';
             document.querySelectorAll('.slide').forEach(s => s.style.display = 'none');
