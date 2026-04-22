@@ -8,7 +8,7 @@
         :root { --netflix: #E50914; --disney: #0063e5; --hbo: #9966cc; --prime: #00a8e1; --bg: #050505; }
         body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: var(--bg); color: white; font-family: 'Montserrat', sans-serif; overflow: hidden; }
 
-        /* --- NAVEGACIÓN Y HOME --- */
+        /* --- NAVEGACIÓN --- */
         .screen { position: absolute; top:0; left:0; width: 100%; height: 100%; display: none; }
         #screen-tv { display: flex; flex-direction: column; justify-content: flex-end; background: linear-gradient(to bottom, rgba(0,0,0,0.2), var(--bg)), url('../es/proyectos/slide-menu.jpg'); background-size: cover; }
         .apps-row { display: flex; gap: 20px; padding: 60px 80px; background: linear-gradient(transparent, rgba(0,0,0,0.9)); }
@@ -28,21 +28,24 @@
         .slide { position: absolute; top:0; left:0; width: 100vw; height: 100vh; display: none; background-size: contain; background-repeat: no-repeat; background-position: center; }
         .hotspot { position: absolute; cursor: pointer; z-index: 100; background: rgba(0,0,0,0); }
 
-        /* HBO Video */
-        .hbo-video { position: absolute; top: 32%; left: 12%; width: 28%; height: 28%; z-index: 50; background: black; border-radius: 4px; }
-
-        /* --- DISNEY: FILA DE VIDEOS SEGÚN TU IMAGEN --- */
-        .disney-video-row {
+        /* --- FILAS DE VIDEOS (DISNEY Y HBO) --- */
+        .video-row {
             position: absolute;
-            top: 62%; /* Posicionado sobre la franja de "Publicidad" de tu imagen */
             left: 3.5%;
             width: 93%;
-            height: 18%; /* Altura ajustada para que sean miniaturas alargadas */
+            height: 18%;
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 videos en fila */
+            grid-template-columns: repeat(4, 1fr);
             gap: 12px;
             z-index: 50;
         }
+        
+        /* Posición para Disney (Publicidad está abajo) */
+        #disney-videos { top: 62%; }
+        
+        /* Posición para HBO (Publicidad está en la franja media según tu imagen) */
+        #hbo-videos { top: 48%; }
+
         .video-item { 
             background: #000; 
             border: 2px solid rgba(255,255,255,0.1); 
@@ -83,13 +86,16 @@
     <div id="slide-emily" class="slide" style="background-image: url('../es/proyectos/emily.jpg');"></div>
 
     <div id="slide-hbo" class="slide" style="background-image: url('../es/proyectos/tfm-hbo.jpg');">
-        <div class="hbo-video">
-            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/TcYRdfOJXL8?rel=0" frameborder="0" allowfullscreen></iframe>
+        <div id="hbo-videos" class="video-row">
+            <div class="video-item"><iframe src="https://www.youtube.com/embed/TcYRdfOJXL8?rel=0"></iframe></div>
+            <div class="video-item"><iframe src="https://www.youtube.com/embed/TcYRdfOJXL8?rel=0"></iframe></div>
+            <div class="video-item"><iframe src="https://www.youtube.com/embed/TcYRdfOJXL8?rel=0"></iframe></div>
+            <div class="video-item"><iframe src="https://www.youtube.com/embed/TcYRdfOJXL8?rel=0"></iframe></div>
         </div>
     </div>
 
     <div id="slide-disney" class="slide" style="background-image: url('../es/proyectos/tfm-disney1.jpg');">
-        <div class="disney-video-row">
+        <div id="disney-videos" class="video-row">
             <div class="video-item"><iframe src="https://www.youtube.com/embed/dgulLqAKjvk?rel=0"></iframe></div>
             <div class="video-item"><iframe src="https://www.youtube.com/embed/BC6lkiBx01c?rel=0"></iframe></div>
             <div class="video-item"><iframe src="https://www.youtube.com/embed/5U_OBfXYs-4?rel=0"></iframe></div>
