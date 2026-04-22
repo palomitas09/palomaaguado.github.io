@@ -2,141 +2,93 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart TV Experience | Paloma Aguado</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --netflix: #E50914; --disney: #0063e5; --hbo: #9966cc; --prime: #00a8e1; --bg: #050505; 
-        }
-        
+        :root { --netflix: #E50914; --disney: #0063e5; --hbo: #9966cc; --prime: #00a8e1; --bg: #050505; }
         body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: var(--bg); color: white; font-family: 'Montserrat', sans-serif; overflow: hidden; }
 
-        /* --- HOME --- */
-        #screen-tv {
-            height: 100vh; width: 100vw;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.2), var(--bg)), url('../es/proyectos/slide-menu.jpg'); 
-            background-size: cover; background-position: center;
-            display: flex; flex-direction: column; justify-content: flex-end;
-        }
-        .tv-content { padding: 60px 80px; background: linear-gradient(transparent, rgba(0,0,0,0.9)); }
-        .apps-row { display: flex; gap: 20px; margin-top: 20px; }
-        .app-card {
-            width: 140px; height: 90px; background: rgba(255,255,255,0.1);
-            border-radius: 12px; display: flex; align-items: center; justify-content: center;
-            cursor: pointer; transition: 0.3s; border: 2px solid transparent; backdrop-filter: blur(10px);
-        }
-        .app-card:hover { transform: scale(1.15); border-color: white; }
-        .app-card img { max-width: 75%; max-height: 60%; object-fit: contain; }
+        /* --- NAVEGACIÓN --- */
+        .screen { position: absolute; top:0; left:0; width: 100%; height: 100%; display: none; }
+        #screen-tv { display: flex; flex-direction: column; justify-content: flex-end; background: linear-gradient(to bottom, rgba(0,0,0,0.2), var(--bg)), url('../es/proyectos/slide-menu.jpg'); background-size: cover; }
+        .apps-row { display: flex; gap: 20px; padding: 60px 80px; background: linear-gradient(transparent, rgba(0,0,0,0.9)); }
+        .app-card { width: 140px; height: 90px; background: rgba(255,255,255,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s; border: 2px solid transparent; backdrop-filter: blur(10px); }
+        .app-card:hover { transform: scale(1.1); border-color: white; }
+        .app-card img { max-width: 70%; }
 
-        /* --- PERFILES AJUSTADOS --- */
-        #screen-profile {
-            position: absolute; top:0; left:0; width: 100%; height: 100%;
-            display: none; flex-direction: column; justify-content: center; align-items: center; z-index: 100;
-        }
-        .profile-img { width: 160px; height: 160px; background-size: cover; background-position: center; border: 3px solid transparent; transition: 0.3s; }
-        
-        /* Netflix: Cuadrado */
-        .mode-netflix { background: #141414; }
+        /* --- PERFILES --- */
+        #screen-profile { flex-direction: column; justify-content: center; align-items: center; }
+        .profile-img { width: 160px; height: 160px; background-size: cover; border: 3px solid transparent; transition: 0.3s; }
         .mode-netflix .profile-img { border-radius: 8px; }
-        .mode-netflix .profile-img:hover { border-color: white; }
-
-        /* Disney: Circular con resplandor */
-        .mode-disney { background: radial-gradient(circle, #1a1d29, #02040a); }
         .mode-disney .profile-img { border-radius: 50%; }
-        .mode-disney .profile-img:hover { border-color: #00e6ff; box-shadow: 0 0 20px #00e6ff; }
-
-        /* Prime: Cuadrado redondeado */
-        .mode-prime { background: #0f171e; }
-        .mode-prime .profile-img { border-radius: 20px; }
-        .mode-prime .profile-img:hover { border-color: var(--prime); }
-
-        /* HBO: Circular minimalista */
-        .mode-hbo { background: black; }
         .mode-hbo .profile-img { border-radius: 50%; }
-        .mode-hbo .profile-img:hover { border-color: var(--hbo); }
+        .mode-prime .profile-img { border-radius: 20px; }
 
-        /* --- SLIDES --- */
-        .slide { 
-            position: absolute; top:0; left:0; width: 100vw; height: 100vh; 
-            display: none; background-size: contain; background-repeat: no-repeat; background-position: center; 
+        /* --- CATÁLOGOS --- */
+        .slide { position: absolute; top:0; left:0; width: 100vw; height: 100vh; display: none; background-size: contain; background-repeat: no-repeat; background-position: center; }
+        
+        /* Contenedor del video incrustado en el catálogo */
+        .video-container {
+            position: absolute;
+            z-index: 50;
+            border: 2px solid rgba(255,255,255,0.1);
+            background: #000;
+            /* Ajusta estas coordenadas para que el video encaje en el hueco de tu diseño */
+            top: 30%; 
+            left: 10%; 
+            width: 30%; 
+            height: 30%;
         }
 
-        /* --- HOTSPOTS (MODO DISEÑO ACTIVADO) --- */
-        .hotspot-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        .hotspot {
-            position: absolute; cursor: pointer; z-index: 10;
-            background: rgba(0, 255, 255, 0.3); /* Cambiar a transparent al finalizar */
-            border: 1px solid cyan;
-            transition: 0.2s;
-        }
-        .hotspot:hover { background: rgba(255, 255, 255, 0.2); border-color: white; }
+        .hotspot { position: absolute; cursor: pointer; z-index: 10; background: rgba(0, 255, 255, 0.2); border: 1px solid cyan; }
 
-        .back-arrow {
-            position: fixed; top: 30px; left: 40px; width: 45px; height: 45px;
-            background: rgba(0,0,0,0.5); border-radius: 50%; color: white;
-            display: none; align-items: center; justify-content: center;
-            cursor: pointer; z-index: 1000; transition: 0.3s;
-        }
-        .back-arrow:hover { background: white; color: black; }
+        .back-arrow { position: fixed; top: 30px; left: 40px; width: 45px; height: 45px; background: rgba(0,0,0,0.5); border-radius: 50%; color: white; display: none; align-items: center; justify-content: center; cursor: pointer; z-index: 1000; }
     </style>
 </head>
 <body>
 
     <div id="btn-back" class="back-arrow" onclick="handleBack()">←</div>
 
-    <section id="screen-tv">
-        <div class="tv-content">
-            <h1 style="font-size: 2rem;">Smart TV Home</h1>
-            <div class="apps-row">
-                <div id="card-netflix" class="app-card" onclick="startLogin('netflix')"><img src="../es/proyectos/netflix-logo.png"></div>
-                <div id="card-prime" class="app-card" onclick="startLogin('prime')"><img src="../es/proyectos/prime video.png"></div>
-                <div id="card-hbo" class="app-card" onclick="startLogin('hbo')"><img src="../es/proyectos/hbo.png"></div>
-                <div id="card-disney" class="app-card" onclick="startLogin('disney')"><img src="../es/proyectos/disney.png"></div>
-            </div>
+    <section id="screen-tv" class="screen" style="display: flex;">
+        <div class="apps-row">
+            <div class="app-card" onclick="startLogin('netflix')"><img src="../es/proyectos/netflix-logo.png"></div>
+            <div class="app-card" onclick="startLogin('prime')"><img src="../es/proyectos/prime video.png"></div>
+            <div class="app-card" onclick="startLogin('hbo')"><img src="../es/proyectos/hbo.png"></div>
+            <div class="app-card" onclick="startLogin('disney')"><img src="../es/proyectos/disney.png"></div>
         </div>
     </section>
 
-    <section id="screen-profile">
-        <h1 id="profile-title" style="font-weight: 300; font-size: 2.5rem; margin-bottom: 40px;">¿Quién eres?</h1>
-        <div class="profile-box" onclick="accessApp()" style="text-align: center; cursor: pointer;">
+    <section id="screen-profile" class="screen">
+        <h1 id="profile-title" style="font-weight: 300;">¿Quién eres?</h1>
+        <div onclick="accessApp()" style="text-align: center; cursor: pointer;">
             <div id="p-img" class="profile-img"></div>
-            <p id="p-name" style="margin-top: 20px; font-size: 1.2rem;">Paloma</p>
+            <p style="margin-top: 20px;">Paloma</p>
         </div>
     </section>
 
     <div id="slide-netflix" class="slide" style="background-image: url('../es/proyectos/tfm-netflix.jpg');">
-        <div class="hotspot-layer">
-            <div class="hotspot" style="top: 40%; left: 52%; width: 18%; height: 35%;" onclick="showSubSlide('emily')"></div>
-        </div>
+        <div class="hotspot" style="top: 40%; left: 52%; width: 18%; height: 35%;" onclick="showSubSlide('emily')"></div>
     </div>
     <div id="slide-emily" class="slide" style="background-image: url('../es/proyectos/emily.jpg');"></div>
 
-    <div id="slide-prime" class="slide" style="background-image: url('../es/proyectos/tfm-prime.jpg');">
-        <div class="hotspot-layer">
-            <div class="hotspot" style="top: 40%; left: 10%; width: 20%; height: 35%;" onclick="showSubSlide('datos-prime')"></div>
-        </div>
-    </div>
-    <div id="slide-datos-prime" class="slide" style="background-image: url('../es/proyectos/datos-prime.jpg');"></div>
-
     <div id="slide-hbo" class="slide" style="background-image: url('../es/proyectos/tfm-hbo.jpg');">
-        <div class="hotspot-layer">
-            <div class="hotspot" style="top: 40%; left: 10%; width: 20%; height: 35%;" onclick="showSubSlide('datos-hbo')"></div>
+        <div class="video-container">
+            <iframe width="100%" height="100%" 
+                src="https://www.youtube.com/embed/TcYRdfOJXL8?rel=0" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
         </div>
     </div>
-    <div id="slide-datos-hbo" class="slide" style="background-image: url('../es/proyectos/datos-hbo.jpg');"></div>
 
-    <div id="slide-disney" class="slide" style="background-image: url('../es/proyectos/tfm-disney1.jpg');">
-        <div class="hotspot-layer">
-            <div class="hotspot" style="top: 40%; left: 10%; width: 20%; height: 35%;" onclick="showSubSlide('datos-disney')"></div>
-        </div>
-    </div>
-    <div id="slide-datos-disney" class="slide" style="background-image: url('../es/proyectos/datos-disney.jpg');"></div>
+    <div id="slide-disney" class="slide" style="background-image: url('../es/proyectos/tfm-disney1.jpg');"></div>
+    <div id="slide-prime" class="slide" style="background-image: url('../es/proyectos/tfm-prime.jpg');"></div>
 
     <script>
         let selectedApp = "";
-        let currentStep = "tv"; 
-        let activeSubSlide = ""; 
+        let currentStep = "tv";
+        let activeSubSlide = "";
 
         const configs = {
             netflix: { title: "¿Quién eres?", img: "../es/proyectos/perfil-paloma.jpg" },
@@ -148,52 +100,30 @@
         function startLogin(appId) {
             selectedApp = appId;
             currentStep = "profile";
-            const screen = document.getElementById('screen-profile');
-            screen.className = 'mode-' + appId;
+            document.getElementById('screen-profile').className = 'screen mode-' + appId;
             document.getElementById('profile-title').innerText = configs[appId].title;
             document.getElementById('p-img').style.backgroundImage = `url('${configs[appId].img}')`;
             updateDisplay();
         }
 
-        function accessApp() {
-            currentStep = "app";
-            updateDisplay();
-        }
-
-        function showSubSlide(subId) {
-            activeSubSlide = subId;
-            currentStep = "sub-app";
-            updateDisplay();
-        }
+        function accessApp() { currentStep = "app"; updateDisplay(); }
+        function showSubSlide(id) { activeSubSlide = id; currentStep = "sub-app"; updateDisplay(); }
 
         function handleBack() {
-            if (currentStep === "sub-app") {
-                currentStep = "app";
-                activeSubSlide = "";
-            } else if (currentStep === "app") {
-                currentStep = "profile";
-            } else if (currentStep === "profile") {
-                currentStep = "tv";
-            }
+            if (currentStep === "sub-app") { currentStep = "app"; activeSubSlide = ""; }
+            else if (currentStep === "app") currentStep = "profile";
+            else if (currentStep === "profile") currentStep = "tv";
             updateDisplay();
         }
 
         function updateDisplay() {
-            document.getElementById('screen-tv').style.display = 'none';
-            document.getElementById('screen-profile').style.display = 'none';
-            document.querySelectorAll('.slide').forEach(s => s.style.display = 'none');
-            document.getElementById('btn-back').style.display = 'flex';
+            document.querySelectorAll('.screen, .slide').forEach(el => el.style.display = 'none');
+            document.getElementById('btn-back').style.display = (currentStep === "tv") ? 'none' : 'flex';
 
-            if (currentStep === "tv") {
-                document.getElementById('screen-tv').style.display = 'flex';
-                document.getElementById('btn-back').style.display = 'none';
-            } else if (currentStep === "profile") {
-                document.getElementById('screen-profile').style.display = 'flex';
-            } else if (currentStep === "app") {
-                document.getElementById('slide-' + selectedApp).style.display = 'block';
-            } else if (currentStep === "sub-app") {
-                document.getElementById('slide-' + activeSubSlide).style.display = 'block';
-            }
+            if (currentStep === "tv") document.getElementById('screen-tv').style.display = 'flex';
+            if (currentStep === "profile") document.getElementById('screen-profile').style.display = 'flex';
+            if (currentStep === "app") document.getElementById('slide-' + selectedApp).style.display = 'block';
+            if (currentStep === "sub-app") document.getElementById('slide-' + activeSubSlide).style.display = 'block';
         }
     </script>
 </body>
