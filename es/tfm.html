@@ -8,39 +8,41 @@
         :root { --netflix: #E50914; --disney: #0063e5; --hbo: #9966cc; --prime: #00a8e1; --bg: #050505; }
         body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: var(--bg); color: white; font-family: 'Montserrat', sans-serif; overflow: hidden; }
 
-        /* --- NAVEGACIÓN --- */
-        .screen { position: absolute; top:0; left:0; width: 100%; height: 100%; display: none; }
-        #screen-tv { display: flex; flex-direction: column; justify-content: flex-end; background: linear-gradient(to bottom, rgba(0,0,0,0.2), var(--bg)), url('../es/proyectos/slide-menu.jpg'); background-size: cover; }
+        /* --- HOME --- */
+        #screen-tv { height: 100vh; width: 100vw; display: flex; flex-direction: column; justify-content: flex-end; background: linear-gradient(to bottom, rgba(0,0,0,0.2), var(--bg)), url('../es/proyectos/slide-menu.jpg'); background-size: cover; }
         .apps-row { display: flex; gap: 20px; padding: 60px 80px; background: linear-gradient(transparent, rgba(0,0,0,0.9)); }
         .app-card { width: 140px; height: 90px; background: rgba(255,255,255,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s; border: 2px solid transparent; backdrop-filter: blur(10px); }
         .app-card:hover { transform: scale(1.1); border-color: white; }
         .app-card img { max-width: 70%; }
 
-        /* --- PERFILES --- */
-        #screen-profile { flex-direction: column; justify-content: center; align-items: center; }
-        .profile-img { width: 160px; height: 160px; background-size: cover; border: 3px solid transparent; transition: 0.3s; }
-        .mode-netflix .profile-img { border-radius: 8px; }
-        .mode-disney .profile-img { border-radius: 50%; }
-        .mode-hbo .profile-img { border-radius: 50%; }
-        .mode-prime .profile-img { border-radius: 20px; }
+        /* --- AJUSTE DE PERFILES --- */
+        #screen-profile { position: absolute; top:0; left:0; width: 100%; height: 100%; display: none; flex-direction: column; justify-content: center; align-items: center; }
+        .profile-img { width: 180px; height: 180px; background-size: cover; background-position: center; border: 4px solid transparent; transition: 0.3s; cursor: pointer; }
+        
+        /* Netflix: Cuadrado casi perfecto con bordes sutiles */
+        .mode-netflix .profile-img { border-radius: 4px; }
+        .mode-netflix .profile-img:hover { border-color: white; transform: scale(1.05); }
 
-        /* --- CATÁLOGOS --- */
+        /* Disney: Redondo con brillo azul */
+        .mode-disney .profile-img { border-radius: 50%; }
+        .mode-disney .profile-img:hover { border-color: #00e6ff; box-shadow: 0 0 20px rgba(0,230,255,0.5); transform: scale(1.05); }
+
+        /* HBO: Redondo minimalista */
+        .mode-hbo .profile-img { border-radius: 50%; }
+        .mode-hbo .profile-img:hover { border-color: #9966cc; transform: scale(1.05); }
+
+        /* Prime: Cuadrado muy redondeado */
+        .mode-prime .profile-img { border-radius: 35px; }
+        .mode-prime .profile-img:hover { border-color: #00a8e1; transform: scale(1.05); }
+
+        /* --- SLIDES Y CLICABLES --- */
         .slide { position: absolute; top:0; left:0; width: 100vw; height: 100vh; display: none; background-size: contain; background-repeat: no-repeat; background-position: center; }
         
-        /* Contenedor del video incrustado en el catálogo */
-        .video-container {
-            position: absolute;
-            z-index: 50;
-            border: 2px solid rgba(255,255,255,0.1);
-            background: #000;
-            /* Ajusta estas coordenadas para que el video encaje en el hueco de tu diseño */
-            top: 30%; 
-            left: 10%; 
-            width: 30%; 
-            height: 30%;
-        }
+        /* El recuadro ahora es INVISIBLE */
+        .hotspot { position: absolute; cursor: pointer; z-index: 100; background: rgba(255,255,255,0); }
 
-        .hotspot { position: absolute; cursor: pointer; z-index: 10; background: rgba(0, 255, 255, 0.2); border: 1px solid cyan; }
+        /* Video de HBO incrustado */
+        .video-box { position: absolute; top: 32%; left: 12%; width: 28%; height: 28%; z-index: 50; background: black; overflow: hidden; border-radius: 4px; }
 
         .back-arrow { position: fixed; top: 30px; left: 40px; width: 45px; height: 45px; background: rgba(0,0,0,0.5); border-radius: 50%; color: white; display: none; align-items: center; justify-content: center; cursor: pointer; z-index: 1000; }
     </style>
@@ -49,7 +51,7 @@
 
     <div id="btn-back" class="back-arrow" onclick="handleBack()">←</div>
 
-    <section id="screen-tv" class="screen" style="display: flex;">
+    <section id="screen-tv" style="display: flex;">
         <div class="apps-row">
             <div class="app-card" onclick="startLogin('netflix')"><img src="../es/proyectos/netflix-logo.png"></div>
             <div class="app-card" onclick="startLogin('prime')"><img src="../es/proyectos/prime video.png"></div>
@@ -58,11 +60,11 @@
         </div>
     </section>
 
-    <section id="screen-profile" class="screen">
-        <h1 id="profile-title" style="font-weight: 300;">¿Quién eres?</h1>
-        <div onclick="accessApp()" style="text-align: center; cursor: pointer;">
+    <section id="screen-profile">
+        <h1 id="profile-title" style="font-weight: 300; font-size: 2.5rem; margin-bottom: 30px;">¿Quién eres?</h1>
+        <div onclick="accessApp()" style="text-align: center;">
             <div id="p-img" class="profile-img"></div>
-            <p style="margin-top: 20px;">Paloma</p>
+            <p id="p-name" style="margin-top: 20px; font-size: 1.4rem;">Paloma</p>
         </div>
     </section>
 
@@ -72,13 +74,8 @@
     <div id="slide-emily" class="slide" style="background-image: url('../es/proyectos/emily.jpg');"></div>
 
     <div id="slide-hbo" class="slide" style="background-image: url('../es/proyectos/tfm-hbo.jpg');">
-        <div class="video-container">
-            <iframe width="100%" height="100%" 
-                src="https://www.youtube.com/embed/TcYRdfOJXL8?rel=0" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-            </iframe>
+        <div class="video-box">
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/TcYRdfOJXL8?rel=0" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
 
@@ -100,7 +97,8 @@
         function startLogin(appId) {
             selectedApp = appId;
             currentStep = "profile";
-            document.getElementById('screen-profile').className = 'screen mode-' + appId;
+            const screen = document.getElementById('screen-profile');
+            screen.className = 'mode-' + appId;
             document.getElementById('profile-title').innerText = configs[appId].title;
             document.getElementById('p-img').style.backgroundImage = `url('${configs[appId].img}')`;
             updateDisplay();
@@ -117,11 +115,11 @@
         }
 
         function updateDisplay() {
-            document.querySelectorAll('.screen, .slide').forEach(el => el.style.display = 'none');
+            document.getElementById('screen-tv').style.display = (currentStep === "tv") ? 'flex' : 'none';
+            document.getElementById('screen-profile').style.display = (currentStep === "profile") ? 'flex' : 'none';
+            document.querySelectorAll('.slide').forEach(s => s.style.display = 'none');
             document.getElementById('btn-back').style.display = (currentStep === "tv") ? 'none' : 'flex';
 
-            if (currentStep === "tv") document.getElementById('screen-tv').style.display = 'flex';
-            if (currentStep === "profile") document.getElementById('screen-profile').style.display = 'flex';
             if (currentStep === "app") document.getElementById('slide-' + selectedApp).style.display = 'block';
             if (currentStep === "sub-app") document.getElementById('slide-' + activeSubSlide).style.display = 'block';
         }
