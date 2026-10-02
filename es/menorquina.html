@@ -435,14 +435,18 @@
 
         let selectedAnimalKey = 'punky';
 
-        // 1. Direct Email Function
-        function sendEmailDirect() {
-            const email = "paloaglo@gmail.com";
-            const subject = encodeURIComponent("Contacto Candidatura La Menorquina x La Fargi");
-            const body = encodeURIComponent("Hola Paloma,\n\nHe revisado tu propuesta interactiva para La Menorquina y La Fargi y me gustaría ponerme en contacto contigo.\n\nUn saludo,");
-            window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
-        }
-
+    // 1. Función para abrir directamente la página de composición de Gmail
+function sendEmailDirect() {
+    const email = "paloaglo@gmail.com";
+    const subject = encodeURIComponent("Contacto Candidatura La Menorquina x La Fargi");
+    const body = encodeURIComponent("Hola Paloma:\n\nHe revisado tu propuesta interactiva para La Menorquina y La Fargi y me gustaría proponerte una entrevista.\n\nUn saludo,");
+    
+    // Enlace directo a la interfaz web de Gmail
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
+    
+    // Abre Gmail en una nueva pestaña
+    window.open(gmailUrl, '_blank');
+}
         // 2. Countdown Timer Logic
         let secondsLeft = 172799; // 48h approx
         function updateTimer() {
