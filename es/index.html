@@ -9,7 +9,7 @@
         body { margin: 0; font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #fff; }
         nav a, .project-card a { text-decoration: none !important; color: inherit; }
 
-        /* ARREGLO DEL MENÚ: Z-index y posición */
+        /* ARREGLO DEL MENÚ */
         header { 
             display: flex; 
             justify-content: space-between; 
@@ -48,7 +48,6 @@
             background: #f4f4f4;
         }
 
-        /* Aplicamos estilos tanto a imágenes como a vídeos para que sean uniformes */
         .project-card img, .project-card video {
             width: 100%;
             height: 100%;
@@ -70,7 +69,7 @@
             justify-content: center;
             opacity: 0;
             transition: opacity 0.4s ease;
-            z-index: 2; /* Por encima del vídeo */
+            z-index: 2;
         }
 
         .text {
@@ -87,15 +86,21 @@
         .project-card:hover img, .project-card:hover video { transform: scale(1.05); }
         .project-card:hover .overlay { opacity: 1; }
 
-        /* CARRUSEL */
+        /* CARRUSEL CORREGIDO */
         .carousel-wrapper { position: relative; padding: 0 5%; margin-bottom: 60px; }
+        
         .carousel-container {
             display: flex;
-            overflow-x: hidden;
+            overflow-x: auto;
             scroll-behavior: smooth;
             gap: 20px;
             padding: 10px 0;
+            /* Ocultar barra de desplazamiento visualmente manteniendo funcionalidad */
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;  /* IE y Edge */
         }
+        .carousel-container::-webkit-scrollbar { display: none; } /* Chrome, Safari y Opera */
+
         .carousel-card { flex: 0 0 calc(50% - 10px); height: 500px; }
 
         .nav-btn {
@@ -103,6 +108,8 @@
             background: #2c2c2c; color: white; border: none;
             width: 50px; height: 50px; border-radius: 50%; cursor: pointer;
             z-index: 10; display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem;
+            user-select: none;
         }
         .prev-btn { left: 1%; }
         .next-btn { right: 1%; }
@@ -121,8 +128,8 @@
     <header>
         <div class="logo">PALOMA AGUADO</div>
         <nav>
-             <a href="/palomaaguado.github.io/es/about.html">Sobre mi</a>
-             <span style="margin: 0 10px; color: #ccc;">|</span>
+            <a href="/palomaaguado.github.io/es/about.html">Sobre mi</a>
+            <span style="margin: 0 10px; color: #ccc;">|</span>
             <a href="/palomaaguado.github.io/es/contacto.html">Contacto</a> 
             <span style="margin: 0 10px; color: #ccc;">|</span>
             <a href="/palomaaguado.github.io/en/index.html">English</a>
@@ -142,55 +149,51 @@
                         </div>
                     </div>
                 </a>
-            </div>       
+            </div>        
         </div>
 
-       <h2 class="section-title">Lifestyle & Brands</h2>
-<div class="carousel-wrapper">
-    <!-- Botones de navegación -->
-    <button class="nav-btn prev-btn" onclick="moveSlide(-1)">&#10094;</button>
-    <button class="nav-btn next-btn" onclick="moveSlide(1)">&#10095;</button>
+        <!-- CARRUSEL 1: Lifestyle & Brands -->
+        <h2 class="section-title">Lifestyle & Brands</h2>
+        <div class="carousel-wrapper">
+            <button class="nav-btn prev-btn" onclick="moveSlide('lifestyle-carousel', -1)">&#10094;</button>
+            <button class="nav-btn next-btn" onclick="moveSlide('lifestyle-carousel', 1)">&#10095;</button>
 
-    <!-- Contenedor visible (con overflow: hidden) -->
-    <div class="carousel-container">
-        <!-- Pista que se desplaza (Track) -->
-        <div class="carousel-track" id="ads-carousel">
-            
-            <div class="project-card carousel-card">
-                <a href="/palomaaguado.github.io/es/menorquina.html">
-                    <img src="/palomaaguado.github.io/es/proyectos/punky1.jpg" alt="Punky y los Animales de La Menorquina">
-                    <div class="overlay">
-                        <div class="text">Punky & La Menorquina<br><span>Estrategia de marca e Innovación</span></div>
-                    </div>
-                </a>
-            </div> 
+            <div class="carousel-container" id="lifestyle-carousel">
+                <div class="project-card carousel-card">
+                    <a href="/palomaaguado.github.io/es/menorquina.html">
+                        <img src="/palomaaguado.github.io/es/proyectos/punky1.jpg" alt="Punky y los Animales de La Menorquina">
+                        <div class="overlay">
+                            <div class="text">Punky & La Menorquina<br><span>Estrategia de marca e Innovación</span></div>
+                        </div>
+                    </a>
+                </div> 
 
-            <div class="project-card carousel-card">
-                <a href="/palomaaguado.github.io/es/kukicha.html">
-                    <img src="/palomaaguado.github.io/es/proyectos/packaging.png" alt="Kukicha">
-                    <div class="overlay">
-                        <div class="text">Kukicha<br><span>Identidad de Marca</span></div>
-                    </div>
-                </a>
+                <div class="project-card carousel-card">
+                    <a href="/palomaaguado.github.io/es/kukicha.html">
+                        <img src="/palomaaguado.github.io/es/proyectos/packaging.png" alt="Kukicha">
+                        <div class="overlay">
+                            <div class="text">Kukicha<br><span>Identidad de Marca</span></div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="project-card carousel-card">
+                    <a href="/palomaaguado.github.io/es/nike.html">
+                        <img src="/palomaaguado.github.io/es/proyectos/nike5.jpg" alt="Nike">
+                        <div class="overlay">
+                            <div class="text">Nike x Shuttlerock<br><span>Case Study & Mockup</span></div>
+                        </div>
+                    </a>
+                </div>
             </div>
-
-            <div class="project-card carousel-card">
-                <a href="/palomaaguado.github.io/es/nike.html">
-                    <img src="/palomaaguado.github.io/es/proyectos/nike5.jpg" alt="Nike">
-                    <div class="overlay">
-                        <div class="text">Nike x Shuttlerock<br><span>Case Study & Mockup</span></div>
-                    </div>
-                </a>
-            </div>
-
         </div>
-    </div>
-</div>
 
+        <!-- CARRUSEL 2: Publicidad & Casos de Estudio -->
         <h2 class="section-title">Publicidad & Casos de Estudio</h2>
         <div class="carousel-wrapper">
-            <button class="nav-btn prev-btn" onclick="moveSlide(-1)">&#10094;</button>
-            <button class="nav-btn next-btn" onclick="moveSlide(1)">&#10095;</button>
+            <button class="nav-btn prev-btn" onclick="moveSlide('ads-carousel', -1)">&#10094;</button>
+            <button class="nav-btn next-btn" onclick="moveSlide('ads-carousel', 1)">&#10095;</button>
+            
             <div class="carousel-container" id="ads-carousel">
                 <div class="project-card carousel-card">
                     <a href="/palomaaguado.github.io/es/mazda.html">
@@ -309,9 +312,14 @@
     </footer>
 
     <script>
-        function moveSlide(direction) {
-            const slider = document.getElementById('ads-carousel');
-            const cardWidth = slider.querySelector('.carousel-card').offsetWidth + 20; 
+        function moveSlide(containerId, direction) {
+            const slider = document.getElementById(containerId);
+            if (!slider) return;
+            const card = slider.querySelector('.carousel-card');
+            if (!card) return;
+
+            // Ancho de la tarjeta + gap (20px)
+            const cardWidth = card.offsetWidth + 20; 
             slider.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
         }
     </script>
