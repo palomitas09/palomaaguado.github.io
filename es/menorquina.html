@@ -83,9 +83,9 @@
                 <button onclick="copyShareLink()" class="pop-button bg-brand-yellow hover:bg-yellow-300 font-pop font-bold text-xs sm:text-sm px-3 py-2 rounded-lg border-2 border-brand-navy flex items-center gap-1.5">
                     <i class="fa-solid fa-link"></i> Copiar Link
                 </button>
-                <a href="mailto:paloaglo@gmail.com?subject=Contacto%20Candidatura%20La%20Menorquina%20x%20La%20Fargi" class="pop-button bg-brand-punkyPink hover:bg-pink-600 text-white font-pop font-bold text-xs sm:text-sm px-3 py-2 rounded-lg border-2 border-brand-navy flex items-center gap-1.5">
+                <button onclick="sendEmailDirect()" class="pop-button bg-brand-punkyPink hover:bg-pink-600 text-white font-pop font-bold text-xs sm:text-sm px-3 py-2 rounded-lg border-2 border-brand-navy flex items-center gap-1.5">
                     <i class="fa-solid fa-paper-plane"></i> Contactar
-                </a>
+                </button>
             </div>
         </div>
     </header>
@@ -207,9 +207,10 @@
 
                 <div class="pt-4 border-t-2 border-gray-100 flex flex-wrap gap-3 justify-between items-center">
                     <span class="text-xs font-bold text-brand-navy"><i class="fa-solid fa-check-circle text-green-500"></i> CV Aplicado dentro de plazo</span>
-                    <button onclick="downloadSummary()" class="pop-button bg-brand-navy text-white font-pop text-xs font-bold py-2 px-4 rounded-lg border-2 border-brand-navy flex items-center gap-2">
-                        <i class="fa-solid fa-file-arrow-down"></i> Descargar Resumen de Candidatura
-                    </button>
+                    <!-- Botón para descargar el CV directamente -->
+                    <a href="/palomaaguado.github.io/es/cv.pdf" download="CV_Paloma_Aguado.pdf" class="pop-button bg-brand-navy hover:bg-slate-800 text-white font-pop text-xs font-bold py-2 px-4 rounded-lg border-2 border-brand-navy flex items-center gap-2">
+                        <i class="fa-solid fa-file-arrow-down"></i> Descargar Resumen de Candidatura (CV)
+                    </a>
                 </div>
             </div>
         </section>
@@ -400,9 +401,10 @@
                 <button onclick="copyShareLink()" class="pop-button bg-brand-yellow text-brand-navy font-pop font-bold text-sm px-6 py-3 rounded-xl border-2 border-white flex items-center gap-2">
                     <i class="fa-solid fa-copy"></i> Copiar Link de esta Propuesta
                 </button>
-                <a href="mailto:paloaglo@gmail.com?subject=Contacto%20Candidatura%20La%20Menorquina%20x%20La%20Fargi" class="pop-button bg-brand-red text-white font-pop font-bold text-sm px-6 py-3 rounded-xl border-2 border-white flex items-center gap-2">
+                <!-- Botón de envío directo de correo -->
+                <button onclick="sendEmailDirect()" class="pop-button bg-brand-red text-white font-pop font-bold text-sm px-6 py-3 rounded-xl border-2 border-white flex items-center gap-2">
                     <i class="fa-solid fa-envelope"></i> Enviar Email (paloaglo@gmail.com)
-                </a>
+                </button>
             </div>
         </section>
 
@@ -433,7 +435,15 @@
 
         let selectedAnimalKey = 'punky';
 
-        // 1. Countdown Timer Logic
+        // 1. Direct Email Function
+        function sendEmailDirect() {
+            const email = "paloaglo@gmail.com";
+            const subject = encodeURIComponent("Contacto Candidatura La Menorquina x La Fargi");
+            const body = encodeURIComponent("Hola Paloma,\n\nHe revisado tu propuesta interactiva para La Menorquina y La Fargi y me gustaría ponerme en contacto contigo.\n\nUn saludo,");
+            window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+        }
+
+        // 2. Countdown Timer Logic
         let secondsLeft = 172799; // 48h approx
         function updateTimer() {
             const hrs = Math.floor(secondsLeft / 3600).toString().padStart(2, '0');
@@ -445,7 +455,7 @@
         }
         setInterval(updateTimer, 1000);
 
-        // 2. Rescue Punky Action
+        // 3. Rescue Punky Action
         function rescuePunky() {
             const overlay = document.getElementById('cv-lock-overlay');
             const badge = document.getElementById('status-badge');
@@ -470,7 +480,7 @@
             showToast("¡Punky ha sido liberado! Expediente de candidatura desbloqueado.");
         }
 
-        // 3. Customizer Selection
+        // 4. Customizer Selection
         function selectAnimal(key) {
             selectedAnimalKey = key;
             document.querySelectorAll('.animal-btn').forEach(btn => {
@@ -503,7 +513,7 @@
             document.getElementById('card-target').textContent = animal.target;
         }
 
-        // 4. Save Idea Action
+        // 5. Save Idea Action
         function saveIceCreamIdea() {
             const animal = animals[selectedAnimalKey].name;
             showToast(`¡Propuesta de ${animal} guardada en el dossier!`);
@@ -514,7 +524,7 @@
             });
         }
 
-        // 5. Utility Functions
+        // 6. Utility Functions
         function showToast(msg) {
             const toast = document.getElementById('toast');
             const toastMsg = document.getElementById('toast-msg');
@@ -533,18 +543,6 @@
             document.execCommand('copy');
             document.body.removeChild(dummy);
             showToast("Enlace copiado al portapapeles. ¡Listo para enviar!");
-        }
-
-        function downloadSummary() {
-            showToast("Generando resumen ejecutivo en PDF...");
-            setTimeout(() => {
-                showToast("¡Resumen de propuesta listo para consultar!");
-            }, 1200);
-        }
-
-        function scrollToSection(id) {
-            const el = document.getElementById(id);
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
         }
     </script>
 </body>
